@@ -1,0 +1,10 @@
+.DS_Store
+*.DS_Store
+.env
+.env.local
+node_modules/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CP6VN2C604"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CP6VN2C604');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Work - Stephen Umunna</title>
+  <meta name="description" content="The operating system behind how Stephen Umunna builds, ships, and runs businesses. Principles, daily workflow, tooling, and the tradeoffs that drove 85% gross margins at Confidential AdTech Startup.">
+  <meta property="og:title" content="How I Work - Stephen Umunna">
+  <meta property="og:description" content="The operating system behind how I build, ship, and run businesses. Operating principles, daily workflow, tooling stack, and tradeoffs.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://stephenumunna.com/how-i-work/">
+  <meta property="og:image" content="https://stephenumunna.com/assets/og-share.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How I Work - Stephen Umunna">
+  <meta name="twitter:description" content="The operating system behind how I build, ship, and run businesses.">
+  <meta name="twitter:image" content="https://stephenumunna.com/assets/og-share.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+  <style>
+    /* ========================================
+       CSS VARIABLES - LIGHT / DARK / SYSTEM
+    ======================================== */
+    :root {
+      --bg: #fafafa;
+      --bg2: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --accent-border: #bfdbfe;
+      --green: #22c55e;
+      --green-soft: #ecfdf5;
+      --green-border: #a7f3d0;
+      --purple: #7c3aed;
+      --purple-soft: #f5f3ff;
+      --purple-border: #ddd6fe;
+      --amber: #d97706;
+      --amber-soft: #fffbeb;
+      --amber-border: #fde68a;
+      --nav-bg: rgba(255,255,255,.92);
+      --shadow: rgba(15,23,42,0.06);
+      --shadow-lg: rgba(15,23,42,0.1);
+      --counter-color: #059669;
+      --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0a0f;
+      --bg2: #0f0f17;
+      --surface: #13131a;
+      --text: #e2e2e8;
+      --text-muted: #9898a8;
+      --text-faint: #5a5a6e;
+      --border: #1e1e2e;
+      --accent: #60a5fa;
+      --accent-soft: rgba(37,99,235,0.12);
+      --accent-border: #1e3a5f;
+      --green: #4ade80;
+      --green-soft: rgba(34,197,94,0.1);
+      --green-border: #14532d;
+      --purple: #a78bfa;
+      --purple-soft: rgba(124,58,237,0.1);
+      --purple-border: #3b1f6e;
+      --amber: #fbbf24;
+      --amber-soft: rgba(217,119,6,0.1);
+      --amber-border: #78350f;
+      --nav-bg: rgba(10,10,15,.85);
+      --shadow: rgba(0,0,0,0.3);
+      --shadow-lg: rgba(0,0,0,0.5);
+      --counter-color: #4ade80;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        --bg: #0a0a0f;
+        --bg2: #0f0f17;
+        --surface: #13131a;
+        --text: #e2e2e8;
+        --text-muted: #9898a8;
+        --text-faint: #5a5a6e;
+        --border: #1e1e2e;
+        --accent: #60a5fa;
+        --accent-soft: rgba(37,99,235,0.12);
+        --accent-border: #1e3a5f;
+        --green: #4ade80;
+        --green-soft: rgba(34,197,94,0.1);
+        --green-border: #14532d;
+        --purple: #a78bfa;
+        --purple-soft: rgba(124,58,237,0.1);
+        --purple-border: #3b1f6e;
+        --amber: #fbbf24;
+        --amber-soft: rgba(217,119,6,0.1);
+        --amber-border: #78350f;
+        --nav-bg: rgba(10,10,15,.85);
+        --shadow: rgba(0,0,0,0.3);
+        --shadow-lg: rgba(0,0,0,0.5);
+        --counter-color: #4ade80;
+      }
+    }
+
+    /* ========================================
+       RESET
+    ======================================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      transition: background .3s, color .3s;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ========================================
+       NAV
+    ======================================== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s, border-color .3s;
+    }
+    .nav-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 32px;
+      height: 56px; display: flex; align-items: center;
+    }
+    .nav-back {
+      font-size: 14px; font-weight: 500; color: var(--text-muted);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color .2s, transform .2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back:hover svg { transform: translateX(-2px); }
+    .nav-back svg { transition: transform .2s; flex-shrink: 0; }
+
+    .theme-toggle {
+      display: flex; align-items: center; margin-left: auto;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 100px; padding: 2px; gap: 0;
+      transition: background .3s, border-color .3s;
+    }
+    .theme-btn {
+      padding: 5px 11px; font-size: 12px; font-weight: 500;
+      color: var(--text-faint); background: transparent;
+      border: none; border-radius: 100px; cursor: pointer;
+      transition: color .2s, background .2s; font-family: inherit;
+      white-space: nowrap; line-height: 1;
+    }
+    .theme-btn:hover { color: var(--text-muted); }
+    .theme-btn.active {
+      color: var(--text); background: var(--surface);
+      box-shadow: 0 1px 3px var(--shadow);
+    }
+
+    /* ========================================
+       CONTENT WRAPPER
+    ======================================== */
+    .content { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+    /* ========================================
+       SCROLL REVEAL
+    ======================================== */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    /* ========================================
+       HERO
+    ======================================== */
+    .hero { padding: 112px 0 56px; text-align: left; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--accent);
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px); font-weight: 800;
+      line-height: 1.08; letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(135deg, var(--accent), #6d28d9);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: 18px; color: var(--text-muted); line-height: 1.7;
+      max-width: 720px;
+    }
+    .hero-accent-bar {
+      width: 64px; height: 3px; background: linear-gradient(90deg, var(--accent), #6d28d9);
+      border-radius: 2px; margin-bottom: 28px;
+    }
+
+    /* ========================================
+       SECTION HEADERS
+    ======================================== */
+    .section { padding: 72px 0 0; }
+    .section-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: clamp(24px, 3.6vw, 32px); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px; color: var(--text-muted);
+      line-height: 1.75; max-width: 680px; margin-bottom: 8px;
+    }
+
+    /* ========================================
+       PRINCIPLE CARDS
+    ======================================== */
+    .principles {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      margin-top: 32px;
+    }
+    .principle-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 26px 26px 24px;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative;
+    }
+    .principle-card:hover {
+      border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    .principle-num {
+      font-family: var(--mono); font-size: 12px; font-weight: 600;
+      color: var(--accent); background: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      padding: 3px 9px; border-radius: 6px;
+      display: inline-block; margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+    .principle-title {
+      font-size: 17px; font-weight: 700; color: var(--text);
+      line-height: 1.35; letter-spacing: -0.015em;
+      margin-bottom: 10px;
+    }
+    .principle-body {
+      font-size: 14.5px; color: var(--text-muted); line-height: 1.65;
+    }
+
+    /* Stagger reveal */
+    .principles.stagger > * {
+      opacity: 0; transform: translateY(14px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .principles.stagger.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0ms; }
+    .principles.stagger.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 70ms; }
+    .principles.stagger.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 140ms; }
+    .principles.stagger.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 210ms; }
+    .principles.stagger.visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 280ms; }
+    .principles.stagger.visible > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 350ms; }
+    .principles.stagger.visible > *:nth-child(7) { opacity: 1; transform: translateY(0); transition-delay: 420ms; }
+    @media (prefers-reduced-motion: reduce) {
+      .principles.stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    /* ========================================
+       DAILY WORKFLOW - TIMELINE
+    ======================================== */
+    .workflow-list {
+      margin-top: 32px;
+      position: relative;
+      padding-left: 32px;
+    }
+    .workflow-list::before {
+      content: ''; position: absolute;
+      left: 7px; top: 8px; bottom: 8px;
+      width: 2px; background: linear-gradient(180deg, var(--accent), var(--purple), var(--green), var(--text-faint));
+      border-radius: 1px; opacity: .5;
+    }
+    .workflow-entry {
+      position: relative; margin-bottom: 28px;
+      padding: 22px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color .25s, transform .25s;
+    }
+    .workflow-entry:last-child { margin-bottom: 0; }
+    .workflow-entry:hover {
+      border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+    }
+    .workflow-dot {
+      position: absolute; left: -32px; top: 26px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+    }
+    .workflow-entry[data-color="purple"] .workflow-dot { border-color: var(--purple); }
+    .workflow-entry[data-color="green"] .workflow-dot { border-color: var(--green); }
+    .workflow-entry[data-color="amber"] .workflow-dot { border-color: var(--amber); }
+    .workflow-time {
+      font-family: var(--mono); font-size: 11px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 4px;
+    }
+    .workflow-entry[data-color="purple"] .workflow-time { color: var(--purple); }
+    .workflow-entry[data-color="green"] .workflow-time { color: var(--green); }
+    .workflow-entry[data-color="amber"] .workflow-time { color: var(--amber); }
+    .workflow-title {
+      font-size: 16px; font-weight: 700; color: var(--text);
+      letter-spacing: -0.01em; margin-bottom: 12px;
+    }
+    .workflow-body {
+      font-size: 14px; color: var(--text-muted); line-height: 1.65;
+    }
+    .workflow-body ul { list-style: none; padding: 0; margin: 0; }
+    .workflow-body li {
+      position: relative; padding-left: 18px; margin-bottom: 6px;
+    }
+    .workflow-body li:last-child { margin-bottom: 0; }
+    .workflow-body li::before {
+      content: ''; position: absolute; left: 0; top: 10px;
+      width: 6px; height: 2px; background: var(--text-faint); border-radius: 1px;
+    }
+
+    /* ========================================
+       TOOLING STACK
+    ======================================== */
+    .stack-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+      margin-top: 32px;
+    }
+    .stack-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px 24px;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .stack-card:hover {
+      border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+    .stack-title {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .stack-title .stack-icon {
+      width: 14px; height: 14px;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .stack-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .stack-tag {
+      font-size: 12.5px; font-weight: 500; color: var(--text-muted);
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 4px 11px; border-radius: 6px;
+      font-family: var(--mono);
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .stack-tag:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .stack-tag-note {
+      font-size: 10.5px; font-weight: 600; color: var(--green);
+      margin-left: 4px; letter-spacing: 0.02em; text-transform: uppercase;
+    }
+
+    /* ========================================
+       TRADEOFFS
+    ======================================== */
+    .tradeoffs { margin-top: 32px; display: grid; gap: 16px; }
+    .tradeoff-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 26px 28px;
+      position: relative; overflow: hidden;
+      transition: border-color .25s;
+    }
+    .tradeoff-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%; background: var(--accent);
+    }
+    .tradeoff-card[data-color="purple"]::before { background: var(--purple); }
+    .tradeoff-card[data-color="green"]::before { background: var(--green); }
+    .tradeoff-card:hover { border-color: color-mix(in srgb, var(--accent) 30%, var(--border)); }
+    .tradeoff-header {
+      display: flex; align-items: baseline; gap: 12px;
+      flex-wrap: wrap; margin-bottom: 12px;
+    }
+    .tradeoff-label {
+      font-family: var(--mono);
+      font-size: 11.5px; font-weight: 600;
+      color: var(--accent); letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .tradeoff-card[data-color="purple"] .tradeoff-label { color: var(--purple); }
+    .tradeoff-card[data-color="green"] .tradeoff-label { color: var(--green); }
+    .tradeoff-title {
+      font-size: 17px; font-weight: 700; color: var(--text);
+      letter-spacing: -0.015em;
+    }
+    .tradeoff-body {
+      font-size: 14.5px; color: var(--text-muted); line-height: 1.7;
+    }
+    .tradeoff-body strong { color: var(--text); font-weight: 600; }
+
+    /* ========================================
+       WHAT I'M NOT
+    ======================================== */
+    .not-list {
+      margin-top: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 8px 0;
+    }
+    .not-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .not-item:last-child { border-bottom: none; }
+    .not-mark {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--amber-soft);
+      border: 1px solid var(--amber-border);
+      color: var(--amber);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700;
+      margin-top: 1px;
+    }
+    .not-text {
+      font-size: 15px; color: var(--text); line-height: 1.6;
+    }
+    .not-text strong { font-weight: 700; }
+
+    /* ========================================
+       AVAILABLE FOR
+    ======================================== */
+    .available-card {
+      margin-top: 32px;
+      background: linear-gradient(135deg, var(--accent-soft), var(--purple-soft));
+      border: 1px solid var(--accent-border);
+      border-radius: 16px;
+      padding: 36px 36px 32px;
+    }
+    [data-theme="dark"] .available-card,
+    [data-theme="system"] .available-card {
+      background: linear-gradient(135deg, var(--accent-soft), var(--purple-soft));
+      border-color: var(--accent-border);
+    }
+    .available-list {
+      list-style: none; padding: 0; margin: 16px 0 24px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .available-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14.5px; color: var(--text); line-height: 1.55;
+      font-weight: 500;
+    }
+    .available-list li svg {
+      flex-shrink: 0; margin-top: 4px; color: var(--accent);
+    }
+    .available-cta {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px;
+    }
+    .av-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 22px; border-radius: 10px;
+      font-size: 14px; font-weight: 600;
+      transition: all .25s;
+      min-height: 42px;
+    }
+    .av-btn-primary {
+      background: var(--accent); color: #fff;
+    }
+    .av-btn-primary:hover {
+      background: color-mix(in srgb, var(--accent) 85%, #000);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(37,99,235,.25);
+    }
+    .av-btn-secondary {
+      background: var(--surface); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .av-btn-secondary:hover {
+      border-color: var(--accent); color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .page-footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      margin-top: 80px;
+    }
+    .page-footer-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+      font-size: 13px; color: var(--text-faint);
+    }
+    .page-footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .page-footer-links a { color: var(--text-muted); transition: color .2s; }
+    .page-footer-links a:hover { color: var(--accent); }
+    .page-footer-note {
+      font-size: 11px; color: var(--text-faint);
+      margin-top: 12px; max-width: 600px;
+      margin-left: auto; margin-right: auto;
+      text-align: center; line-height: 1.5;
+    }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 20px; }
+      .content { padding: 0 20px; }
+      .hero { padding: 96px 0 40px; }
+      .principles { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: 1fr; }
+      .available-list { grid-template-columns: 1fr; }
+      .available-card { padding: 28px 24px; }
+      .section { padding: 56px 0 0; }
+      .workflow-list { padding-left: 28px; }
+      .workflow-dot { left: -28px; }
+      .theme-btn { padding: 5px 9px; font-size: 11px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; height: 52px; }
+      .content { padding: 0 16px; }
+      .hero { padding: 84px 0 32px; }
+      .principle-card { padding: 22px 20px; }
+      .workflow-entry { padding: 18px 18px; }
+      .stack-card { padding: 18px 20px; }
+      .tradeoff-card { padding: 22px 22px; }
+      .not-item { padding: 14px 20px; gap: 12px; }
+      .available-card { padding: 24px 20px; }
+      .page-footer-inner { flex-direction: column; text-align: center; }
+    }
+
+    /* ========================================
+       PRINT
+    ======================================== */
+    @media print {
+      .nav, .theme-toggle { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .hero { padding-top: 40px !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .principles.stagger > * { opacity: 1 !important; transform: none !important; }
+      .principle-card, .workflow-entry, .stack-card, .tradeoff-card, .available-card {
+        break-inside: avoid; box-shadow: none !important;
+        border: 1px solid #ccc !important;
+      }
+      a[href]::after { content: " (" attr(href) ")"; font-size: 11px; color: #666; }
+      .nav-back a[href]::after, .page-footer-links a[href]::after { content: none; }
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================
+       NAV
+  ======================================== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 12L6 8l4-4"/>
+        </svg>
+        Stephen Umunna &middot; Portfolio
+      </a>
+      <div class="theme-toggle" role="radiogroup" aria-label="Theme">
+        <button class="theme-btn active" data-theme-btn="light" aria-label="Light theme">&#9728;&#65039; Light</button>
+        <button class="theme-btn" data-theme-btn="system" aria-label="System theme">&#128421;&#65039; System</button>
+        <button class="theme-btn" data-theme-btn="dark" aria-label="Dark theme">&#127769; Dark</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <!-- ========================================
+         HERO
+    ======================================== -->
+    <header class="hero">
+      <div class="hero-accent-bar"></div>
+      <h1>How I <span class="grad">Work</span>.</h1>
+      <p class="hero-subtitle">The operating system behind how I build, ship, and run businesses.</p>
+    </header>
+
+    <!-- ========================================
+         OPERATING PRINCIPLES
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">Section 01 &middot; Operating Principles</span>
+      <h2>Seven principles I actually operate by.</h2>
+      <p class="section-desc">Not aspirational. These are how the work gets done day to day - at Confidential AdTech Startup, at Causal IQ, at DoveMed, in the R&amp;D lab.</p>
+
+      <div class="principles stagger">
+        <div class="principle-card">
+          <span class="principle-num">01</span>
+          <h3 class="principle-title">Build, then run the business with it.</h3>
+          <p class="principle-body">I don't separate building the platform from running the business. The same engineer who writes the code is the one explaining it to clients, defending margins, and shipping the next feature.</p>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">02</span>
+          <h3 class="principle-title">Automation is the operating layer.</h3>
+          <p class="principle-body">At Confidential AdTech Startup, automation wasn't an optimization - it was the operating system. 15 people managed 200+ accounts at 85% gross margins because the work didn't scale linearly with headcount.</p>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">03</span>
+          <h3 class="principle-title">AI fluency is a team standard.</h3>
+          <p class="principle-body">At Confidential AdTech Startup, daily AI-assisted development (Claude Code, Codex, Cursor, Copilot) was the team-wide operating standard. The team multiplier matters more than any one person's prompt skill.</p>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">04</span>
+          <h3 class="principle-title">First-party data is the moat.</h3>
+          <p class="principle-body">Every advertising business eventually competes on data. The consumer app at Confidential AdTech Startup existed because the advertiser side needed unique data to differentiate.</p>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">05</span>
+          <h3 class="principle-title">Two-sided platforms compound.</h3>
+          <p class="principle-body">More consumer app users &rarr; richer CDP &rarr; better targeting &rarr; higher ROAS &rarr; more advertiser spend &rarr; reinvestment in the consumer app. The compounding loop is the business model.</p>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">06</span>
+          <h3 class="principle-title">Ship the simplest thing that works, then iterate.</h3>
+          <p class="principle-body">The CTV measurement framework started as a single client's question. I shipped a Python script, found the 5-7 day signup acceleration, and scaled the methodology across the book.</p>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">07</span>
+          <h3 class="principle-title">Hand off code for continuity.</h3>
+          <p class="principle-body">The CTV measurement codebase stayed at Causal IQ after I left. That continuity matters - work should outlive the worker.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         DAILY WORKFLOW
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">Section 02 &middot; Daily Workflow</span>
+      <h2>How I structure a working day.</h2>
+      <p class="section-desc">The shape changes depending on the season, but the rhythm holds: automation handles the predictable, I handle the judgment calls, and the building never stops.</p>
+
+      <div class="workflow-list">
+        <div class="workflow-entry" data-color="amber">
+          <div class="workflow-dot"></div>
+          <div class="workflow-time">Morning &middot; Operating Systems</div>
+          <h3 class="workflow-title">Triage what the automation surfaced.</h3>
+          <div class="workflow-body">
+            <ul>
+              <li>Review automation outputs - pacing alerts, QA reports, performance summaries</li>
+              <li>Triage what needs human judgment vs. what's already covered by the system</li>
+              <li>Decide which engineering work moves the operating layer forward today</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="workflow-entry">
+          <div class="workflow-dot"></div>
+          <div class="workflow-time">Midday &middot; Building</div>
+          <h3 class="workflow-title">Focused engineering blocks.</h3>
+          <div class="workflow-body">
+            <ul>
+              <li>2-3 hour blocks of focused engineering with Claude Code and Cursor</li>
+              <li>AI-assisted pair programming for new features, refactors, debugging</li>
+              <li>Codex and Copilot for cross-validation when the stakes are high</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="workflow-entry" data-color="purple">
+          <div class="workflow-dot"></div>
+          <div class="workflow-time">Afternoon &middot; Stakeholders</div>
+          <h3 class="workflow-title">The human side of the business.</h3>
+          <div class="workflow-body">
+            <ul>
+              <li>Client calls, sales partnerships, team support</li>
+              <li>Whatever needed human attention now that the morning was triaged</li>
+              <li>This is where the platform meets the people who pay for it</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="workflow-entry" data-color="green">
+          <div class="workflow-dot"></div>
+          <div class="workflow-time">Evening &middot; Strategy + Reading</div>
+          <h3 class="workflow-title">Think long, read wide.</h3>
+          <div class="workflow-body">
+            <ul>
+              <li>Strategic thinking, write-ups, planning the next quarter</li>
+              <li>AdTech industry reading - what's shifting in DSPs, identity, measurement</li>
+              <li>Open-source code review - keeps the engineering instinct sharp</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         TOOLING STACK
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">Section 03 &middot; Tooling Stack</span>
+      <h2>The tools I reach for every day.</h2>
+      <p class="section-desc">Not aspirational. These are the tools currently open on my machine right now.</p>
+
+      <div class="stack-grid">
+        <div class="stack-card">
+          <div class="stack-title">
+            <span class="stack-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </span>
+            Engineering
+          </div>
+          <div class="stack-tags">
+            <span class="stack-tag">Claude Code <span class="stack-tag-note">primary</span></span>
+            <span class="stack-tag">Codex</span>
+            <span class="stack-tag">Cursor</span>
+            <span class="stack-tag">Copilot</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-title">
+            <span class="stack-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
+            Operations
+          </div>
+          <div class="stack-tags">
+            <span class="stack-tag">Python / Django</span>
+            <span class="stack-tag">DSP APIs</span>
+            <span class="stack-tag">Tableau</span>
+            <span class="stack-tag">Looker</span>
+            <span class="stack-tag">JIRA</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-title">
+            <span class="stack-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </span>
+            Communication
+          </div>
+          <div class="stack-tags">
+            <span class="stack-tag">LinkedIn</span>
+            <span class="stack-tag">Email</span>
+            <span class="stack-tag">Slack</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-title">
+            <span class="stack-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Productivity
+          </div>
+          <div class="stack-tags">
+            <span class="stack-tag">Notion</span>
+            <span class="stack-tag">GitHub</span>
+            <span class="stack-tag">Vercel</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         TRADEOFFS
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">Section 04 &middot; Tradeoffs</span>
+      <h2>How I think about the hard decisions.</h2>
+      <p class="section-desc">Three tradeoffs that show up constantly in operator-builder roles. Here's how I reason through each one.</p>
+
+      <div class="tradeoffs">
+        <div class="tradeoff-card">
+          <div class="tradeoff-header">
+            <span class="tradeoff-label">Tradeoff 01</span>
+            <span class="tradeoff-title">Speed vs. quality</span>
+          </div>
+          <p class="tradeoff-body">At a 15-person company with $300K-$500K/month P&amp;L and 85% margins, you can't afford slow OR sloppy. <strong>AI-assisted engineering closes the gap by raising the floor on speed without compromising quality.</strong> The Claude Code + Cursor + Codex loop means I ship faster AND with better test coverage than I did pre-AI.</p>
+        </div>
+
+        <div class="tradeoff-card" data-color="purple">
+          <div class="tradeoff-header">
+            <span class="tradeoff-label">Tradeoff 02</span>
+            <span class="tradeoff-title">Build vs. buy</span>
+          </div>
+          <p class="tradeoff-body">I tend to build when (a) the off-the-shelf option is more expensive than my time plus opportunity cost, (b) we need ownership for customization, or (c) it becomes a defensible asset. <strong>CDP, custom pixel, CTV measurement framework all met that bar.</strong> Stripe, Salesforce, Tableau didn't.</p>
+        </div>
+
+        <div class="tradeoff-card" data-color="green">
+          <div class="tradeoff-header">
+            <span class="tradeoff-label">Tradeoff 03</span>
+            <span class="tradeoff-title">Generalist vs. specialist</span>
+          </div>
+          <p class="tradeoff-body">Generalist as an operator; specialist when I'm deep in a problem. <strong>I can fix the Django bug in the morning and present to a client in the afternoon</strong> - the same brain context-switches because the operating layer is consistent.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         WHAT I'M NOT
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">Section 05 &middot; What I'm Not</span>
+      <h2>Edges, honestly drawn.</h2>
+      <p class="section-desc">Credibility comes from knowing where the line is. These are mine.</p>
+
+      <div class="not-list">
+        <div class="not-item">
+          <span class="not-mark">&times;</span>
+          <p class="not-text"><strong>I'm not a research engineer.</strong> I don't build novel ML models from scratch. I integrate existing models into real products.</p>
+        </div>
+        <div class="not-item">
+          <span class="not-mark">&times;</span>
+          <p class="not-text"><strong>I'm not a designer.</strong> I rely on system fonts, Tailwind defaults, shadcn/ui, and good information architecture. The visual polish on this site comes from constraints, not Figma.</p>
+        </div>
+        <div class="not-item">
+          <span class="not-mark">&times;</span>
+          <p class="not-text"><strong>I'm not a tier-1 brand-name candidate.</strong> No FAANG, no MBA, no Fortune 500 logos - yet. The work has to speak for itself.</p>
+        </div>
+        <div class="not-item">
+          <span class="not-mark">&times;</span>
+          <p class="not-text"><strong>I'm not a manager-of-managers.</strong> The largest engineering team I've directly managed is 10 at DoveMed. Above that, I'd need a stepping-stone role.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         AVAILABLE FOR
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">Section 06 &middot; Available For</span>
+      <h2>What I'm exploring next.</h2>
+      <p class="section-desc">Roles where the line between exec and IC is blurred - because that's where the operating layer gets built.</p>
+
+      <div class="available-card">
+        <ul class="available-list">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Director / VP Ad Operations
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            CTO / Founding Engineer (seed - Series B)
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Director Client Solutions / Sr. Solutions Consultant
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Builder-operator hybrid roles
+          </li>
+        </ul>
+        <div class="available-cta">
+          <a href="mailto:scumunna@gmail.com" class="av-btn av-btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            scumunna@gmail.com
+          </a>
+          <a href="mailto:scumunna@gmail.com?subject=Hello" class="av-btn av-btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Say Hello
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ========================================
+       FOOTER
+  ======================================== -->
+  <footer class="page-footer">
+    <div class="page-footer-inner">
+      <div>Stephen Umunna &middot; Los Angeles, CA</div>
+      <div class="page-footer-links">
+        <a href="mailto:scumunna@gmail.com">scumunna@gmail.com</a>
+        <a href="tel:+13239171875">(323) 917-1875</a>
+        <a href="https://github.com/scumunna" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="page-footer-note">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+  </footer>
+
+  <!-- ========================================
+       JAVASCRIPT
+  ======================================== -->
+  <script>
+  (function() {
+    'use strict';
+
+    /* THEME TOGGLE */
+    var ThemeManager = {
+      init: function() {
+        var saved = localStorage.getItem('portfolio-theme') || 'light';
+        this.set(saved);
+        var self = this;
+        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            self.set(btn.getAttribute('data-theme-btn'));
+          });
+        });
+      },
+      set: function(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('portfolio-theme', theme);
+        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-theme-btn') === theme);
+        });
+      }
+    };
+    ThemeManager.init();
+
+    /* SCROLL REVEAL */
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .stagger').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+  })();
+  </script>
+</body>
+</html>

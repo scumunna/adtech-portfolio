@@ -1,0 +1,2640 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CP6VN2C604"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CP6VN2C604');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stanford BIOE 230 Interactive - Learning Platform - Stephen Umunna</title>
+  <meta name="description" content="An interactive learning platform adopted by Stanford Bioengineering. 180 interactive modules, 960 practice problems. Built for how students actually learn.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%238C1515'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- Theme Variables --- */
+    :root {
+      --bg: #fafafa;
+      --bg2: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --shadow: rgba(15, 23, 42, 0.06);
+      --shadow-lg: rgba(15, 23, 42, 0.12);
+      --nav-bg: rgba(255, 255, 255, 0.92);
+      --accent: #8C1515;
+      --accent-light: #B83A3A;
+      --accent-glow: rgba(140, 21, 21, 0.1);
+      --accent-glow-strong: rgba(140, 21, 21, 0.22);
+      --hero-counter-bg: rgba(241, 245, 249, 0.8);
+      --hero-counter-border: rgba(15, 23, 42, 0.04);
+      --card-border: rgba(15, 23, 42, 0.08);
+      --story-card-bg: rgba(241, 245, 249, 0.6);
+      --tag-bg: rgba(15, 23, 42, 0.04);
+      --tag-border: rgba(15, 23, 42, 0.08);
+      --footer-bg: #f1f5f9;
+      --nav-border: rgba(140, 21, 21, 0.12);
+      --white-heading: #0f172a;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0c0c12;
+      --bg2: #101018;
+      --surface: #16161f;
+      --text: #e8e8f0;
+      --text-muted: #9898a8;
+      --text-faint: #5a5a6e;
+      --border: #22222e;
+      --shadow: rgba(0, 0, 0, 0.3);
+      --shadow-lg: rgba(0, 0, 0, 0.5);
+      --nav-bg: rgba(12, 12, 18, 0.85);
+      --accent-light: #D45454;
+      --accent-glow: rgba(184, 58, 58, 0.15);
+      --accent-glow-strong: rgba(184, 58, 58, 0.3);
+      --hero-counter-bg: rgba(22, 22, 31, 0.8);
+      --hero-counter-border: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.06);
+      --story-card-bg: rgba(22, 22, 31, 0.6);
+      --tag-bg: rgba(255, 255, 255, 0.04);
+      --tag-border: rgba(255, 255, 255, 0.08);
+      --footer-bg: #0a0a10;
+      --nav-border: rgba(140, 21, 21, 0.12);
+      --white-heading: #ffffff;
+    }
+
+    [data-theme="system"] {
+      --bg: #fafafa;
+      --bg2: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --shadow: rgba(15, 23, 42, 0.06);
+      --shadow-lg: rgba(15, 23, 42, 0.12);
+      --nav-bg: rgba(255, 255, 255, 0.92);
+      --accent-light: #B83A3A;
+      --accent-glow: rgba(140, 21, 21, 0.1);
+      --accent-glow-strong: rgba(140, 21, 21, 0.22);
+      --hero-counter-bg: rgba(241, 245, 249, 0.8);
+      --hero-counter-border: rgba(15, 23, 42, 0.04);
+      --card-border: rgba(15, 23, 42, 0.08);
+      --story-card-bg: rgba(241, 245, 249, 0.6);
+      --tag-bg: rgba(15, 23, 42, 0.04);
+      --tag-border: rgba(15, 23, 42, 0.08);
+      --footer-bg: #f1f5f9;
+      --nav-border: rgba(140, 21, 21, 0.12);
+      --white-heading: #0f172a;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        --bg: #0c0c12;
+        --bg2: #101018;
+        --surface: #16161f;
+        --text: #e8e8f0;
+        --text-muted: #9898a8;
+        --text-faint: #5a5a6e;
+        --border: #22222e;
+        --shadow: rgba(0, 0, 0, 0.3);
+        --shadow-lg: rgba(0, 0, 0, 0.5);
+        --nav-bg: rgba(12, 12, 18, 0.85);
+        --accent-light: #D45454;
+        --accent-glow: rgba(184, 58, 58, 0.15);
+        --accent-glow-strong: rgba(184, 58, 58, 0.3);
+        --hero-counter-bg: rgba(22, 22, 31, 0.8);
+        --hero-counter-border: rgba(255, 255, 255, 0.04);
+        --card-border: rgba(255, 255, 255, 0.06);
+        --story-card-bg: rgba(22, 22, 31, 0.6);
+        --tag-bg: rgba(255, 255, 255, 0.04);
+        --tag-border: rgba(255, 255, 255, 0.08);
+        --footer-bg: #0a0a10;
+        --nav-border: rgba(140, 21, 21, 0.12);
+        --white-heading: #ffffff;
+      }
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding-top: 56px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* --- Nav --- */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--nav-border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-faint);
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--accent); }
+    .nav-back svg { flex-shrink: 0; }
+    .nav-back-label { color: var(--text); font-weight: 600; }
+
+    /* --- Theme Toggle --- */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 2px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .theme-toggle-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 28px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text-faint);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      padding: 0;
+    }
+
+    .theme-toggle-btn:hover {
+      color: var(--text-muted);
+      background: var(--tag-bg);
+    }
+
+    .theme-toggle-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 1px 3px rgba(140, 21, 21, 0.3);
+    }
+
+    .theme-toggle-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* --- Sections --- */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white-heading);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      transition: color 0.3s;
+    }
+
+    .section-desc {
+      font-size: 15px;
+      color: var(--text-faint);
+      line-height: 1.75;
+      max-width: 680px;
+    }
+
+    /* --- Hero --- */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 24px 0;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(140, 21, 21, 0.08);
+      border: 1px solid rgba(140, 21, 21, 0.25);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      box-shadow: 0 0 20px rgba(140, 21, 21, 0.1);
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(140, 21, 21, 0.6); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(140, 21, 21, 0); }
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--white-heading);
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      transition: color 0.3s;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-faint);
+      line-height: 1.6;
+      max-width: 640px;
+      margin: 0 auto 48px;
+    }
+
+    .hero-subtitle strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* --- Hero Counter Row --- */
+    .hero-counters {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    .hero-counter {
+      padding: 28px 12px;
+      text-align: center;
+      background: var(--hero-counter-bg);
+      border: 1px solid var(--hero-counter-border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .hero-counter:first-child { border-radius: 12px 0 0 12px; }
+    .hero-counter:last-child { border-radius: 0 12px 12px 0; }
+
+    .hero-counter-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--white-heading);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+
+    .hero-counter-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* --- Divider --- */
+    .hero-divider {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 2px;
+    }
+
+    .hero-divider-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent);
+      border-radius: 1px;
+      opacity: 0.5;
+    }
+
+    /* --- Story Section --- */
+    .story-section {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    .story-card {
+      background: var(--story-card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 32px 32px 32px 28px;
+      margin-top: 24px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .story-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .story-card p:last-child { margin-bottom: 0; }
+
+    /* --- Tabbed Screenshot Viewer --- */
+    .showcase-section {
+      padding-bottom: 64px;
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      margin: 24px 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .tabs-nav::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      padding: 12px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.2s;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--accent); }
+
+    .tab-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      border-radius: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 12px var(--accent-glow-strong);
+    }
+
+    .tab-btn.active::after { transform: scaleX(1); }
+
+    .tab-panels { position: relative; min-height: 200px; }
+
+    .tab-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .tab-panel.active {
+      position: relative;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .tab-screenshot-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+    }
+
+    .tab-screenshot-card:hover {
+      border-color: rgba(140, 21, 21, 0.3);
+      box-shadow: 0 8px 40px rgba(140, 21, 21, 0.08);
+    }
+
+    .tab-screenshot-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .tab-caption {
+      padding: 16px 24px;
+      font-size: 14px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--card-border);
+      transition: border-color 0.3s;
+    }
+
+    /* --- Demo Section --- */
+    .demo-section {
+      padding-bottom: 64px;
+    }
+
+    .demo-container {
+      margin-top: 24px;
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .demo-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .demo-tab {
+      flex: 1;
+      padding: 14px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s, background 0.2s;
+      text-align: center;
+    }
+
+    .demo-tab:hover { color: var(--text); background: var(--tag-bg); }
+    .demo-tab.active { color: var(--accent); background: var(--surface); }
+
+    .demo-tab::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .demo-tab.active::after { transform: scaleX(1); }
+
+    .demo-panel {
+      display: none;
+      padding: 32px;
+    }
+
+    .demo-panel.active { display: block; }
+
+    .demo-canvas-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .demo-canvas-wrap svg,
+    .demo-canvas-wrap canvas {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+    }
+
+    .demo-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .demo-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .demo-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(140, 21, 21, 0.06);
+    }
+
+    .demo-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .demo-result {
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      min-height: 42px;
+      padding: 8px 16px;
+      background: var(--bg2);
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .demo-result strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .demo-result code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: var(--tag-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* Slider controls */
+    .demo-sliders {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .demo-slider-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .demo-slider-group label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      min-width: 24px;
+    }
+
+    .demo-slider-group input[type="range"] {
+      width: 180px;
+      height: 6px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--border);
+      border-radius: 3px;
+      outline: none;
+    }
+
+    .demo-slider-group input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: 2px solid var(--surface);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+
+    .demo-slider-group input[type="range"]::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: 2px solid var(--surface);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+
+    .demo-slider-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      min-width: 40px;
+    }
+
+    /* Regression specific */
+    .demo-instruction {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-faint);
+      margin-bottom: 12px;
+    }
+
+    /* --- Numbers Section --- */
+    .numbers-section {
+      padding-bottom: 64px;
+    }
+
+    .numbers-card {
+      margin-top: 24px;
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 8px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .numbers-cell {
+      background: var(--bg);
+      padding: 32px 16px;
+      text-align: center;
+      border-radius: 12px;
+      transition: background 0.3s;
+    }
+
+    .numbers-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--white-heading);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .numbers-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* --- Feature Cards --- */
+    .features-section {
+      padding-bottom: 64px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s, box-shadow 0.3s, background 0.3s;
+      cursor: default;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(140, 21, 21, 0.4);
+      box-shadow: 0 8px 24px rgba(140, 21, 21, 0.08);
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      display: block;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.15) translateY(-2px);
+    }
+
+    .feature-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white-heading);
+      margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+
+    .feature-card p {
+      font-size: 13px;
+      color: var(--text-faint);
+      line-height: 1.55;
+    }
+
+    /* --- Tech Stack Section --- */
+    .stack-section {
+      padding-bottom: 64px;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .stack-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .stack-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .stack-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .stack-tag {
+      font-size: 13px;
+      color: var(--text-faint);
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 5px 14px;
+      border-radius: 6px;
+      transition: border-color 0.25s, color 0.25s, background 0.25s;
+      cursor: default;
+    }
+
+    .stack-tag:hover {
+      border-color: rgba(140, 21, 21, 0.5);
+      color: var(--accent);
+      background: rgba(140, 21, 21, 0.08);
+    }
+
+    /* --- Impact Section --- */
+    .impact-section {
+      padding-bottom: 64px;
+    }
+
+    .impact-card {
+      background: var(--story-card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-top: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .impact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light), transparent);
+    }
+
+    .impact-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .impact-card p + p {
+      margin-top: 16px;
+    }
+
+    /* --- Footer --- */
+    .footer {
+      border-top: 1px solid var(--card-border);
+      padding: 32px 24px;
+      background: var(--footer-bg);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer a {
+      color: var(--text-faint);
+      transition: color 0.2s;
+    }
+
+    .footer a:hover { color: var(--accent); }
+
+    /* --- Reveal Animation --- */
+    .rv {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .rv.v {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rv { opacity: 1; transform: none; transition: none; }
+      .hero-badge-dot { animation: none; }
+    }
+
+    /* --- Responsive 768px --- */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 42px; }
+      .hero { padding: 48px 20px 0; }
+      .hero-subtitle { font-size: 16px; }
+
+      .hero-counters {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 400px;
+      }
+
+      .hero-counter { border-radius: 0 !important; }
+      .hero-counter:nth-child(1) { border-radius: 12px 0 0 0 !important; }
+      .hero-counter:nth-child(2) { border-radius: 0 12px 0 0 !important; }
+      .hero-counter:nth-child(3) { border-radius: 0 0 0 12px !important; }
+      .hero-counter:nth-child(4) { border-radius: 0 0 12px 0 !important; }
+      .hero-counter-value { font-size: 32px; }
+
+      .section { padding: 0 20px; }
+
+      .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .feature-grid { grid-template-columns: 1fr; }
+
+      .stack-grid { grid-template-columns: 1fr; }
+
+      .tab-btn { padding: 10px 14px; font-size: 12px; }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      .section-title { font-size: 24px; }
+
+      .nav-back span:not(.nav-back-label) { display: none; }
+      .nav-back .nav-back-label { display: inline; }
+
+      /* Mobile touch targets */
+      .theme-toggle-btn { width: 36px; height: 36px; }
+      .nav-back { padding: 14px 0; min-height: 44px; display: flex; align-items: center; }
+      .stack-tag { padding: 8px 14px; min-height: 36px; display: inline-flex; align-items: center; }
+      .tab-btn { min-height: 44px; }
+      .feature-card { padding: 20px 16px; }
+
+      .demo-panel { padding: 20px; }
+      .demo-tab { padding: 12px 8px; font-size: 11px; }
+      .demo-sliders { gap: 16px; }
+      .demo-slider-group input[type="range"] { width: 120px; }
+    }
+
+    /* --- Responsive 480px --- */
+    @media (max-width: 480px) {
+      .hero { padding: 36px 16px 0; }
+      .hero h1 { font-size: 36px; }
+      .section { padding: 0 16px; }
+      .hero-divider { padding: 0 16px; }
+      .hero-counters { max-width: 100%; }
+      .hero-counter { padding: 20px 8px; }
+      .hero-counter-value { font-size: 28px; }
+      .numbers-value { font-size: 24px; }
+      .numbers-cell { padding: 24px 12px; }
+      .story-card { padding: 24px 20px; }
+      .tab-btn { padding: 8px 10px; font-size: 11px; }
+      .impact-card { padding: 24px 20px; }
+      .demo-panel { padding: 16px; }
+      .demo-controls { gap: 6px; }
+      .demo-btn { padding: 7px 12px; font-size: 12px; }
+    }
+
+    /* --- Five of 180 Showcase --- */
+    .showcase-five-section {
+      padding-top: 0;
+      padding-bottom: 64px;
+    }
+
+    .showcase-five-subtitle {
+      font-size: 14px;
+      color: var(--text-faint);
+      margin-bottom: 28px;
+    }
+
+    .showcase-five-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .showcase-five-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 24px 24px 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s, box-shadow 0.3s, background 0.3s;
+      cursor: default;
+    }
+
+    .showcase-five-card:hover {
+      transform: translateY(-3px);
+      border-left-color: var(--accent-light);
+      box-shadow: 0 8px 24px var(--accent-glow), 0 0 0 1px var(--accent-glow);
+    }
+
+    .showcase-five-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .showcase-five-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .showcase-five-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .showcase-five-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white-heading);
+      transition: color 0.3s;
+    }
+
+    .showcase-five-chapter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-faint);
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .showcase-five-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 8px;
+    }
+
+    .showcase-five-type {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(140, 21, 21, 0.2);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    /* --- Architecture Section --- */
+    .arch-section {
+      padding-bottom: 64px;
+    }
+
+    .arch-flow {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .arch-node {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 18px 24px;
+      text-align: center;
+      width: 100%;
+      max-width: 520px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .arch-node--content { border-left: 3px solid #ef4444; }
+    .arch-node--code { border-left: 3px solid #3b82f6; }
+    .arch-node--delivery { border-left: 3px solid #22c55e; }
+
+    .arch-node-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white-heading);
+      margin-bottom: 4px;
+      transition: color 0.3s;
+    }
+
+    .arch-node-desc {
+      font-size: 12px;
+      color: var(--text-faint);
+      line-height: 1.5;
+    }
+
+    .arch-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 6px 0;
+      color: var(--text-faint);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .arch-branch-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .arch-outputs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .arch-output {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-top: 3px solid #22c55e;
+      border-radius: 10px;
+      padding: 14px 10px;
+      text-align: center;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .arch-output-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--white-heading);
+      margin-bottom: 4px;
+      transition: color 0.3s;
+    }
+
+    .arch-output-desc {
+      font-size: 10px;
+      color: var(--text-faint);
+      line-height: 1.4;
+    }
+
+    .arch-final {
+      margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .arch-outputs { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .arch-outputs { grid-template-columns: 1fr; }
+      .arch-node { padding: 14px 16px; }
+    }
+
+    /* --- Challenges Section --- */
+    .challenges-section {
+      padding-bottom: 64px;
+    }
+
+    .challenges-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .challenge-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 28px 28px 24px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .challenge-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .challenge-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white-heading);
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .challenge-body {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    .challenge-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 480px) {
+      .challenge-card { padding: 20px 18px 20px 16px; }
+      .challenge-number { font-size: 28px; }
+    }
+
+    /* --- Adoption Callout --- */
+    .adoption-callout {
+      margin-top: 20px;
+      padding: 20px 24px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(140, 21, 21, 0.18);
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.65;
+      transition: background 0.3s, border-color 0.3s;
+    }
+  </style>
+  <script>
+    (function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav" role="navigation">
+  <div class="nav-inner">
+    <a href="../../" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Stephen Umunna &middot; Portfolio
+    </a>
+
+    <div class="theme-toggle" role="radiogroup" aria-label="Theme">
+      <button class="theme-toggle-btn" data-theme-btn="light" aria-label="Light theme" title="Light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+      <button class="theme-toggle-btn" data-theme-btn="system" aria-label="System theme" title="System">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+      </button>
+      <button class="theme-toggle-btn" data-theme-btn="dark" aria-label="Dark theme" title="Dark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="interactive-banner" style="position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(37,99,235,0.08);border-bottom:1px solid rgba(37,99,235,0.15);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:Inter,-apple-system,sans-serif;font-size:12px;color:var(--accent,var(--ac,#2563eb));animation:bannerSlide .4s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+  <span style="font-size:14px">&#9996;</span>
+  <span>This page is fully interactive - play with the 3 live demos, click the features, explore everything</span>
+  <button onclick="this.parentElement.style.display='none';sessionStorage.setItem('banner-dismissed','1')" style="background:none;border:none;color:var(--accent,var(--ac,#2563eb));cursor:pointer;font-size:16px;padding:0 4px;margin-left:8px;opacity:0.6" aria-label="Dismiss">&times;</button>
+</div>
+<script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('interactive-banner').style.display='none';</script>
+<style>@keyframes bannerSlide{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}</style>
+<div id="banner-spacer" style="height:36px"></div>
+<script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('banner-spacer').style.display='none';</script>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    Adopted by Stanford Bioengineering
+  </div>
+  <h1>BIOE 230 Interactive</h1>
+  <p class="hero-subtitle">An interactive learning platform for probability and statistics. Professor Todd P. Coleman uses it to teach <strong>200+ students at Stanford</strong>.</p>
+
+  <div class="hero-counters">
+    <div class="hero-counter">
+      <div class="hero-counter-value" data-hero-target="180" data-hero-suffix="">0</div>
+      <div class="hero-counter-label">Interactive Modules</div>
+    </div>
+    <div class="hero-counter">
+      <div class="hero-counter-value" data-hero-target="960" data-hero-suffix="">0</div>
+      <div class="hero-counter-label">Practice Problems</div>
+    </div>
+    <div class="hero-counter">
+      <div class="hero-counter-value" data-hero-target="15" data-hero-suffix="">0</div>
+      <div class="hero-counter-label">Lectures</div>
+    </div>
+    <div class="hero-counter">
+      <div class="hero-counter-value" data-hero-target="100" data-hero-suffix="K+">0</div>
+      <div class="hero-counter-label">Lines of Code</div>
+    </div>
+  </div>
+</section>
+
+<div class="hero-divider">
+  <div class="hero-divider-line"></div>
+</div>
+
+<!-- The Problem -->
+<section class="section story-section rv">
+  <span class="section-label">THE PROBLEM</span>
+  <h2 class="section-title">How do you turn lectures into experiences?</h2>
+
+  <div class="story-card">
+    <p>A professor hands you 15 dense lecture PDFs on probability and statistics for bioengineering. The material is rigorous -- proofs, theorems, formal notation. Students can read it, but they can't <em>feel</em> it. They can't drag a Venn diagram and watch the probability change. They can't adjust the mean of a bell curve and see the distribution shift. They can't click to place data points and watch a regression line snap into place.</p>
+    <p>The challenge wasn't building one visualization. It was building a system that transforms any lecture into an interactive experience -- 180 of them, each with its own novel module, all organized into a platform that a professor can control and students can use every day.</p>
+  </div>
+</section>
+
+<!-- The Solution -->
+<section class="section story-section rv" style="padding-top: 0;">
+  <span class="section-label">THE SOLUTION</span>
+  <h2 class="section-title">180 interactive modules. Every concept, hands-on.</h2>
+
+  <div class="story-card">
+    <p>I built an interactive platform where every concept in the course has its own novel visualization. Students toggle between "Everyone" mode (plain-language explanations) and "Stanford" mode (full academic rigor with proofs). A contextual tutor answers questions as students learn. A spaced-repetition system tracks what they've mastered.</p>
+  </div>
+</section>
+
+<!-- Five of 180 Showcase -->
+<section class="section showcase-five-section rv">
+  <span class="section-label">FIVE OF 180</span>
+  <h2 class="section-title">Every concept comes alive differently</h2>
+  <p class="showcase-five-subtitle">The platform has 180 interactive modules. Here are five that show the range.</p>
+
+  <div class="showcase-five-list">
+    <div class="showcase-five-card">
+      <span class="showcase-five-icon" aria-hidden="true">&#129504;</span>
+      <div class="showcase-five-body">
+        <div class="showcase-five-header">
+          <span class="showcase-five-name">Brain-Computer Interface Demo</span>
+          <span class="showcase-five-chapter">Ch. 14: Eigenvectors &amp; PCA</span>
+        </div>
+        <p class="showcase-five-desc">Simulate how EEG electrodes capture brain signals and use PCA to decode motor intent from noisy neural data.</p>
+        <span class="showcase-five-type">Simulation</span>
+      </div>
+    </div>
+
+    <div class="showcase-five-card">
+      <span class="showcase-five-icon" aria-hidden="true">&#129516;</span>
+      <div class="showcase-five-body">
+        <div class="showcase-five-header">
+          <span class="showcase-five-name">Gene Expression PCA</span>
+          <span class="showcase-five-chapter">Ch. 14: Eigenvectors &amp; PCA</span>
+        </div>
+        <p class="showcase-five-desc">Load a gene expression dataset, run principal component analysis, and discover which genes drive the most variance.</p>
+        <span class="showcase-five-type">Explorer</span>
+      </div>
+    </div>
+
+    <div class="showcase-five-card">
+      <span class="showcase-five-icon" aria-hidden="true">&#127973;</span>
+      <div class="showcase-five-body">
+        <div class="showcase-five-header">
+          <span class="showcase-five-name">Clinical Trial Designer</span>
+          <span class="showcase-five-chapter">Ch. 10: Group Hypothesis Testing</span>
+        </div>
+        <p class="showcase-five-desc">Set sample size, effect size, and significance level. Watch statistical power change. Design a trial that would actually get funded.</p>
+        <span class="showcase-five-type">Builder</span>
+      </div>
+    </div>
+
+    <div class="showcase-five-card">
+      <span class="showcase-five-icon" aria-hidden="true">&#127912;</span>
+      <div class="showcase-five-body">
+        <div class="showcase-five-header">
+          <span class="showcase-five-name">Classification Boundary Painter</span>
+          <span class="showcase-five-chapter">Ch. 13: Logistic Regression</span>
+        </div>
+        <p class="showcase-five-desc">Paint decision boundaries on a 2D scatter plot. See accuracy, precision, and recall update with every brush stroke.</p>
+        <span class="showcase-five-type">Game</span>
+      </div>
+    </div>
+
+    <div class="showcase-five-card">
+      <span class="showcase-five-icon" aria-hidden="true">&#128300;</span>
+      <div class="showcase-five-body">
+        <div class="showcase-five-header">
+          <span class="showcase-five-name">Disease Prediction Game</span>
+          <span class="showcase-five-chapter">Ch. 02: Conditional Probability</span>
+        </div>
+        <p class="showcase-five-desc">A patient tests positive. What are the real odds they're sick? Experience the false positive paradox -- the most counterintuitive result in statistics.</p>
+        <span class="showcase-five-type">Game</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interactive Demos -->
+<section class="section demo-section rv" id="demos-section">
+  <span class="section-label">TRY IT YOURSELF</span>
+  <h2 class="section-title">Three modules from the actual platform</h2>
+  <p class="section-desc">These are simplified versions of modules from the real platform. The live version has 180 of them.</p>
+
+  <div class="demo-container">
+    <div class="demo-tabs" role="tablist" id="demoTabs">
+      <button class="demo-tab active" role="tab" aria-selected="true" data-demo="0">Set Operations</button>
+      <button class="demo-tab" role="tab" aria-selected="false" data-demo="1">Bell Curve</button>
+      <button class="demo-tab" role="tab" aria-selected="false" data-demo="2">Regression</button>
+    </div>
+
+    <!-- Tab 1: Set Operations -->
+    <div class="demo-panel active" data-demo-panel="0">
+      <div class="demo-canvas-wrap">
+        <svg id="setOpsSvg" width="480" height="320" viewBox="0 0 480 320" role="img" aria-label="Venn diagram showing two overlapping sets A and B"></svg>
+      </div>
+      <div class="demo-controls" id="setOpsControls">
+        <button class="demo-btn" data-op="union">A &#8746; B</button>
+        <button class="demo-btn" data-op="intersection">A &#8745; B</button>
+        <button class="demo-btn" data-op="complement">A&#7580;</button>
+        <button class="demo-btn" data-op="difference">A &#8726; B</button>
+      </div>
+      <div class="demo-result" id="setOpsResult">Click an operation to highlight the corresponding region on the Venn diagram.</div>
+    </div>
+
+    <!-- Tab 2: Bell Curve -->
+    <div class="demo-panel" data-demo-panel="1">
+      <div class="demo-canvas-wrap">
+        <canvas id="bellCanvas" width="600" height="350"></canvas>
+      </div>
+      <div class="demo-sliders">
+        <div class="demo-slider-group">
+          <label>&mu;</label>
+          <input type="range" id="bellMu" min="-3" max="3" step="0.1" value="0">
+          <span class="demo-slider-value" id="bellMuVal">0.0</span>
+        </div>
+        <div class="demo-slider-group">
+          <label>&sigma;</label>
+          <input type="range" id="bellSigma" min="0.3" max="3" step="0.1" value="1">
+          <span class="demo-slider-value" id="bellSigmaVal">1.0</span>
+        </div>
+      </div>
+      <div class="demo-result" id="bellResult">P(&mu; &minus; &sigma; &lt; X &lt; &mu; + &sigma;) = <strong>68.27%</strong></div>
+    </div>
+
+    <!-- Tab 3: Regression -->
+    <div class="demo-panel" data-demo-panel="2">
+      <div class="demo-instruction">Click on the grid to add data points. The regression line updates in real-time.</div>
+      <div class="demo-canvas-wrap">
+        <svg id="regressionSvg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-label="Interactive regression plot" style="cursor:crosshair;"></svg>
+      </div>
+      <div class="demo-controls">
+        <button class="demo-btn" id="regressionRandom">Add Random Data</button>
+        <button class="demo-btn" id="regressionClear">Clear</button>
+      </div>
+      <div class="demo-result" id="regressionResult">Add at least 2 points to compute the regression line.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Screenshot Gallery -->
+<section class="section showcase-section rv">
+  <span class="section-label">THE PLATFORM</span>
+  <h2 class="section-title">See what the students use</h2>
+
+  <div class="tabs-nav" id="tabsNav" role="tablist">
+    <button class="tab-btn active" role="tab" aria-selected="true" data-tab="0">Dashboard</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="1">Lectures</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="2">Interactive Modules</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="3">Formula Sheet</button>
+  </div>
+  <div class="tab-panels" id="tabPanels">
+    <div class="tab-panel active" data-panel="0">
+      <div class="tab-screenshot-card">
+        <img src="../../assets/stanford-home.png" alt="BIOE 230 dashboard showing 15 lectures, progress stats, Everyone/Stanford mode toggle, and formula sheet" loading="lazy">
+        <div class="tab-caption">15 lectures, 180 concepts, Everyone/Stanford mode toggle, formula sheet, search</div>
+      </div>
+    </div>
+    <div class="tab-panel" data-panel="1">
+      <div class="tab-screenshot-card">
+        <img src="../../assets/stanford-lecture.png" alt="Lecture page with 12 concept cards showing interactive module names" loading="lazy">
+        <div class="tab-caption">12 concepts per lecture with named interactive modules -- Set Operations Visualizer, Venn Diagram Builder, Probability Playground</div>
+      </div>
+    </div>
+    <div class="tab-panel" data-panel="2">
+      <div class="tab-screenshot-card">
+        <img src="../../assets/stanford-concept.png" alt="Concept page showing interactive Venn diagram with drag controls and tutor button" loading="lazy">
+        <div class="tab-caption">Every concept has a novel interactive module. This one: drag Venn diagram circles to see how set operations change. Tutor button in the corner for contextual help.</div>
+      </div>
+    </div>
+    <div class="tab-panel" data-panel="3">
+      <div class="tab-screenshot-card">
+        <img src="../../assets/stanford-formulas.png" alt="Master formula sheet with LaTeX rendering, search, and star favorites" loading="lazy">
+        <div class="tab-caption">Master formula sheet with LaTeX rendering, search, star favorites, print. Covers all 15 lectures.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Platform Scale - Animated Metrics -->
+<section class="section numbers-section rv" id="numbers-section">
+  <span class="section-label">PLATFORM SCALE</span>
+  <h2 class="section-title">What's inside</h2>
+
+  <div class="numbers-card">
+    <div class="numbers-grid">
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="100601" data-count-suffix="">0</div>
+        <div class="numbers-label">Lines of Code</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="850" data-count-suffix="">0</div>
+        <div class="numbers-label">Files</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="15" data-count-suffix="">0</div>
+        <div class="numbers-label">Lectures</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="180" data-count-suffix="">0</div>
+        <div class="numbers-label">Concepts</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="180" data-count-suffix="">0</div>
+        <div class="numbers-label">Interactive Modules</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="960" data-count-suffix="">0</div>
+        <div class="numbers-label">Practice Problems</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="540" data-count-suffix="">0</div>
+        <div class="numbers-label">Quiz Questions</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="116" data-count-suffix="">0</div>
+        <div class="numbers-label">Automated Tests</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture -->
+<section class="section arch-section rv">
+  <span class="section-label">THE ARCHITECTURE</span>
+  <h2 class="section-title">How 15 PDFs become 180 interactive experiences</h2>
+
+  <div class="arch-flow">
+    <div class="arch-node arch-node--content">
+      <div class="arch-node-title">Professor's Lecture PDFs (15)</div>
+      <div class="arch-node-desc">Source material: proofs, theorems, notation, examples</div>
+    </div>
+
+    <div class="arch-arrow">&darr;</div>
+
+    <div class="arch-node arch-node--content">
+      <div class="arch-node-title">Content Extraction &amp; Structuring</div>
+      <div class="arch-node-desc">Each PDF &rarr; 12 concepts. Each concept &rarr; MDX with frontmatter, formulas, explanations in both modes.</div>
+    </div>
+
+    <div class="arch-arrow">&darr;</div>
+
+    <div class="arch-node arch-node--code">
+      <div class="arch-node-title">MDX Content Layer (180 concept pages)</div>
+      <div class="arch-node-desc">180 concept pages. KaTeX for math. Dynamic imports for interactive modules.</div>
+    </div>
+
+    <div class="arch-arrow">
+      &darr;
+      <span class="arch-branch-label">Everyone Mode / Stanford Mode toggle</span>
+    </div>
+
+    <div class="arch-node arch-node--code">
+      <div class="arch-node-title">Interactive Module Registry (180 components)</div>
+      <div class="arch-node-desc">180 React components. D3.js visualizations. Each mapped to a concept via registry.</div>
+    </div>
+
+    <div class="arch-arrow">&darr;</div>
+
+    <div class="arch-outputs">
+      <div class="arch-output">
+        <div class="arch-output-title">Student App</div>
+        <div class="arch-output-desc">Next.js 16 App Router. Server Components. Responsive. PWA.</div>
+      </div>
+      <div class="arch-output">
+        <div class="arch-output-title">Admin Panel</div>
+        <div class="arch-output-desc">Lecture visibility. Content editing. Analytics dashboard.</div>
+      </div>
+      <div class="arch-output">
+        <div class="arch-output-title">Formula Sheet</div>
+        <div class="arch-output-desc">Searchable across all 15 lectures. Star favorites. Print.</div>
+      </div>
+      <div class="arch-output">
+        <div class="arch-output-title">Tutor System</div>
+        <div class="arch-output-desc">Context-aware. Knows the current concept, formulas, and difficulty level.</div>
+      </div>
+    </div>
+
+    <div class="arch-arrow">&darr;</div>
+
+    <div class="arch-node arch-node--delivery arch-final">
+      <div class="arch-node-title">Vercel Deployment (PWA)</div>
+      <div class="arch-node-desc">Progressive Web App. Offline support. Instant deploys.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Features -->
+<section class="section features-section rv">
+  <span class="section-label">HOW IT WORKS</span>
+  <h2 class="section-title">Built for how students actually learn</h2>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#127919;</span>
+      <h3>Dual Mode</h3>
+      <p>One toggle switches the entire platform between accessible explanations and full academic rigor with proofs.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#129302;</span>
+      <h3>Contextual Tutor</h3>
+      <p>Built-in tutor that knows exactly which concept the student is viewing. Answers at the appropriate difficulty level.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#128202;</span>
+      <h3>180 Visualizations</h3>
+      <p>Every concept has a novel interactive module. Not animations -- actual tools students manipulate.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#128221;</span>
+      <h3>960 Practice Problems</h3>
+      <p>Categorized by difficulty with spaced repetition tracking.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#128241;</span>
+      <h3>PWA</h3>
+      <p>Works offline on any device. Students use it during lectures.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#128274;</span>
+      <h3>Professor Controls</h3>
+      <p>Admin panel for content editing, lecture visibility, and analytics.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#127912;</span>
+      <h3>Formula Reference</h3>
+      <p>Searchable LaTeX formula sheet across all 15 lectures.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">&#9889;</span>
+      <h3>100K+ Lines</h3>
+      <p>Production TypeScript. 850 files. 116 automated tests. Zero errors.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Challenges -->
+<section class="section challenges-section rv">
+  <span class="section-label">WHAT MADE IT HARD</span>
+  <h2 class="section-title">Turning lectures into software at scale</h2>
+
+  <div class="challenges-list">
+    <div class="challenge-card">
+      <div class="challenge-number">01</div>
+      <div class="challenge-title">180 interactive modules without killing page load</div>
+      <p class="challenge-body">Each concept page has a unique D3.js-powered visualization -- from Venn diagrams to 3D Gaussian surfaces to brain-computer interface simulations. Loading 180 heavy components upfront would make the app unusable. Solution: dynamic imports with <code>next/dynamic</code> and a module registry that loads each visualization only when the student navigates to that concept. The registry maps concept slugs to lazy-loaded components, keeping initial bundle size under 200KB.</p>
+    </div>
+
+    <div class="challenge-card">
+      <div class="challenge-number">02</div>
+      <div class="challenge-title">Dual-mode content from a single source</div>
+      <p class="challenge-body">Every concept page has two versions: "Everyone" mode with plain-language analogies and simplified math, and "Stanford" mode with formal proofs and academic notation. Both must render from the same MDX source file -- not two separate files that could drift out of sync. Solution: conditional rendering blocks in MDX with a mode-aware provider. The toggle switches instantly because both modes are pre-rendered; only the visible blocks change.</p>
+    </div>
+
+    <div class="challenge-card">
+      <div class="challenge-number">03</div>
+      <div class="challenge-title">Making it feel like a product, not a homework site</div>
+      <p class="challenge-body">The professor needed students to actually want to use it. That meant PWA support for offline access during lectures, spaced repetition for practice problems, a searchable formula sheet with LaTeX rendering, keyboard shortcuts for power users, and an admin panel so the professor could control exactly which lectures were visible each week. Every feature had to work on mobile -- students use phones during class.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stack -->
+<section class="section stack-section rv">
+  <span class="section-label">TECH STACK</span>
+  <h2 class="section-title">What it runs on</h2>
+
+  <div class="stack-grid">
+    <div class="stack-card">
+      <div class="stack-title">Framework</div>
+      <div class="stack-tags">
+        <span class="stack-tag">Next.js 16</span>
+        <span class="stack-tag">React 19</span>
+        <span class="stack-tag">TypeScript (strict)</span>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-title">Styling</div>
+      <div class="stack-tags">
+        <span class="stack-tag">Tailwind CSS</span>
+        <span class="stack-tag">shadcn/ui</span>
+        <span class="stack-tag">CSS Modules</span>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-title">AI</div>
+      <div class="stack-tags">
+        <span class="stack-tag">Vercel AI SDK</span>
+        <span class="stack-tag">Google Gemini 2.5 Flash</span>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-title">Visualization</div>
+      <div class="stack-tags">
+        <span class="stack-tag">D3.js</span>
+        <span class="stack-tag">KaTeX</span>
+        <span class="stack-tag">Custom SVG</span>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-title">Auth</div>
+      <div class="stack-tags">
+        <span class="stack-tag">Cookie-based sessions</span>
+        <span class="stack-tag">bcrypt</span>
+        <span class="stack-tag">JWT</span>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-title">Testing</div>
+      <div class="stack-tags">
+        <span class="stack-tag">Vitest</span>
+        <span class="stack-tag">116 tests</span>
+      </div>
+    </div>
+    <div class="stack-card stack-card-full">
+      <div class="stack-title">Deployment</div>
+      <div class="stack-tags">
+        <span class="stack-tag">Vercel</span>
+        <span class="stack-tag">PWA</span>
+      </div>
+    </div>
+  </div>
+
+  <p style="text-align:center;margin-top:32px;font-size:14px;color:var(--text-muted, var(--tx2, #475569))">Built with: Claude Code + Vercel AI SDK + Gemini &mdash; <a href="/ai-engineering/" style="color:var(--accent, var(--ac, #2563eb));font-weight:600;text-decoration:none">read more about my AI engineering stack &rarr;</a></p>
+</section>
+
+<!-- The Adoption -->
+<section class="section impact-section rv">
+  <span class="section-label">THE ADOPTION</span>
+  <h2 class="section-title">Stanford uses it to teach</h2>
+
+  <div class="impact-card">
+    <p>Professor Todd P. Coleman adopted the platform for BIOE 230 (Probability and Statistics for Bioengineering) in Spring 2026. Students use it during lectures to follow along with interactive visualizations, for homework to practice with 960 problems, and for exam preparation with the searchable formula sheet.</p>
+    <p>A background in molecular biology and neuroscience research informed the platform's approach to scientific content - understanding how students actually process dense quantitative material. The system was designed from the start to be flexible -- it can accommodate any lecture-based course, not just probability and statistics.</p>
+  </div>
+
+  <div class="adoption-callout">
+    The platform was built to solve one professor's problem. The architecture solves any professor's.
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="max-width:900px;margin:0 auto;padding:60px 28px 40px;text-align:center">
+  <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:12px;color:var(--text, var(--tx, #0f172a))">Let's talk about what I can do for you.</h2>
+  <p style="font-size:15px;color:var(--text-muted, var(--tx2, #475569));margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6">I'm exploring leadership roles where building the technology and running the business aren't treated as separate jobs.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="mailto:scumunna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:#dc2626;padding:12px 24px;border-radius:8px;text-decoration:none;transition:background .2s,transform .2s" onmouseover="this.style.background='#b91c1c';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#dc2626';this.style.transform='none'">Start a Conversation &rarr;</a>
+    <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text, var(--tx, #0f172a));background:var(--surface, var(--sf, #fff));border:1px solid var(--border, var(--bd, #e2e8f0));padding:12px 24px;border-radius:8px;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='var(--accent, var(--ac, #2563eb))';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border, var(--bd, #e2e8f0))';this.style.transform='none'">View on LinkedIn</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="border-top:1px solid var(--border, var(--bd, #e2e8f0));padding:32px 24px;margin-top:64px">
+  <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text-faint, var(--tx3, #94a3b8))">
+    <div>Stephen Umunna &middot; Los Angeles, CA</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="mailto:scumunna@gmail.com" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">scumunna@gmail.com</a>
+      <a href="tel:+13239171875" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">(323) 917-1875</a>
+      <a href="https://github.com/scumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">GitHub</a>
+      <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">LinkedIn</a>
+    </div>
+  </div>
+  <div style="font-size:11px;color:var(--text-muted, var(--tx3, #94a3b8));margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // --- Theme Toggle ---
+  var themeToggle = {
+    init: function() {
+      var saved = localStorage.getItem('portfolio-theme') || 'light';
+      this.set(saved);
+      var self = this;
+      document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          self.set(btn.getAttribute('data-theme-btn'));
+        });
+      });
+    },
+    set: function(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('portfolio-theme', theme);
+      document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+        var isActive = btn.getAttribute('data-theme-btn') === theme;
+        btn.classList.toggle('active', isActive);
+      });
+      // Redraw bell curve on theme change to pick up new CSS colors
+      setTimeout(drawBellCurve, 50);
+    }
+  };
+  themeToggle.init();
+
+  // --- Hero counter animation (runs on page load) ---
+  function animateHeroCounters() {
+    var counters = document.querySelectorAll('[data-hero-target]');
+    var duration = 2000;
+    var startTime = performance.now();
+
+    function update(now) {
+      var elapsed = now - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+
+      counters.forEach(function(el) {
+        var target = parseInt(el.getAttribute('data-hero-target'), 10);
+        var suffix = el.getAttribute('data-hero-suffix') || '';
+        var prefix = el.getAttribute('data-hero-prefix') || '';
+        var current = Math.round(target * eased);
+        el.textContent = prefix + current.toLocaleString('en-US') + suffix;
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  setTimeout(animateHeroCounters, 200);
+
+  // --- Scroll reveal observer ---
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('v');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.rv').forEach(function(el) {
+    revealObs.observe(el);
+  });
+
+  // --- Tabbed Screenshot Viewer ---
+  var tabBtns = document.querySelectorAll('#tabsNav .tab-btn');
+  var tabPanels = document.querySelectorAll('#tabPanels .tab-panel');
+  var currentTab = 0;
+
+  function switchTab(idx) {
+    if (idx === currentTab) return;
+    tabBtns.forEach(function(b, i) {
+      b.classList.toggle('active', i === idx);
+      b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+    });
+    tabPanels.forEach(function(p, i) {
+      p.classList.toggle('active', i === idx);
+    });
+    currentTab = idx;
+  }
+
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      switchTab(parseInt(this.getAttribute('data-tab')));
+    });
+  });
+
+  var tabsNav = document.getElementById('tabsNav');
+  if (tabsNav) {
+    tabsNav.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        var dir = e.key === 'ArrowRight' ? 1 : -1;
+        var next = (currentTab + dir + tabBtns.length) % tabBtns.length;
+        switchTab(next);
+        tabBtns[next].focus();
+      }
+    });
+  }
+
+  // --- Demo Tabs ---
+  var demoBtns = document.querySelectorAll('.demo-tab');
+  var demoPanels = document.querySelectorAll('.demo-panel');
+  var currentDemo = 0;
+
+  function switchDemo(idx) {
+    if (idx === currentDemo) return;
+    demoBtns.forEach(function(b, i) {
+      b.classList.toggle('active', i === idx);
+      b.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+    });
+    demoPanels.forEach(function(p, i) {
+      p.classList.toggle('active', i === idx);
+    });
+    currentDemo = idx;
+    // Re-draw bell curve when switching to it (canvas needs redraw)
+    if (idx === 1) { drawBellCurve(); }
+  }
+
+  demoBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      switchDemo(parseInt(this.getAttribute('data-demo')));
+    });
+  });
+
+  var demoTabsEl = document.getElementById('demoTabs');
+  if (demoTabsEl) {
+    demoTabsEl.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        var dir = e.key === 'ArrowRight' ? 1 : -1;
+        var next = (currentDemo + dir + demoBtns.length) % demoBtns.length;
+        switchDemo(next);
+        demoBtns[next].focus();
+      }
+    });
+  }
+
+  // =============================================
+  // DEMO 1: SET OPERATIONS
+  // =============================================
+  (function() {
+    var svg = document.getElementById('setOpsSvg');
+    if (!svg) return;
+    var ns = 'http://www.w3.org/2000/svg';
+    var W = 480, H = 320;
+    var cxA = 175, cyA = 160, cxB = 305, cyB = 160, R = 100;
+
+    // Universe box
+    var uniRect = document.createElementNS(ns, 'rect');
+    uniRect.setAttribute('x', 20);
+    uniRect.setAttribute('y', 20);
+    uniRect.setAttribute('width', W - 40);
+    uniRect.setAttribute('height', H - 40);
+    uniRect.setAttribute('rx', 12);
+    uniRect.setAttribute('fill', 'none');
+    uniRect.setAttribute('stroke', '#94a3b8');
+    uniRect.setAttribute('stroke-width', '1.5');
+    uniRect.setAttribute('stroke-dasharray', '6,4');
+    svg.appendChild(uniRect);
+
+    // Universe label
+    var uniLabel = document.createElementNS(ns, 'text');
+    uniLabel.setAttribute('x', 36);
+    uniLabel.setAttribute('y', 44);
+    uniLabel.setAttribute('fill', '#94a3b8');
+    uniLabel.setAttribute('font-size', '13');
+    uniLabel.setAttribute('font-family', "'JetBrains Mono', monospace");
+    uniLabel.setAttribute('font-weight', '600');
+    uniLabel.textContent = 'Universe U';
+    svg.appendChild(uniLabel);
+
+    // Defs for clipping
+    var defs = document.createElementNS(ns, 'defs');
+
+    var clipAB = document.createElementNS(ns, 'clipPath');
+    clipAB.setAttribute('id', 'clipA');
+    var clipCircleA = document.createElementNS(ns, 'circle');
+    clipCircleA.setAttribute('cx', cxA);
+    clipCircleA.setAttribute('cy', cyA);
+    clipCircleA.setAttribute('r', R);
+    clipAB.appendChild(clipCircleA);
+    defs.appendChild(clipAB);
+
+    var clipB = document.createElementNS(ns, 'clipPath');
+    clipB.setAttribute('id', 'clipB');
+    var clipCircleB = document.createElementNS(ns, 'circle');
+    clipCircleB.setAttribute('cx', cxB);
+    clipCircleB.setAttribute('cy', cyB);
+    clipCircleB.setAttribute('r', R);
+    clipB.appendChild(clipCircleB);
+    defs.appendChild(clipB);
+
+    svg.appendChild(defs);
+
+    // Highlight layer (below the circle strokes)
+    var highlightGroup = document.createElementNS(ns, 'g');
+    highlightGroup.setAttribute('id', 'setHighlights');
+    svg.appendChild(highlightGroup);
+
+    // Base circles
+    var circleA = document.createElementNS(ns, 'circle');
+    circleA.setAttribute('cx', cxA);
+    circleA.setAttribute('cy', cyA);
+    circleA.setAttribute('r', R);
+    circleA.setAttribute('fill', 'rgba(59, 130, 246, 0.15)');
+    circleA.setAttribute('stroke', '#3b82f6');
+    circleA.setAttribute('stroke-width', '2');
+    svg.appendChild(circleA);
+
+    var circleB = document.createElementNS(ns, 'circle');
+    circleB.setAttribute('cx', cxB);
+    circleB.setAttribute('cy', cyB);
+    circleB.setAttribute('r', R);
+    circleB.setAttribute('fill', 'rgba(239, 68, 68, 0.15)');
+    circleB.setAttribute('stroke', '#ef4444');
+    circleB.setAttribute('stroke-width', '2');
+    svg.appendChild(circleB);
+
+    // Labels
+    var labelA = document.createElementNS(ns, 'text');
+    labelA.setAttribute('x', cxA - 40);
+    labelA.setAttribute('y', cyA + 5);
+    labelA.setAttribute('fill', '#3b82f6');
+    labelA.setAttribute('font-size', '22');
+    labelA.setAttribute('font-weight', '700');
+    labelA.setAttribute('font-family', "'Inter', sans-serif");
+    labelA.textContent = 'A';
+    svg.appendChild(labelA);
+
+    var labelB = document.createElementNS(ns, 'text');
+    labelB.setAttribute('x', cxB + 25);
+    labelB.setAttribute('y', cyB + 5);
+    labelB.setAttribute('fill', '#ef4444');
+    labelB.setAttribute('font-size', '22');
+    labelB.setAttribute('font-weight', '700');
+    labelB.setAttribute('font-family', "'Inter', sans-serif");
+    labelB.textContent = 'B';
+    svg.appendChild(labelB);
+
+    var activeOp = null;
+
+    function clearHighlights() {
+      while (highlightGroup.firstChild) {
+        highlightGroup.removeChild(highlightGroup.firstChild);
+      }
+    }
+
+    function showUnion() {
+      clearHighlights();
+      var c1 = document.createElementNS(ns, 'circle');
+      c1.setAttribute('cx', cxA); c1.setAttribute('cy', cyA); c1.setAttribute('r', R);
+      c1.setAttribute('fill', 'rgba(147, 51, 234, 0.35)');
+      highlightGroup.appendChild(c1);
+      var c2 = document.createElementNS(ns, 'circle');
+      c2.setAttribute('cx', cxB); c2.setAttribute('cy', cyB); c2.setAttribute('r', R);
+      c2.setAttribute('fill', 'rgba(147, 51, 234, 0.35)');
+      highlightGroup.appendChild(c2);
+    }
+
+    function showIntersection() {
+      clearHighlights();
+      var c = document.createElementNS(ns, 'circle');
+      c.setAttribute('cx', cxB); c.setAttribute('cy', cyB); c.setAttribute('r', R);
+      c.setAttribute('fill', 'rgba(34, 197, 94, 0.45)');
+      c.setAttribute('clip-path', 'url(#clipA)');
+      highlightGroup.appendChild(c);
+    }
+
+    function showComplement() {
+      clearHighlights();
+      var r = document.createElementNS(ns, 'rect');
+      r.setAttribute('x', 20); r.setAttribute('y', 20);
+      r.setAttribute('width', W - 40); r.setAttribute('height', H - 40);
+      r.setAttribute('rx', 12);
+      r.setAttribute('fill', 'rgba(148, 163, 184, 0.3)');
+      highlightGroup.appendChild(r);
+      var c = document.createElementNS(ns, 'circle');
+      c.setAttribute('cx', cxA); c.setAttribute('cy', cyA); c.setAttribute('r', R);
+      c.setAttribute('fill', 'var(--bg)');
+      highlightGroup.appendChild(c);
+    }
+
+    function showDifference() {
+      clearHighlights();
+      var cA = document.createElementNS(ns, 'circle');
+      cA.setAttribute('cx', cxA); cA.setAttribute('cy', cyA); cA.setAttribute('r', R);
+      cA.setAttribute('fill', 'rgba(249, 115, 22, 0.4)');
+      highlightGroup.appendChild(cA);
+      var cB = document.createElementNS(ns, 'circle');
+      cB.setAttribute('cx', cxB); cB.setAttribute('cy', cyB); cB.setAttribute('r', R);
+      cB.setAttribute('fill', 'var(--bg)');
+      cB.setAttribute('clip-path', 'url(#clipA)');
+      highlightGroup.appendChild(cB);
+    }
+
+    var opFns = {
+      union: showUnion,
+      intersection: showIntersection,
+      complement: showComplement,
+      difference: showDifference
+    };
+
+    var resultEl = document.getElementById('setOpsResult');
+    var opBtns = document.querySelectorAll('#setOpsControls .demo-btn');
+
+    opBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var op = this.getAttribute('data-op');
+        opBtns.forEach(function(b) { b.classList.remove('active'); });
+        if (activeOp === op) {
+          activeOp = null;
+          clearHighlights();
+          resultEl.textContent = 'Click an operation to highlight the corresponding region on the Venn diagram.';
+          return;
+        }
+        activeOp = op;
+        this.classList.add('active');
+        opFns[op]();
+
+        // Update result text using safe DOM methods
+        var descText = {
+          union: ['A \u222A B (Union)', ' \u2014 Every element that belongs to A, or B, or both.'],
+          intersection: ['A \u2229 B (Intersection)', ' \u2014 Only elements that belong to both A and B.'],
+          complement: ['A\u1D9C (Complement)', ' \u2014 Everything in the universe that is not in A.'],
+          difference: ['A \u2216 B (Difference)', ' \u2014 Elements in A that are not in B.']
+        };
+        while (resultEl.firstChild) resultEl.removeChild(resultEl.firstChild);
+        var strongEl = document.createElement('strong');
+        strongEl.textContent = descText[op][0];
+        resultEl.appendChild(strongEl);
+        resultEl.appendChild(document.createTextNode(descText[op][1]));
+      });
+    });
+  })();
+
+  // =============================================
+  // DEMO 2: BELL CURVE
+  // =============================================
+  var bellCanvas = document.getElementById('bellCanvas');
+  var bellCtx = bellCanvas ? bellCanvas.getContext('2d') : null;
+  var bellMuSlider = document.getElementById('bellMu');
+  var bellSigmaSlider = document.getElementById('bellSigma');
+  var bellMuVal = document.getElementById('bellMuVal');
+  var bellSigmaVal = document.getElementById('bellSigmaVal');
+  var bellResult = document.getElementById('bellResult');
+  var bellHdpiDone = false;
+
+  function gaussianPDF(x, mu, sigma) {
+    var exp = Math.exp(-0.5 * Math.pow((x - mu) / sigma, 2));
+    return exp / (sigma * Math.sqrt(2 * Math.PI));
+  }
+
+  function drawBellCurve() {
+    if (!bellCtx) return;
+    var mu = parseFloat(bellMuSlider.value);
+    var sigma = parseFloat(bellSigmaSlider.value);
+    var W = 600, H = 350;
+    var dpr = window.devicePixelRatio || 1;
+
+    // Handle HiDPI once
+    if (!bellHdpiDone) {
+      bellHdpiDone = true;
+      bellCanvas.width = W * dpr;
+      bellCanvas.height = H * dpr;
+      bellCanvas.style.width = W + 'px';
+      bellCanvas.style.height = H + 'px';
+      bellCtx.scale(dpr, dpr);
+    }
+
+    var padL = 60, padR = 30, padT = 30, padB = 50;
+    var plotW = W - padL - padR;
+    var plotH = H - padT - padB;
+
+    // Get colors from CSS variables
+    var cs = getComputedStyle(document.documentElement);
+    var textColor = cs.getPropertyValue('--text-muted').trim() || '#475569';
+    var faintColor = cs.getPropertyValue('--text-faint').trim() || '#94a3b8';
+    var borderColor = cs.getPropertyValue('--border').trim() || '#e2e8f0';
+
+    bellCtx.clearRect(0, 0, W, H);
+
+    var xMin = -5, xMax = 5;
+    function toX(x) { return padL + ((x - xMin) / (xMax - xMin)) * plotW; }
+
+    var maxPDF = gaussianPDF(mu, mu, sigma);
+    var yMax = Math.max(maxPDF * 1.15, 0.2);
+    function toY(y) { return padT + plotH - (y / yMax) * plotH; }
+
+    // Grid lines
+    bellCtx.strokeStyle = borderColor;
+    bellCtx.lineWidth = 0.5;
+    var gx, gy;
+    for (gx = -4; gx <= 4; gx++) {
+      bellCtx.beginPath();
+      bellCtx.moveTo(toX(gx), padT);
+      bellCtx.lineTo(toX(gx), padT + plotH);
+      bellCtx.stroke();
+    }
+    for (gy = 0; gy <= 4; gy++) {
+      var yVal = (yMax / 4) * gy;
+      bellCtx.beginPath();
+      bellCtx.moveTo(padL, toY(yVal));
+      bellCtx.lineTo(padL + plotW, toY(yVal));
+      bellCtx.stroke();
+    }
+
+    // Draw sigma bands (3, 2, 1)
+    var bands = [
+      { n: 3, alpha: 0.06 },
+      { n: 2, alpha: 0.10 },
+      { n: 1, alpha: 0.18 }
+    ];
+
+    bands.forEach(function(band) {
+      var left = Math.max(mu - band.n * sigma, xMin);
+      var right = Math.min(mu + band.n * sigma, xMax);
+      bellCtx.fillStyle = 'rgba(140, 21, 21, ' + band.alpha + ')';
+      bellCtx.beginPath();
+      bellCtx.moveTo(toX(left), toY(0));
+      for (var px = left; px <= right; px += 0.05) {
+        bellCtx.lineTo(toX(px), toY(gaussianPDF(px, mu, sigma)));
+      }
+      bellCtx.lineTo(toX(right), toY(0));
+      bellCtx.closePath();
+      bellCtx.fill();
+    });
+
+    // Main curve
+    bellCtx.strokeStyle = '#8C1515';
+    bellCtx.lineWidth = 2.5;
+    bellCtx.beginPath();
+    var first = true;
+    for (var x = xMin; x <= xMax; x += 0.02) {
+      var cx = toX(x);
+      var cy = toY(gaussianPDF(x, mu, sigma));
+      if (first) { bellCtx.moveTo(cx, cy); first = false; }
+      else { bellCtx.lineTo(cx, cy); }
+    }
+    bellCtx.stroke();
+
+    // Fill under curve with gradient
+    bellCtx.beginPath();
+    bellCtx.moveTo(toX(xMin), toY(0));
+    for (var x2 = xMin; x2 <= xMax; x2 += 0.02) {
+      bellCtx.lineTo(toX(x2), toY(gaussianPDF(x2, mu, sigma)));
+    }
+    bellCtx.lineTo(toX(xMax), toY(0));
+    bellCtx.closePath();
+    var grad = bellCtx.createLinearGradient(0, padT, 0, padT + plotH);
+    grad.addColorStop(0, 'rgba(140, 21, 21, 0.15)');
+    grad.addColorStop(1, 'rgba(140, 21, 21, 0.02)');
+    bellCtx.fillStyle = grad;
+    bellCtx.fill();
+
+    // 1-sigma dashed lines
+    var leftX = toX(mu - sigma);
+    var rightX = toX(mu + sigma);
+    if (leftX > padL && rightX < padL + plotW) {
+      bellCtx.strokeStyle = 'rgba(140, 21, 21, 0.4)';
+      bellCtx.lineWidth = 1;
+      bellCtx.setLineDash([3, 3]);
+      bellCtx.beginPath();
+      bellCtx.moveTo(leftX, padT);
+      bellCtx.lineTo(leftX, padT + plotH);
+      bellCtx.stroke();
+      bellCtx.beginPath();
+      bellCtx.moveTo(rightX, padT);
+      bellCtx.lineTo(rightX, padT + plotH);
+      bellCtx.stroke();
+      bellCtx.setLineDash([]);
+    }
+
+    // Axes
+    bellCtx.strokeStyle = faintColor;
+    bellCtx.lineWidth = 1;
+    bellCtx.beginPath();
+    bellCtx.moveTo(padL, padT + plotH);
+    bellCtx.lineTo(padL + plotW, padT + plotH);
+    bellCtx.stroke();
+    bellCtx.beginPath();
+    bellCtx.moveTo(padL, padT);
+    bellCtx.lineTo(padL, padT + plotH);
+    bellCtx.stroke();
+
+    // X axis labels
+    bellCtx.fillStyle = faintColor;
+    bellCtx.font = '12px "JetBrains Mono", monospace';
+    bellCtx.textAlign = 'center';
+    for (var lx = -4; lx <= 4; lx += 2) {
+      bellCtx.fillText(lx.toString(), toX(lx), padT + plotH + 20);
+    }
+
+    // Y axis labels
+    bellCtx.textAlign = 'right';
+    for (var ly = 0; ly <= 4; ly++) {
+      var yv = (yMax / 4) * ly;
+      bellCtx.fillText(yv.toFixed(2), padL - 8, toY(yv) + 4);
+    }
+
+    // Probability calculation (numerical integration)
+    var prob = 0;
+    var dx = 0.01;
+    for (var xi = mu - sigma; xi <= mu + sigma; xi += dx) {
+      prob += gaussianPDF(xi, mu, sigma) * dx;
+    }
+
+    // Update display using safe DOM methods
+    while (bellResult.firstChild) bellResult.removeChild(bellResult.firstChild);
+    bellResult.appendChild(document.createTextNode('P(\u03BC \u2212 \u03C3 < X < \u03BC + \u03C3) = '));
+    var strongVal = document.createElement('strong');
+    strongVal.textContent = (prob * 100).toFixed(2) + '%';
+    bellResult.appendChild(strongVal);
+
+    bellMuVal.textContent = mu.toFixed(1);
+    bellSigmaVal.textContent = sigma.toFixed(1);
+  }
+
+  if (bellMuSlider && bellSigmaSlider) {
+    bellMuSlider.addEventListener('input', drawBellCurve);
+    bellSigmaSlider.addEventListener('input', drawBellCurve);
+    drawBellCurve();
+  }
+
+  // =============================================
+  // DEMO 3: REGRESSION
+  // =============================================
+  (function() {
+    var svg = document.getElementById('regressionSvg');
+    if (!svg) return;
+    var ns = 'http://www.w3.org/2000/svg';
+    var W = 600, H = 400;
+    var padL = 50, padR = 20, padT = 20, padB = 40;
+    var plotW = W - padL - padR;
+    var plotH = H - padT - padB;
+    var xMin = 0, xMax = 10, yMin = 0, yMax = 10;
+
+    var points = [];
+    var regressionLine = null;
+    var residualGroup = null;
+    var resultEl = document.getElementById('regressionResult');
+
+    function toSvgX(x) { return padL + ((x - xMin) / (xMax - xMin)) * plotW; }
+    function toSvgY(y) { return padT + plotH - ((y - yMin) / (yMax - yMin)) * plotH; }
+    function fromSvgX(sx) { return xMin + ((sx - padL) / plotW) * (xMax - xMin); }
+    function fromSvgY(sy) { return yMax - ((sy - padT) / plotH) * (yMax - yMin); }
+
+    // Draw grid
+    var gridGroup = document.createElementNS(ns, 'g');
+    var gx, gy;
+    for (gx = 0; gx <= 10; gx++) {
+      var line = document.createElementNS(ns, 'line');
+      line.setAttribute('x1', toSvgX(gx));
+      line.setAttribute('y1', padT);
+      line.setAttribute('x2', toSvgX(gx));
+      line.setAttribute('y2', padT + plotH);
+      line.setAttribute('stroke', '#e2e8f0');
+      line.setAttribute('stroke-width', gx === 0 ? '1.5' : '0.5');
+      gridGroup.appendChild(line);
+
+      var label = document.createElementNS(ns, 'text');
+      label.setAttribute('x', toSvgX(gx));
+      label.setAttribute('y', padT + plotH + 20);
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('fill', '#94a3b8');
+      label.setAttribute('font-size', '12');
+      label.setAttribute('font-family', "'JetBrains Mono', monospace");
+      label.textContent = gx.toString();
+      gridGroup.appendChild(label);
+    }
+    for (gy = 0; gy <= 10; gy++) {
+      var hline = document.createElementNS(ns, 'line');
+      hline.setAttribute('x1', padL);
+      hline.setAttribute('y1', toSvgY(gy));
+      hline.setAttribute('x2', padL + plotW);
+      hline.setAttribute('y2', toSvgY(gy));
+      hline.setAttribute('stroke', '#e2e8f0');
+      hline.setAttribute('stroke-width', gy === 0 ? '1.5' : '0.5');
+      gridGroup.appendChild(hline);
+
+      var ylabel = document.createElementNS(ns, 'text');
+      ylabel.setAttribute('x', padL - 10);
+      ylabel.setAttribute('y', toSvgY(gy) + 4);
+      ylabel.setAttribute('text-anchor', 'end');
+      ylabel.setAttribute('fill', '#94a3b8');
+      ylabel.setAttribute('font-size', '12');
+      ylabel.setAttribute('font-family', "'JetBrains Mono', monospace");
+      ylabel.textContent = gy.toString();
+      gridGroup.appendChild(ylabel);
+    }
+    svg.appendChild(gridGroup);
+
+    // Residual group
+    residualGroup = document.createElementNS(ns, 'g');
+    svg.appendChild(residualGroup);
+
+    // Regression line element
+    regressionLine = document.createElementNS(ns, 'line');
+    regressionLine.setAttribute('stroke', '#8C1515');
+    regressionLine.setAttribute('stroke-width', '2.5');
+    regressionLine.setAttribute('stroke-linecap', 'round');
+    regressionLine.setAttribute('display', 'none');
+    svg.appendChild(regressionLine);
+
+    // Points group (on top)
+    var pointsGroup = document.createElementNS(ns, 'g');
+    svg.appendChild(pointsGroup);
+
+    function computeRegression() {
+      if (points.length < 2) {
+        regressionLine.setAttribute('display', 'none');
+        while (residualGroup.firstChild) residualGroup.removeChild(residualGroup.firstChild);
+        resultEl.textContent = 'Add at least 2 points to compute the regression line.';
+        return;
+      }
+
+      var n = points.length;
+      var sumX = 0, sumY = 0;
+      points.forEach(function(p) { sumX += p.x; sumY += p.y; });
+      var meanX = sumX / n;
+      var meanY = sumY / n;
+
+      var num = 0, den = 0;
+      points.forEach(function(p) {
+        num += (p.x - meanX) * (p.y - meanY);
+        den += (p.x - meanX) * (p.x - meanX);
+      });
+
+      if (den === 0) {
+        regressionLine.setAttribute('display', 'none');
+        while (residualGroup.firstChild) residualGroup.removeChild(residualGroup.firstChild);
+        resultEl.textContent = 'All points have the same X value. Add points with different X values.';
+        return;
+      }
+
+      var slope = num / den;
+      var intercept = meanY - slope * meanX;
+
+      // Compute R-squared
+      var sst = 0, ssr = 0;
+      points.forEach(function(p) {
+        var predicted = slope * p.x + intercept;
+        ssr += (p.y - predicted) * (p.y - predicted);
+        sst += (p.y - meanY) * (p.y - meanY);
+      });
+      var r2 = sst === 0 ? 1 : 1 - (ssr / sst);
+
+      // Draw regression line
+      var lineY0 = slope * xMin + intercept;
+      var lineY10 = slope * xMax + intercept;
+      regressionLine.setAttribute('x1', toSvgX(xMin));
+      regressionLine.setAttribute('y1', toSvgY(lineY0));
+      regressionLine.setAttribute('x2', toSvgX(xMax));
+      regressionLine.setAttribute('y2', toSvgY(lineY10));
+      regressionLine.setAttribute('display', '');
+
+      // Draw residuals
+      while (residualGroup.firstChild) residualGroup.removeChild(residualGroup.firstChild);
+      points.forEach(function(p) {
+        var predicted = slope * p.x + intercept;
+        var resLine = document.createElementNS(ns, 'line');
+        resLine.setAttribute('x1', toSvgX(p.x));
+        resLine.setAttribute('y1', toSvgY(p.y));
+        resLine.setAttribute('x2', toSvgX(p.x));
+        resLine.setAttribute('y2', toSvgY(predicted));
+        resLine.setAttribute('stroke', '#94a3b8');
+        resLine.setAttribute('stroke-width', '1');
+        resLine.setAttribute('stroke-dasharray', '4,3');
+        residualGroup.appendChild(resLine);
+      });
+
+      // Update result using safe DOM methods
+      while (resultEl.firstChild) resultEl.removeChild(resultEl.firstChild);
+      var codeEl = document.createElement('code');
+      codeEl.textContent = 'y = ' + slope.toFixed(2) + 'x + ' + intercept.toFixed(2);
+      resultEl.appendChild(codeEl);
+      resultEl.appendChild(document.createTextNode(' \u00B7 '));
+      var strongEl = document.createElement('strong');
+      strongEl.textContent = 'R\u00B2 = ' + r2.toFixed(4);
+      resultEl.appendChild(strongEl);
+      resultEl.appendChild(document.createTextNode(' \u00B7 ' + n + ' points'));
+    }
+
+    function addPoint(x, y) {
+      points.push({ x: x, y: y });
+
+      var circle = document.createElementNS(ns, 'circle');
+      circle.setAttribute('cx', toSvgX(x));
+      circle.setAttribute('cy', toSvgY(y));
+      circle.setAttribute('r', '6');
+      circle.setAttribute('fill', '#3b82f6');
+      circle.setAttribute('stroke', '#ffffff');
+      circle.setAttribute('stroke-width', '2');
+      circle.style.transition = 'r 0.15s ease';
+      circle.addEventListener('mouseenter', function() { circle.setAttribute('r', '8'); });
+      circle.addEventListener('mouseleave', function() { circle.setAttribute('r', '6'); });
+      pointsGroup.appendChild(circle);
+
+      computeRegression();
+    }
+
+    // Click to add point
+    svg.addEventListener('click', function(e) {
+      var rect = svg.getBoundingClientRect();
+      var scaleX = W / rect.width;
+      var scaleY = H / rect.height;
+      var sx = (e.clientX - rect.left) * scaleX;
+      var sy = (e.clientY - rect.top) * scaleY;
+
+      if (sx < padL || sx > padL + plotW || sy < padT || sy > padT + plotH) return;
+
+      var x = Math.max(xMin, Math.min(xMax, fromSvgX(sx)));
+      var y = Math.max(yMin, Math.min(yMax, fromSvgY(sy)));
+
+      addPoint(x, y);
+    });
+
+    // Clear button
+    document.getElementById('regressionClear').addEventListener('click', function() {
+      points = [];
+      while (pointsGroup.firstChild) pointsGroup.removeChild(pointsGroup.firstChild);
+      while (residualGroup.firstChild) residualGroup.removeChild(residualGroup.firstChild);
+      regressionLine.setAttribute('display', 'none');
+      resultEl.textContent = 'Add at least 2 points to compute the regression line.';
+    });
+
+    // Random data button
+    document.getElementById('regressionRandom').addEventListener('click', function() {
+      points = [];
+      while (pointsGroup.firstChild) pointsGroup.removeChild(pointsGroup.firstChild);
+
+      var baseSlope = 0.5 + Math.random() * 0.6;
+      var baseIntercept = 1 + Math.random() * 2;
+      for (var i = 0; i < 8; i++) {
+        var rx = 0.5 + Math.random() * 9;
+        var ry = baseSlope * rx + baseIntercept + (Math.random() - 0.5) * 3;
+        ry = Math.max(0.2, Math.min(9.8, ry));
+        addPoint(rx, ry);
+      }
+    });
+  })();
+
+  // --- Numbers section counter animation ---
+  var numbersSection = document.getElementById('numbers-section');
+  var numbersAnimated = false;
+
+  var numbersObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !numbersAnimated) {
+        numbersAnimated = true;
+        animateNumberCounters();
+        numbersObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  if (numbersSection) {
+    numbersObs.observe(numbersSection);
+  }
+
+  function animateNumberCounters() {
+    var counters = document.querySelectorAll('[data-count-target]');
+    var duration = 2200;
+    var startTime = performance.now();
+
+    function update(now) {
+      var elapsed = now - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+
+      counters.forEach(function(el) {
+        var target = parseInt(el.getAttribute('data-count-target'), 10);
+        var suffix = el.getAttribute('data-count-suffix') || '';
+        var prefix = el.getAttribute('data-count-prefix') || '';
+        var current = Math.round(target * eased);
+        el.textContent = prefix + current.toLocaleString('en-US') + suffix;
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+})();
+</script>
+</body>
+</html>

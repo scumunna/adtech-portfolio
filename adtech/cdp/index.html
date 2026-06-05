@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CP6VN2C604"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CP6VN2C604');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Data Platform &middot; Stephen Umunna</title>
+  <meta name="description" content="How Stephen Umunna built a Customer Data Platform with 21M+ unique consumer profiles, 1B+ behavioral data points, and 6 DSP integrations. Activated by a major DSP partner for pharmaceutical advertiser campaigns.">
+  <meta property="og:title" content="Customer Data Platform &middot; Confidential AdTech Startup">
+  <meta property="og:description" content="21M+ unique consumer profiles. 1B+ behavioral data points. 6 DSP integrations. Activated by a major DSP partner for pharma campaigns.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Customer Data Platform &middot; Confidential AdTech Startup">
+  <meta name="twitter:description" content="21M+ unique consumer profiles. 1B+ behavioral data points. 6 DSP integrations. Activated by a major DSP partner for pharma campaigns.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%237c3aed'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+  <style>
+    /* ========================================
+       CSS VARIABLES - LIGHT / DARK / SYSTEM
+       (CDP uses purple as accent - it's the
+        connective tissue / data layer)
+    ======================================== */
+    :root {
+      --bg: #fafafa;
+      --bg2: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --accent: #7c3aed;
+      --accent-soft: #f5f3ff;
+      --accent-border: #ddd6fe;
+      --blue: #2563eb;
+      --blue-soft: #eff6ff;
+      --blue-border: #bfdbfe;
+      --green: #22c55e;
+      --green-soft: #ecfdf5;
+      --green-border: #a7f3d0;
+      --nav-bg: rgba(255,255,255,.92);
+      --shadow: rgba(15,23,42,0.06);
+      --shadow-lg: rgba(15,23,42,0.1);
+      --counter-color: #7c3aed;
+      --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0a0f;
+      --bg2: #0f0f17;
+      --surface: #13131a;
+      --text: #e2e2e8;
+      --text-muted: #9898a8;
+      --text-faint: #5a5a6e;
+      --border: #1e1e2e;
+      --accent: #a78bfa;
+      --accent-soft: rgba(124,58,237,0.12);
+      --accent-border: #3b1f6e;
+      --blue: #60a5fa;
+      --blue-soft: rgba(37,99,235,0.12);
+      --blue-border: #1e3a5f;
+      --green: #4ade80;
+      --green-soft: rgba(34,197,94,0.1);
+      --green-border: #14532d;
+      --nav-bg: rgba(10,10,15,.85);
+      --shadow: rgba(0,0,0,0.3);
+      --shadow-lg: rgba(0,0,0,0.5);
+      --counter-color: #a78bfa;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        --bg: #0a0a0f;
+        --bg2: #0f0f17;
+        --surface: #13131a;
+        --text: #e2e2e8;
+        --text-muted: #9898a8;
+        --text-faint: #5a5a6e;
+        --border: #1e1e2e;
+        --accent: #a78bfa;
+        --accent-soft: rgba(124,58,237,0.12);
+        --accent-border: #3b1f6e;
+        --blue: #60a5fa;
+        --blue-soft: rgba(37,99,235,0.12);
+        --blue-border: #1e3a5f;
+        --green: #4ade80;
+        --green-soft: rgba(34,197,94,0.1);
+        --green-border: #14532d;
+        --nav-bg: rgba(10,10,15,.85);
+        --shadow: rgba(0,0,0,0.3);
+        --shadow-lg: rgba(0,0,0,0.5);
+        --counter-color: #a78bfa;
+      }
+    }
+
+    /* RESET */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      transition: background .3s, color .3s;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s, border-color .3s;
+    }
+    .nav-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 32px;
+      height: 56px; display: flex; align-items: center;
+    }
+    .nav-back {
+      font-size: 14px; font-weight: 500; color: var(--text-muted);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color .2s, transform .2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back:hover svg { transform: translateX(-2px); }
+    .nav-back svg { transition: transform .2s; flex-shrink: 0; }
+
+    .theme-toggle {
+      display: flex; align-items: center; margin-left: auto;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 100px; padding: 2px; gap: 0;
+      transition: background .3s, border-color .3s;
+    }
+    .theme-btn {
+      padding: 5px 11px; font-size: 12px; font-weight: 500;
+      color: var(--text-faint); background: transparent;
+      border: none; border-radius: 100px; cursor: pointer;
+      transition: color .2s, background .2s; font-family: inherit;
+      white-space: nowrap; line-height: 1;
+    }
+    .theme-btn:hover { color: var(--text-muted); }
+    .theme-btn.active {
+      color: var(--text); background: var(--surface);
+      box-shadow: 0 1px 3px var(--shadow);
+    }
+
+    /* CONTENT WRAPPER */
+    .content { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* HERO */
+    .hero { padding: 100px 0 48px; text-align: left; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--accent);
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px); font-weight: 800;
+      line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-size: 18px; color: var(--text-muted); line-height: 1.7; max-width: 720px;
+    }
+
+    /* COUNTERS - 4 columns */
+    .counters {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; margin-top: 40px;
+      transition: background .3s, border-color .3s;
+    }
+    .counter-cell {
+      background: var(--surface); padding: 28px 12px; text-align: center;
+      transition: background .3s;
+    }
+    .counter-value {
+      font-family: var(--mono); font-size: 26px; font-weight: 700;
+      color: var(--counter-color); letter-spacing: -0.02em;
+      line-height: 1.1; margin-bottom: 6px;
+    }
+    .counter-label {
+      font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 2px;
+    }
+    .counter-detail {
+      font-size: 11px; color: var(--text-faint); font-weight: 500;
+    }
+
+    /* SECTION HEADERS */
+    .section { padding: 80px 0 0; }
+    .section-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: clamp(26px, 4vw, 36px); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px; color: var(--text-muted); line-height: 1.75; max-width: 680px;
+    }
+
+    /* STORY CARD */
+    .story-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 40px; margin-top: 32px;
+      position: relative; overflow: hidden;
+      transition: background .3s, border-color .3s;
+    }
+    .story-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%; background: var(--accent); border-radius: 0 2px 2px 0;
+    }
+    .story-card p {
+      font-size: 16px; color: var(--text-muted); line-height: 1.85;
+    }
+    .story-card p + p { margin-top: 16px; }
+    .story-card strong { color: var(--text); font-weight: 600; }
+
+    /* ARCHITECTURE GRID */
+    .arch-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+    .arch-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px; position: relative;
+      transition: background .3s, border-color .3s, transform .2s, box-shadow .2s;
+    }
+    .arch-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    .arch-box-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px; color: var(--accent);
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      transition: background .3s, border-color .3s;
+    }
+    .arch-box h3 {
+      font-size: 15px; font-weight: 700; margin-bottom: 6px;
+    }
+    .arch-box p {
+      font-size: 13px; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* IDENTITY DIAGRAM (SVG-based, animated) */
+    .identity-diagram-wrap {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px;
+      margin-top: 32px;
+      transition: background .3s, border-color .3s;
+    }
+    .identity-diagram-wrap svg { width: 100%; height: auto; }
+    .id-source-box {
+      fill: var(--bg2);
+      stroke: var(--border);
+      stroke-width: 1.5;
+      transition: fill .3s, stroke .3s;
+    }
+    .id-stitch-box {
+      fill: var(--accent-soft);
+      stroke: var(--accent);
+      stroke-width: 2;
+      transition: fill .3s, stroke .3s;
+    }
+    .id-output-box {
+      fill: var(--accent);
+      transition: fill .3s;
+    }
+    .id-label {
+      fill: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-anchor: middle;
+      transition: fill .3s;
+    }
+    .id-label-output {
+      fill: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      text-anchor: middle;
+    }
+    .id-sublabel {
+      fill: var(--text-muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      text-anchor: middle;
+      transition: fill .3s;
+    }
+    .id-sublabel-output {
+      fill: rgba(255,255,255,0.85);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-anchor: middle;
+    }
+    .id-flow-line {
+      fill: none;
+      stroke: var(--text-faint);
+      stroke-width: 1.5;
+      stroke-dasharray: 4 4;
+      opacity: .7;
+      transition: stroke .3s;
+    }
+    .identity-diagram-wrap.in-view .id-flow-line {
+      animation: idDash 1.8s linear infinite;
+    }
+    @keyframes idDash { to { stroke-dashoffset: -32; } }
+    .id-arrow-head {
+      fill: var(--text-faint);
+      transition: fill .3s;
+    }
+
+    /* DSP GRID */
+    .dsp-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 24px;
+    }
+    .dsp-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 18px 16px; text-align: center;
+      transition: background .3s, border-color .3s, transform .2s;
+    }
+    .dsp-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .dsp-card-num {
+      font-family: var(--mono); font-size: 22px; font-weight: 800;
+      color: var(--accent); line-height: 1; margin-bottom: 6px;
+    }
+    .dsp-card-label {
+      font-size: 12px; font-weight: 600; color: var(--text-muted);
+    }
+
+    /* BULLET LIST */
+    .bullet-list {
+      list-style: none; margin-top: 24px;
+    }
+    .bullet-list li {
+      position: relative; padding-left: 22px; font-size: 15px;
+      color: var(--text-muted); line-height: 1.8; margin-bottom: 12px;
+    }
+    .bullet-list li::before {
+      content: ''; position: absolute; left: 0; top: 11px;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .bullet-list li strong { color: var(--text); font-weight: 600; }
+
+    /* PHARMA ACTIVATION CARD */
+    .pharma-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 40px; margin-top: 32px;
+      position: relative; overflow: hidden;
+      transition: background .3s, border-color .3s;
+    }
+    .pharma-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 4px; background: linear-gradient(90deg, var(--accent), var(--blue));
+    }
+    .pharma-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    }
+    .pharma-icon {
+      width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .3s, border-color .3s;
+    }
+    .pharma-card h3 {
+      font-size: 20px; font-weight: 800; letter-spacing: -0.01em;
+    }
+    .pharma-card p {
+      font-size: 15px; color: var(--text-muted); line-height: 1.85;
+    }
+    .pharma-card p + p { margin-top: 12px; }
+    .pharma-card strong { color: var(--text); font-weight: 600; }
+
+    .pharma-winwin {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-top: 24px;
+    }
+    .pharma-side {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px;
+      transition: background .3s, border-color .3s;
+    }
+    .pharma-side-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .pharma-side p {
+      font-size: 14px; line-height: 1.7;
+    }
+
+    /* REUSABLE METHODOLOGY */
+    .reuse-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+    .reuse-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px;
+      transition: background .3s, border-color .3s, transform .2s, box-shadow .2s;
+    }
+    .reuse-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    .reuse-card-label {
+      font-family: var(--mono); font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .reuse-card h4 {
+      font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px;
+    }
+    .reuse-card p {
+      font-size: 13px; color: var(--text-muted); line-height: 1.7;
+    }
+
+    /* TECH GRID */
+    .tech-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px; margin-top: 32px;
+    }
+    .tech-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px;
+      transition: background .3s, border-color .3s;
+    }
+    .tech-card-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--text-faint);
+      margin-bottom: 12px;
+    }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tech-tag {
+      font-size: 12px; font-weight: 500; color: var(--text-muted);
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: 6px;
+      transition: color .2s, background .2s, border-color .2s;
+    }
+    .tech-tag:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* SUB-NAV */
+    .subnav {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 48px; padding: 24px 0;
+      border-top: 1px solid var(--border);
+      transition: border-color .3s;
+    }
+    .subnav-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 8px 14px; border-radius: 8px;
+      transition: background .2s, border-color .2s, color .2s, transform .2s;
+    }
+    .subnav-link:hover {
+      color: var(--accent); border-color: var(--accent);
+      background: var(--accent-soft); transform: translateY(-1px);
+    }
+    .subnav-link svg { flex-shrink: 0; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .content { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .hero { padding: 88px 0 32px; }
+      .counters { grid-template-columns: repeat(2, 1fr); }
+      .counter-value { font-size: 22px; }
+      .counter-cell { padding: 20px 12px; }
+      .arch-grid { grid-template-columns: 1fr; }
+      .reuse-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: 1fr 1fr; }
+      .dsp-grid { grid-template-columns: repeat(2, 1fr); }
+      .pharma-winwin { grid-template-columns: 1fr; }
+      .pharma-card { padding: 28px 24px; }
+      .story-card { padding: 28px 24px; }
+      .identity-diagram-wrap { padding: 20px; }
+      .theme-btn { min-height: 40px; padding: 6px 10px; font-size: 11px; }
+      .nav-back { padding: 14px 0; min-height: 44px; display: flex; align-items: center; }
+    }
+    @media (max-width: 480px) {
+      .content { padding: 0 16px; }
+      .nav-inner { padding: 0 16px; }
+      .counters { grid-template-columns: 1fr 1fr; }
+      .counter-value { font-size: 20px; }
+      .tech-grid { grid-template-columns: 1fr; }
+      .dsp-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../../" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 12L6 8l4-4"/>
+        </svg>
+        Stephen Umunna &middot; Portfolio
+      </a>
+      <div class="theme-toggle" role="radiogroup" aria-label="Theme">
+        <button class="theme-btn active" data-theme-btn="light" aria-label="Light theme">&#9728;&#65039; Light</button>
+        <button class="theme-btn" data-theme-btn="system" aria-label="System theme">&#128421;&#65039; System</button>
+        <button class="theme-btn" data-theme-btn="dark" aria-label="Dark theme">&#127769; Dark</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-badge">Confidential AdTech Startup &middot; Connective Tissue &middot; Apr 2025 &ndash; Mar 2026</div>
+      <h1>Customer Data Platform</h1>
+      <p class="hero-subtitle">
+        <strong>21M+ unique consumer profiles. 1B+ behavioral data points. 6 DSP integrations.</strong> Activated by a major DSP partner for pharmaceutical advertiser campaigns. The CDP was the connective tissue between the consumer ordering app and advertiser activation - the layer that turned ordering behavior into programmable audiences.
+      </p>
+
+      <div class="counters">
+        <div class="counter-cell">
+          <div class="counter-value" data-target="21" data-suffix="M+">0M+</div>
+          <div class="counter-label">Unique Profiles</div>
+          <div class="counter-detail">Identity-stitched</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="1" data-suffix="B+">0B+</div>
+          <div class="counter-label">Behavioral Signals</div>
+          <div class="counter-detail">Pixel events</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="6" data-suffix="">0</div>
+          <div class="counter-label">DSP Integrations</div>
+          <div class="counter-detail">Audience activation</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- THE ARCHITECTURE -->
+    <section class="section reveal">
+      <span class="section-label">The Architecture</span>
+      <h2>Six layers, one platform</h2>
+      <p class="section-desc">
+        The CDP wasn't a vendor purchase - it was built in-house. Every layer designed to do one thing well and hand off cleanly to the next. The whole thing sits between the consumer app and the DSPs, turning raw behavior into segments advertisers can target.
+      </p>
+
+      <div class="arch-grid">
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="4"/><path d="M16 3.46a4 4 0 0 1 0 7.07"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          </div>
+          <h3>Identity Stitching Layer</h3>
+          <p>Cross-device, cross-event consumer matching. Deterministic where possible (hashed PII), probabilistic for the rest. Resolves anonymous browsers to known users as data accrues.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Pixel Event Capture</h3>
+          <p>Custom JavaScript pixel firing across the consumer app. Page views, product views, dwell, cart, checkout - everything captured in real time, schema-versioned.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+          <h3>DSP Activation Pipeline</h3>
+          <p>Audience definitions translate into DSP-native segment formats. Real-time and batch sync. Lookalike modeling on top of seed audiences. Suppression and frequency capping handled server-side.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Real-Time + Batch Sync</h3>
+          <p>Hot audiences refresh in minutes; lookalikes and broad segments refresh nightly. Six DSP destinations, each with its own quirks and rate limits, normalized behind one interface.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Compliance Layer</h3>
+          <p>Built for regulated-industry advertising. Consent management, audience eligibility rules, restricted-category gating. The reason the platform could be activated for pharmaceutical campaigns.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- IDENTITY STITCHING -->
+    <section class="section reveal">
+      <span class="section-label">Identity Stitching</span>
+      <h2>How profiles get built</h2>
+      <p class="section-desc">
+        Anyone can capture an event. The hard part is turning a billion isolated events into 21 million coherent profiles a DSP can target. That's the identity stitching layer.
+      </p>
+
+      <div class="identity-diagram-wrap" id="identityDiagram">
+        <svg viewBox="0 0 800 360" preserveAspectRatio="xMidYMid meet">
+          <!-- Source boxes (left column) -->
+          <g>
+            <rect class="id-source-box" x="20"  y="96"  width="220" height="56" rx="10"/>
+            <text class="id-label"    x="130" y="120">the consumer app</text>
+            <text class="id-sublabel" x="130" y="138">signup &middot; browse &middot; purchase</text>
+          </g>
+          <g>
+            <rect class="id-source-box" x="20"  y="172" width="220" height="56" rx="10"/>
+            <text class="id-label"    x="130" y="196">Hashed PII</text>
+            <text class="id-sublabel" x="130" y="214">deterministic matches</text>
+          </g>
+
+          <!-- Stitching layer (middle) -->
+          <g>
+            <rect class="id-stitch-box" x="300" y="100" width="200" height="150" rx="14"/>
+            <text class="id-label"    x="400" y="160">Identity Stitching</text>
+            <text class="id-sublabel" x="400" y="184">deterministic + probabilistic</text>
+            <text class="id-sublabel" x="400" y="206">device, session, user graph</text>
+            <text class="id-sublabel" x="400" y="228">schema-versioned events</text>
+          </g>
+
+          <!-- Output (right) -->
+          <g>
+            <rect class="id-output-box" x="560" y="120" width="220" height="110" rx="14"/>
+            <text class="id-label-output"    x="670" y="158">Unified Profiles</text>
+            <text class="id-sublabel-output" x="670" y="184">21M+ profiles</text>
+            <text class="id-sublabel-output" x="670" y="206">1B+ behavioral signals</text>
+          </g>
+
+          <!-- Flow lines: source -> stitch -->
+          <path class="id-flow-line" d="M240 124 L300 160"/>
+          <path class="id-flow-line" d="M240 200 L300 195"/>
+
+          <!-- Flow line: stitch -> output -->
+          <path class="id-flow-line" d="M500 175 L560 175"/>
+          <polygon class="id-arrow-head" points="552,170 562,175 552,180"/>
+        </svg>
+      </div>
+
+      <ul class="bullet-list">
+        <li><strong>First-party signals</strong> from the consumer app - signup, browse, add-to-cart, checkout, repeat purchase</li>
+        <li><strong>Deterministic matching where possible</strong> - hashed PII (email, phone) where consent allows</li>
+        <li><strong>Probabilistic stitching for the rest</strong> - device, session, IP, and behavior fingerprints</li>
+        <li><strong>Result: 21M+ unique profiles and 1B+ behavioral data points</strong> in a single addressable graph</li>
+      </ul>
+    </section>
+
+    <!-- DSP ACTIVATION -->
+    <section class="section reveal">
+      <span class="section-label">DSP Activation</span>
+      <h2>Six DSPs. One pipeline.</h2>
+      <p class="section-desc">
+        Six direct DSP integrations at Confidential AdTech Startup. Across my career I've worked across DV360, TTD, Xandr, Yahoo, Zeta, Basis, and Quantcast - so the activation pipeline was designed for portability from day one.
+      </p>
+
+      <div class="dsp-grid">
+        <div class="dsp-card"><div class="dsp-card-num">6</div><div class="dsp-card-label">DSP Destinations</div></div>
+        <div class="dsp-card"><div class="dsp-card-num">21M+</div><div class="dsp-card-label">Addressable Profiles</div></div>
+        <div class="dsp-card"><div class="dsp-card-num">RT</div><div class="dsp-card-label">+ Batch Sync</div></div>
+      </div>
+
+      <ul class="bullet-list">
+        <li><strong>Audience export pipeline to 6 DSPs</strong> - normalized API layer translates one segment definition into six native formats</li>
+        <li><strong>Lookalike modeling on top of seed audiences</strong> - first-party seeds extended into broader prospect pools</li>
+        <li><strong>Suppression and frequency capping</strong> handled at the CDP level so DSPs receive clean, deduplicated audiences</li>
+        <li><strong>ICP-matched segments</strong> - segments built around the actual ideal customer profile, not vendor presets</li>
+        <li><strong>Audience freshness SLAs</strong> - hot segments refresh in minutes, broad lookalikes refresh nightly</li>
+      </ul>
+    </section>
+
+    <!-- PHARMA ACTIVATION STORY -->
+    <section class="section reveal">
+      <span class="section-label">Major Activation</span>
+      <h2>The pharmaceutical activation</h2>
+      <p class="section-desc">
+        The clearest external validation of the platform was a major DSP partner activating the CDP for a regulated-industry use case where most data platforms can't participate.
+      </p>
+
+      <div class="pharma-card">
+        <div class="pharma-header">
+          <div class="pharma-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          </div>
+          <h3>A major DSP partner activated the CDP for pharmaceutical campaigns</h3>
+        </div>
+        <p>
+          A major DSP partner activated the CDP for <strong>pharmaceutical advertiser campaigns</strong>. Pharma is one of the most heavily regulated advertising verticals in the US, with specific compliance requirements - FDA direct-to-consumer rules, restricted indication targeting, and HIPAA boundaries where applicable.
+        </p>
+        <p>
+          Most CDPs and audience platforms can't be activated for pharma because they weren't built with a compliance layer in mind. Our CDP was. The <strong>regulated-industry framework</strong> baked into the architecture - consent management, audience eligibility rules, restricted-category gating - was what made the activation possible.
+        </p>
+
+        <div class="pharma-winwin">
+          <div class="pharma-side">
+            <div class="pharma-side-label">Pharma Advertiser Win</div>
+            <p>Access to high-quality, first-party purchase-intent audiences with verified attribution and a defensible compliance posture. Real signal, not modeled.</p>
+          </div>
+          <div class="pharma-side">
+            <div class="pharma-side-label">Confidential AdTech Startup Win</div>
+            <p>DSP partner revenue from a vertical most competitors can't touch. First-party data monetized through a media partnership rather than direct sale.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT'S REUSABLE -->
+    <section class="section reveal">
+      <span class="section-label">What's Reusable</span>
+      <h2>The methodology</h2>
+      <p class="section-desc">
+        The numbers are specific to Confidential AdTech Startup. The methodology is portable. Here's the parts I'd carry into any next role.
+      </p>
+
+      <div class="reuse-grid">
+        <div class="reuse-card">
+          <div class="reuse-card-label">Model</div>
+          <h4>Two-sided platform thinking</h4>
+          <p>The consumer side generates data; the advertiser side activates it. The two only work together. Build them as one platform, not two products.</p>
+        </div>
+        <div class="reuse-card">
+          <div class="reuse-card-label">Architecture</div>
+          <h4>Identity stitching as a first-class layer</h4>
+          <p>Identity isn't a feature - it's the foundation. First-party signals, deterministic where possible, probabilistic for the rest.</p>
+        </div>
+        <div class="reuse-card">
+          <div class="reuse-card-label">Go-To-Market</div>
+          <h4>DSP partnerships beat direct sale for activation</h4>
+          <p>Selling data direct is hard. Letting a DSP partner activate your data and split revenue is faster, scales further, and unlocks regulated verticals the direct-sale motion can't reach.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section class="section reveal">
+      <span class="section-label">The Stack</span>
+      <h2>What it was built with</h2>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-label">Backend</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Celery</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Data</div>
+          <div class="tech-tags">
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Redis</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Infrastructure</div>
+          <div class="tech-tags">
+            <span class="tech-tag">AWS EC2</span>
+            <span class="tech-tag">AWS S3</span>
+            <span class="tech-tag">AWS RDS</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Instrumentation</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Custom Pixel SDK</span>
+            <span class="tech-tag">Event Stream</span>
+            <span class="tech-tag">Identity Graph</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">DSP Integrations</div>
+          <div class="tech-tags">
+            <span class="tech-tag">6 DSP APIs</span>
+            <span class="tech-tag">Audience Sync</span>
+            <span class="tech-tag">Lookalike Pipeline</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Compliance</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Consent Management</span>
+            <span class="tech-tag">Eligibility Rules</span>
+            <span class="tech-tag">Regulated-Industry Layer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUB-NAV -->
+    <nav class="subnav reveal" aria-label="Related pages">
+      <a href="../../" class="subnav-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Homepage
+      </a>
+      <a href="../platform/" class="subnav-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        Confidential AdTech Startup Platform
+      </a>
+      <a href="../consumer-app/" class="subnav-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Consumer App
+      </a>
+      <a href="../../#projects" class="subnav-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        All Projects
+      </a>
+    </nav>
+
+  </div>
+
+  <!-- CTA -->
+  <section style="max-width:900px;margin:0 auto;padding:60px 28px 40px;text-align:center">
+    <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:12px;color:var(--text)">Let's talk about what I can do for you.</h2>
+    <p style="font-size:15px;color:var(--text-muted);margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6">I'm exploring leadership roles where building the technology and running the business aren't treated as separate jobs.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="mailto:scumunna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:#dc2626;padding:12px 24px;border-radius:8px;text-decoration:none;transition:background .2s,transform .2s" onmouseover="this.style.background='#b91c1c';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#dc2626';this.style.transform='none'">Start a Conversation &rarr;</a>
+      <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text);background:var(--surface);border:1px solid var(--border);padding:12px 24px;border-radius:8px;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">View on LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top:1px solid var(--border);padding:32px 24px;margin-top:64px">
+    <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text-faint)">
+      <div>Stephen Umunna &middot; Los Angeles, CA</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <a href="mailto:scumunna@gmail.com" style="color:var(--text-muted);transition:color .2s">scumunna@gmail.com</a>
+        <a href="tel:+13239171875" style="color:var(--text-muted);transition:color .2s">(323) 917-1875</a>
+        <a href="https://github.com/scumunna" target="_blank" rel="noopener" style="color:var(--text-muted);transition:color .2s">GitHub</a>
+        <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="color:var(--text-muted);transition:color .2s">LinkedIn</a>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+  (function() {
+    'use strict';
+
+    /* THEME TOGGLE */
+    var ThemeManager = {
+      init: function() {
+        var saved = localStorage.getItem('portfolio-theme') || 'light';
+        this.set(saved);
+        var self = this;
+        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            self.set(btn.getAttribute('data-theme-btn'));
+          });
+        });
+      },
+      set: function(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('portfolio-theme', theme);
+        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-theme-btn') === theme);
+        });
+      }
+    };
+    ThemeManager.init();
+
+    /* COUNTER ANIMATIONS */
+    function animateCounters() {
+      var counters = document.querySelectorAll('.counter-value[data-target]');
+      counters.forEach(function(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        var decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+        var duration = 1600;
+        var start = performance.now();
+        function step(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = target * eased;
+          if (decimals > 0) {
+            el.textContent = prefix + current.toFixed(decimals) + suffix;
+          } else {
+            el.textContent = prefix + Math.round(current) + suffix;
+          }
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = prefix + (decimals > 0 ? target.toFixed(decimals) : target) + suffix;
+        }
+        requestAnimationFrame(step);
+      });
+    }
+    animateCounters();
+
+    /* SCROLL REVEAL */
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+
+    /* IDENTITY DIAGRAM IN-VIEW (kicks dashed flow animation) */
+    var idDiagram = document.getElementById('identityDiagram');
+    if (idDiagram) {
+      var idObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            idDiagram.classList.add('in-view');
+            idObserver.unobserve(idDiagram);
+          }
+        });
+      }, { threshold: 0.2 });
+      idObserver.observe(idDiagram);
+    }
+  })();
+  </script>
+
+</body>
+</html>

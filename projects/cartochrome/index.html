@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CP6VN2C604"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CP6VN2C604');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CartoChrome - Health Score | Stephen Umunna</title>
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Walk Score for Healthcare - a 0-100 access score for every ZIP Code in America. 5.1M+ pages, 33K ZIP scores, 4M+ provider profiles, 21 data sources. Four-dimension weighted methodology with academic validation.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2322c55e'/><text x='16' y='23' text-anchor='middle' fill='%230a0f0a' font-family='system-ui' font-weight='700' font-size='18'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== LIGHT THEME (default) ===== */
+    :root {
+      --bg: #fafafa;
+      --bg2: #f0faf0;
+      --card: #ffffff;
+      --card2: #f8faf8;
+      --border: #e2e8f0;
+      --border2: #cbd5e1;
+      --tx: #0f172a;
+      --tx2: #475569;
+      --tx3: #94a3b8;
+      --green: #22c55e;
+      --green2: #16a34a;
+      --green-dim: rgba(34,197,94,.08);
+      --green-glow: rgba(34,197,94,.18);
+      --blue: #4f8cff;
+      --blue-dim: rgba(79,140,255,.06);
+      --red: #ef4444;
+      --orange: #f97316;
+      --yellow: #eab308;
+      --shadow: rgba(15,23,42,.06);
+      --shadow-lg: rgba(15,23,42,.12);
+      --nav-bg: rgba(255,255,255,.92);
+      --pipeline-node-bg: linear-gradient(135deg, #f0faf0, #e0f5e0);
+      --footer-bg: linear-gradient(180deg, #fafafa 0%, #f0f4f0 100%);
+      --hero-gradient: linear-gradient(135deg, #0f172a 30%, #22c55e 100%);
+      --r: 10px;
+      --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    }
+
+    /* ===== DARK THEME ===== */
+    [data-theme="dark"] {
+      --bg: #0a0f0a;
+      --bg2: #0f170f;
+      --card: #131a13;
+      --card2: #182018;
+      --border: #1e2e1e;
+      --border2: #2a3f2a;
+      --tx: #e2e8e2;
+      --tx2: #8b9e8b;
+      --tx3: #5a6e5a;
+      --green-dim: rgba(34,197,94,.12);
+      --green-glow: rgba(34,197,94,.25);
+      --blue-dim: rgba(79,140,255,.1);
+      --shadow: rgba(0,0,0,.3);
+      --shadow-lg: rgba(0,0,0,.5);
+      --nav-bg: rgba(10,15,10,.85);
+      --pipeline-node-bg: linear-gradient(135deg, #0e1a0e, #1a2e1a);
+      --footer-bg: linear-gradient(180deg, #0a0f0a 0%, #0d120d 100%);
+      --hero-gradient: linear-gradient(135deg, #e2e8e2 30%, #22c55e 100%);
+    }
+
+    /* ===== SYSTEM THEME ===== */
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        --bg: #0a0f0a;
+        --bg2: #0f170f;
+        --card: #131a13;
+        --card2: #182018;
+        --border: #1e2e1e;
+        --border2: #2a3f2a;
+        --tx: #e2e8e2;
+        --tx2: #8b9e8b;
+        --tx3: #5a6e5a;
+        --green-dim: rgba(34,197,94,.12);
+        --green-glow: rgba(34,197,94,.25);
+        --blue-dim: rgba(79,140,255,.1);
+        --shadow: rgba(0,0,0,.3);
+        --shadow-lg: rgba(0,0,0,.5);
+        --nav-bg: rgba(10,15,10,.85);
+        --pipeline-node-bg: linear-gradient(135deg, #0e1a0e, #1a2e1a);
+        --footer-bg: linear-gradient(180deg, #0a0f0a 0%, #0d120d 100%);
+        --hero-gradient: linear-gradient(135deg, #e2e8e2 30%, #22c55e 100%);
+      }
+    }
+
+    /* ===== THEME TRANSITION ===== */
+    html.theme-transitioning,
+    html.theme-transitioning body,
+    html.theme-transitioning .nav,
+    html.theme-transitioning .content,
+    html.theme-transitioning .footer,
+    html.theme-transitioning .counter-cell,
+    html.theme-transitioning .problem-card,
+    html.theme-transitioning .screenshot-wrap,
+    html.theme-transitioning .screenshot-caption,
+    html.theme-transitioning .lookup-container,
+    html.theme-transitioning .lookup-input,
+    html.theme-transitioning .lookup-btn,
+    html.theme-transitioning .lookup-example,
+    html.theme-transitioning .algo-step,
+    html.theme-transitioning .pipeline-group,
+    html.theme-transitioning .pipeline-node,
+    html.theme-transitioning .pipeline-output,
+    html.theme-transitioning .stack-card,
+    html.theme-transitioning .stack-tag,
+    html.theme-transitioning .dim-card,
+    html.theme-transitioning .insight-card,
+    html.theme-transitioning .validation-card,
+    html.theme-transitioning .academic-card,
+    html.theme-transitioning .hero h1,
+    html.theme-transitioning .hero-subtitle,
+    html.theme-transitioning .hero-badge,
+    html.theme-transitioning .section-label,
+    html.theme-transitioning .section-title,
+    html.theme-transitioning .section-subtitle,
+    html.theme-transitioning .theme-toggle,
+    html.theme-transitioning .theme-toggle-btn {
+      transition: background-color .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease !important;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--tx);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* === NAV === */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 32px;
+      height: 56px; display: flex; align-items: center;
+    }
+    .nav-back {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 500; color: var(--tx2);
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--green); }
+    .nav-back svg { flex-shrink: 0; }
+
+    .content { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+    /* === HERO === */
+    .hero { padding: 100px 0 56px; position: relative; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--green);
+      background: var(--green-dim);
+      border: 1px solid rgba(34,197,94,.2);
+      padding: 6px 14px; border-radius: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 0 20px rgba(34,197,94,.08);
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,.4); }
+      50% { opacity: .7; box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 900; letter-spacing: -.03em;
+      line-height: 1.05; margin-bottom: 16px;
+      background: var(--hero-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.2vw, 1.15rem);
+      color: var(--tx2); line-height: 1.65;
+      max-width: 640px; margin-bottom: 40px;
+    }
+    .counter-row {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--r);
+      overflow: hidden; margin-bottom: 40px;
+    }
+    .counter-cell { background: var(--card); padding: 28px 16px; text-align: center; }
+    .counter-val {
+      font-family: var(--mono);
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700; color: var(--green);
+      letter-spacing: -.02em; margin-bottom: 4px;
+      font-variant-numeric: tabular-nums;
+    }
+    .counter-label { font-size: 12px; font-weight: 500; color: var(--tx2); letter-spacing: .02em; }
+    .hero-divider {
+      height: 2px; border: none; margin: 0;
+      background: linear-gradient(90deg, transparent, var(--green), var(--blue), transparent);
+      opacity: .4;
+    }
+
+    /* === SECTIONS === */
+    .section { padding: 64px 0; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      font-weight: 800; letter-spacing: -.02em;
+      margin-bottom: 20px; line-height: 1.2;
+    }
+    .section-subtitle {
+      font-size: 15px; color: var(--tx2); line-height: 1.7;
+      max-width: 680px; margin-bottom: 32px;
+    }
+
+    /* === PROBLEM / INSIGHT === */
+    .problem-card, .insight-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 28px 32px;
+      font-size: 15px; color: var(--tx);
+      line-height: 1.75; position: relative;
+    }
+    .problem-card::before {
+      content: '\201C';
+      position: absolute; top: 12px; left: 16px;
+      font-size: 3rem; color: var(--green); opacity: .15;
+      font-family: Georgia, serif; line-height: 1;
+    }
+    .insight-label {
+      font-family: var(--mono);
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 10px;
+    }
+
+    /* === SCREENSHOT === */
+    .screenshot-wrap {
+      border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden;
+      background: var(--card);
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+    .screenshot-wrap:hover { transform: scale(1.02); box-shadow: 0 12px 40px var(--shadow-lg); }
+    .screenshot-wrap img { width: 100%; display: block; }
+    .screenshot-caption {
+      padding: 14px 20px;
+      font-size: 13px; color: var(--tx3);
+      border-top: 1px solid var(--border);
+    }
+
+    /* === DIMENSIONS === */
+    .dimensions-layout {
+      display: grid; grid-template-columns: 240px 1fr;
+      gap: 40px; align-items: start;
+    }
+    .donut-wrap {
+      position: sticky; top: 100px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .donut-svg { width: 100%; max-width: 220px; }
+    .donut-seg {
+      transition: stroke-dashoffset 1s cubic-bezier(.4,0,.2,1), stroke-width .3s ease, opacity .3s ease;
+      cursor: pointer;
+    }
+    .donut-seg.dimmed { opacity: .3; }
+    .donut-seg.highlighted { stroke-width: 30; }
+    .dim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .dim-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r); padding: 20px;
+      cursor: default;
+      transition: border-color .3s, box-shadow .3s, opacity .3s;
+    }
+    .dim-card:hover, .dim-card.highlighted {
+      border-color: var(--dim-color);
+      box-shadow: 0 0 24px var(--dim-glow);
+    }
+    .dim-card.dimmed { opacity: .4; }
+    .dim-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .dim-icon {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 8px; flex-shrink: 0;
+    }
+    .dim-icon svg { width: 18px; height: 18px; }
+    .dim-weight {
+      font-family: var(--mono);
+      font-size: 13px; font-weight: 700;
+      color: var(--dim-color);
+      background: var(--dim-bg);
+      padding: 4px 10px; border-radius: 6px;
+    }
+    .dim-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .dim-desc { font-size: 13px; color: var(--tx2); line-height: 1.6; margin-bottom: 10px; }
+    .dim-components { display: flex; flex-wrap: wrap; gap: 4px; }
+    .dim-components span {
+      font-size: 10.5px; color: var(--tx3);
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 2px 8px; border-radius: 4px;
+    }
+
+    /* === ZIP LOOKUP === */
+    .lookup-container {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 32px;
+    }
+    .lookup-input-row { display: flex; gap: 10px; margin-bottom: 16px; }
+    .lookup-input {
+      flex: 1; padding: 14px 18px;
+      background: var(--bg); border: 1px solid var(--border2);
+      border-radius: 8px; color: var(--tx);
+      font-family: var(--mono); font-size: 16px;
+      outline: none; transition: border-color .2s;
+    }
+    .lookup-input::placeholder { color: var(--tx3); }
+    .lookup-input:focus { border-color: var(--green); }
+    .lookup-btn {
+      padding: 14px 28px;
+      background: var(--green); color: var(--bg);
+      border: none; border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px; font-weight: 700;
+      cursor: pointer; transition: background .2s, transform .1s;
+    }
+    .lookup-btn:hover { background: var(--green2); }
+    .lookup-btn:active { transform: scale(.97); }
+    .lookup-examples { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .lookup-example {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      font-family: var(--mono); font-size: 13px;
+      color: var(--tx2); background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 8px 14px; border-radius: 6px;
+      cursor: pointer; transition: border-color .2s, color .2s;
+    }
+    .lookup-example:hover { border-color: var(--green); color: var(--green); }
+    .lookup-example-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px; color: var(--tx3); font-weight: 500;
+    }
+    .lookup-result {
+      display: none; margin-top: 24px; animation: fadeSlideIn .4s ease;
+    }
+    .lookup-result.active { display: block; }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .result-zip {
+      font-family: var(--mono); font-size: 13px;
+      color: var(--tx3); margin-bottom: 4px; letter-spacing: .05em;
+    }
+    .result-percentile { font-size: 12px; color: var(--tx3); margin-bottom: 20px; }
+    .result-percentile-bold { color: var(--tx); font-weight: 700; }
+    .result-gauge-row { display: flex; align-items: center; gap: 32px; margin-bottom: 24px; }
+    .gauge-container { width: 180px; height: 100px; flex-shrink: 0; position: relative; }
+    .gauge-label-group { display: flex; flex-direction: column; gap: 4px; }
+    .gauge-score { font-family: var(--mono); font-size: 2.5rem; font-weight: 700; line-height: 1; }
+    .gauge-rating { font-size: 14px; font-weight: 600; letter-spacing: .02em; }
+
+    /* Sub-scores */
+    .subscore-grid {
+      display: flex; flex-direction: column;
+      gap: 14px; margin-top: 24px; padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .subscore-label-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .subscore-name { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
+    .subscore-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .subscore-weight-badge { font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--tx3); }
+    .subscore-bar-row { display: flex; align-items: center; gap: 12px; }
+    .subscore-track {
+      flex: 1; height: 8px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden;
+    }
+    .subscore-fill { height: 100%; border-radius: 4px; width: 0; transition: width .8s cubic-bezier(.4,0,.2,1); }
+    .subscore-val { font-family: var(--mono); font-size: 15px; font-weight: 700; min-width: 32px; text-align: right; }
+
+    /* Composition */
+    .composition-wrap { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--border); }
+    .composition-title {
+      font-size: 11px; font-weight: 600; color: var(--tx3);
+      letter-spacing: .04em; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .composition-bar {
+      display: flex; height: 14px; border-radius: 7px; overflow: hidden;
+      background: var(--bg); border: 1px solid var(--border);
+    }
+    .composition-seg { height: 100%; transition: width .8s cubic-bezier(.4,0,.2,1); width: 0; }
+    .composition-legend { display: flex; gap: 14px; margin-top: 8px; flex-wrap: wrap; }
+    .composition-legend-item { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--tx3); }
+    .composition-legend-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    /* === ALGORITHM === */
+    .algo-steps { display: flex; flex-direction: column; gap: 40px; }
+    .algo-step {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 32px; align-items: center;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 32px;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .algo-step.visible { opacity: 1; transform: translateY(0); }
+    .algo-step-num {
+      font-family: var(--mono); font-size: 11px; font-weight: 600;
+      color: var(--green); letter-spacing: .08em;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .algo-step-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    .algo-step-desc { font-size: 14px; color: var(--tx2); line-height: 1.65; }
+    .algo-step-viz { display: flex; align-items: center; justify-content: center; min-height: 140px; }
+
+    .catchment-svg circle { transform-origin: center; opacity: 0; transform: scale(0); }
+    .catchment-svg.animate circle { animation: ringGrow .8s ease-out forwards; }
+    .catchment-svg.animate circle:nth-child(1) { animation-delay: 0s; }
+    .catchment-svg.animate circle:nth-child(2) { animation-delay: .2s; }
+    .catchment-svg.animate circle:nth-child(3) { animation-delay: .4s; }
+    .catchment-svg.animate circle:nth-child(4) { animation-delay: .6s; }
+    @keyframes ringGrow {
+      0% { opacity: 0; transform: scale(0); }
+      60% { opacity: 1; transform: scale(1.08); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .frac-viz { text-align: center; }
+    .frac-viz .frac-row { display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--mono); font-size: 18px; font-weight: 600; }
+    .frac-viz .frac-divider { width: 120px; height: 2px; background: var(--tx2); margin: 8px auto; }
+    .frac-viz .frac-icon { font-size: 20px; }
+    .frac-viz .frac-num { font-family: var(--mono); font-size: 20px; font-weight: 700; color: var(--green); }
+    .frac-viz .frac-label { font-size: 12px; color: var(--tx3); }
+
+    .weights-viz { width: 100%; }
+    .weight-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .weight-bar-label { font-family: var(--mono); font-size: 11px; font-weight: 600; width: 70px; text-align: right; color: var(--tx2); flex-shrink: 0; }
+    .weight-bar-track { flex: 1; height: 28px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .weight-bar-fill {
+      height: 100%; border-radius: 6px;
+      transition: width 1s cubic-bezier(.4,0,.2,1); width: 0;
+      display: flex; align-items: center; padding-left: 10px;
+      font-family: var(--mono); font-size: 11px; font-weight: 700; color: #fff;
+    }
+
+    .penalty-viz { width: 100%; }
+    .penalty-labels { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; margin-bottom: 8px; }
+    .penalty-base-label { color: var(--green); font-weight: 600; }
+    .penalty-result-label { color: var(--red); font-weight: 600; opacity: 0; transition: opacity .4s ease .8s; }
+    .penalty-result-label.show { opacity: 1; }
+    .penalty-bar { height: 36px; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); overflow: hidden; display: flex; }
+    .penalty-fill-green { height: 100%; background: var(--green); border-radius: 8px 0 0 8px; transition: width 1s ease-out; width: 0; }
+    .penalty-fill-red {
+      height: 100%;
+      background: repeating-linear-gradient(-45deg, #ef4444, #ef4444 3px, #dc2626 3px, #dc2626 6px);
+      transition: width .6s ease-out 1s; width: 0; opacity: .75;
+    }
+    .penalty-note { font-size: 11px; color: var(--tx3); margin-top: 8px; text-align: center; }
+    .penalty-note strong { color: var(--red); font-weight: 600; }
+
+    .scale-bar-wrap { width: 100%; }
+    .scale-bar { display: flex; border-radius: 8px; overflow: hidden; height: 44px; cursor: default; }
+    .scale-seg {
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 11px; font-weight: 600; color: #fff;
+      transition: flex .35s ease; position: relative; overflow: hidden;
+    }
+    .scale-seg .seg-label { opacity: 0; font-size: 9px; font-weight: 500; position: absolute; bottom: 3px; transition: opacity .3s; text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+    .scale-seg:hover { flex: 3 !important; }
+    .scale-seg:hover .seg-label { opacity: 1; }
+    .s-red { background: #dc2626; flex: 1; }
+    .s-orange { background: #ea580c; flex: 1; }
+    .s-yellow { background: #ca8a04; flex: 1; }
+    .s-green { background: #16a34a; flex: 1; }
+    .s-bgreen { background: #059669; flex: .5; }
+    .scale-legend { display: flex; justify-content: space-between; font-size: 11px; color: var(--tx3); margin-top: 8px; }
+    .scale-indicator { position: absolute; bottom: -18px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 8px solid var(--green); transition: left 1.2s ease-out; }
+    .scale-bar-outer { position: relative; padding-bottom: 20px; }
+
+    /* === PIPELINE === */
+    .pipeline-layout { display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; }
+    .pipeline-sources { display: flex; flex-direction: column; gap: 10px; }
+    .pipeline-group { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; transition: border-color .3s; }
+    .pipeline-group:hover { border-color: var(--border2); }
+    .pipeline-group[data-dimension="provider"] { border-left: 3px solid #22c55e; }
+    .pipeline-group[data-dimension="hospital"] { border-left: 3px solid #4f8cff; }
+    .pipeline-group[data-dimension="people"] { border-left: 3px solid #f97316; }
+    .pipeline-group[data-dimension="travel"] { border-left: 3px solid #eab308; }
+    .pipeline-group[data-dimension="validation"] { border-left: 3px solid var(--tx3); }
+    .pipeline-group-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .pipeline-group-title { font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .pipeline-group-count {
+      font-family: var(--mono); font-size: 11px; color: #fff;
+      width: 22px; height: 22px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-weight: 700;
+    }
+    .pipeline-item { font-size: 12.5px; color: var(--tx2); line-height: 1.5; padding: 2px 0; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .pipeline-item::before { content: ''; flex-shrink: 0; width: 4px; height: 4px; background: var(--green); border-radius: 50%; opacity: .6; }
+    .pipeline-item .note { color: var(--tx3); font-size: 10.5px; }
+    .pipeline-freq { font-family: var(--mono); font-size: 9px; font-weight: 600; padding: 1px 6px; border-radius: 3px; background: var(--bg); color: var(--tx3); border: 1px solid var(--border); margin-left: auto; flex-shrink: 0; }
+    .pipeline-center { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .pipeline-arrow-svg { opacity: 0; transition: opacity .8s ease; }
+    .pipeline-arrow-svg.animate { opacity: 1; }
+    .pipeline-arrow-svg line { stroke-dasharray: 40; stroke-dashoffset: 40; transition: stroke-dashoffset 1s ease; }
+    .pipeline-arrow-svg.animate line { stroke-dashoffset: 0; }
+    .pipeline-node {
+      background: var(--pipeline-node-bg);
+      border: 1px solid var(--green); color: var(--tx);
+      padding: 20px 24px; border-radius: var(--r); text-align: center;
+      box-shadow: 0 0 30px var(--green-dim);
+      animation: nodePulse 3s ease-in-out infinite;
+    }
+    @keyframes nodePulse { 0%, 100% { box-shadow: 0 0 20px var(--green-dim); } 50% { box-shadow: 0 0 35px var(--green-glow); } }
+    .pipeline-node-title { font-family: var(--mono); font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--green); }
+    .pipeline-node-sub { font-size: 11px; color: var(--tx3); }
+    .pipeline-outputs { display: flex; flex-direction: column; gap: 10px; align-self: center; }
+    .pipeline-output { background: var(--green-dim); border: 1px solid rgba(34,197,94,.2); padding: 14px 20px; border-radius: var(--r); text-align: center; }
+    .pipeline-output-val { font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--green); }
+    .pipeline-output-label { font-size: 11px; color: var(--tx2); }
+
+    /* === VALIDATION === */
+    .validation-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .validation-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 24px 20px; text-align: center; }
+    .validation-metric { font-family: var(--mono); font-size: clamp(1.3rem, 3vw, 1.75rem); font-weight: 800; color: var(--green); margin-bottom: 12px; }
+    .validation-bar-wrap { height: 6px; background: var(--bg); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 12px; }
+    .validation-fill { height: 100%; background: var(--green); border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+    .validation-desc { font-size: 13px; color: var(--tx2); line-height: 1.5; }
+    .validation-source { font-size: 11px; color: var(--tx3); margin-top: 6px; }
+    .academic-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 24px 28px; margin-top: 32px; }
+    .academic-title { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+    .academic-text { font-size: 14px; color: var(--tx2); line-height: 1.7; }
+    .academic-text strong { color: var(--tx); font-weight: 600; }
+    .academic-papers { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--green); background: var(--green-dim); padding: 4px 12px; border-radius: 6px; margin-top: 12px; }
+
+    /* === TECH STACK === */
+    .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .stack-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 20px 18px; }
+    .stack-label { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+    .stack-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .stack-tag { font-size: 12px; color: var(--tx2); background: var(--bg); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; transition: border-color .2s, color .2s, box-shadow .2s; }
+    .stack-tag:hover { border-color: var(--green); color: var(--green); box-shadow: 0 0 8px rgba(34,197,94,.12); }
+
+    /* === THEME TOGGLE === */
+    .theme-toggle { display: flex; align-items: center; gap: 2px; margin-left: auto; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 3px; }
+    .theme-toggle-btn { display: flex; align-items: center; justify-content: center; width: 32px; height: 28px; border: none; border-radius: 6px; background: transparent; color: var(--tx3); cursor: pointer; transition: background .2s, color .2s; padding: 0; }
+    .theme-toggle-btn:hover { color: var(--tx2); }
+    .theme-toggle-btn.active { background: var(--green-dim); color: var(--green); box-shadow: 0 1px 3px var(--shadow); }
+    .theme-toggle-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* === REVEAL === */
+    .rv { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .rv.visible { opacity: 1; transform: translateY(0); }
+
+    /* === SECTION NAV DOTS === */
+    .section-nav {
+      position: fixed; right: 16px; top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .section-nav-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--border2);
+      border: none; padding: 0;
+      cursor: pointer;
+      transition: background .3s, transform .3s, box-shadow .3s;
+      position: relative;
+    }
+    .section-nav-dot:hover {
+      background: var(--green);
+      transform: scale(1.3);
+    }
+    .section-nav-dot.active {
+      background: var(--green);
+      box-shadow: 0 0 8px rgba(34,197,94,.4);
+    }
+    .section-nav-dot::after {
+      content: attr(data-label);
+      position: absolute; right: 20px; top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--mono); font-size: 10px; font-weight: 600;
+      color: var(--tx2);
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 4px 10px; border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0; pointer-events: none;
+      transition: opacity .2s;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+    .section-nav-dot:hover::after { opacity: 1; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rv, .algo-step { opacity: 1; transform: none; transition: none; }
+      .catchment-svg circle { opacity: 1; transform: scale(1); }
+      .donut-seg { stroke-dashoffset: 0 !important; transition: none; }
+      .subscore-fill, .composition-seg, .validation-fill, .weight-bar-fill, .penalty-fill-green, .penalty-fill-red { transition: none; }
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 900px) {
+      .pipeline-layout { grid-template-columns: 1fr; }
+      .pipeline-center { flex-direction: row; justify-content: center; }
+      .pipeline-outputs { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    }
+    @media (max-width: 768px) {
+      .content { padding: 0 20px; }
+      .hero { padding-top: 80px; }
+      .counter-row { grid-template-columns: repeat(2, 1fr); }
+      .algo-step { grid-template-columns: 1fr; gap: 20px; }
+      .algo-step-viz { min-height: 100px; }
+      .stack-grid { grid-template-columns: 1fr 1fr; }
+      .result-gauge-row { flex-direction: column; align-items: flex-start; }
+      .lookup-input-row { flex-direction: column; }
+      .dimensions-layout { grid-template-columns: 1fr; }
+      .donut-wrap { position: static !important; justify-content: center; }
+      .dim-grid { grid-template-columns: 1fr; }
+      .validation-grid { grid-template-columns: 1fr; }
+      .section-nav { display: none; }
+      .theme-toggle-btn{width:36px;height:36px}
+      .nav-back{padding:14px 0;min-height:44px;display:flex;align-items:center}
+      .lookup-example{min-height:44px;padding:10px 16px}
+      .stack-tag{padding:8px 14px;min-height:36px;display:inline-flex;align-items:center}
+    }
+    @media (max-width: 480px) {
+      .content { padding: 0 16px; }
+      .nav-inner { padding: 0 16px; }
+      .hero { padding-top: 72px; }
+      .counter-row { grid-template-columns: 1fr 1fr; }
+      .stack-grid { grid-template-columns: 1fr; }
+      .theme-toggle-btn { width: 28px; height: 24px; }
+      .theme-toggle-btn svg { width: 14px; height: 14px; }
+    }
+
+    /* === SCROLL PROGRESS BAR === */
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; z-index: 200;
+      height: 3px; width: 0;
+      background: linear-gradient(90deg, #22c55e, #4f8cff, #f97316);
+      transition: width 50ms linear;
+    }
+
+    /* === MINI MAP === */
+    .mini-map-section { padding: 40px 0 0; }
+    .mini-map-wrap {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 24px;
+      position: relative; overflow: hidden;
+    }
+    .mini-map-title {
+      font-family: var(--mono); font-size: 10px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--tx3); margin-bottom: 16px; text-align: center;
+    }
+    .mini-map-svg { width: 100%; max-width: 700px; margin: 0 auto; display: block; }
+    .map-dot {
+      cursor: pointer;
+      transition: r .2s ease, opacity .2s;
+    }
+    .map-dot:hover { r: 8; }
+    .map-dot-pulse {
+      animation: mapPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes mapPulse {
+      0%, 100% { opacity: .4; r: 12; }
+      50% { opacity: 0; r: 20; }
+    }
+    .map-label {
+      font-family: var(--mono); font-size: 8px; font-weight: 600;
+      fill: var(--tx2); pointer-events: none;
+    }
+
+    /* === HISTOGRAM === */
+    .histogram-wrap {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 24px;
+      margin-top: 24px;
+    }
+    .histogram-title {
+      font-family: var(--mono); font-size: 10px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--tx3); margin-bottom: 16px;
+    }
+    .histogram-svg { width: 100%; display: block; }
+    .hist-bar {
+      transition: opacity .2s;
+    }
+    .hist-bar:hover { opacity: .8; }
+    .hist-marker {
+      transition: x .6s cubic-bezier(.4,0,.2,1);
+    }
+    .hist-marker-line {
+      stroke: var(--tx); stroke-width: 2;
+      stroke-dasharray: 4 3;
+    }
+    .hist-marker-label {
+      font-family: var(--mono); font-size: 10px; font-weight: 700;
+      fill: var(--tx);
+    }
+
+    /* === COMPARISON MODE === */
+    .compare-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 11px; font-weight: 600;
+      color: var(--tx3); background: var(--bg);
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 6px 14px; cursor: pointer;
+      transition: border-color .2s, color .2s;
+      margin-top: 16px;
+    }
+    .compare-btn:hover { border-color: var(--green); color: var(--green); }
+    .compare-container {
+      display: none; margin-top: 20px;
+      padding-top: 20px; border-top: 1px solid var(--border);
+      animation: fadeSlideIn .4s ease;
+    }
+    .compare-container.active { display: block; }
+    .compare-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .compare-col {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 16px;
+    }
+    .compare-col-title {
+      font-family: var(--mono); font-size: 13px; font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .compare-bar-row {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 6px;
+    }
+    .compare-bar-label { font-size: 10px; color: var(--tx3); width: 55px; flex-shrink: 0; }
+    .compare-bar-track { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+    .compare-bar-fill { height: 100%; border-radius: 3px; transition: width .6s ease; }
+    .compare-bar-val { font-family: var(--mono); font-size: 11px; font-weight: 700; min-width: 24px; text-align: right; }
+
+    /* === PREMIUM POLISH === */
+    /* Gradient mesh dividers between sections */
+    .section-divider {
+      height: 1px; border: none; margin: 0;
+      background: linear-gradient(90deg, transparent 5%, var(--border) 30%, var(--green) 50%, var(--border) 70%, transparent 95%);
+      opacity: .3;
+    }
+
+    /* Card hover lift */
+    .dim-card, .validation-card, .stack-card, .pipeline-group {
+      transition: border-color .3s, box-shadow .3s, opacity .3s, transform .3s;
+    }
+    .dim-card:hover, .validation-card:hover, .stack-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    /* Animated gradient border on donut section */
+    .donut-glow {
+      position: absolute; inset: -2px; border-radius: 50%;
+      background: conic-gradient(#22c55e, #4f8cff, #f97316, #eab308, #22c55e);
+      opacity: .12;
+      animation: donutGlowSpin 8s linear infinite;
+      z-index: -1;
+    }
+    @keyframes donutGlowSpin { to { transform: rotate(360deg); } }
+    @media (min-width: 769px) { .donut-wrap { position: sticky; top: 100px; } }
+    .donut-wrap { display: flex; align-items: center; justify-content: center; }
+
+    /* Floating particles background */
+    .hero-particles {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none; overflow: hidden; z-index: -1;
+    }
+    .particle {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: var(--green);
+      border-radius: 50%;
+      opacity: .15;
+      animation: particleFloat linear infinite;
+    }
+    @keyframes particleFloat {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: .15; }
+      90% { opacity: .15; }
+      100% { transform: translateY(-400px) translateX(40px); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .compare-grid { grid-template-columns: 1fr; }
+      .mini-map-section { display: none; }
+      .section-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav class="section-nav" id="sectionNav" aria-label="Section navigation">
+  <button class="section-nav-dot" data-target="hero" data-label="Top" aria-label="Scroll to top"></button>
+  <button class="section-nav-dot" data-target="score-section" data-label="The Score" aria-label="Scroll to Score"></button>
+  <button class="section-nav-dot" data-target="try-section" data-label="Try It" aria-label="Scroll to Try It"></button>
+  <button class="section-nav-dot" data-target="algo-section" data-label="Algorithm" aria-label="Scroll to Algorithm"></button>
+  <button class="section-nav-dot" data-target="pipeline-section" data-label="Pipeline" aria-label="Scroll to Pipeline"></button>
+  <button class="section-nav-dot" data-target="validation-section" data-label="Validation" aria-label="Scroll to Validation"></button>
+  <button class="section-nav-dot" data-target="stack-section" data-label="Tech Stack" aria-label="Scroll to Tech Stack"></button>
+</nav>
+<script>
+(function() {
+  var stored = localStorage.getItem('portfolio-theme');
+  var theme = (stored === 'dark' || stored === 'system') ? stored : 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
+
+<nav class="nav" role="navigation">
+  <div class="nav-inner">
+    <a href="../../" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
+      Stephen Umunna &middot; Portfolio
+    </a>
+    <div class="theme-toggle" id="themeToggle" role="radiogroup" aria-label="Theme">
+      <button class="theme-toggle-btn" data-theme="light" aria-label="Light theme" title="Light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+      <button class="theme-toggle-btn" data-theme="system" aria-label="System theme" title="System"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></button>
+      <button class="theme-toggle-btn" data-theme="dark" aria-label="Dark theme" title="Dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    </div>
+  </div>
+</nav>
+
+<div id="interactive-banner" style="position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(37,99,235,0.08);border-bottom:1px solid rgba(37,99,235,0.15);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:Inter,-apple-system,sans-serif;font-size:12px;color:var(--accent,var(--ac,#2563eb));animation:bannerSlide .4s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+  <span style="font-size:14px">&#9996;</span>
+  <span>Interactive page &mdash; try the ZIP lookup, hover the donut chart, explore the algorithm</span>
+  <button onclick="this.parentElement.style.display='none';sessionStorage.setItem('banner-dismissed','1')" style="background:none;border:none;color:var(--accent,var(--ac,#2563eb));cursor:pointer;font-size:16px;padding:0 4px;margin-left:8px;opacity:0.6" aria-label="Dismiss">&times;</button>
+</div>
+<script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('interactive-banner').style.display='none';</script>
+<style>@keyframes bannerSlide{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}</style>
+<div id="banner-spacer" style="height:36px"></div>
+<script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('banner-spacer').style.display='none';</script>
+
+<div class="content">
+  <section class="hero rv">
+    <div class="hero-badge">Live &middot; Personal Project</div>
+    <h1>CartoChrome</h1>
+    <p class="hero-subtitle">Walk Score for Healthcare &mdash; a 0&ndash;100 access score for every ZIP Code in America, powered by 21 government data sources and peer-reviewed spatial analysis.</p>
+    <p style="margin-bottom: 24px;"><a href="https://www.cartochrome.com" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: var(--green); border: 1px solid rgba(34,197,94,.3); background: var(--green-dim); padding: 10px 22px; border-radius: 8px; transition: background .2s, border-color .2s;" onmouseover="this.style.background='rgba(34,197,94,.18)';this.style.borderColor='rgba(34,197,94,.5)'" onmouseout="this.style.background='var(--green-dim)';this.style.borderColor='rgba(34,197,94,.3)'">Visit CartoChrome <span style="font-size: 18px;">&rarr;</span></a></p>
+    <div class="counter-row" id="hero-counters">
+      <div class="counter-cell"><div class="counter-val" data-target="5100000" data-suffix="+" data-format="short">0</div><div class="counter-label">Programmatic Pages</div></div>
+      <div class="counter-cell"><div class="counter-val" data-target="33000" data-suffix="" data-format="comma">0</div><div class="counter-label">ZIP Codes</div></div>
+      <div class="counter-cell"><div class="counter-val" data-target="4000000" data-suffix="+" data-format="short">0</div><div class="counter-label">Providers</div></div>
+      <div class="counter-cell"><div class="counter-val" data-target="21" data-suffix="" data-format="plain">0</div><div class="counter-label">Gov Data Sources</div></div>
+    </div>
+    <hr class="hero-divider">
+  </section>
+
+  <section class="section rv">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">How good is healthcare where you live?</h2>
+    <div class="problem-card">
+      Walk Score rates neighborhoods for walkability. Zillow rates them for housing. But there was no equivalent for healthcare access &mdash; no single number that accounts for how many doctors are nearby, how far the nearest hospital is, whether specialists are accessible, and how those factors compare to the rest of the country. So I built one.
+    </div>
+  </section>
+
+  <section class="section rv">
+    <div class="section-label">The Product</div>
+    <div class="screenshot-wrap">
+      <img src="../../assets/screenshot-cartochrome.jpg" alt="CartoChrome interactive map showing healthcare access scores across the US with provider density overlay" loading="lazy">
+      <div class="screenshot-caption">Interactive map &mdash; healthcare access scores with provider density overlay</div>
+    </div>
+  </section>
+
+  <!-- Interactive Mini Map -->
+  <div class="mini-map-section rv">
+    <div class="mini-map-wrap">
+      <div class="mini-map-title">Click a city to see its score</div>
+      <svg class="mini-map-svg" viewBox="0 0 960 600" id="miniMap" aria-label="Interactive US map with sample ZIP Code scores">
+        <!-- Simplified US outline -->
+        <path d="M230 140 L280 130 L320 120 L360 115 L400 110 L430 105 L470 100 L510 95 L550 100 L590 110 L620 105 L660 100 L700 95 L730 100 L760 110 L790 130 L800 160 L810 200 L820 240 L830 270 L840 300 L820 330 L800 360 L790 380 L770 400 L750 410 L730 400 L710 390 L690 380 L670 370 L650 360 L630 370 L610 380 L590 370 L570 360 L550 370 L530 380 L510 390 L490 400 L470 410 L440 420 L410 430 L380 440 L350 430 L320 420 L290 430 L260 440 L240 430 L220 410 L200 390 L180 370 L170 340 L165 310 L170 280 L180 250 L190 220 L200 190 L210 170 L220 155 Z" fill="var(--bg2)" stroke="var(--border2)" stroke-width="1.5"/>
+        <!-- Alaska simplified -->
+        <path d="M120 450 L140 440 L180 435 L210 440 L230 450 L240 470 L230 490 L200 500 L170 495 L140 485 L120 470 Z" fill="var(--bg2)" stroke="var(--border2)" stroke-width="1"/>
+        <!-- Hawaii -->
+        <circle cx="300" cy="510" r="8" fill="var(--bg2)" stroke="var(--border2)" stroke-width="1"/>
+        <circle cx="320" cy="505" r="6" fill="var(--bg2)" stroke="var(--border2)" stroke-width="1"/>
+
+        <!-- City dots with pulsing rings -->
+        <!-- Manhattan -->
+        <circle cx="790" cy="170" r="14" fill="#22c55e" opacity=".15" class="map-dot-pulse"/>
+        <circle cx="790" cy="170" r="5" fill="#059669" class="map-dot" data-zip="10001" data-label="NYC"/>
+        <text x="790" y="158" text-anchor="middle" class="map-label">NYC 92</text>
+
+        <!-- Chicago -->
+        <circle cx="590" cy="190" r="14" fill="#22c55e" opacity=".15" class="map-dot-pulse" style="animation-delay:-.5s"/>
+        <circle cx="590" cy="190" r="5" fill="#22c55e" class="map-dot" data-zip="60601" data-label="CHI"/>
+        <text x="590" y="178" text-anchor="middle" class="map-label">Chicago 85</text>
+
+        <!-- Houston TX Medical Center -->
+        <circle cx="510" cy="410" r="14" fill="#22c55e" opacity=".15" class="map-dot-pulse" style="animation-delay:-1s"/>
+        <circle cx="510" cy="410" r="5" fill="#059669" class="map-dot" data-zip="77030" data-label="HOU"/>
+        <text x="510" y="398" text-anchor="middle" class="map-label">TX Med 91</text>
+
+        <!-- Beverly Hills -->
+        <circle cx="195" cy="330" r="14" fill="#22c55e" opacity=".15" class="map-dot-pulse" style="animation-delay:-1.5s"/>
+        <circle cx="195" cy="330" r="5" fill="#22c55e" class="map-dot" data-zip="90210" data-label="LA"/>
+        <text x="195" y="318" text-anchor="middle" class="map-label">LA 78</text>
+
+        <!-- Rural Montana -->
+        <circle cx="340" cy="140" r="14" fill="#ef4444" opacity=".15" class="map-dot-pulse" style="animation-delay:-2s"/>
+        <circle cx="340" cy="140" r="5" fill="#ef4444" class="map-dot" data-zip="59001" data-label="MT"/>
+        <text x="340" y="128" text-anchor="middle" class="map-label">Rural MT 22</text>
+      </svg>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <section class="section rv" id="score-section">
+    <div class="section-label">The Score</div>
+    <h2 class="section-title">Four dimensions, one number</h2>
+    <p class="section-subtitle">Every ZIP Code is scored across four dimensions of healthcare accessibility &mdash; weighted and combined into a single 0&ndash;100 number.</p>
+    <div class="insight-card rv" style="margin-bottom: 40px;">
+      <div class="insight-label">Design Principle</div>
+      &ldquo;There&rsquo;s a doctor nearby&rdquo; &ne; &ldquo;You can actually see a doctor.&rdquo;<br><br>
+      Most measures only count providers. CartoChrome goes further &mdash; measuring supply, competition for appointments, social barriers like insurance and income, and transportation infrastructure. Good social factors can&rsquo;t inflate a score. They can only prevent a penalty.
+    </div>
+    <div class="dimensions-layout rv">
+      <div class="donut-wrap">
+        <svg viewBox="0 0 200 200" class="donut-svg" id="donutSvg" aria-label="Score composition: Provider 35%, Hospital 25%, People 20%, Travel 20%">
+          <circle cx="100" cy="100" r="70" fill="none" stroke="var(--border)" stroke-width="24"/>
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#22c55e" stroke-width="24" pathLength="100" stroke-dasharray="34 66" stroke-dashoffset="34" transform="rotate(-90 100 100)" class="donut-seg" data-dimension="provider"/>
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#4f8cff" stroke-width="24" pathLength="100" stroke-dasharray="24 76" stroke-dashoffset="24" transform="rotate(36 100 100)" class="donut-seg" data-dimension="hospital"/>
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#f97316" stroke-width="24" pathLength="100" stroke-dasharray="19 81" stroke-dashoffset="19" transform="rotate(126 100 100)" class="donut-seg" data-dimension="people"/>
+          <circle cx="100" cy="100" r="70" fill="none" stroke="#eab308" stroke-width="24" pathLength="100" stroke-dasharray="19 81" stroke-dashoffset="19" transform="rotate(198 100 100)" class="donut-seg" data-dimension="travel"/>
+          <text x="100" y="96" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="22" fill="var(--tx)">0&ndash;100</text>
+          <text x="100" y="114" text-anchor="middle" font-family="Inter, sans-serif" font-weight="500" font-size="11" fill="var(--tx3)">access score</text>
+        </svg>
+      </div>
+      <div class="dim-grid">
+        <div class="dim-card" data-dimension="provider" style="--dim-color:#22c55e;--dim-glow:rgba(34,197,94,.15);--dim-bg:rgba(34,197,94,.08)">
+          <div class="dim-header"><div class="dim-icon" style="background:#22c55e"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span class="dim-weight">35%</span></div>
+          <div class="dim-title">Provider Score</div>
+          <div class="dim-desc">How many doctors, specialists, dentists, and mental health providers are near you &mdash; weighted by how many patients compete for their time.</div>
+          <div class="dim-components"><span>Primary Care ~45%</span><span>Specialists ~25%</span><span>Mental Health ~18%</span><span>Dental ~12%</span></div>
+        </div>
+        <div class="dim-card" data-dimension="hospital" style="--dim-color:#4f8cff;--dim-glow:rgba(79,140,255,.15);--dim-bg:rgba(79,140,255,.08)">
+          <div class="dim-header"><div class="dim-icon" style="background:#4f8cff"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div><span class="dim-weight">25%</span></div>
+          <div class="dim-title">Hospital Score</div>
+          <div class="dim-desc">How close and how good nearby hospitals, ERs, and screening centers are &mdash; weighted by bed count and quality ratings.</div>
+          <div class="dim-components"><span>Emergency ~40%</span><span>Inpatient ~35%</span><span>Screening ~25%</span></div>
+        </div>
+        <div class="dim-card" data-dimension="people" style="--dim-color:#f97316;--dim-glow:rgba(249,115,22,.15);--dim-bg:rgba(249,115,22,.08)">
+          <div class="dim-header"><div class="dim-icon" style="background:#f97316"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="18" cy="9" r="2"/><path d="M22 21v-1a3 3 0 0 0-3-3"/></svg></div><span class="dim-weight">20%</span></div>
+          <div class="dim-title">People Score</div>
+          <div class="dim-desc">Social barriers that reduce effective access &mdash; even if there&rsquo;s a hospital next door, can people here actually use it?</div>
+          <div class="dim-components"><span>Insurance</span><span>Income</span><span>Health Literacy</span><span>Disability</span><span>Age</span></div>
+        </div>
+        <div class="dim-card" data-dimension="travel" style="--dim-color:#eab308;--dim-glow:rgba(234,179,8,.15);--dim-bg:rgba(234,179,8,.08)">
+          <div class="dim-header"><div class="dim-icon" style="background:#eab308"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M5 17h14l-2-8H7L5 17z"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span class="dim-weight">20%</span></div>
+          <div class="dim-title">Travel Score</div>
+          <div class="dim-desc">Transportation infrastructure to reach care &mdash; vehicle ownership, public transit availability, broadband for telehealth.</div>
+          <div class="dim-components"><span>Vehicle Access 35%</span><span>Transit 25%</span><span>Broadband 25%</span><span>Urbanicity 15%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rv" id="try-section">
+    <div class="section-label">Try It</div>
+    <h2 class="section-title">Look up any ZIP Code</h2>
+    <div class="lookup-container">
+      <div class="lookup-input-row">
+        <input type="text" class="lookup-input" id="zipInput" placeholder="Enter a ZIP Code" maxlength="5" inputmode="numeric" autocomplete="off">
+        <button class="lookup-btn" id="zipBtn">Score</button>
+      </div>
+      <div class="lookup-examples" id="zipExamples">
+        <button class="lookup-example" data-zip="10001"><span>10001</span><span class="lookup-example-label">Manhattan</span></button>
+        <button class="lookup-example" data-zip="77030"><span>77030</span><span class="lookup-example-label">TX Medical Ctr</span></button>
+        <button class="lookup-example" data-zip="60601"><span>60601</span><span class="lookup-example-label">Chicago</span></button>
+        <button class="lookup-example" data-zip="90210"><span>90210</span><span class="lookup-example-label">Beverly Hills</span></button>
+        <button class="lookup-example" data-zip="59001"><span>59001</span><span class="lookup-example-label">Rural MT</span></button>
+      </div>
+      <div class="lookup-result" id="lookupResult">
+        <div class="result-zip" id="resultZip"></div>
+        <div class="result-percentile" id="resultPercentile"></div>
+        <div class="result-gauge-row">
+          <div class="gauge-container"><svg viewBox="0 0 180 100" id="gaugeSvg"><path d="M 15 90 A 75 75 0 0 1 165 90" fill="none" stroke="var(--border)" stroke-width="12" stroke-linecap="round"/><path d="M 15 90 A 75 75 0 0 1 165 90" fill="none" stroke="var(--green)" stroke-width="12" stroke-linecap="round" id="gaugeArc" stroke-dasharray="236" stroke-dashoffset="236"/></svg></div>
+          <div class="gauge-label-group"><div class="gauge-score" id="gaugeScore">--</div><div class="gauge-rating" id="gaugeRating">--</div></div>
+        </div>
+        <div class="subscore-grid">
+          <div class="subscore-row"><div class="subscore-label-row"><span class="subscore-name"><span class="subscore-dot" style="background:#22c55e"></span>Provider Score</span><span class="subscore-weight-badge">35%</span></div><div class="subscore-bar-row"><div class="subscore-track"><div class="subscore-fill" id="ss-fill-provider" style="background:#22c55e"></div></div><span class="subscore-val" id="ss-val-provider" style="color:#22c55e">--</span></div></div>
+          <div class="subscore-row"><div class="subscore-label-row"><span class="subscore-name"><span class="subscore-dot" style="background:#4f8cff"></span>Hospital Score</span><span class="subscore-weight-badge">25%</span></div><div class="subscore-bar-row"><div class="subscore-track"><div class="subscore-fill" id="ss-fill-hospital" style="background:#4f8cff"></div></div><span class="subscore-val" id="ss-val-hospital" style="color:#4f8cff">--</span></div></div>
+          <div class="subscore-row"><div class="subscore-label-row"><span class="subscore-name"><span class="subscore-dot" style="background:#f97316"></span>People Score</span><span class="subscore-weight-badge">20%</span></div><div class="subscore-bar-row"><div class="subscore-track"><div class="subscore-fill" id="ss-fill-people" style="background:#f97316"></div></div><span class="subscore-val" id="ss-val-people" style="color:#f97316">--</span></div></div>
+          <div class="subscore-row"><div class="subscore-label-row"><span class="subscore-name"><span class="subscore-dot" style="background:#eab308"></span>Travel Score</span><span class="subscore-weight-badge">20%</span></div><div class="subscore-bar-row"><div class="subscore-track"><div class="subscore-fill" id="ss-fill-travel" style="background:#eab308"></div></div><span class="subscore-val" id="ss-val-travel" style="color:#eab308">--</span></div></div>
+        </div>
+        <div class="composition-wrap">
+          <div class="composition-title">Score Composition</div>
+          <div class="composition-bar"><div class="composition-seg" id="comp-provider" style="background:#22c55e"></div><div class="composition-seg" id="comp-hospital" style="background:#4f8cff"></div><div class="composition-seg" id="comp-people" style="background:#f97316"></div><div class="composition-seg" id="comp-travel" style="background:#eab308"></div></div>
+          <div class="composition-legend"><span class="composition-legend-item"><span class="composition-legend-dot" style="background:#22c55e"></span>Provider</span><span class="composition-legend-item"><span class="composition-legend-dot" style="background:#4f8cff"></span>Hospital</span><span class="composition-legend-item"><span class="composition-legend-dot" style="background:#f97316"></span>People</span><span class="composition-legend-item"><span class="composition-legend-dot" style="background:#eab308"></span>Travel</span></div>
+        </div>
+
+        <!-- National Distribution Histogram -->
+        <div class="histogram-wrap" id="histogramWrap" style="display:none">
+          <div class="histogram-title">Where this ZIP falls nationally</div>
+          <svg class="histogram-svg" viewBox="0 0 400 100" id="histSvg" aria-label="National score distribution with current ZIP highlighted">
+            <!-- Histogram bars generated by JS -->
+          </svg>
+        </div>
+
+        <!-- Compare Button -->
+        <button class="compare-btn" id="compareBtn" style="display:none" type="button">+ Compare another ZIP</button>
+
+        <!-- Comparison Container -->
+        <div class="compare-container" id="compareContainer">
+          <div style="display:flex;gap:10px;margin-bottom:16px">
+            <input type="text" class="lookup-input" id="compareInput" placeholder="Compare ZIP" maxlength="5" inputmode="numeric" autocomplete="off" style="flex:1;padding:10px 14px;font-size:14px">
+            <button class="lookup-btn" id="compareGoBtn" type="button" style="padding:10px 20px;font-size:13px">Compare</button>
+          </div>
+          <div class="compare-grid" id="compareGrid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <section class="section rv" id="algo-section">
+    <div class="section-label">The Algorithm</div>
+    <h2 class="section-title">Enhanced Two-Step Floating Catchment Area (E2SFCA)</h2>
+    <p class="section-subtitle">A peer-reviewed spatial analysis method (Luo &amp; Qi, 2009) &mdash; adapted with SDOH barriers and log-softcap normalization.</p>
+    <div class="algo-steps">
+      <div class="algo-step" data-step="catchment"><div class="algo-step-info"><div class="algo-step-num">Step 01</div><div class="algo-step-title">Define Catchment Areas</div><div class="algo-step-desc">Draw a service area around every ZIP Code and count the providers inside it. Circles vary by urban/rural status &mdash; different radii and decay curves for each healthcare type.</div></div><div class="algo-step-viz"><svg class="catchment-svg" viewBox="0 0 200 200" width="180" height="180"><circle cx="100" cy="100" r="12" fill="#22c55e"/><circle cx="100" cy="100" r="40" fill="none" stroke="#22c55e" stroke-width="2.5" opacity=".8"/><circle cx="100" cy="100" r="68" fill="none" stroke="#22c55e" stroke-width="2" opacity=".45"/><circle cx="100" cy="100" r="92" fill="none" stroke="#22c55e" stroke-width="1.5" opacity=".2"/></svg></div></div>
+      <div class="algo-step" data-step="fraction"><div class="algo-step-info"><div class="algo-step-num">Step 02</div><div class="algo-step-title">Factor Competition</div><div class="algo-step-desc">Divide each provider&rsquo;s capacity by the total population competing for their time. A doctor serving 800 people is more accessible than one serving 8,000.</div></div><div class="algo-step-viz"><div class="frac-viz"><div class="frac-row"><span class="frac-icon">&#x1F3E5;</span><span class="frac-num" id="fracTop">0</span><span class="frac-label">&nbsp;providers</span></div><div class="frac-divider"></div><div class="frac-row"><span class="frac-icon">&#x1F465;</span><span class="frac-num" id="fracBottom">0</span><span class="frac-label">&nbsp;population</span></div></div></div></div>
+      <div class="algo-step" data-step="weights"><div class="algo-step-info"><div class="algo-step-num">Step 03</div><div class="algo-step-title">Weight &amp; Combine</div><div class="algo-step-desc">Multiply each dimension by its weight and sum them into a Base Access Score. Provider access carries the most weight because it most directly determines whether you can see a doctor.</div></div><div class="algo-step-viz"><div class="weights-viz"><div class="weight-row"><span class="weight-bar-label">Provider</span><div class="weight-bar-track"><div class="weight-bar-fill" data-width="100%" style="background:#22c55e">35%</div></div></div><div class="weight-row"><span class="weight-bar-label">Hospital</span><div class="weight-bar-track"><div class="weight-bar-fill" data-width="71%" style="background:#4f8cff">25%</div></div></div><div class="weight-row"><span class="weight-bar-label">People</span><div class="weight-bar-track"><div class="weight-bar-fill" data-width="57%" style="background:#f97316">20%</div></div></div><div class="weight-row"><span class="weight-bar-label">Travel</span><div class="weight-bar-track"><div class="weight-bar-fill" data-width="57%" style="background:#eab308">20%</div></div></div></div></div></div>
+      <div class="algo-step" data-step="penalty"><div class="algo-step-info"><div class="algo-step-num">Step 04</div><div class="algo-step-title">SDOH Penalty</div><div class="algo-step-desc">People Score and Travel Score capture real-world barriers. They can reduce a score by up to 65% in disadvantaged areas. Good social factors can&rsquo;t inflate a score &mdash; they can only prevent a penalty.</div></div><div class="algo-step-viz"><div class="penalty-viz"><div class="penalty-labels"><span class="penalty-base-label">Base: 85</span><span class="penalty-result-label" id="penaltyResultLabel">After SDOH: 72</span></div><div class="penalty-bar"><div class="penalty-fill-green" id="penaltyFillGreen"></div><div class="penalty-fill-red" id="penaltyFillRed"></div></div><div class="penalty-note">Up to <strong>65% reduction</strong> in areas with severe barriers</div></div></div></div>
+      <div class="algo-step" data-step="normalize"><div class="algo-step-info"><div class="algo-step-num">Step 05</div><div class="algo-step-title">Log-Softcap Normalization</div><div class="algo-step-desc">Scale to 0&ndash;100 using log-softcap normalization. This maintains national ranking while preventing scores from bunching at 100 in provider-dense areas.</div></div><div class="algo-step-viz"><div class="scale-bar-wrap"><div class="scale-bar-outer"><div class="scale-bar"><div class="scale-seg s-red"><span>0&ndash;24</span><span class="seg-label">Desert</span></div><div class="scale-seg s-orange"><span>25&ndash;49</span><span class="seg-label">Limited</span></div><div class="scale-seg s-yellow"><span>50&ndash;69</span><span class="seg-label">Moderate</span></div><div class="scale-seg s-green"><span>70&ndash;89</span><span class="seg-label">Good</span></div><div class="scale-seg s-bgreen"><span>90+</span><span class="seg-label">Paradise</span></div></div><div class="scale-indicator" id="scaleIndicator" style="left: 0%;"></div></div><div class="scale-legend"><span>Healthcare Desert</span><span>Healthcare Paradise</span></div></div></div></div>
+    </div>
+  </section>
+
+  <section class="section rv" id="pipeline-section">
+    <div class="section-label">The Pipeline</div>
+    <h2 class="section-title">21 sources &rarr; 1 score</h2>
+    <div class="pipeline-layout" id="pipelineLayout">
+      <div class="pipeline-sources">
+        <div class="pipeline-group" data-dimension="provider"><div class="pipeline-group-header"><div class="pipeline-group-title" style="color:#22c55e">Provider Score</div><div class="pipeline-group-count" style="background:#22c55e">3</div></div><div class="pipeline-item">CMS NPPES <span class="note">(4M+ profiles)</span> <span class="pipeline-freq">Weekly</span></div><div class="pipeline-item">CMS Care Compare <span class="pipeline-freq">Quarterly</span></div><div class="pipeline-item">SAMHSA Locator <span class="pipeline-freq">Quarterly</span></div></div>
+        <div class="pipeline-group" data-dimension="hospital"><div class="pipeline-group-header"><div class="pipeline-group-title" style="color:#4f8cff">Hospital Score</div><div class="pipeline-group-count" style="background:#4f8cff">3</div></div><div class="pipeline-item">CMS Hospital Compare <span class="pipeline-freq">Monthly</span></div><div class="pipeline-item">CMS Provider of Services <span class="pipeline-freq">Quarterly</span></div><div class="pipeline-item">FDA MQSA <span class="pipeline-freq">Quarterly</span></div></div>
+        <div class="pipeline-group" data-dimension="people"><div class="pipeline-group-header"><div class="pipeline-group-title" style="color:#f97316">People Score</div><div class="pipeline-group-count" style="background:#f97316">3</div></div><div class="pipeline-item">Census ACS 5-Year <span class="pipeline-freq">Annually</span></div><div class="pipeline-item">CDC PLACES <span class="pipeline-freq">Annually</span></div><div class="pipeline-item">HRSA HPSA <span class="pipeline-freq">Quarterly</span></div></div>
+        <div class="pipeline-group" data-dimension="travel"><div class="pipeline-group-header"><div class="pipeline-group-title" style="color:#eab308">Travel Score</div><div class="pipeline-group-count" style="background:#eab308">3</div></div><div class="pipeline-item">Census TIGER/Line <span class="pipeline-freq">Annually</span></div><div class="pipeline-item">USDA RUCA Codes <span class="pipeline-freq">On change</span></div><div class="pipeline-item">FCC Broadband <span class="pipeline-freq">Annually</span></div></div>
+        <div class="pipeline-group" data-dimension="validation"><div class="pipeline-group-header"><div class="pipeline-group-title">Validation &amp; Calibration</div><div class="pipeline-group-count" style="background:var(--tx3)">9</div></div><div class="pipeline-item">County Health Rankings + 8 additional sources</div></div>
+      </div>
+      <div class="pipeline-center">
+        <svg class="pipeline-arrow-svg" width="24" height="60" viewBox="0 0 24 60"><line x1="12" y1="0" x2="12" y2="50" stroke="#22c55e" stroke-width="2" stroke-dasharray="4 4"/><polygon points="6,48 12,58 18,48" fill="#22c55e"/></svg>
+        <div class="pipeline-node"><div class="pipeline-node-title">PostGIS + E2SFCA</div><div class="pipeline-node-sub">Spatial joins &middot; SDOH penalties &middot; Log-softcap normalization</div></div>
+        <svg class="pipeline-arrow-svg" width="24" height="60" viewBox="0 0 24 60"><line x1="12" y1="0" x2="12" y2="50" stroke="#22c55e" stroke-width="2" stroke-dasharray="4 4"/><polygon points="6,48 12,58 18,48" fill="#22c55e"/></svg>
+      </div>
+      <div class="pipeline-outputs">
+        <div class="pipeline-output"><div class="pipeline-output-val">0&ndash;100</div><div class="pipeline-output-label">Access Score</div></div>
+        <div class="pipeline-output"><div class="pipeline-output-val">5.1M</div><div class="pipeline-output-label">Generated Pages</div></div>
+        <div class="pipeline-output"><div class="pipeline-output-val">API</div><div class="pipeline-output-label">RESTful Endpoints</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rv" id="validation-section">
+    <div class="section-label">Validation</div>
+    <h2 class="section-title">Tested against real-world data</h2>
+    <p class="section-subtitle">CartoChrome scores are validated against federal health data and academic benchmarks to make sure the numbers mean something.</p>
+    <div class="validation-grid" id="validationGrid">
+      <div class="validation-card"><div class="validation-metric">r &gt; 0.65</div><div class="validation-bar-wrap"><div class="validation-fill" data-width="65"></div></div><div class="validation-desc">Correlation with CDC PLACES health utilization measures</div><div class="validation-source">Source: CDC</div></div>
+      <div class="validation-card"><div class="validation-metric">r &gt; 0.70</div><div class="validation-bar-wrap"><div class="validation-fill" data-width="70"></div></div><div class="validation-desc">Correlation with County Health Rankings data</div><div class="validation-source">Source: UW Population Health Institute</div></div>
+      <div class="validation-card"><div class="validation-metric">&gt;70%</div><div class="validation-bar-wrap"><div class="validation-fill" data-width="70"></div></div><div class="validation-desc">Concordance with HRSA-designated Health Professional Shortage Areas</div><div class="validation-source">Source: HRSA</div></div>
+    </div>
+    <div class="academic-card">
+      <div class="academic-title">Academic Foundation</div>
+      <div class="academic-text">Core methodology: <strong>Luo &amp; Qi (2009)</strong> Enhanced Two-Step Floating Catchment Area method, cited 2,000+ times in public health research. Supporting research on SDOH barriers (<strong>Syed et al., 2013</strong>) and rural healthcare adaptations (<strong>McGrail, 2012</strong>).</div>
+      <div class="academic-papers">36 academic papers referenced</div>
+    </div>
+  </section>
+
+  <section class="section rv" id="stack-section">
+    <div class="section-label">Tech Stack</div>
+    <div class="stack-grid">
+      <div class="stack-card"><div class="stack-label">Frontend</div><div class="stack-tags"><span class="stack-tag">Next.js</span><span class="stack-tag">React</span><span class="stack-tag">TypeScript</span><span class="stack-tag">MapLibre GL</span><span class="stack-tag">deck.gl</span></div></div>
+      <div class="stack-card"><div class="stack-label">Backend</div><div class="stack-tags"><span class="stack-tag">Django</span><span class="stack-tag">DRF</span><span class="stack-tag">PostgreSQL</span><span class="stack-tag">PostGIS</span></div></div>
+      <div class="stack-card"><div class="stack-label">Data Pipeline</div><div class="stack-tags"><span class="stack-tag">Python</span><span class="stack-tag">pandas</span><span class="stack-tag">geopandas</span><span class="stack-tag">GDAL</span><span class="stack-tag">Custom ETL</span></div></div>
+      <div class="stack-card"><div class="stack-label">Spatial</div><div class="stack-tags"><span class="stack-tag">E2SFCA</span><span class="stack-tag">TIGER/Line</span><span class="stack-tag">ZCTA Boundaries</span></div></div>
+      <div class="stack-card"><div class="stack-label">Infrastructure</div><div class="stack-tags"><span class="stack-tag">AWS ECS</span><span class="stack-tag">S3</span><span class="stack-tag">CloudFront</span><span class="stack-tag">Redis</span><span class="stack-tag">Elasticsearch</span></div></div>
+      <div class="stack-card"><div class="stack-label">Maps</div><div class="stack-tags"><span class="stack-tag">Vector Tiles</span><span class="stack-tag">Choropleth Layers</span><span class="stack-tag">Custom Basemaps</span></div></div>
+    </div>
+  </section>
+
+  <section class="section rv">
+    <div class="section-label">Challenges</div>
+    <h2 class="section-title">What I learned</h2>
+    <div class="problem-card">
+      The hardest part wasn&rsquo;t the algorithm &mdash; it was cleaning 21 data sources with different schemas, coordinate systems, and update frequencies into a single consistent pipeline. CMS provider data alone has 47 different file formats. Getting all of that to reconcile at the ZIP-code level, with correct geocoding and deduplication across sources, was the real engineering challenge. Then building the SDOH penalty system on top of it &mdash; making sure social barriers reduce scores without creating false deserts in wealthy areas with low utilization.
+    </div>
+  </section>
+</div>
+
+<section style="max-width:900px;margin:0 auto;padding:60px 28px 40px;text-align:center">
+  <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:12px;color:var(--text, var(--tx, #0f172a))">Let's talk about what I can do for you.</h2>
+  <p style="font-size:15px;color:var(--text-muted, var(--tx2, #475569));margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6">I'm exploring leadership roles where building the technology and running the business aren't treated as separate jobs.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="mailto:scumunna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:#dc2626;padding:12px 24px;border-radius:8px;text-decoration:none;transition:background .2s,transform .2s" onmouseover="this.style.background='#b91c1c';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#dc2626';this.style.transform='none'">Start a Conversation &rarr;</a>
+    <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text, var(--tx, #0f172a));background:var(--surface, var(--sf, #fff));border:1px solid var(--border, var(--bd, #e2e8f0));padding:12px 24px;border-radius:8px;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='var(--accent, var(--ac, #2563eb))';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border, var(--bd, #e2e8f0))';this.style.transform='none'">View on LinkedIn</a>
+  </div>
+</section>
+
+<footer style="border-top:1px solid var(--border, var(--bd, #e2e8f0));padding:32px 24px;margin-top:64px">
+  <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text-faint, var(--tx3, #94a3b8))">
+    <div>Stephen Umunna &middot; Los Angeles, CA</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="mailto:scumunna@gmail.com" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">scumunna@gmail.com</a>
+      <a href="tel:+13239171875" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">(323) 917-1875</a>
+      <a href="https://github.com/scumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">GitHub</a>
+      <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">LinkedIn</a>
+    </div>
+  </div>
+  <div style="font-size:11px;color:var(--text-muted, var(--tx3, #94a3b8));margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ===== REVEAL =====
+  var rvEls = document.querySelectorAll('.rv');
+  if (rm) { rvEls.forEach(function(el) { el.classList.add('visible'); }); }
+  else {
+    var heroEl = document.querySelector('.hero.rv');
+    if (heroEl) heroEl.classList.add('visible');
+    var rvObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); rvObs.unobserve(entry.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    rvEls.forEach(function(el) { if (!el.classList.contains('visible')) rvObs.observe(el); });
+  }
+
+  // ===== HERO COUNTERS =====
+  (function() {
+    var sec = document.getElementById('hero-counters');
+    if (!sec) return;
+    var done = false;
+    function fmtS(n) { return n >= 1e6 ? (n/1e6).toFixed(1).replace(/\.0$/,'')+'M' : n >= 1e3 ? (n/1e3).toFixed(1).replace(/\.0$/,'')+'K' : ''+n; }
+    function fmtC(n) { return n.toLocaleString('en-US'); }
+    function run() {
+      if (done) return; done = true;
+      sec.querySelectorAll('.counter-val').forEach(function(el) {
+        var tgt = +el.dataset.target, suf = el.dataset.suffix||'', fmt = el.dataset.format||'plain';
+        var f = fmt==='short'?fmtS:fmt==='comma'?fmtC:function(n){return n};
+        if (rm) { el.textContent = f(tgt)+suf; return; }
+        var dur=1800, st=null;
+        (function step(ts) { if(!st)st=ts; var p=Math.min((ts-st)/dur,1), e=1-Math.pow(1-p,3); el.textContent=f(Math.round(e*tgt))+suf; if(p<1)requestAnimationFrame(step); else el.textContent=f(tgt)+suf; })(performance.now());
+      });
+    }
+    if (rm) { run(); return; }
+    var obs = new IntersectionObserver(function(e) { e.forEach(function(x) { if(x.isIntersecting){run();obs.unobserve(x.target);} }); }, { threshold: 0.3 });
+    obs.observe(sec);
+  })();
+
+  // ===== DONUT ANIMATION =====
+  (function() {
+    var svg = document.getElementById('donutSvg');
+    if (!svg) return;
+    var segs = svg.querySelectorAll('.donut-seg');
+    if (rm) { segs.forEach(function(s){s.style.strokeDashoffset='0';}); return; }
+    var obs = new IntersectionObserver(function(e) {
+      e.forEach(function(x) { if(x.isIntersecting) { segs.forEach(function(s,i){setTimeout(function(){s.style.strokeDashoffset='0';},i*200);}); obs.unobserve(x.target); } });
+    }, { threshold: 0.3 });
+    obs.observe(svg);
+  })();
+
+  // ===== DIMENSION HOVER =====
+  (function() {
+    var cards = document.querySelectorAll('.dim-card');
+    var segs = document.querySelectorAll('.donut-seg');
+    if (!cards.length) return;
+    function hl(dim) {
+      cards.forEach(function(c){c.classList.toggle('highlighted',c.dataset.dimension===dim);c.classList.toggle('dimmed',c.dataset.dimension!==dim);});
+      segs.forEach(function(s){s.classList.toggle('highlighted',s.dataset.dimension===dim);s.classList.toggle('dimmed',s.dataset.dimension!==dim);});
+    }
+    function clr() { cards.forEach(function(c){c.classList.remove('highlighted','dimmed');}); segs.forEach(function(s){s.classList.remove('highlighted','dimmed');}); }
+    cards.forEach(function(c){c.addEventListener('mouseenter',function(){hl(c.dataset.dimension);});c.addEventListener('mouseleave',clr);});
+    segs.forEach(function(s){s.addEventListener('mouseenter',function(){hl(s.dataset.dimension);});s.addEventListener('mouseleave',clr);});
+  })();
+
+  // ===== HISTOGRAM (must be defined before ZIP lookup uses it) =====
+  var drawHistogram = (function() {
+    var dist = [2,3,4,5,6,8,10,12,14,16,18,20,22,24,25,26,25,23,20,18,16,14,12,10,9,8,7,6,5,4,3,3,2,2,2,1,1,1,1,1];
+    var maxVal = 26;
+    return function(score) {
+      var wrap = document.getElementById('histogramWrap');
+      var svg = document.getElementById('histSvg');
+      if (!wrap || !svg) return;
+      wrap.style.display = 'block';
+      var barW = 400 / dist.length;
+      var bars = '';
+      for (var i = 0; i < dist.length; i++) {
+        var h = (dist[i] / maxVal) * 70;
+        var x = i * barW;
+        var y = 80 - h;
+        var rangeStart = Math.round(i * 100 / dist.length);
+        var isHighlighted = Math.abs(rangeStart - score) < (100 / dist.length);
+        bars += '<rect class="hist-bar" x="' + (x+1) + '" y="' + y + '" width="' + (barW-2) + '" height="' + h + '" rx="1.5" fill="' + (isHighlighted ? '#22c55e' : 'var(--border2)') + '" opacity="' + (isHighlighted ? '1' : '.5') + '"/>';
+      }
+      var mx = (score / 100) * 400;
+      bars += '<line x1="' + mx + '" y1="5" x2="' + mx + '" y2="82" class="hist-marker-line" stroke="var(--tx)"/>';
+      bars += '<text x="' + mx + '" y="95" text-anchor="middle" class="hist-marker-label">' + score + '</text>';
+      bars += '<text x="0" y="95" font-size="8" fill="var(--tx3)" font-family="\'JetBrains Mono\',monospace">0</text>';
+      bars += '<text x="395" y="95" text-anchor="end" font-size="8" fill="var(--tx3)" font-family="\'JetBrains Mono\',monospace">100</text>';
+      svg.textContent = '';
+      var temp = document.createElement('div');
+      temp.innerHTML = '<svg>' + bars + '</svg>';
+      var nodes = temp.querySelector('svg').childNodes;
+      while (nodes.length) svg.appendChild(nodes[0]);
+    };
+  })();
+
+  // ===== ZIP LOOKUP =====
+  (function() {
+    var input = document.getElementById('zipInput');
+    var btn = document.getElementById('zipBtn');
+    var result = document.getElementById('lookupResult');
+    var examples = document.getElementById('zipExamples');
+
+    var K = {
+      '10001':{t:92,p:95,h:94,pe:82,tr:90},'10002':{t:89,p:91,h:90,pe:80,tr:88},
+      '10003':{t:91,p:93,h:92,pe:83,tr:89},'10016':{t:94,p:96,h:95,pe:85,tr:92},
+      '10021':{t:95,p:97,h:96,pe:88,tr:91},'10036':{t:90,p:92,h:91,pe:81,tr:88},
+      '02101':{t:93,p:94,h:95,pe:84,tr:91},'02115':{t:95,p:97,h:98,pe:83,tr:90},
+      '60601':{t:85,p:88,h:90,pe:72,tr:85},'60611':{t:88,p:90,h:92,pe:76,tr:87},
+      '90210':{t:78,p:85,h:82,pe:88,tr:52},'90024':{t:82,p:87,h:85,pe:86,tr:62},
+      '90095':{t:85,p:90,h:88,pe:85,tr:65},'77001':{t:72,p:75,h:78,pe:58,tr:70},
+      '77030':{t:91,p:96,h:98,pe:70,tr:80},'98101':{t:83,p:86,h:84,pe:75,tr:82},
+      '94102':{t:80,p:84,h:82,pe:70,tr:78},'94143':{t:88,p:92,h:94,pe:74,tr:80},
+      '30301':{t:75,p:78,h:80,pe:62,tr:72},'55401':{t:79,p:82,h:84,pe:68,tr:76},
+      '48201':{t:65,p:70,h:72,pe:48,tr:62},'38101':{t:58,p:62,h:65,pe:42,tr:55},
+      '79901':{t:45,p:48,h:50,pe:38,tr:38},'88001':{t:32,p:30,h:28,pe:42,tr:30},
+      '59001':{t:22,p:18,h:15,pe:35,tr:28},'99723':{t:15,p:10,h:8,pe:25,tr:22},
+      '88310':{t:28,p:25,h:22,pe:38,tr:30},'89301':{t:35,p:32,h:30,pe:45,tr:35}
+    };
+
+    function cl(v,lo,hi){return Math.min(hi,Math.max(lo,Math.round(v)));}
+    function getS(zip) {
+      if(K[zip])return K[zip];
+      var n=parseInt(zip,10); if(isNaN(n))return null;
+      var t=Math.min(85,Math.max(20,((n*7+31)%55)+25));
+      return{t:t,p:cl(t+((n*17+41)%21)-10,5,100),h:cl(t+((n*23+13)%21)-10,3,100),pe:cl(t+((n*7+29)%25)-12,8,100),tr:cl(t+((n*31+19)%21)-10,5,100)};
+    }
+    function sCol(s){return s<25?'#ef4444':s<50?'#f97316':s<70?'#eab308':s<90?'#22c55e':'#059669';}
+    function sLbl(s){return s<25?'Healthcare Desert':s<50?'Limited Access':s<70?'Moderate':s<90?'Good Access':'Healthcare Paradise';}
+    function pLbl(s){return s>=90?'top 5%':s>=80?'top 15%':s>=70?'top 30%':s>=60?'top 50%':s>=50?'above median':s>=40?'bottom 40%':s>=30?'bottom 25%':'bottom 10%';}
+
+    function animN(el,tgt,dur,col) {
+      if(col)el.style.color=col;
+      if(rm){el.textContent=tgt;return;}
+      var st=null;
+      function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/dur,1);el.textContent=Math.round((1-Math.pow(1-p,3))*tgt);if(p<1)requestAnimationFrame(step);else el.textContent=tgt;}
+      requestAnimationFrame(step);
+    }
+
+    function lookup(zip) {
+      zip=zip.replace(/\D/g,'').slice(0,5);
+      if(zip.length!==5)return;
+      input.value=zip;
+      var sc=getS(zip); if(!sc)return;
+      var t=sc.t, col=sCol(t);
+
+      result.classList.remove('active');
+      void result.offsetWidth;
+      result.classList.add('active');
+
+      document.getElementById('resultZip').textContent='ZIP '+zip;
+      // Safe DOM approach for percentile
+      var pEl=document.getElementById('resultPercentile');
+      pEl.textContent='';
+      var t1=document.createTextNode('Ranks in the ');
+      var b=document.createElement('span');
+      b.className='result-percentile-bold';
+      b.textContent=pLbl(t);
+      var t2=document.createTextNode(' nationally');
+      pEl.appendChild(t1);pEl.appendChild(b);pEl.appendChild(t2);
+
+      var arc=document.getElementById('gaugeArc'), tl=236, to=tl-(tl*t/100);
+      arc.setAttribute('stroke',col);
+      var sE=document.getElementById('gaugeScore'), rE=document.getElementById('gaugeRating');
+      rE.textContent=sLbl(t); rE.style.color=col;
+
+      if(rm){arc.style.transition='none';arc.setAttribute('stroke-dashoffset',to);sE.textContent=t;sE.style.color=col;}
+      else{arc.style.transition='none';arc.setAttribute('stroke-dashoffset',tl);requestAnimationFrame(function(){requestAnimationFrame(function(){arc.style.transition='stroke-dashoffset 1s cubic-bezier(.4,0,.2,1)';arc.setAttribute('stroke-dashoffset',to);});});animN(sE,t,1000,col);}
+
+      var dims=[{k:'provider',s:sc.p},{k:'hospital',s:sc.h},{k:'people',s:sc.pe},{k:'travel',s:sc.tr}];
+      dims.forEach(function(d,i){
+        var f=document.getElementById('ss-fill-'+d.k), v=document.getElementById('ss-val-'+d.k);
+        if(!f||!v)return;
+        f.style.transition='none';f.style.width='0';v.textContent='0';
+        if(rm){f.style.width=d.s+'%';v.textContent=d.s;return;}
+        setTimeout(function(){f.style.transition='width .8s cubic-bezier(.4,0,.2,1)';f.style.width=d.s+'%';animN(v,d.s,800,null);},300+i*100);
+      });
+
+      var pC=sc.p*0.35,hC=sc.h*0.25,peC=sc.pe*0.20,trC=sc.tr*0.20,sum=pC+hC+peC+trC;
+      [{id:'comp-provider',w:pC/sum*100},{id:'comp-hospital',w:hC/sum*100},{id:'comp-people',w:peC/sum*100},{id:'comp-travel',w:trC/sum*100}].forEach(function(c){
+        var el=document.getElementById(c.id);if(!el)return;
+        el.style.transition='none';el.style.width='0';
+        if(rm){el.style.width=c.w.toFixed(1)+'%';return;}
+        setTimeout(function(){el.style.transition='width .8s cubic-bezier(.4,0,.2,1)';el.style.width=c.w.toFixed(1)+'%';},700);
+      });
+
+      // Draw histogram
+      if (typeof drawHistogram === 'function') {
+        setTimeout(function() { drawHistogram(t); }, 800);
+      }
+
+      // Expose for comparison
+      if (typeof window._lastLookup === 'function') {
+        window._lastLookup(zip, sc);
+      }
+    }
+
+    // Expose getScores globally for comparison
+    window._getScores = getS;
+
+    btn.addEventListener('click',function(){lookup(input.value);});
+    input.addEventListener('keydown',function(e){if(e.key==='Enter')lookup(input.value);});
+    input.addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').slice(0,5);});
+    examples.addEventListener('click',function(e){var b=e.target.closest('.lookup-example');if(!b)return;var z=b.getAttribute('data-zip');input.value=z;lookup(z);});
+  })();
+
+  // ===== ALGORITHM ANIMATIONS =====
+  (function() {
+    var steps=document.querySelectorAll('.algo-step');
+    function anim(step) {
+      step.classList.add('visible');
+      var type=step.dataset.step;
+      if(type==='catchment'){var s=step.querySelector('.catchment-svg');if(s)s.classList.add('animate');}
+      if(type==='fraction'){
+        if(rm){document.getElementById('fracTop').textContent='3';document.getElementById('fracBottom').textContent='10,000';return;}
+        var tE=document.getElementById('fracTop'),bE=document.getElementById('fracBottom'),dur=800,st=null;
+        function cnt(ts){if(!st)st=ts;var p=Math.min((ts-st)/dur,1),e=1-Math.pow(1-p,3);tE.textContent=Math.round(e*3);bE.textContent=Math.round(e*10000).toLocaleString('en-US');if(p<1)requestAnimationFrame(cnt);else{tE.textContent='3';bE.textContent='10,000';}}
+        requestAnimationFrame(cnt);
+      }
+      if(type==='weights'){
+        var bars=step.querySelectorAll('.weight-bar-fill');
+        if(rm){bars.forEach(function(b){b.style.width=b.dataset.width;});return;}
+        bars.forEach(function(b,i){setTimeout(function(){b.style.width=b.dataset.width;},i*150);});
+      }
+      if(type==='penalty'){
+        var gF=document.getElementById('penaltyFillGreen'),rF=document.getElementById('penaltyFillRed'),rL=document.getElementById('penaltyResultLabel');
+        if(rm){if(gF)gF.style.width='72%';if(rF)rF.style.width='13%';if(rL)rL.classList.add('show');return;}
+        if(gF)setTimeout(function(){gF.style.width='85%';},200);
+        if(rF)setTimeout(function(){rF.style.width='13%';},1200);
+        if(rL)setTimeout(function(){rL.classList.add('show');},1200);
+      }
+      if(type==='normalize'){
+        var ind=document.getElementById('scaleIndicator');
+        if(ind){if(rm)ind.style.left='72%';else setTimeout(function(){ind.style.left='72%';},400);}
+      }
+    }
+    if(rm){steps.forEach(anim);return;}
+    var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){anim(x.target);obs.unobserve(x.target);}});},{threshold:0.25});
+    steps.forEach(function(s){obs.observe(s);});
+  })();
+
+  // ===== PIPELINE ARROWS =====
+  (function() {
+    var arrows=document.querySelectorAll('.pipeline-arrow-svg');
+    if(rm){arrows.forEach(function(a){a.classList.add('animate');});return;}
+    var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){arrows.forEach(function(a,i){setTimeout(function(){a.classList.add('animate');},i*400);});obs.unobserve(x.target);}});},{threshold:0.2});
+    var l=document.getElementById('pipelineLayout');if(l)obs.observe(l);
+  })();
+
+  // ===== VALIDATION BARS =====
+  (function() {
+    var g=document.getElementById('validationGrid');if(!g)return;
+    var fills=g.querySelectorAll('.validation-fill');
+    if(rm){fills.forEach(function(f){f.style.width=f.dataset.width+'%';});return;}
+    var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){fills.forEach(function(f,i){setTimeout(function(){f.style.width=f.dataset.width+'%';},i*200);});obs.unobserve(x.target);}});},{threshold:0.3});
+    obs.observe(g);
+  })();
+
+  // ===== SCROLL PROGRESS BAR + SECTION NAV =====
+  (function() {
+    var bar = document.getElementById('scrollProgress');
+    var nav = document.getElementById('sectionNav');
+    var dots = nav ? nav.querySelectorAll('.section-nav-dot') : [];
+
+    // Click handler for dots
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        var targetId = dot.dataset.target;
+        var el = targetId === 'hero' ? document.querySelector('.hero') : document.getElementById(targetId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    function update() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = h > 0 ? (window.scrollY / h * 100) : 0;
+      if (bar) bar.style.width = pct + '%';
+
+      // Update active dot
+      if (!dots.length) return;
+      var scrollY = window.scrollY + 200;
+      var activeIdx = 0;
+      dots.forEach(function(dot, i) {
+        var targetId = dot.dataset.target;
+        var el = targetId === 'hero' ? document.querySelector('.hero') : document.getElementById(targetId);
+        if (el && el.offsetTop <= scrollY) activeIdx = i;
+      });
+      dots.forEach(function(dot, i) {
+        dot.classList.toggle('active', i === activeIdx);
+      });
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+
+  // ===== MINI MAP CLICK =====
+  (function() {
+    var map = document.getElementById('miniMap');
+    if (!map) return;
+    map.addEventListener('click', function(e) {
+      var dot = e.target.closest('.map-dot');
+      if (!dot) return;
+      var zip = dot.dataset.zip;
+      if (!zip) return;
+      var input = document.getElementById('zipInput');
+      if (input) input.value = zip;
+      // Scroll to lookup section
+      var lookupSection = document.getElementById('zipInput');
+      if (lookupSection) lookupSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Trigger lookup after scroll
+      setTimeout(function() {
+        var btn = document.getElementById('zipBtn');
+        if (btn) btn.click();
+      }, 400);
+    });
+  })();
+
+  // ===== COMPARISON MODE =====
+  (function() {
+    var compareBtn = document.getElementById('compareBtn');
+    var compareContainer = document.getElementById('compareContainer');
+    var compareInput = document.getElementById('compareInput');
+    var compareGoBtn = document.getElementById('compareGoBtn');
+    var compareGrid = document.getElementById('compareGrid');
+    if (!compareBtn) return;
+
+    var currentZip = null;
+    var currentScores = null;
+
+    // Expose from ZIP lookup
+    window._lastLookup = function(zip, scores) {
+      currentZip = zip;
+      currentScores = scores;
+      compareBtn.style.display = 'inline-flex';
+      compareContainer.classList.remove('active');
+    };
+
+    compareBtn.addEventListener('click', function() {
+      compareContainer.classList.toggle('active');
+      if (compareContainer.classList.contains('active')) {
+        compareInput.focus();
+      }
+    });
+
+    function buildCompareCol(zip, sc, label) {
+      var col = document.createElement('div');
+      col.className = 'compare-col';
+      var title = document.createElement('div');
+      title.className = 'compare-col-title';
+      title.style.color = (sc.t >= 70 ? '#22c55e' : sc.t >= 50 ? '#eab308' : '#ef4444');
+      title.textContent = label + ' — ' + sc.t;
+      col.appendChild(title);
+      var dims = [
+        {name:'Provider', s:sc.p, c:'#22c55e'},
+        {name:'Hospital', s:sc.h, c:'#4f8cff'},
+        {name:'People', s:sc.pe, c:'#f97316'},
+        {name:'Travel', s:sc.tr, c:'#eab308'}
+      ];
+      dims.forEach(function(d) {
+        var row = document.createElement('div');
+        row.className = 'compare-bar-row';
+        var lbl = document.createElement('span');
+        lbl.className = 'compare-bar-label';
+        lbl.textContent = d.name;
+        var track = document.createElement('div');
+        track.className = 'compare-bar-track';
+        var fill = document.createElement('div');
+        fill.className = 'compare-bar-fill';
+        fill.style.background = d.c;
+        fill.style.width = '0';
+        track.appendChild(fill);
+        var val = document.createElement('span');
+        val.className = 'compare-bar-val';
+        val.style.color = d.c;
+        val.textContent = d.s;
+        row.appendChild(lbl);
+        row.appendChild(track);
+        row.appendChild(val);
+        col.appendChild(row);
+        setTimeout(function() { fill.style.width = d.s + '%'; }, 100);
+      });
+      return col;
+    }
+
+    function doCompare() {
+      var zip2 = compareInput.value.replace(/\D/g,'').slice(0,5);
+      if (zip2.length !== 5 || !currentScores) return;
+      // Get scores using the same function
+      var getS = window._getScores;
+      if (!getS) return;
+      var sc2 = getS(zip2);
+      if (!sc2) return;
+
+      compareGrid.textContent = '';
+      compareGrid.appendChild(buildCompareCol(currentZip, currentScores, 'ZIP ' + currentZip));
+      compareGrid.appendChild(buildCompareCol(zip2, sc2, 'ZIP ' + zip2));
+    }
+
+    compareGoBtn.addEventListener('click', doCompare);
+    compareInput.addEventListener('keydown', function(e) { if(e.key==='Enter') doCompare(); });
+    compareInput.addEventListener('input', function() { this.value = this.value.replace(/\D/g,'').slice(0,5); });
+  })();
+
+  // ===== HERO PARTICLES =====
+  (function() {
+    if (rm) return;
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+    var container = document.createElement('div');
+    container.className = 'hero-particles';
+    for (var i = 0; i < 12; i++) {
+      var p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = (Math.random() * 100) + '%';
+      p.style.bottom = '-10px';
+      p.style.animationDuration = (6 + Math.random() * 8) + 's';
+      p.style.animationDelay = (Math.random() * 6) + 's';
+      p.style.width = (2 + Math.random() * 4) + 'px';
+      p.style.height = p.style.width;
+      container.appendChild(p);
+    }
+    hero.style.position = 'relative';
+    hero.appendChild(container);
+  })();
+
+  // ===== THEME TOGGLE =====
+  (function() {
+    var tog=document.getElementById('themeToggle');if(!tog)return;
+    var btns=tog.querySelectorAll('.theme-toggle-btn'),tt=null;
+    function set(theme,anim) {
+      if(anim!==false){document.documentElement.classList.add('theme-transitioning');clearTimeout(tt);tt=setTimeout(function(){document.documentElement.classList.remove('theme-transitioning');},350);}
+      document.documentElement.setAttribute('data-theme',theme);
+      localStorage.setItem('portfolio-theme',theme);
+      btns.forEach(function(b){var a=b.getAttribute('data-theme')===theme;b.classList.toggle('active',a);b.setAttribute('aria-checked',a?'true':'false');});
+    }
+    set(document.documentElement.getAttribute('data-theme')||'light',false);
+    tog.addEventListener('click',function(e){var b=e.target.closest('.theme-toggle-btn');if(b)set(b.getAttribute('data-theme'));});
+    tog.addEventListener('keydown',function(e){
+      var themes=['light','system','dark'],ab=tog.querySelector('.theme-toggle-btn.active');if(!ab)return;
+      var idx=themes.indexOf(ab.getAttribute('data-theme'));
+      if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();idx=(idx+1)%3;set(themes[idx]);tog.querySelector('[data-theme="'+themes[idx]+'"]').focus();}
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();idx=(idx+2)%3;set(themes[idx]);tog.querySelector('[data-theme="'+themes[idx]+'"]').focus();}
+    });
+  })();
+})();
+</script>
+</body>
+</html>

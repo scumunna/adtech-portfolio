@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CP6VN2C604"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CP6VN2C604');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTV Measurement Framework - Stephen Umunna</title>
+  <meta name="description" content="How layering CTV with Display reduced time-to-signup by 5-7 days for a single client at Causal IQ - and unlocked a major CTV budget expansion. Built in Python. Codebase handed off to Causal IQ.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CTV Measurement Framework - Stephen Umunna">
+  <meta property="og:description" content="Built a custom Python attribution framework that proved CTV + Display layering reduced time-to-signup by 5-7 days. The finding unlocked a major CTV budget expansion.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://stephenumunna.com/causal-iq/ctv-measurement/">
+  <meta property="og:image" content="https://stephenumunna.com/assets/og-share.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CTV Measurement Framework - Stephen Umunna">
+  <meta name="twitter:description" content="Custom Python attribution framework. CTV + Display layering shortened time-to-signup by 5-7 days. The finding unlocked a major CTV budget expansion.">
+  <meta name="twitter:image" content="https://stephenumunna.com/assets/og-share.jpg">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+  <style>
+    /* ========================================
+       CSS VARIABLES - LIGHT / DARK / SYSTEM
+    ======================================== */
+    :root {
+      --bg: #fafafa;
+      --bg2: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --accent-border: #bfdbfe;
+      --green: #22c55e;
+      --green-soft: #ecfdf5;
+      --green-border: #a7f3d0;
+      --red: #ef4444;
+      --red-soft: #fef2f2;
+      --red-border: #fecaca;
+      --purple: #7c3aed;
+      --purple-soft: #f5f3ff;
+      --purple-border: #ddd6fe;
+      --nav-bg: rgba(255,255,255,.92);
+      --shadow: rgba(15,23,42,0.06);
+      --shadow-lg: rgba(15,23,42,0.1);
+      --counter-color: #059669;
+      --mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0a0f;
+      --bg2: #0f0f17;
+      --surface: #13131a;
+      --text: #e2e2e8;
+      --text-muted: #9898a8;
+      --text-faint: #5a5a6e;
+      --border: #1e1e2e;
+      --accent: #60a5fa;
+      --accent-soft: rgba(37,99,235,0.12);
+      --accent-border: #1e3a5f;
+      --green: #4ade80;
+      --green-soft: rgba(34,197,94,0.1);
+      --green-border: #14532d;
+      --red: #f87171;
+      --red-soft: rgba(239,68,68,0.1);
+      --red-border: #7f1d1d;
+      --purple: #a78bfa;
+      --purple-soft: rgba(124,58,237,0.1);
+      --purple-border: #3b1f6e;
+      --nav-bg: rgba(10,10,15,.85);
+      --shadow: rgba(0,0,0,0.3);
+      --shadow-lg: rgba(0,0,0,0.5);
+      --counter-color: #4ade80;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        --bg: #0a0a0f;
+        --bg2: #0f0f17;
+        --surface: #13131a;
+        --text: #e2e2e8;
+        --text-muted: #9898a8;
+        --text-faint: #5a5a6e;
+        --border: #1e1e2e;
+        --accent: #60a5fa;
+        --accent-soft: rgba(37,99,235,0.12);
+        --accent-border: #1e3a5f;
+        --green: #4ade80;
+        --green-soft: rgba(34,197,94,0.1);
+        --green-border: #14532d;
+        --red: #f87171;
+        --red-soft: rgba(239,68,68,0.1);
+        --red-border: #7f1d1d;
+        --purple: #a78bfa;
+        --purple-soft: rgba(124,58,237,0.1);
+        --purple-border: #3b1f6e;
+        --nav-bg: rgba(10,10,15,.85);
+        --shadow: rgba(0,0,0,0.3);
+        --shadow-lg: rgba(0,0,0,0.5);
+        --counter-color: #4ade80;
+      }
+    }
+
+    /* ========================================
+       RESET
+    ======================================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      transition: background .3s, color .3s;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ========================================
+       NAV
+    ======================================== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s, border-color .3s;
+    }
+
+    .nav-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 32px;
+      height: 56px; display: flex; align-items: center;
+    }
+
+    .nav-back {
+      font-size: 14px; font-weight: 500; color: var(--text-muted);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color .2s, transform .2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back:hover svg { transform: translateX(-2px); }
+    .nav-back svg { transition: transform .2s; flex-shrink: 0; }
+
+    .theme-toggle {
+      display: flex; align-items: center; margin-left: auto;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 100px; padding: 2px; gap: 0;
+      transition: background .3s, border-color .3s;
+    }
+    .theme-btn {
+      padding: 5px 11px; font-size: 12px; font-weight: 500;
+      color: var(--text-faint); background: transparent;
+      border: none; border-radius: 100px; cursor: pointer;
+      transition: color .2s, background .2s; font-family: inherit;
+      white-space: nowrap; line-height: 1; min-height: 28px;
+    }
+    .theme-btn:hover { color: var(--text-muted); }
+    .theme-btn.active {
+      color: var(--text); background: var(--surface);
+      box-shadow: 0 1px 3px var(--shadow);
+    }
+
+    /* ========================================
+       CONTENT
+    ======================================== */
+    .content { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+    /* ========================================
+       SCROLL REVEAL
+    ======================================== */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ========================================
+       HERO
+    ======================================== */
+    .hero { padding: 100px 0 48px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--accent);
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px); font-weight: 800;
+      line-height: 1.08; letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px; color: var(--text-muted); line-height: 1.7;
+      max-width: 720px;
+    }
+
+    /* ========================================
+       COUNTERS
+    ======================================== */
+    .counters {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; margin-top: 40px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .counter-cell {
+      background: var(--surface); padding: 28px 16px; text-align: center;
+      transition: background .3s;
+    }
+
+    .counter-value {
+      font-family: var(--mono); font-size: 28px; font-weight: 700;
+      color: var(--counter-color); letter-spacing: -0.02em;
+      line-height: 1.1; margin-bottom: 6px;
+    }
+
+    .counter-label {
+      font-size: 13px; font-weight: 600; color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .counter-detail {
+      font-size: 11px; color: var(--text-faint); font-weight: 500;
+    }
+
+    /* ========================================
+       SECTIONS
+    ======================================== */
+    .section { padding: 80px 0 0; }
+
+    .section-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: clamp(26px, 4vw, 36px); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 16px; color: var(--text-muted);
+      line-height: 1.75; max-width: 720px;
+    }
+
+    /* ========================================
+       STORY CARD
+    ======================================== */
+    .story-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px 36px;
+      margin-top: 28px; position: relative;
+      border-left: 4px solid var(--accent);
+      transition: background .3s, border-color .3s;
+    }
+    .story-card.is-problem { border-left-color: var(--red); }
+    .story-card.is-finding { border-left-color: var(--green); }
+
+    .story-card p {
+      font-size: 16px; color: var(--text-muted); line-height: 1.8;
+    }
+
+    .story-card p + p { margin-top: 16px; }
+
+    .story-card .highlight {
+      color: var(--text); font-weight: 600;
+    }
+
+    /* ========================================
+       METHOD - NUMBERED PIPELINE
+    ======================================== */
+    .pipeline { margin-top: 32px; }
+
+    .pipeline-step {
+      display: flex; gap: 20px; align-items: flex-start;
+      position: relative; padding-bottom: 28px;
+    }
+    .pipeline-step:last-child { padding-bottom: 0; }
+
+    .pipeline-step::before {
+      content: '';
+      position: absolute; left: 19px; top: 44px;
+      bottom: 0; width: 2px;
+      background: var(--border); transition: background .3s;
+    }
+    .pipeline-step:last-child::before { display: none; }
+
+    .pipeline-icon {
+      flex-shrink: 0; width: 40px; height: 40px;
+      border-radius: 12px; display: flex;
+      align-items: center; justify-content: center;
+      font-family: var(--mono);
+      font-size: 14px; font-weight: 800;
+      color: var(--accent); background: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      z-index: 1; transition: background .3s, border-color .3s;
+    }
+
+    .pipeline-body {
+      flex: 1; padding-top: 6px;
+    }
+
+    .pipeline-body h4 {
+      font-size: 16px; font-weight: 700; color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .pipeline-body p {
+      font-size: 15px; color: var(--text-muted); line-height: 1.65;
+    }
+
+    .pipeline-body code {
+      font-family: var(--mono); font-size: 13px;
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 1px 6px; border-radius: 4px;
+      color: var(--text);
+    }
+
+    /* ========================================
+       COHORT COMPARISON
+    ======================================== */
+    .cohort-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+
+    .cohort-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 22px 22px 24px;
+      transition: background .3s, border-color .3s, transform .2s, box-shadow .2s;
+      position: relative; overflow: hidden;
+    }
+    .cohort-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    .cohort-card.is-winner {
+      border-color: var(--green-border);
+      background: var(--green-soft);
+    }
+
+    .cohort-card.is-winner::after {
+      content: 'Winner';
+      position: absolute; top: 14px; right: 14px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--green); background: var(--surface);
+      border: 1px solid var(--green-border);
+      padding: 3px 8px; border-radius: 100px;
+    }
+
+    .cohort-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--text-faint);
+      margin-bottom: 6px;
+    }
+
+    .cohort-name {
+      font-size: 16px; font-weight: 800; color: var(--text);
+      letter-spacing: -0.01em; margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .cohort-bar-wrap {
+      margin-bottom: 14px;
+    }
+
+    .cohort-bar-track {
+      position: relative;
+      height: 10px;
+      background: var(--bg2);
+      border-radius: 999px;
+      overflow: hidden;
+      transition: background .3s;
+    }
+
+    .cohort-card.is-winner .cohort-bar-track {
+      background: rgba(34,197,94,0.18);
+    }
+
+    .cohort-bar-fill {
+      position: absolute; top: 0; left: 0;
+      height: 100%;
+      border-radius: 999px;
+      background: var(--text-faint);
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .cohort-card.is-winner .cohort-bar-fill {
+      background: var(--green);
+    }
+
+    .cohort-card.is-animated .cohort-bar-fill {
+      width: var(--bar-w);
+    }
+
+    .cohort-stat {
+      font-family: var(--mono); font-size: 22px; font-weight: 800;
+      color: var(--text); letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .cohort-card.is-winner .cohort-stat { color: var(--green); }
+
+    .cohort-stat-label {
+      font-size: 12px; color: var(--text-muted); line-height: 1.5;
+    }
+
+    /* ========================================
+       FINDING CALLOUT
+    ======================================== */
+    .finding {
+      margin-top: 32px; background: var(--green-soft);
+      border: 1px solid var(--green-border);
+      border-radius: 14px; padding: 32px 36px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .finding-headline {
+      font-family: var(--mono); font-size: 36px; font-weight: 800;
+      color: var(--counter-color); line-height: 1.15;
+      letter-spacing: -0.02em; margin-bottom: 10px;
+    }
+
+    .finding-body {
+      font-size: 16px; color: var(--text-muted); line-height: 1.75;
+    }
+    .finding-body strong { color: var(--text); }
+
+    /* ========================================
+       IMPACT BADGES
+    ======================================== */
+    .impact-badges {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 24px;
+    }
+
+    .badge {
+      display: inline-block; font-size: 13px; font-weight: 600;
+      color: var(--green); background: var(--green-soft);
+      border: 1px solid var(--green-border);
+      padding: 6px 14px; border-radius: 8px;
+      transition: background .3s, border-color .3s, color .3s;
+    }
+
+    /* ========================================
+       BUDGET EXPANSION
+    ======================================== */
+    .budget-wrap {
+      margin-top: 32px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px 32px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .budget-row {
+      display: flex; align-items: center; gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .budget-from, .budget-to {
+      display: flex; flex-direction: column;
+      flex: 1 1 140px;
+    }
+
+    .budget-amount-old {
+      font-family: var(--mono); font-size: 28px; font-weight: 800;
+      color: var(--red); letter-spacing: -0.02em;
+      line-height: 1.1; opacity: 0.7;
+      text-decoration: line-through;
+    }
+
+    .budget-amount-new {
+      font-family: var(--mono); font-size: 36px; font-weight: 800;
+      color: var(--counter-color); letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .budget-amount-label {
+      font-size: 12px; color: var(--text-faint);
+      font-weight: 500; margin-top: 4px;
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+
+    .budget-arrow {
+      color: var(--text-faint); font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .budget-delta {
+      font-family: var(--mono); font-size: 14px; font-weight: 700;
+      color: var(--accent); background: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      padding: 6px 12px; border-radius: 8px;
+      align-self: center; white-space: nowrap;
+    }
+
+    .budget-caption {
+      font-size: 14px; color: var(--text-muted);
+      line-height: 1.65; margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      transition: border-color .3s;
+    }
+    .budget-caption strong { color: var(--text); }
+
+    /* ========================================
+       WHY-IT-MATTERS GRID
+    ======================================== */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+
+    .why-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px 24px;
+      transition: background .3s, border-color .3s, transform .2s, box-shadow .2s;
+    }
+    .why-card:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px var(--shadow);
+    }
+
+    .why-card-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); margin-bottom: 14px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .why-card h4 {
+      font-size: 15px; font-weight: 700; color: var(--text);
+      margin-bottom: 8px; line-height: 1.35;
+    }
+
+    .why-card p {
+      font-size: 14px; color: var(--text-muted); line-height: 1.65;
+    }
+
+    /* ========================================
+       TECH STACK
+    ======================================== */
+    .stack-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+
+    .stack-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px 24px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .stack-card h4 {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--accent); margin-bottom: 12px;
+    }
+
+    .stack-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .stack-tag {
+      font-size: 13px; font-weight: 500; color: var(--text-muted);
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 5px 12px; border-radius: 6px;
+      font-family: var(--mono);
+      transition: background .3s, border-color .3s, color .3s;
+    }
+
+    /* ========================================
+       REUSABLE / HANDOFF CALLOUT
+    ======================================== */
+    .reuse-callout {
+      margin-top: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: background .3s, border-color .3s;
+    }
+
+    .reuse-icon {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--purple-soft);
+      border: 1px solid var(--purple-border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--purple);
+      font-weight: 800; font-size: 16px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .reuse-body { flex: 1; }
+
+    .reuse-title {
+      font-size: 13px; font-weight: 700; color: var(--text);
+      margin-bottom: 6px; text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .reuse-text {
+      font-size: 14px; color: var(--text-muted); line-height: 1.65;
+    }
+    .reuse-text strong { color: var(--text); }
+
+    /* ========================================
+       LINKS / NEXT-PAGE NAV
+    ======================================== */
+    .page-links {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-top: 40px;
+    }
+
+    .page-link {
+      display: flex; flex-direction: column; gap: 4px;
+      padding: 18px 20px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: background .3s, border-color .3s, transform .2s, box-shadow .2s;
+    }
+    .page-link:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px var(--shadow);
+    }
+
+    .page-link-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--text-faint);
+    }
+
+    .page-link-title {
+      font-size: 14px; font-weight: 700; color: var(--text);
+      line-height: 1.35;
+    }
+
+    .page-link-hint {
+      font-size: 12px; color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer {
+      margin-top: 80px; padding: 32px 0;
+      border-top: 1px solid var(--border);
+      text-align: center; font-size: 13px;
+      color: var(--text-faint);
+      transition: border-color .3s;
+    }
+
+    .footer a {
+      color: var(--accent); text-decoration: none;
+      transition: opacity .2s;
+    }
+    .footer a:hover { opacity: 0.7; }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 20px; }
+      .content { padding: 0 20px; }
+
+      .counters { grid-template-columns: repeat(2, 1fr); }
+
+      .hero { padding: 88px 0 32px; }
+      .hero h1 { font-size: clamp(28px, 7vw, 40px); }
+
+      .story-card { padding: 24px; }
+      .finding { padding: 24px; }
+      .finding-headline { font-size: 28px; }
+
+      .cohort-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: 1fr; }
+      .page-links { grid-template-columns: 1fr; }
+
+      .budget-wrap { padding: 22px 22px; }
+      .budget-row { gap: 12px; }
+      .budget-amount-new { font-size: 30px; }
+      .budget-amount-old { font-size: 22px; }
+      .budget-arrow { display: none; }
+
+      .pipeline-step { gap: 14px; }
+
+      .theme-btn { padding: 4px 8px; font-size: 11px; }
+    }
+
+    @media (max-width: 480px) {
+      .counters { grid-template-columns: 1fr 1fr; }
+      .counter-value { font-size: 22px; }
+      .counter-cell { padding: 20px 12px; }
+
+      .hero-subtitle { font-size: 16px; }
+      .finding-headline { font-size: 24px; }
+
+      .budget-delta { width: 100%; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { transition: none; }
+      .cohort-bar-fill { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../../" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M9.78 4.22a.75.75 0 0 1 0 1.06L7.06 8l2.72 2.72a.75.75 0 1 1-1.06 1.06L5.22 8.53a.75.75 0 0 1 0-1.06l3.5-3.5a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd"/>
+        </svg>
+        <span>Stephen Umunna &middot; Portfolio</span>
+      </a>
+      <div class="theme-toggle" role="radiogroup" aria-label="Color theme">
+        <button class="theme-btn active" data-theme-btn="light" aria-label="Light theme">Light</button>
+        <button class="theme-btn" data-theme-btn="system" aria-label="System theme">System</button>
+        <button class="theme-btn" data-theme-btn="dark" aria-label="Dark theme">Dark</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="content">
+
+    <!-- ============ HERO ============ -->
+    <header class="hero reveal">
+      <div class="hero-badge">Causal IQ &middot; Sr. Account Ops Manager &middot; Built for Thomas J. Henry</div>
+      <h1>CTV Measurement Framework</h1>
+      <p class="hero-subtitle">How layering CTV with Display reduced time-to-signup by 5-7 days for a single client - and unlocked a major CTV budget expansion. The codebase was handed off to Causal IQ at my departure for continued use across the broader client book.</p>
+
+      <div class="counters">
+        <div class="counter-cell">
+          <div class="counter-value" data-static="5-7 days">5-7 days</div>
+          <div class="counter-label">Faster Time-to-Signup</div>
+          <div class="counter-detail">CTV + Display vs. either alone</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-static="Book-wide">Book-wide</div>
+          <div class="counter-label">Framework Reuse</div>
+          <div class="counter-detail">Generalized across the client book</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-static="Handed Off" style="font-size:20px">Handed Off</div>
+          <div class="counter-label">Codebase to Causal IQ</div>
+          <div class="counter-detail">For continued use post-departure</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-static="Python" style="font-size:24px">Python</div>
+          <div class="counter-label">Built From Scratch</div>
+          <div class="counter-detail">Pandas &middot; custom attribution</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ THE PROBLEM ============ -->
+    <section class="section reveal" id="problem">
+      <div class="section-label">The Problem</div>
+      <h2>Does CTV actually accelerate conversion - or steal credit from Display?</h2>
+
+      <div class="story-card is-problem">
+        <p>A client was running <span class="highlight">Display-only campaigns</span> and considering adding CTV. The question was simple to ask and hard to answer: <span class="highlight">how long does it take a typical user to convert</span> when they are exposed to (a) Display only, (b) CTV only, or (c) CTV + Display layered together?</p>
+        <p>And the harder follow-up: <span class="highlight">does CTV actually accelerate conversion, or just steal credit from Display</span> in last-click attribution? Off-the-shelf measurement tools could not answer that for a programmatic-direct law firm campaign. Last-click reporting credited Display by default because CTV is unclickable. The answer had to be built.</p>
+      </div>
+    </section>
+
+    <!-- ============ THE METHOD ============ -->
+    <section class="section reveal" id="method">
+      <div class="section-label">The Method</div>
+      <h2>Cohort the users. Measure time-to-signup. Verify against conversion data.</h2>
+      <p class="section-desc">A custom Python framework that bucketed users by first exposure type, measured time-to-signup for each cohort, and closed the loop against the client's first-party conversion data so every conversion could be traced back to an ad exposure.</p>
+
+      <div class="pipeline">
+        <div class="pipeline-step">
+          <div class="pipeline-icon">01</div>
+          <div class="pipeline-body">
+            <h4>Bucket users by first exposure type</h4>
+            <p>Three cohorts: <code>Display-only</code>, <code>CTV-only</code>, and <code>CTV + Display</code> layered. Cohort assignment was based on the first ad served, not the last - which is where most attribution tools fail.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="pipeline-icon">02</div>
+          <div class="pipeline-body">
+            <h4>Measure time-to-signup for each cohort</h4>
+            <p>From the first impression served to the conversion event. The signup itself was the dependent variable - not impressions, not clicks. What mattered was how many days passed before a real customer outcome.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="pipeline-icon">03</div>
+          <div class="pipeline-body">
+            <h4>Control for audience overlap, frequency, and recency</h4>
+            <p>Same audience targeting across all three cohorts. Frequency-capped consistently. Recency windows aligned. Without these controls, the comparison would be apples-to-oranges and the finding would not be defensible.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="pipeline-icon">04</div>
+          <div class="pipeline-body">
+            <h4>Close the loop with first-party conversion data</h4>
+            <p>Client-provided log-level conversion data was joined back to ad exposure logs. Every signup was verified against the client's actual conversion records - not an attribution pixel guess. This is the part most agencies skip.</p>
+          </div>
+        </div>
+
+        <div class="pipeline-step">
+          <div class="pipeline-icon">05</div>
+          <div class="pipeline-body">
+            <h4>Generate weekly cohort reports for the AM team</h4>
+            <p>Outputs were formatted for the Account Manager to hand to the client without a data scientist in the loop. Built in Python with Pandas, custom attribution logic, and DSP API integrations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE COHORTS ============ -->
+    <section class="section reveal" id="cohorts">
+      <div class="section-label">The Comparison</div>
+      <h2>Three cohorts. One question.</h2>
+      <p class="section-desc">Bars below represent relative time-to-signup. Shorter is better. The layered cohort beat both single-channel cohorts by a meaningful margin.</p>
+
+      <div class="cohort-grid">
+        <div class="cohort-card" data-cohort style="--bar-w: 100%">
+          <div class="cohort-label">Cohort A</div>
+          <div class="cohort-name">Display-only</div>
+          <div class="cohort-bar-wrap">
+            <div class="cohort-bar-track">
+              <div class="cohort-bar-fill"></div>
+            </div>
+          </div>
+          <div class="cohort-stat">Baseline</div>
+          <div class="cohort-stat-label">Single-channel exposure. Used as the reference point for all comparisons.</div>
+        </div>
+
+        <div class="cohort-card" data-cohort style="--bar-w: 115%">
+          <div class="cohort-label">Cohort B</div>
+          <div class="cohort-name">CTV-only</div>
+          <div class="cohort-bar-wrap">
+            <div class="cohort-bar-track">
+              <div class="cohort-bar-fill"></div>
+            </div>
+          </div>
+          <div class="cohort-stat">Longer</div>
+          <div class="cohort-stat-label">Longer consideration cycle than Display-only. CTV alone is awareness-heavy and slower to convert.</div>
+        </div>
+
+        <div class="cohort-card is-winner" data-cohort style="--bar-w: 62%">
+          <div class="cohort-label">Cohort C</div>
+          <div class="cohort-name">CTV + Display layered</div>
+          <div class="cohort-bar-wrap">
+            <div class="cohort-bar-track">
+              <div class="cohort-bar-fill"></div>
+            </div>
+          </div>
+          <div class="cohort-stat">5-7 days faster</div>
+          <div class="cohort-stat-label">Shorter time-to-signup than either channel alone. The combination compounded - it did not just average.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE FINDING ============ -->
+    <section class="section reveal" id="finding">
+      <div class="section-label">The Finding</div>
+      <h2>The combination accelerated conversion meaningfully.</h2>
+
+      <div class="story-card is-finding">
+        <p><span class="highlight">CTV-only had a longer time-to-signup than Display-only</span> - a longer consideration cycle, as you would expect from a non-clickable awareness channel.</p>
+        <p>But <span class="highlight">CTV + Display together had 5-7 days shorter time-to-signup</span> than either channel alone. The two channels were not just additive in reach - they were <span class="highlight">compounding in conversion velocity</span>. CTV primed the audience, Display closed it, and the combination shortened the funnel by nearly a full week.</p>
+      </div>
+
+      <div class="finding">
+        <div class="finding-headline">5-7 days shorter</div>
+        <div class="finding-body">When CTV was layered with Display, the average user signed up <strong>5-7 days sooner</strong> than they did under either channel alone. That is the kind of measurement most ad ops teams cannot produce - and it justified the budget decision below.</div>
+      </div>
+    </section>
+
+    <!-- ============ THE IMPACT ============ -->
+    <section class="section reveal" id="impact">
+      <div class="section-label">The Impact</div>
+      <h2>The number that moved a budget.</h2>
+      <p class="section-desc">The anchor client expanded their CTV budget once the cohort report cleared the question of whether CTV was actually moving the needle. The framework was then generalized to apply across the broader Causal IQ client book.</p>
+
+      <div class="budget-wrap">
+        <div class="budget-row">
+          <div class="budget-from">
+            <div class="budget-amount-old">Slower</div>
+            <div class="budget-amount-label">Display-only</div>
+          </div>
+          <div class="budget-arrow">&rarr;</div>
+          <div class="budget-to">
+            <div class="budget-amount-new">5-7 days</div>
+            <div class="budget-amount-label">faster with CTV + Display</div>
+          </div>
+          <div class="budget-delta">Faster time-to-signup</div>
+        </div>
+        <div class="budget-caption">
+          <strong>Thomas J. Henry</strong> - the legal anchor client - expanded their CTV investment after the cohort analysis showed CTV + Display cut time-to-signup by <strong>5-7 days</strong>. The measurement framework was built for one client and reused across the book.
+        </div>
+      </div>
+
+      <div class="impact-badges">
+        <span class="badge">5-7 days faster time-to-signup</span>
+        <span class="badge">Unlocked the CTV budget</span>
+        <span class="badge">Generalized across the client book</span>
+        <span class="badge">Codebase handed off at departure</span>
+      </div>
+    </section>
+
+    <!-- ============ WHY IT MATTERS ============ -->
+    <section class="section reveal" id="why">
+      <div class="section-label">Why It Matters</div>
+      <h2>Most agencies cannot answer this with quantitative rigor.</h2>
+      <p class="section-desc">Cross-channel measurement is hard. The "does CTV accelerate conversion" question gets asked at every quarterly business review - and most teams answer it with a story instead of a number.</p>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h4>Off-the-shelf attribution does not solve this</h4>
+          <p>Last-click reporting credits Display by default because CTV is unclickable. MMM is too slow and too aggregate to answer at the campaign level. Lift studies require a holdout most clients will not budget for.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </div>
+          <h4>This is what Innovid, IAS, DoubleVerify, and LiveRamp sell as products</h4>
+          <p>Cross-channel attribution and incrementality measurement are paid SaaS categories. I built a focused version of one in Python for a single anchor client - and then made it portable across the rest of the book.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+          </div>
+          <h4>It persisted after I left</h4>
+          <p>I handed the codebase to Causal IQ at my departure. The framework continues to be used on the broader client book. That is the kind of operator most teams need: builds the tool, runs the business with it, leaves it behind in working condition.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+          </div>
+          <h4>Built once. Reused across accounts.</h4>
+          <p>The framework was originally scoped for a single legal client. The methodology generalized: any account with sufficient log-level data and a closed-loop conversion event could be run through the same cohort + time-to-conversion pipeline.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT'S REUSABLE ============ -->
+    <section class="section reveal" id="reusable">
+      <div class="section-label">What's Reusable</div>
+      <h2>The methodology is portable. The codebase is not mine.</h2>
+      <p class="section-desc">I no longer own the codebase - it was handed off to Causal IQ. The methodology, however, is fully portable. Anyone with log-level DSP exports and a closed-loop conversion event can apply the same cohort + time-to-signup analysis to their own book.</p>
+
+      <div class="reuse-callout">
+        <div class="reuse-icon">&#x21BA;</div>
+        <div class="reuse-body">
+          <div class="reuse-title">Open Methodology, Handed-off Codebase</div>
+          <div class="reuse-text">The framework is documented as part of my portfolio. The Python implementation lives at Causal IQ and continues to be used on the broader client book. If you want to apply the same approach internally - <strong>bucket by first exposure, measure time-to-conversion, verify against client conversion data, generate cohort deltas</strong> - that is a repeatable pattern, not a proprietary tool.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TECH STACK ============ -->
+    <section class="section reveal" id="stack">
+      <div class="section-label">Tech Stack</div>
+      <h2>What it was built on.</h2>
+      <p class="section-desc">A focused Python stack. No managed attribution vendor in the loop - just log-level data, Pandas, and a closed-loop verification path against the client's first-party conversion data.</p>
+
+      <div class="stack-grid">
+        <div class="stack-card">
+          <h4>Language &amp; Data</h4>
+          <div class="stack-tags">
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">Pandas</span>
+            <span class="stack-tag">NumPy</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h4>Attribution Layer</h4>
+          <div class="stack-tags">
+            <span class="stack-tag">Custom cohorting</span>
+            <span class="stack-tag">Time-to-conversion</span>
+            <span class="stack-tag">Device-graph joins</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h4>DSP Integrations</h4>
+          <div class="stack-tags">
+            <span class="stack-tag">DV360 API</span>
+            <span class="stack-tag">The Trade Desk API</span>
+            <span class="stack-tag">CTV exchange logs</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <h4>Closed-Loop Verification</h4>
+          <div class="stack-tags">
+            <span class="stack-tag">Client conversion logs</span>
+            <span class="stack-tag">Conversion joins</span>
+            <span class="stack-tag">Weekly cohort reports</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KEEP READING ============ -->
+    <section class="section reveal" id="next">
+      <div class="section-label">Keep Exploring</div>
+      <h2>More from the portfolio.</h2>
+
+      <div class="page-links">
+        <a class="page-link" href="../automations/">
+          <span class="page-link-label">Causal IQ</span>
+          <span class="page-link-title">Automation Suite</span>
+          <span class="page-link-hint">5 Python tools &middot; company-wide standard</span>
+        </a>
+        <a class="page-link" href="../../#projects">
+          <span class="page-link-label">Index</span>
+          <span class="page-link-title">All Projects</span>
+          <span class="page-link-hint">Stanford BIOE 230 &middot; CartoChrome &middot; CourtVision</span>
+        </a>
+        <a class="page-link" href="../../">
+          <span class="page-link-label">Home</span>
+          <span class="page-link-title">Stephen Umunna</span>
+          <span class="page-link-hint">Portfolio &middot; AdTech operations &amp; engineering</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <p>Stephen Umunna &middot; AdTech operations and engineering &middot; <a href="../../">Portfolio home</a></p>
+    </footer>
+
+  </main>
+
+  <script>
+    /* ========================================
+       THEME TOGGLE
+    ======================================== */
+    (function() {
+      var saved = localStorage.getItem('portfolio-theme') || 'light';
+      var ThemeToggle = {
+        set: function(theme) {
+          localStorage.setItem('portfolio-theme', theme);
+          document.documentElement.setAttribute('data-theme', theme);
+          document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+            btn.classList.toggle('active', btn.getAttribute('data-theme-btn') === theme);
+            btn.setAttribute('aria-selected', btn.getAttribute('data-theme-btn') === theme);
+          });
+        }
+      };
+      ThemeToggle.set(saved);
+      document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          ThemeToggle.set(btn.getAttribute('data-theme-btn'));
+        });
+      });
+    })();
+
+    /* ========================================
+       SCROLL REVEAL (IntersectionObserver)
+    ======================================== */
+    (function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if (!reveals.length) return;
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(function(el) { observer.observe(el); });
+    })();
+
+    /* ========================================
+       COHORT BAR ANIMATION
+    ======================================== */
+    (function() {
+      var cards = document.querySelectorAll('[data-cohort]');
+      if (!cards.length) return;
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            // Stagger the bars
+            cards.forEach(function(card, i) {
+              setTimeout(function() {
+                card.classList.add('is-animated');
+              }, i * 180);
+            });
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(cards[0]);
+    })();
+  </script>
+</body>
+</html>

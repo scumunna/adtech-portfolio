@@ -1,0 +1,80 @@
+STEPHEN UMUNNA
+Director of Ad Operations | AI-Driven Automation & Programmatic Media
+scumunna@gmail.com | (323) 917-1875 | Los Angeles, CA
+LinkedIn: linkedin.com/in/stephenumunna | Portfolio: stephenumunna.com | GitHub: github.com/scumunna
+
+
+EXECUTIVE SUMMARY
+Ad-operations leader who runs lean, high-margin teams by putting AI and automation to work - and I'm hands-on enough to deploy it myself, not just brief a vendor. 7+ years across DV360, The Trade Desk, Xandr, Yahoo, Zeta, Basis, and Quantcast. Managed up to $900K/month, ranked top 2 of 22 in profitability, and the AI-driven automation I rolled out became the company standard - 60x faster reporting and 60% less account-management time. Then ran an AdTech platform as CTO/COO: a $300K-$500K/month P&L across 200+ accounts at 85% gross margin with a 15-person team, using AI, automation, and a first-party CDP (21M+ profiles, activation across 6 DSPs) to do the work of a much larger org. Direct campaign work with CDC, Hertz, Grammarly, Orangetheory, AAA Auto, and Floor & Decor.
+
+
+CORE COMPETENCIES
+Ad Operations & Programmatic: Programmatic Advertising, DSP Strategy (DV360, TTD, Xandr), Trafficking, PMP/PG, Audience Activation, First-Party Data, Customer Data Platform (CDP), Retail/Commerce Media
+AI-Enabled Operations: AI Workflow Automation, Reporting & Dashboard Automation, Pacing & Overspend Controls, AI Agents (Claude, MCP), Prompt Engineering, Process Optimization
+Account & Client Management: Account Management, Client Services & QBRs, Campaign Management, Pacing, Onboarding, Renewals & Retention
+Measurement & Leadership: ROAS, CPA, Attribution, Closed-Loop & CTV Measurement, P&L Ownership, Team Leadership, Margin Optimization
+
+
+PROFESSIONAL EXPERIENCE
+Confidential AdTech Startup | Los Angeles, CA
+Regulated-industry audience data, retail media, and programmatic advertising platform (15-person startup, $3.6M-6M ARR)
+Chief Technology Officer & Chief Operating Officer (CTO/COO) | 04/2025 - 03/2026
+Owned technology, ad operations, and the P&L - and used AI and automation to run a 15-person team like a much larger org.
+* Owned a $300K-$500K/month P&L across 200+ active accounts and 50+ retail clients, and held gross margins above 85% - nearly double the ~45% industry norm - by automating the manual work: IO generation, reporting, trafficking, QA, billing, and client comms.
+
+* Cut account-management time 60% with AI-driven automation - interactive dashboards, pacing alerts, overspend auto-pause, and renewal-ready summaries - plus AI prospecting agents; daily Claude, Codex, and Cursor use across the team.
+
+* Held 85% client retention with zero long-term contracts; cleared the 3x ROAS minimum on 80% of campaigns and hit 3x-55x for advertisers, in a regulated vertical where Google and Meta were largely off the table.
+
+* Sat at the center of Product, Engineering, Sales, Ad Ops, and Customer Success: ran weekly syncs and QBRs with top accounts, turned advertiser feedback into the product roadmap, and ran both managed-service and self-service workflows.
+
+* Stood up a first-party customer data platform (CDP): 21M+ consumer profiles, 1B+ behavioral data points, and 6 DSP integrations - including activation by a major DSP partner for pharmaceutical campaigns - with a custom pixel and 3 POS integrations for closed-loop attribution.
+
+* Turned the CDP into activation: built audiences from first-party purchase behavior, layered US-Census demographics, and pushed one segment definition to all 6 DSPs - the post-cookie capability advertisers are short on.
+
+* Launched a shoppable ad product adopted by 50 clients - four IAB sizes auto-generated from product catalogs and re-ranked in real time on browsing behavior, at 1.6% CTR against a 0.5% benchmark; setup dropped from 4 hours to 30 minutes.
+
+* Stood up five automated revenue streams - transaction fees, programmatic ad spend, premium listings, subscriptions, and sponsored placements - with daily invoicing and collections that ran without a finance hire.
+
+Causal IQ | Los Angeles, CA
+Programmatic advertising platform serving agencies and performance advertisers (mid-size AdTech firm)
+Notable clients: CDC, Hertz, Grammarly, Orangetheory, Primo Water, AAA Auto, PMI Colombia (Philip Morris International), Thomas J. Henry, Party City, Floor & Decor, and national political campaign teams.
+Senior Account Operations Manager | 11/2022 - 03/2025
+* Managed up to $900K/month across DV360, The Trade Desk, Yahoo, Xandr, and YouTube. Held 75-83% account-level margins. Ranked top 2 in profitability out of 22 managers.
+
+* Rolled out a 4-tool automation suite - bid optimization, audience insights, site-list management, and reporting - that became the company standard. 60x faster reporting, optimization cut from 4 hours to 5 minutes, zero brand-safety incidents across 8-10 DSPs, and roughly 2,000 analyst hours/month freed across the team.
+
+* Grew Floor & Decor from roughly $10K to $250K/month by layering native onto display, and expanded Thomas J. Henry's budget by stacking CTV under display.
+
+* Built a custom CTV measurement framework comparing time-to-conversion across Display-only, CTV-only, and CTV+Display. The layered structure cut time-to-signup 5-7 days for Thomas J. Henry - the data that unlocked their CTV budget. Handed off at departure.
+
+Account Operations Manager | 06/2019 - 11/2022
+* Ranked #2 in profitability out of 14 managers for 2 consecutive years while managing 100+ concurrent line items across multiple DSPs; built automation teammates reused for pacing, QA, and client-ready exports.
+
+RE/MAX of Naperville and RE/MAX Enterprises | Naperville, IL
+Top-producing RE/MAX real estate franchise with 120+ agents
+Director of Research and Technology | 09/2014 - 06/2019
+* Built marketing automation and competitive analysis tools for 120 agents, contributing to a 10% increase in agent recruitment over 12 months.
+
+DoveMed Ltd. | Champaign, IL
+Medical content platform serving healthcare professionals and consumers (10-person team Stephen led)
+Director of Operations (North America) | 03/2015 - 11/2018 (part-time, concurrent with RE/MAX)
+* Led a 10-person engineering and content team across the US and Poland; grew a global health information platform from 2,000 to 500,000 monthly active users in 14 months with near-zero paid marketing.
+
+
+TECHNICAL SKILLS
+AdTech Platforms: DV360, The Trade Desk, Xandr, Yahoo, Zeta, Basis, Quantcast, YouTube Ads (DV360), Google Campaign Manager, Sizmek.
+AI & Automation: Claude, Codex, Cursor, Copilot, Model Context Protocol (MCP), prompt engineering; workflow and reporting automation; Python, SQL, Pandas.
+Analytics: Tableau, Google Analytics 4, Google Tag Manager, Looker Studio, Ahrefs.
+Data & Platforms: PostgreSQL, Redis, AWS, DSP APIs, custom pixel tracking, POS integrations.
+
+
+EDUCATION
+Bachelor of Science, Molecular and Cellular Biology | University of Illinois at Urbana-Champaign | Graduated May 2012
+
+
+PORTFOLIO
+Stanford BIOE 230 Interactive Platform | bioe230-interactive.vercel.app
+Built a 180-module learning platform adopted by Stanford Bioengineering: interactive visualizations, an AI tutor, and 960 practice problems.
+CartoChrome Healthcare Access Score | cartochrome.com
+Integrated 21 public data sources into a healthcare access score for every US ZIP code - 4M+ provider records and automated data pipelines.

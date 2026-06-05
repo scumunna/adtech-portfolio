@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CP6VN2C604"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CP6VN2C604');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CourtVision - NBA Analytics Platform - Stephen Umunna</title>
+  <meta name="description" content="Full-stack NBA analytics with live scores, 78 years of history, and $0/month infrastructure. 441+ pages, 90+ components, 6 data sources. Built in 3 days.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23f97316'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- Theme Variables --- */
+    :root {
+      --bg: #fafafa;
+      --bg2: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --shadow: rgba(15, 23, 42, 0.06);
+      --shadow-lg: rgba(15, 23, 42, 0.12);
+      --nav-bg: rgba(255, 255, 255, 0.92);
+      --accent: #f97316;
+      --accent2: #4f8cff;
+      --hero-counter-bg: rgba(241, 245, 249, 0.8);
+      --hero-counter-border: rgba(15, 23, 42, 0.04);
+      --card-border: rgba(15, 23, 42, 0.08);
+      --story-card-bg: rgba(241, 245, 249, 0.6);
+      --tag-bg: rgba(15, 23, 42, 0.04);
+      --tag-border: rgba(15, 23, 42, 0.08);
+      --footer-bg: #f1f5f9;
+      --arch-blue-text: #2563eb;
+      --arch-blue-bg: rgba(37, 99, 235, 0.06);
+      --arch-blue-border: rgba(37, 99, 235, 0.15);
+      --arch-blue-fill: rgba(37, 99, 235, 0.15);
+      --arch-blue-stroke: rgba(37, 99, 235, 0.4);
+      --arch-blue-fill2: rgba(37, 99, 235, 0.08);
+      --arch-blue-stroke2: rgba(37, 99, 235, 0.25);
+      --arch-line-stroke: rgba(37, 99, 235, 0.35);
+      --arch-line-right-stroke: rgba(249, 115, 22, 0.35);
+      --timeline-bar-bg: rgba(15, 23, 42, 0.06);
+      --nav-border: rgba(249, 115, 22, 0.12);
+      --white-heading: #0f172a;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0c0c12;
+      --bg2: #101018;
+      --surface: #16161f;
+      --text: #e8e8f0;
+      --text-muted: #9898a8;
+      --text-faint: #5a5a6e;
+      --border: #22222e;
+      --shadow: rgba(0, 0, 0, 0.3);
+      --shadow-lg: rgba(0, 0, 0, 0.5);
+      --nav-bg: rgba(12, 12, 18, 0.85);
+      --hero-counter-bg: rgba(22, 22, 31, 0.8);
+      --hero-counter-border: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.06);
+      --story-card-bg: rgba(22, 22, 31, 0.6);
+      --tag-bg: rgba(255, 255, 255, 0.04);
+      --tag-border: rgba(255, 255, 255, 0.08);
+      --footer-bg: #0a0a10;
+      --arch-blue-text: #93b8ff;
+      --arch-blue-bg: rgba(79, 140, 255, 0.06);
+      --arch-blue-border: rgba(79, 140, 255, 0.15);
+      --arch-blue-fill: rgba(79, 140, 255, 0.15);
+      --arch-blue-stroke: rgba(79, 140, 255, 0.4);
+      --arch-blue-fill2: rgba(79, 140, 255, 0.08);
+      --arch-blue-stroke2: rgba(79, 140, 255, 0.25);
+      --arch-line-stroke: rgba(79, 140, 255, 0.35);
+      --arch-line-right-stroke: rgba(249, 115, 22, 0.35);
+      --timeline-bar-bg: rgba(255, 255, 255, 0.04);
+      --nav-border: rgba(249, 115, 22, 0.12);
+      --white-heading: #ffffff;
+    }
+
+    [data-theme="system"] {
+      --bg: #fafafa;
+      --bg2: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --shadow: rgba(15, 23, 42, 0.06);
+      --shadow-lg: rgba(15, 23, 42, 0.12);
+      --nav-bg: rgba(255, 255, 255, 0.92);
+      --hero-counter-bg: rgba(241, 245, 249, 0.8);
+      --hero-counter-border: rgba(15, 23, 42, 0.04);
+      --card-border: rgba(15, 23, 42, 0.08);
+      --story-card-bg: rgba(241, 245, 249, 0.6);
+      --tag-bg: rgba(15, 23, 42, 0.04);
+      --tag-border: rgba(15, 23, 42, 0.08);
+      --footer-bg: #f1f5f9;
+      --arch-blue-text: #2563eb;
+      --arch-blue-bg: rgba(37, 99, 235, 0.06);
+      --arch-blue-border: rgba(37, 99, 235, 0.15);
+      --arch-blue-fill: rgba(37, 99, 235, 0.15);
+      --arch-blue-stroke: rgba(37, 99, 235, 0.4);
+      --arch-blue-fill2: rgba(37, 99, 235, 0.08);
+      --arch-blue-stroke2: rgba(37, 99, 235, 0.25);
+      --arch-line-stroke: rgba(37, 99, 235, 0.35);
+      --arch-line-right-stroke: rgba(249, 115, 22, 0.35);
+      --timeline-bar-bg: rgba(15, 23, 42, 0.06);
+      --nav-border: rgba(249, 115, 22, 0.12);
+      --white-heading: #0f172a;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        --bg: #0c0c12;
+        --bg2: #101018;
+        --surface: #16161f;
+        --text: #e8e8f0;
+        --text-muted: #9898a8;
+        --text-faint: #5a5a6e;
+        --border: #22222e;
+        --shadow: rgba(0, 0, 0, 0.3);
+        --shadow-lg: rgba(0, 0, 0, 0.5);
+        --nav-bg: rgba(12, 12, 18, 0.85);
+        --hero-counter-bg: rgba(22, 22, 31, 0.8);
+        --hero-counter-border: rgba(255, 255, 255, 0.04);
+        --card-border: rgba(255, 255, 255, 0.06);
+        --story-card-bg: rgba(22, 22, 31, 0.6);
+        --tag-bg: rgba(255, 255, 255, 0.04);
+        --tag-border: rgba(255, 255, 255, 0.08);
+        --footer-bg: #0a0a10;
+        --arch-blue-text: #93b8ff;
+        --arch-blue-bg: rgba(79, 140, 255, 0.06);
+        --arch-blue-border: rgba(79, 140, 255, 0.15);
+        --arch-blue-fill: rgba(79, 140, 255, 0.15);
+        --arch-blue-stroke: rgba(79, 140, 255, 0.4);
+        --arch-blue-fill2: rgba(79, 140, 255, 0.08);
+        --arch-blue-stroke2: rgba(79, 140, 255, 0.25);
+        --arch-line-stroke: rgba(79, 140, 255, 0.35);
+        --arch-line-right-stroke: rgba(249, 115, 22, 0.35);
+        --timeline-bar-bg: rgba(255, 255, 255, 0.04);
+        --nav-border: rgba(249, 115, 22, 0.12);
+        --white-heading: #ffffff;
+      }
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding-top: 56px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* --- Nav --- */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--nav-border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-faint);
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--accent); }
+    .nav-back svg { flex-shrink: 0; }
+    .nav-back-label { color: var(--text); font-weight: 600; }
+
+    /* --- Theme Toggle --- */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 2px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .theme-toggle-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 28px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text-faint);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      padding: 0;
+    }
+
+    .theme-toggle-btn:hover {
+      color: var(--text-muted);
+      background: var(--tag-bg);
+    }
+
+    .theme-toggle-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 1px 3px rgba(249, 115, 22, 0.3);
+    }
+
+    .theme-toggle-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* --- Sections --- */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white-heading);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      transition: color 0.3s;
+    }
+
+    .section-desc {
+      font-size: 15px;
+      color: var(--text-faint);
+      line-height: 1.75;
+      max-width: 680px;
+    }
+
+    /* --- Hero --- */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 24px 0;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(249, 115, 22, 0.08);
+      border: 1px solid rgba(249, 115, 22, 0.25);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      box-shadow: 0 0 20px rgba(249, 115, 22, 0.1);
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.6); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(249, 115, 22, 0); }
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--white-heading);
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      transition: color 0.3s;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-faint);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .hero-subtitle strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      background: var(--accent);
+      padding: 12px 28px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 12px rgba(249, 115, 22, 0.3);
+    }
+
+    .hero-cta:hover {
+      background: #ea6c0a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+    }
+
+    .hero-cta svg {
+      transition: transform 0.2s;
+    }
+
+    .hero-cta:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* --- Hero Counter Row --- */
+    .hero-counters {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    .hero-counter {
+      padding: 28px 12px;
+      text-align: center;
+      background: var(--hero-counter-bg);
+      border: 1px solid var(--hero-counter-border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .hero-counter:first-child {
+      border-radius: 12px 0 0 12px;
+    }
+
+    .hero-counter:last-child {
+      border-radius: 0 12px 12px 0;
+    }
+
+    .hero-counter-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--white-heading);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+
+    .hero-counter-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* --- Orange Divider --- */
+    .hero-divider {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 2px;
+    }
+
+    .hero-divider-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent);
+      border-radius: 1px;
+      opacity: 0.5;
+    }
+
+    /* --- Story Section --- */
+    .story-section {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    .story-card {
+      background: var(--story-card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 32px 32px 32px 28px;
+      margin-top: 24px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .story-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .story-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* --- Screenshot Section --- */
+    .screenshot-section {
+      padding-bottom: 64px;
+    }
+
+    .screenshot-card {
+      margin-top: 24px;
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.4s ease, background 0.3s, border-color 0.3s;
+      cursor: default;
+    }
+
+    .screenshot-card:hover {
+      box-shadow: 0 8px 40px rgba(249, 115, 22, 0.12), 0 0 0 1px rgba(249, 115, 22, 0.15);
+    }
+
+    .screenshot-card img {
+      width: 100%;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .screenshot-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .screenshot-caption {
+      padding: 14px 20px;
+      font-size: 13px;
+      color: var(--text-faint);
+      text-align: center;
+      border-top: 1px solid var(--card-border);
+      transition: border-color 0.3s;
+    }
+
+    /* --- Features Grid --- */
+    .features-section {
+      padding-bottom: 64px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .feature-grid-last-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: calc(66.666% - 5px);
+      margin: 14px auto 0;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s, box-shadow 0.3s, background 0.3s;
+      cursor: default;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(249, 115, 22, 0.4);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.08);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 14px;
+      color: var(--accent);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) translateY(-2px);
+    }
+
+    .feature-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white-heading);
+      margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+
+    .feature-card p {
+      font-size: 13px;
+      color: var(--text-faint);
+      line-height: 1.55;
+    }
+
+    /* --- Timeline Section --- */
+    .timeline-section {
+      padding-bottom: 64px;
+    }
+
+    .timeline-track {
+      margin-top: 32px;
+      position: relative;
+    }
+
+    .timeline-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      background: var(--timeline-bar-bg);
+      transition: background 0.3s;
+    }
+
+    .timeline-bar-seg {
+      height: 100%;
+      border-radius: 3px;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .timeline-bar-seg.active {
+      transform: scaleX(1);
+    }
+
+    .timeline-bar-seg:nth-child(1) {
+      background: var(--accent2);
+      transition-delay: 0s;
+    }
+
+    .timeline-bar-seg:nth-child(2) {
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      transition-delay: 0.8s;
+    }
+
+    .timeline-bar-seg:nth-child(3) {
+      background: var(--accent);
+      transition-delay: 1.6s;
+    }
+
+    .timeline-days {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .timeline-day-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s, border-color 0.3s;
+    }
+
+    .timeline-day-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-day-card:nth-child(1) { transition-delay: 0.3s; }
+    .timeline-day-card:nth-child(2) { transition-delay: 1.1s; }
+    .timeline-day-card:nth-child(3) { transition-delay: 1.9s; }
+
+    .timeline-day-card:nth-child(1) { border-top: 2px solid var(--accent2); }
+    .timeline-day-card:nth-child(2) { border-top: 2px solid #a070e0; }
+    .timeline-day-card:nth-child(3) { border-top: 2px solid var(--accent); }
+
+    .timeline-day-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .timeline-day-card:nth-child(1) .timeline-day-label { color: var(--accent2); }
+    .timeline-day-card:nth-child(2) .timeline-day-label { color: #a070e0; }
+    .timeline-day-card:nth-child(3) .timeline-day-label { color: var(--accent); }
+
+    .timeline-day-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white-heading);
+      margin-bottom: 14px;
+      transition: color 0.3s;
+    }
+
+    .timeline-day-list {
+      list-style: none;
+    }
+
+    .timeline-day-list li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 13px;
+      color: var(--text-faint);
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+
+    .timeline-day-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+    }
+
+    .timeline-day-card:nth-child(1) .timeline-day-list li::before { background: var(--accent2); }
+    .timeline-day-card:nth-child(2) .timeline-day-list li::before { background: #a070e0; }
+    .timeline-day-card:nth-child(3) .timeline-day-list li::before { background: var(--accent); }
+
+    /* --- Architecture Section --- */
+    .arch-section {
+      padding-bottom: 64px;
+    }
+
+    .arch-diagram {
+      margin-top: 32px;
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 40px 32px;
+      overflow-x: auto;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .arch-layout {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      min-width: 0;
+    }
+
+    .arch-col-left {
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .arch-col-left-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 4px;
+    }
+
+    .arch-source-box {
+      background: var(--arch-blue-bg);
+      border: 1px solid var(--arch-blue-border);
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--arch-blue-text);
+      transition: border-color 0.2s, background 0.2s;
+      cursor: default;
+    }
+
+    .arch-source-box:hover {
+      border-color: var(--arch-blue-stroke);
+      background: rgba(79, 140, 255, 0.12);
+    }
+
+    .arch-col-center {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 340px;
+    }
+
+    .arch-svg-wrap {
+      width: 100%;
+      height: 340px;
+    }
+
+    .arch-svg-wrap svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .arch-col-right {
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .arch-col-right-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 4px;
+    }
+
+    .arch-process-box {
+      background: rgba(249, 115, 22, 0.08);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      border-radius: 8px;
+      padding: 14px 18px;
+      width: 100%;
+      transition: border-color 0.2s, background 0.2s;
+      cursor: default;
+    }
+
+    .arch-process-box:hover {
+      border-color: rgba(249, 115, 22, 0.4);
+      background: rgba(249, 115, 22, 0.14);
+    }
+
+    .arch-process-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    .arch-process-desc {
+      font-size: 11px;
+      color: var(--text-faint);
+    }
+
+    @keyframes dash-flow {
+      to {
+        stroke-dashoffset: -20;
+      }
+    }
+
+    .arch-line {
+      stroke: var(--arch-line-stroke);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-dasharray: 6 4;
+      animation: dash-flow 1.2s linear infinite;
+    }
+
+    .arch-line-right {
+      stroke: var(--arch-line-right-stroke);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-dasharray: 6 4;
+      animation: dash-flow 1.2s linear infinite;
+    }
+
+    /* Simplified arch for mobile */
+    .arch-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .arch-mobile-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .arch-mobile-arrow {
+      color: var(--accent);
+      font-size: 20px;
+      text-align: center;
+      padding: 4px 0;
+    }
+
+    .arch-mobile-sources {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+
+    .arch-mobile-box {
+      background: rgba(249, 115, 22, 0.08);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      border-radius: 8px;
+      padding: 14px 18px;
+      text-align: center;
+    }
+
+    .arch-mobile-box-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .arch-mobile-box-desc {
+      font-size: 11px;
+      color: var(--text-faint);
+      margin-top: 2px;
+    }
+
+    /* --- Numbers Section --- */
+    .numbers-section {
+      padding-bottom: 64px;
+    }
+
+    .numbers-card {
+      margin-top: 24px;
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 8px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .numbers-cell {
+      background: var(--bg);
+      padding: 32px 16px;
+      text-align: center;
+      border-radius: 12px;
+      transition: background 0.3s;
+    }
+
+    .numbers-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--white-heading);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .numbers-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* --- Tech Stack Section --- */
+    .stack-section {
+      padding-bottom: 64px;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .stack-card {
+      background: var(--surface);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .stack-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .stack-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .stack-tag {
+      font-size: 13px;
+      color: var(--text-faint);
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 5px 14px;
+      border-radius: 6px;
+      transition: border-color 0.25s, color 0.25s, background 0.25s;
+      cursor: default;
+    }
+
+    .stack-tag:hover {
+      border-color: rgba(249, 115, 22, 0.5);
+      color: var(--accent);
+      background: rgba(249, 115, 22, 0.08);
+    }
+
+    /* --- Footer --- */
+    .footer {
+      border-top: 1px solid var(--card-border);
+      padding: 32px 24px;
+      background: var(--footer-bg);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer a {
+      color: var(--text-faint);
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: var(--accent);
+    }
+
+    /* --- Reveal Animation --- */
+    .rv {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .rv.v {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rv { opacity: 1; transform: none; transition: none; }
+      .timeline-bar-seg { transform: scaleX(1) !important; transition: none !important; }
+      .timeline-day-card { opacity: 1; transform: none; transition: none; }
+      .hero-badge-dot { animation: none; }
+      .arch-line, .arch-line-right { animation: none; }
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 42px; }
+      .hero { padding: 48px 20px 0; }
+      .hero-subtitle { font-size: 16px; }
+
+      .hero-counters {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 400px;
+      }
+
+      .hero-counter {
+        border-radius: 0 !important;
+      }
+
+      .hero-counter:nth-child(1) { border-radius: 12px 0 0 0 !important; }
+      .hero-counter:nth-child(2) { border-radius: 0 12px 0 0 !important; }
+      .hero-counter:nth-child(3) { border-radius: 0 0 0 12px !important; }
+      .hero-counter:nth-child(4) { border-radius: 0 0 12px 0 !important; }
+
+      .hero-counter-value { font-size: 32px; }
+
+      .section { padding: 0 20px; }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-grid-last-row {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+      }
+
+      .timeline-days {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-bar {
+        grid-template-columns: 1fr;
+        height: auto;
+        gap: 4px;
+      }
+
+      .timeline-bar-seg {
+        height: 4px;
+      }
+
+      .timeline-day-card:nth-child(1) { transition-delay: 0.2s; }
+      .timeline-day-card:nth-child(2) { transition-delay: 0.4s; }
+      .timeline-day-card:nth-child(3) { transition-delay: 0.6s; }
+
+      .arch-layout { display: none; }
+      .arch-mobile { display: flex; }
+
+      .numbers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stack-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+
+      .section-title { font-size: 24px; }
+
+      .nav-back span:not(.nav-back-label) { display: none; }
+      .nav-back .nav-back-label { display: inline; }
+      /* Mobile touch targets */
+      .theme-toggle-btn{width:36px;height:36px}
+      .nav-back{padding:14px 0;min-height:44px;display:flex;align-items:center}
+      .stack-tag{padding:8px 14px;min-height:36px;display:inline-flex;align-items:center}
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 36px 16px 0; }
+      .hero h1 { font-size: 36px; }
+      .section { padding: 0 16px; }
+      .hero-divider { padding: 0 16px; }
+      .hero-counters { max-width: 100%; }
+      .hero-counter { padding: 20px 8px; }
+      .hero-counter-value { font-size: 28px; }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid-last-row {
+        grid-template-columns: 1fr;
+      }
+
+      .arch-mobile-sources {
+        grid-template-columns: 1fr;
+      }
+
+      .arch-diagram { padding: 24px 16px; }
+      .numbers-value { font-size: 28px; }
+      .numbers-cell { padding: 24px 12px; }
+      .story-card { padding: 24px 20px 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav" role="navigation">
+  <div class="nav-inner">
+    <a href="../../" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Stephen Umunna &middot; Portfolio
+    </a>
+
+    <div class="theme-toggle" role="radiogroup" aria-label="Theme">
+      <button class="theme-toggle-btn" data-theme-btn="light" aria-label="Light theme" title="Light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+      <button class="theme-toggle-btn" data-theme-btn="system" aria-label="System theme" title="System">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+      </button>
+      <button class="theme-toggle-btn" data-theme-btn="dark" aria-label="Dark theme" title="Dark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="interactive-banner" style="position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(37,99,235,0.08);border-bottom:1px solid rgba(37,99,235,0.15);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:Inter,-apple-system,sans-serif;font-size:12px;color:var(--accent,var(--ac,#2563eb));animation:bannerSlide .4s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+  <span style="font-size:14px">&#9996;</span>
+  <span>This page is fully interactive - explore the timeline, architecture, and every section</span>
+  <button onclick="this.parentElement.style.display='none';sessionStorage.setItem('banner-dismissed','1')" style="background:none;border:none;color:var(--accent,var(--ac,#2563eb));cursor:pointer;font-size:16px;padding:0 4px;margin-left:8px;opacity:0.6" aria-label="Dismiss">&times;</button>
+</div>
+<script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('interactive-banner').style.display='none';</script>
+<style>@keyframes bannerSlide{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}</style>
+<div id="banner-spacer" style="height:36px"></div>
+<script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('banner-spacer').style.display='none';</script>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    Live &middot; Personal Project
+  </div>
+  <h1>CourtVision</h1>
+  <p class="hero-subtitle">Full-stack NBA analytics. 78 years of history. <strong>Built in 3 days.</strong></p>
+
+  <a href="https://courtvision-five.vercel.app" target="_blank" rel="noopener noreferrer" class="hero-cta">
+    View Live Site
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+  </a>
+
+  <div class="hero-counters">
+    <div class="hero-counter">
+      <div class="hero-counter-value" data-hero-target="441" data-hero-suffix="+">0</div>
+      <div class="hero-counter-label">Pages</div>
+    </div>
+    <div class="hero-counter">
+      <div class="hero-counter-value" data-hero-target="90" data-hero-suffix="+">0</div>
+      <div class="hero-counter-label">Components</div>
+    </div>
+    <div class="hero-counter">
+      <div class="hero-counter-value" data-hero-target="6" data-hero-suffix="">0</div>
+      <div class="hero-counter-label">Data Sources</div>
+    </div>
+    <div class="hero-counter">
+      <div class="hero-counter-value" data-hero-target="0" data-hero-prefix="$" data-hero-suffix="/mo">$0/mo</div>
+      <div class="hero-counter-label">Monthly Cost</div>
+    </div>
+  </div>
+</section>
+
+<div class="hero-divider">
+  <div class="hero-divider-line"></div>
+</div>
+
+<!-- The Story -->
+<section class="section story-section rv">
+  <span class="section-label">THE STORY</span>
+  <h2 class="section-title">One app instead of five browser tabs</h2>
+
+  <div class="story-card">
+    <p>I wanted a single place to check live NBA scores, compare players head-to-head, and dig into 78 years of stats without bouncing between ESPN, Basketball Reference, and three other tabs. Nothing like that existed in one app, so I built it in 3 days.</p>
+    <p>The platform covers every NBA team and player from the current season back to 1946. You can compare any two players head-to-head, explore shot charts, track clutch performance in close games, run fantasy projections, and follow live scores during the season. The Django backend aggregates data from multiple sources into a unified API that the Next.js frontend consumes through server components and SWR for real-time updates.</p>
+  </div>
+</section>
+
+<!-- Screenshot -->
+<section class="section screenshot-section rv">
+  <span class="section-label">THE DASHBOARD</span>
+  <h2 class="section-title">See it in action</h2>
+
+  <div class="screenshot-card">
+    <img src="../../assets/screenshot-courtvision.jpg" alt="CourtVision dashboard showing live NBA scores, standings, player stats, and 78 years of historical data" loading="lazy">
+    <div class="screenshot-caption">Live scores, standings, player stats, and 78 years of historical data</div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section features-section rv">
+  <span class="section-label">FEATURES</span>
+  <h2 class="section-title">Eight features, one platform</h2>
+
+  <div class="feature-grid">
+    <!-- 1. Live Scores -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="2"/>
+        <path d="M6 20c4 -6 10 -8 14 0s10 6 14 0" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <line x1="20" y1="6" x2="20" y2="34" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <h3>Live Scores</h3>
+      <p>Real-time scores with play-by-play updates</p>
+    </div>
+    <!-- 2. Player Comparisons -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 40 40" fill="none">
+        <rect x="4" y="14" width="12" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+        <rect x="24" y="8" width="12" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
+        <path d="M18 22h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M20 20v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <h3>Player Comparisons</h3>
+      <p>Head-to-head stats for any two players</p>
+    </div>
+    <!-- 3. Shot Charts -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 40 40" fill="none">
+        <rect x="4" y="4" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/>
+        <circle cx="15" cy="18" r="2.5" fill="currentColor" opacity="0.6"/>
+        <circle cx="22" cy="14" r="2" fill="currentColor" opacity="0.8"/>
+        <circle cx="26" cy="22" r="3" fill="currentColor" opacity="0.5"/>
+        <circle cx="18" cy="26" r="1.5" fill="currentColor" opacity="0.7"/>
+        <circle cx="12" cy="28" r="2" fill="currentColor" opacity="0.4"/>
+        <circle cx="30" cy="28" r="1.5" fill="currentColor" opacity="0.6"/>
+      </svg>
+      <h3>Shot Charts</h3>
+      <p>Visual shot distribution maps</p>
+    </div>
+    <!-- 4. Clutch Stats -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="2"/>
+        <path d="M20 10v10l6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>Clutch Stats</h3>
+      <p>Performance in high-pressure moments</p>
+    </div>
+    <!-- 5. Fantasy Rankings -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 40 40" fill="none">
+        <path d="M20 6l4 8 9 1.5-6.5 6.5 1.5 9L20 26.5 12 31l1.5-9L7 15.5 16 14z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      <h3>Fantasy Rankings</h3>
+      <p>Custom scoring projections</p>
+    </div>
+    <!-- 6. Team Analytics -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 40 40" fill="none">
+        <rect x="6" y="22" width="6" height="12" rx="1" fill="currentColor" opacity="0.5"/>
+        <rect x="17" y="14" width="6" height="20" rx="1" fill="currentColor" opacity="0.7"/>
+        <rect x="28" y="8" width="6" height="26" rx="1" fill="currentColor" opacity="0.9"/>
+      </svg>
+      <h3>Team Analytics</h3>
+      <p>Offensive/defensive ratings, pace, efficiency</p>
+    </div>
+  </div>
+  <div class="feature-grid-last-row">
+    <!-- 7. Historical Data -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 40 40" fill="none">
+        <rect x="6" y="4" width="28" height="32" rx="3" stroke="currentColor" stroke-width="2"/>
+        <line x1="12" y1="12" x2="28" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="24" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="24" x2="26" y2="24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="12" y1="30" x2="20" y2="30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <h3>Historical Data</h3>
+      <p>Complete stats back to 1946-47 BAA season</p>
+    </div>
+    <!-- 8. Player Profiles -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="14" r="7" stroke="currentColor" stroke-width="2"/>
+        <path d="M8 34c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <h3>Player Profiles</h3>
+      <p>Career arcs, season logs, bio, transactions</p>
+    </div>
+  </div>
+</section>
+
+<!-- Build Timeline -->
+<section class="section timeline-section rv" id="timeline-section">
+  <span class="section-label">THE BUILD</span>
+  <h2 class="section-title">72 hours. Start to finish.</h2>
+
+  <div class="timeline-track">
+    <div class="timeline-bar" id="timeline-bar">
+      <div class="timeline-bar-seg"></div>
+      <div class="timeline-bar-seg"></div>
+      <div class="timeline-bar-seg"></div>
+    </div>
+
+    <div class="timeline-days">
+      <div class="timeline-day-card">
+        <div class="timeline-day-label">Day 1</div>
+        <div class="timeline-day-title">Foundation</div>
+        <ul class="timeline-day-list">
+          <li>Django backend + data models</li>
+          <li>API integration layer (6 sources)</li>
+          <li>Database schema + initial data ingestion</li>
+          <li>Next.js scaffold with routing</li>
+        </ul>
+      </div>
+      <div class="timeline-day-card">
+        <div class="timeline-day-label">Day 2</div>
+        <div class="timeline-day-title">Features</div>
+        <ul class="timeline-day-list">
+          <li>Player comparison engine</li>
+          <li>Shot chart SVG renderer</li>
+          <li>Live scoreboard with SWR polling</li>
+          <li>Standings + team pages</li>
+          <li>Historical stats browser (1946-present)</li>
+        </ul>
+      </div>
+      <div class="timeline-day-card">
+        <div class="timeline-day-label">Day 3</div>
+        <div class="timeline-day-title">Polish &amp; Ship</div>
+        <ul class="timeline-day-list">
+          <li>Fantasy rankings calculator</li>
+          <li>Clutch stats analyzer</li>
+          <li>Responsive design pass</li>
+          <li>SEO, OG images, deploy to Vercel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture -->
+<section class="section arch-section rv" id="arch-section">
+  <span class="section-label">ARCHITECTURE</span>
+  <h2 class="section-title">6 sources, 1 platform</h2>
+
+  <div class="arch-diagram">
+    <!-- Desktop layout with SVG lines -->
+    <div class="arch-layout">
+      <!-- Left: Data Sources -->
+      <div class="arch-col-left">
+        <div class="arch-col-left-label">Data Sources</div>
+        <div class="arch-source-box">NBA Official API</div>
+        <div class="arch-source-box">BallDontLie</div>
+        <div class="arch-source-box">ESPN</div>
+        <div class="arch-source-box">Basketball Reference</div>
+        <div class="arch-source-box">SportsData</div>
+        <div class="arch-source-box">Custom Scraper</div>
+      </div>
+
+      <!-- Center: SVG arrows -->
+      <div class="arch-col-center">
+        <div class="arch-svg-wrap">
+          <svg id="arch-svg" viewBox="0 0 200 340" preserveAspectRatio="xMidYMid meet">
+            <!-- Left arrows converging -->
+            <line class="arch-line" x1="0" y1="30" x2="70" y2="135"/>
+            <line class="arch-line" x1="0" y1="75" x2="70" y2="145"/>
+            <line class="arch-line" x1="0" y1="120" x2="70" y2="155"/>
+            <line class="arch-line" x1="0" y1="165" x2="70" y2="165"/>
+            <line class="arch-line" x1="0" y1="210" x2="70" y2="175"/>
+            <line class="arch-line" x1="0" y1="255" x2="70" y2="185"/>
+
+            <!-- Django box -->
+            <rect x="68" y="122" width="66" height="34" rx="6" style="fill:var(--arch-blue-fill);stroke:var(--arch-blue-stroke);stroke-width:1"/>
+            <text x="101" y="143" text-anchor="middle" style="fill:var(--arch-blue-text)" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600">Django</text>
+
+            <!-- Arrow from Django to REST API -->
+            <line class="arch-line" x1="101" y1="156" x2="101" y2="184"/>
+
+            <!-- REST API box -->
+            <rect x="68" y="184" width="66" height="34" rx="6" style="fill:var(--arch-blue-fill2);stroke:var(--arch-blue-stroke2);stroke-width:1"/>
+            <text x="101" y="205" text-anchor="middle" style="fill:var(--arch-blue-text)" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600">REST API</text>
+
+            <!-- Arrow from REST API to Next.js -->
+            <line class="arch-line-right" x1="134" y1="200" x2="200" y2="120"/>
+            <line class="arch-line-right" x1="134" y1="200" x2="200" y2="200"/>
+            <line class="arch-line-right" x1="134" y1="200" x2="200" y2="280"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Right: Output -->
+      <div class="arch-col-right">
+        <div class="arch-col-right-label">Output</div>
+        <div class="arch-process-box">
+          <div class="arch-process-title">Next.js Frontend</div>
+          <div class="arch-process-desc">Server Components + SWR</div>
+        </div>
+        <div class="arch-process-box">
+          <div class="arch-process-title">441+ Pages</div>
+          <div class="arch-process-desc">Teams, players, games, seasons</div>
+        </div>
+        <div class="arch-process-box">
+          <div class="arch-process-title">Real-Time Data</div>
+          <div class="arch-process-desc">SWR polling, live updates</div>
+        </div>
+        <div class="arch-process-box">
+          <div class="arch-process-title">$0/month</div>
+          <div class="arch-process-desc">Vercel free tier</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile layout -->
+    <div class="arch-mobile">
+      <div class="arch-col-left-label">6 Data Sources</div>
+      <div class="arch-mobile-sources">
+        <div class="arch-source-box">NBA Official API</div>
+        <div class="arch-source-box">BallDontLie</div>
+        <div class="arch-source-box">ESPN</div>
+        <div class="arch-source-box">Basketball Ref</div>
+        <div class="arch-source-box">SportsData</div>
+        <div class="arch-source-box">Custom Scraper</div>
+      </div>
+      <div class="arch-mobile-arrow">&darr;</div>
+      <div class="arch-mobile-box">
+        <div class="arch-mobile-box-title">Django Backend + REST API</div>
+        <div class="arch-mobile-box-desc">Data aggregation, caching, normalization</div>
+      </div>
+      <div class="arch-mobile-arrow">&darr;</div>
+      <div class="arch-mobile-box">
+        <div class="arch-mobile-box-title">Next.js (Server Components + SWR)</div>
+        <div class="arch-mobile-box-desc">441+ pages, real-time updates, $0/mo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- By the Numbers -->
+<section class="section numbers-section rv" id="numbers-section">
+  <span class="section-label">BY THE NUMBERS</span>
+  <h2 class="section-title">At a glance</h2>
+
+  <div class="numbers-card">
+    <div class="numbers-grid">
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="78" data-count-suffix="">0</div>
+        <div class="numbers-label">Years of Data</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="0" data-count-prefix="$" data-count-suffix="/mo">$0/mo</div>
+        <div class="numbers-label">Infrastructure</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="1200" data-count-suffix="+">0</div>
+        <div class="numbers-label">Player Profiles</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="30" data-count-suffix="">0</div>
+        <div class="numbers-label">NBA Teams</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="8" data-count-suffix="">0</div>
+        <div class="numbers-label">Feature Modules</div>
+      </div>
+      <div class="numbers-cell">
+        <div class="numbers-value" data-count-target="6" data-count-suffix="">0</div>
+        <div class="numbers-label">Data Sources</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stack -->
+<section class="section stack-section rv">
+  <span class="section-label">TECH STACK</span>
+  <h2 class="section-title">What it runs on</h2>
+
+  <div class="stack-grid">
+    <div class="stack-card">
+      <div class="stack-title">Frontend</div>
+      <div class="stack-tags">
+        <span class="stack-tag">Next.js 16</span>
+        <span class="stack-tag">React 19</span>
+        <span class="stack-tag">TypeScript</span>
+        <span class="stack-tag">Tailwind CSS</span>
+        <span class="stack-tag">SWR</span>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-title">Backend</div>
+      <div class="stack-tags">
+        <span class="stack-tag">Django</span>
+        <span class="stack-tag">DRF</span>
+        <span class="stack-tag">PostgreSQL</span>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-title">Data</div>
+      <div class="stack-tags">
+        <span class="stack-tag">6 Data Sources</span>
+        <span class="stack-tag">Custom ETL</span>
+        <span class="stack-tag">pandas</span>
+      </div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-title">Infrastructure</div>
+      <div class="stack-tags">
+        <span class="stack-tag">Vercel free tier</span>
+        <span class="stack-tag">$0/mo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="max-width:900px;margin:0 auto;padding:60px 28px 40px;text-align:center">
+  <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:12px;color:var(--text, var(--tx, #0f172a))">Let's talk about what I can do for you.</h2>
+  <p style="font-size:15px;color:var(--text-muted, var(--tx2, #475569));margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6">I'm exploring leadership roles where building the technology and running the business aren't treated as separate jobs.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="mailto:scumunna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:#dc2626;padding:12px 24px;border-radius:8px;text-decoration:none;transition:background .2s,transform .2s" onmouseover="this.style.background='#b91c1c';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#dc2626';this.style.transform='none'">Start a Conversation &rarr;</a>
+    <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text, var(--tx, #0f172a));background:var(--surface, var(--sf, #fff));border:1px solid var(--border, var(--bd, #e2e8f0));padding:12px 24px;border-radius:8px;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='var(--accent, var(--ac, #2563eb))';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border, var(--bd, #e2e8f0))';this.style.transform='none'">View on LinkedIn</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="border-top:1px solid var(--border, var(--bd, #e2e8f0));padding:32px 24px;margin-top:64px">
+  <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text-faint, var(--tx3, #94a3b8))">
+    <div>Stephen Umunna &middot; Los Angeles, CA</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="mailto:scumunna@gmail.com" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">scumunna@gmail.com</a>
+      <a href="tel:+13239171875" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">(323) 917-1875</a>
+      <a href="https://github.com/scumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">GitHub</a>
+      <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">LinkedIn</a>
+    </div>
+  </div>
+  <div style="font-size:11px;color:var(--text-muted, var(--tx3, #94a3b8));margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // --- Theme Toggle ---
+  var themeToggle = {
+    init: function() {
+      var saved = localStorage.getItem('portfolio-theme') || 'light';
+      this.set(saved);
+      var self = this;
+      document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          self.set(btn.getAttribute('data-theme-btn'));
+        });
+      });
+    },
+    set: function(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('portfolio-theme', theme);
+      document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+        var isActive = btn.getAttribute('data-theme-btn') === theme;
+        btn.classList.toggle('active', isActive);
+      });
+    }
+  };
+  themeToggle.init();
+
+  // --- Hero counter animation (runs on page load, no observer) ---
+  function animateHeroCounters() {
+    var counters = document.querySelectorAll('[data-hero-target]');
+    var duration = 2000;
+    var startTime = performance.now();
+
+    function update(now) {
+      var elapsed = now - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      // Deceleration easing: 1 - (1 - t)^3
+      var eased = 1 - Math.pow(1 - progress, 3);
+
+      counters.forEach(function(el) {
+        var target = parseInt(el.getAttribute('data-hero-target'), 10);
+        var suffix = el.getAttribute('data-hero-suffix') || '';
+        var prefix = el.getAttribute('data-hero-prefix') || '';
+        var current = Math.round(target * eased);
+        el.textContent = prefix + current + suffix;
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  // Run hero counters after a short delay so the page feels snappy
+  setTimeout(animateHeroCounters, 200);
+
+  // --- Scroll reveal observer ---
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('v');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.rv').forEach(function(el) {
+    revealObs.observe(el);
+  });
+
+  // --- Timeline animation on scroll ---
+  var timelineSection = document.getElementById('timeline-section');
+  var timelineAnimated = false;
+
+  var timelineObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !timelineAnimated) {
+        timelineAnimated = true;
+        // Activate progress bar segments
+        var segs = document.querySelectorAll('.timeline-bar-seg');
+        segs.forEach(function(seg) {
+          seg.classList.add('active');
+        });
+        // Show day cards
+        var cards = document.querySelectorAll('.timeline-day-card');
+        cards.forEach(function(card) {
+          card.classList.add('visible');
+        });
+        timelineObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  if (timelineSection) {
+    timelineObs.observe(timelineSection);
+  }
+
+  // --- Numbers section counter animation ---
+  var numbersSection = document.getElementById('numbers-section');
+  var numbersAnimated = false;
+
+  var numbersObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !numbersAnimated) {
+        numbersAnimated = true;
+        animateNumberCounters();
+        numbersObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  if (numbersSection) {
+    numbersObs.observe(numbersSection);
+  }
+
+  function animateNumberCounters() {
+    var counters = document.querySelectorAll('[data-count-target]');
+    var duration = 2000;
+    var startTime = performance.now();
+
+    function update(now) {
+      var elapsed = now - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+
+      counters.forEach(function(el) {
+        var target = parseInt(el.getAttribute('data-count-target'), 10);
+        var suffix = el.getAttribute('data-count-suffix') || '';
+        var prefix = el.getAttribute('data-count-prefix') || '';
+        var current = Math.round(target * eased);
+        el.textContent = prefix + current + suffix;
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+})();
+</script>
+</body>
+</html>

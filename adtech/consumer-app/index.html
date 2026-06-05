@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CP6VN2C604"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CP6VN2C604');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consumer Ordering Platform &middot; Stephen Umunna</title>
+  <meta name="description" content="How Stephen Umunna built the consumer app from scratch and grew it 2,000 to 200,000 monthly active users in 11 months (100x). The consumer side of a two-sided AdTech platform that generated the first-party data feeding 200+ advertiser accounts.">
+  <meta property="og:title" content="Consumer Ordering Platform">
+  <meta property="og:description" content="Built from scratch. 2,000 to 200,000 MAU in 11 months. 100x. Powered the data side of a two-sided AdTech platform.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Consumer Ordering Platform">
+  <meta name="twitter:description" content="Built from scratch. 2,000 to 200,000 MAU in 11 months. 100x. Powered the data side of a two-sided AdTech platform.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+  <style>
+    /* ========================================
+       CSS VARIABLES - LIGHT / DARK / SYSTEM
+    ======================================== */
+    :root {
+      --bg: #fafafa;
+      --bg2: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --accent-border: #bfdbfe;
+      --green: #22c55e;
+      --green-soft: #ecfdf5;
+      --green-border: #a7f3d0;
+      --purple: #7c3aed;
+      --purple-soft: #f5f3ff;
+      --purple-border: #ddd6fe;
+      --nav-bg: rgba(255,255,255,.92);
+      --shadow: rgba(15,23,42,0.06);
+      --shadow-lg: rgba(15,23,42,0.1);
+      --counter-color: #059669;
+      --curve-stroke: #2563eb;
+      --curve-fill: rgba(37,99,235,0.08);
+      --curve-grid: #e2e8f0;
+      --curve-label: #475569;
+      --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0a0f;
+      --bg2: #0f0f17;
+      --surface: #13131a;
+      --text: #e2e2e8;
+      --text-muted: #9898a8;
+      --text-faint: #5a5a6e;
+      --border: #1e1e2e;
+      --accent: #60a5fa;
+      --accent-soft: rgba(37,99,235,0.12);
+      --accent-border: #1e3a5f;
+      --green: #4ade80;
+      --green-soft: rgba(34,197,94,0.1);
+      --green-border: #14532d;
+      --purple: #a78bfa;
+      --purple-soft: rgba(124,58,237,0.1);
+      --purple-border: #3b1f6e;
+      --nav-bg: rgba(10,10,15,.85);
+      --shadow: rgba(0,0,0,0.3);
+      --shadow-lg: rgba(0,0,0,0.5);
+      --counter-color: #4ade80;
+      --curve-stroke: #60a5fa;
+      --curve-fill: rgba(96,165,250,0.1);
+      --curve-grid: #1e1e2e;
+      --curve-label: #9898a8;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        --bg: #0a0a0f;
+        --bg2: #0f0f17;
+        --surface: #13131a;
+        --text: #e2e2e8;
+        --text-muted: #9898a8;
+        --text-faint: #5a5a6e;
+        --border: #1e1e2e;
+        --accent: #60a5fa;
+        --accent-soft: rgba(37,99,235,0.12);
+        --accent-border: #1e3a5f;
+        --green: #4ade80;
+        --green-soft: rgba(34,197,94,0.1);
+        --green-border: #14532d;
+        --purple: #a78bfa;
+        --purple-soft: rgba(124,58,237,0.1);
+        --purple-border: #3b1f6e;
+        --nav-bg: rgba(10,10,15,.85);
+        --shadow: rgba(0,0,0,0.3);
+        --shadow-lg: rgba(0,0,0,0.5);
+        --counter-color: #4ade80;
+        --curve-stroke: #60a5fa;
+        --curve-fill: rgba(96,165,250,0.1);
+        --curve-grid: #1e1e2e;
+        --curve-label: #9898a8;
+      }
+    }
+
+    /* RESET */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      transition: background .3s, color .3s;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s, border-color .3s;
+    }
+    .nav-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 32px;
+      height: 56px; display: flex; align-items: center;
+    }
+    .nav-back {
+      font-size: 14px; font-weight: 500; color: var(--text-muted);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color .2s, transform .2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back:hover svg { transform: translateX(-2px); }
+    .nav-back svg { transition: transform .2s; flex-shrink: 0; }
+
+    .theme-toggle {
+      display: flex; align-items: center; margin-left: auto;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 100px; padding: 2px; gap: 0;
+      transition: background .3s, border-color .3s;
+    }
+    .theme-btn {
+      padding: 5px 11px; font-size: 12px; font-weight: 500;
+      color: var(--text-faint); background: transparent;
+      border: none; border-radius: 100px; cursor: pointer;
+      transition: color .2s, background .2s; font-family: inherit;
+      white-space: nowrap; line-height: 1;
+    }
+    .theme-btn:hover { color: var(--text-muted); }
+    .theme-btn.active {
+      color: var(--text); background: var(--surface);
+      box-shadow: 0 1px 3px var(--shadow);
+    }
+
+    /* CONTENT WRAPPER */
+    .content { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* HERO */
+    .hero { padding: 100px 0 48px; text-align: left; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--accent);
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px); font-weight: 800;
+      line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-size: 18px; color: var(--text-muted); line-height: 1.7; max-width: 720px;
+    }
+
+    /* COUNTERS - 3 columns */
+    .counters {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; margin-top: 40px;
+      transition: background .3s, border-color .3s;
+    }
+    .counter-cell {
+      background: var(--surface); padding: 28px 16px; text-align: center;
+      transition: background .3s;
+    }
+    .counter-value {
+      font-family: var(--mono); font-size: 28px; font-weight: 700;
+      color: var(--counter-color); letter-spacing: -0.02em;
+      line-height: 1.1; margin-bottom: 6px;
+    }
+    .counter-label {
+      font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px;
+    }
+    .counter-detail {
+      font-size: 11px; color: var(--text-faint); font-weight: 500;
+    }
+
+    /* SECTION HEADERS */
+    .section { padding: 80px 0 0; }
+    .section-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: clamp(26px, 4vw, 36px); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px; color: var(--text-muted); line-height: 1.75; max-width: 680px;
+    }
+
+    /* STORY CARD */
+    .story-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 40px; margin-top: 32px;
+      position: relative; overflow: hidden;
+      transition: background .3s, border-color .3s;
+    }
+    .story-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%; background: var(--accent); border-radius: 0 2px 2px 0;
+    }
+    .story-card p {
+      font-size: 16px; color: var(--text-muted); line-height: 1.85;
+    }
+    .story-card p + p { margin-top: 16px; }
+    .story-card strong { color: var(--text); font-weight: 600; }
+
+    /* ARCHITECTURE GRID */
+    .arch-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+    .arch-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px; position: relative;
+      transition: background .3s, border-color .3s, transform .2s, box-shadow .2s;
+    }
+    .arch-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    .arch-box-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px; color: var(--accent);
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      transition: background .3s, border-color .3s;
+    }
+    .arch-box h3 {
+      font-size: 15px; font-weight: 700; margin-bottom: 6px;
+    }
+    .arch-box p {
+      font-size: 13px; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* GROWTH CURVE */
+    .growth-curve-wrap {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px;
+      margin-top: 32px;
+      transition: background .3s, border-color .3s;
+    }
+    .growth-curve-wrap svg { width: 100%; height: auto; }
+    .curve-path {
+      stroke: var(--curve-stroke);
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+      transition: stroke .3s;
+    }
+    .curve-path.animated {
+      animation: drawCurve 2.2s ease-out forwards;
+    }
+    @keyframes drawCurve { to { stroke-dashoffset: 0; } }
+    .curve-area {
+      fill: var(--curve-fill);
+      opacity: 0;
+      transition: fill .3s;
+    }
+    .curve-area.animated {
+      animation: fadeArea .8s ease-out .8s forwards;
+    }
+    @keyframes fadeArea { to { opacity: 1; } }
+    .curve-grid-line {
+      stroke: var(--curve-grid);
+      stroke-width: 1;
+      transition: stroke .3s;
+    }
+    .curve-axis-label {
+      fill: var(--curve-label);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      transition: fill .3s;
+    }
+    .curve-dot {
+      fill: var(--curve-stroke);
+      opacity: 0;
+      transition: fill .3s, opacity .3s;
+    }
+    .curve-dot.animated { opacity: 1; }
+    .curve-dot-pulse {
+      fill: var(--curve-stroke);
+      opacity: 0;
+      transition: fill .3s;
+    }
+    .curve-dot-pulse.animated {
+      animation: cdPulse 1.8s ease-out 2s infinite;
+    }
+    @keyframes cdPulse {
+      0% { opacity: .5; r: 6; }
+      100% { opacity: 0; r: 20; }
+    }
+    .curve-milestone-label {
+      fill: var(--text);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity .3s, fill .3s;
+    }
+    .curve-milestone-label.animated {
+      animation: fadeLabel .6s ease-out 1.6s forwards;
+    }
+    @keyframes fadeLabel {
+      to { opacity: 1; }
+    }
+
+    /* LOOP / FLYWHEEL STEPS */
+    .loop-flow {
+      margin-top: 32px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px;
+      transition: background .3s, border-color .3s;
+    }
+    .loop-step {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+      transition: border-color .3s;
+    }
+    .loop-step:last-child { border-bottom: none; }
+    .loop-step-num {
+      width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 13px; font-weight: 800;
+      color: var(--accent);
+      transition: background .3s, border-color .3s;
+    }
+    .loop-step-text {
+      font-size: 15px; color: var(--text-muted); line-height: 1.75; flex: 1; padding-top: 4px;
+    }
+    .loop-step-text strong { color: var(--text); font-weight: 600; }
+    .loop-arrow-final {
+      margin-top: 16px;
+      display: flex; align-items: center; gap: 12px;
+      padding: 16px 20px;
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      border-radius: 12px;
+      font-size: 14px; font-weight: 700; color: var(--accent);
+      transition: background .3s, border-color .3s;
+    }
+    .loop-arrow-final svg {
+      flex-shrink: 0;
+    }
+
+    /* TECH GRID */
+    .tech-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px; margin-top: 32px;
+    }
+    .tech-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px;
+      transition: background .3s, border-color .3s;
+    }
+    .tech-card-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--text-faint);
+      margin-bottom: 12px;
+    }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tech-tag {
+      font-size: 12px; font-weight: 500; color: var(--text-muted);
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: 6px;
+      transition: color .2s, background .2s, border-color .2s;
+    }
+    .tech-tag:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* OUTPUT GRID */
+    .output-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+    .output-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px;
+      transition: background .3s, border-color .3s, transform .2s, box-shadow .2s;
+    }
+    .output-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    .output-value {
+      font-family: var(--mono); font-size: 28px; font-weight: 800;
+      color: var(--counter-color); letter-spacing: -0.02em;
+      line-height: 1.1; margin-bottom: 8px;
+    }
+    .output-label {
+      font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px;
+    }
+    .output-desc {
+      font-size: 13px; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* SUB-NAV */
+    .subnav {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 48px; padding: 24px 0;
+      border-top: 1px solid var(--border);
+      transition: border-color .3s;
+    }
+    .subnav-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 8px 14px; border-radius: 8px;
+      transition: background .2s, border-color .2s, color .2s, transform .2s;
+    }
+    .subnav-link:hover {
+      color: var(--accent); border-color: var(--accent);
+      background: var(--accent-soft); transform: translateY(-1px);
+    }
+    .subnav-link svg { flex-shrink: 0; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .content { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .hero { padding: 88px 0 32px; }
+      .counters { grid-template-columns: repeat(3, 1fr); }
+      .counter-value { font-size: 20px; }
+      .counter-cell { padding: 20px 8px; }
+      .arch-grid { grid-template-columns: 1fr; }
+      .output-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: 1fr 1fr; }
+      .theme-btn { min-height: 40px; padding: 6px 10px; font-size: 11px; }
+      .nav-back { padding: 14px 0; min-height: 44px; display: flex; align-items: center; }
+      .loop-flow { padding: 24px; }
+      .growth-curve-wrap { padding: 20px; }
+      .story-card { padding: 28px 24px; }
+    }
+    @media (max-width: 480px) {
+      .content { padding: 0 16px; }
+      .nav-inner { padding: 0 16px; }
+      .counters { grid-template-columns: 1fr; }
+      .counter-value { font-size: 24px; }
+      .counter-cell { padding: 18px 12px; }
+      .tech-grid { grid-template-columns: 1fr; }
+      .loop-step { gap: 12px; padding: 14px 0; }
+      .loop-step-num { width: 28px; height: 28px; font-size: 12px; }
+      .loop-step-text { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../../" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 12L6 8l4-4"/>
+        </svg>
+        Stephen Umunna &middot; Portfolio
+      </a>
+      <div class="theme-toggle" role="radiogroup" aria-label="Theme">
+        <button class="theme-btn active" data-theme-btn="light" aria-label="Light theme">&#9728;&#65039; Light</button>
+        <button class="theme-btn" data-theme-btn="system" aria-label="System theme">&#128421;&#65039; System</button>
+        <button class="theme-btn" data-theme-btn="dark" aria-label="Dark theme">&#127769; Dark</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-badge">Confidential AdTech Startup &middot; Consumer Side &middot; Apr 2025 &ndash; Mar 2026</div>
+      <h1>Consumer Ordering Platform</h1>
+      <p class="hero-subtitle">
+        Built from scratch. Grew <strong>2,000 to 200,000 monthly users in 11 months. 100x.</strong> Powered the data side of a two-sided AdTech platform - the consumer app generated the first-party signal that fed the advertiser activation engine across 200+ accounts.
+      </p>
+
+      <div class="counters">
+        <div class="counter-cell">
+          <div class="counter-value" data-target="200" data-suffix="K">0K</div>
+          <div class="counter-label">Monthly Active Users</div>
+          <div class="counter-detail">From 2K at launch</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="100" data-suffix="x">0x</div>
+          <div class="counter-label">Growth in 11 Months</div>
+          <div class="counter-detail">2K &rarr; 200K MAU</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="200" data-suffix="+">0+</div>
+          <div class="counter-label">Advertiser Accounts Fed</div>
+          <div class="counter-detail">First-party data source</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- THE PREMISE -->
+    <section class="section reveal">
+      <span class="section-label">The Premise</span>
+      <h2>Why the consumer app existed</h2>
+
+      <div class="story-card">
+        <p>
+          Confidential AdTech Startup was a <strong>two-sided AdTech platform</strong>: a consumer side and an advertiser side. The advertiser side activates audience data - segments, lookalikes, intent signals, conversion attribution. But that data has to come from somewhere real.
+        </p>
+        <p>
+          The consumer ordering app was the <strong>somewhere</strong>. Every signup, every browse, every checkout, every repeat purchase produced first-party signal. The app didn't exist as a side project - it existed because <strong>without it, the advertiser side had nothing to activate</strong>. The whole platform thesis rested on owning the data, not buying it.
+        </p>
+        <p>
+          By month 11, 200,000 monthly active users were generating the behavioral signal that powered 200+ advertiser accounts. The two sides only worked together.
+        </p>
+      </div>
+    </section>
+
+    <!-- THE BUILD -->
+    <section class="section reveal">
+      <span class="section-label">The Build</span>
+      <h2>Architecture, from scratch</h2>
+      <p class="section-desc">
+        Nothing existed before I joined - no platform, no team, no codebase. The consumer app was built ground-up on a stack designed for fast iteration and clean instrumentation.
+      </p>
+
+      <div class="arch-grid">
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Next.js Consumer App</h3>
+          <p>Server-side rendered storefront, product catalog, ordering flow, account management, loyalty. Built for crawlability and conversion - every page indexed, every interaction tracked.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+          </div>
+          <h3>Django Backend</h3>
+          <p>Orders, user management, product catalog, multi-location inventory, loyalty programs, delivery tracking. 16 Django apps, 235 models. The operational core of the platform.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 12a9 3 0 0 0 18 0"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/></svg>
+          </div>
+          <h3>PostgreSQL</h3>
+          <p>Transactional data store - users, orders, products, sessions, pixel events. Schema designed for analytics-friendly queries from day one. Read replicas for reporting workload.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Redis</h3>
+          <p>Session store, page cache, hot product cache, rate limiting, async job queues. The reason the storefront stayed sub-200ms while traffic 100x'd.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+          </div>
+          <h3>AWS Infrastructure</h3>
+          <p>EC2 compute, S3 for assets and exports, RDS for managed Postgres, CloudFront for static delivery. Vercel for the Next.js front-end. Scaled from 2K to 200K MAU with no rewrites.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg>
+          </div>
+          <h3>Custom Pixel Tracking</h3>
+          <p>Custom JavaScript pixel instrumented across every page and event - page views, product views, add-to-cart, checkout, conversions. The full ad-impression &rarr; purchase chain captured in real time.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <h3>Analytics Layer</h3>
+          <p>Behavioral event stream flowing into the CDP - every signal joinable by user, device, and session. Feeds the audience activation pipeline on the advertiser side.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE GROWTH -->
+    <section class="section reveal">
+      <span class="section-label">The Growth</span>
+      <h2>2,000 to 200,000 MAU. 11 months.</h2>
+      <p class="section-desc">
+        The curve speaks for itself. Month 1: 2,000 monthly active users. Month 11: 200,000. Driven by SEO content (55K articles, 13K directory pages), product-led growth, and a flywheel that fed itself.
+      </p>
+
+      <div class="growth-curve-wrap" id="growthCurve">
+        <svg viewBox="0 0 800 360" preserveAspectRatio="xMidYMid meet">
+          <!-- Grid lines (horizontal) -->
+          <line class="curve-grid-line" x1="60" y1="320" x2="760" y2="320"/>
+          <line class="curve-grid-line" x1="60" y1="260" x2="760" y2="260" stroke-dasharray="4,4"/>
+          <line class="curve-grid-line" x1="60" y1="200" x2="760" y2="200" stroke-dasharray="4,4"/>
+          <line class="curve-grid-line" x1="60" y1="140" x2="760" y2="140" stroke-dasharray="4,4"/>
+          <line class="curve-grid-line" x1="60" y1="80" x2="760" y2="80" stroke-dasharray="4,4"/>
+
+          <!-- Y-axis labels (MAU) -->
+          <text class="curve-axis-label" x="52" y="324" text-anchor="end">0</text>
+          <text class="curve-axis-label" x="52" y="264" text-anchor="end">50K</text>
+          <text class="curve-axis-label" x="52" y="204" text-anchor="end">100K</text>
+          <text class="curve-axis-label" x="52" y="144" text-anchor="end">150K</text>
+          <text class="curve-axis-label" x="52" y="84" text-anchor="end">200K</text>
+
+          <!-- X-axis month labels -->
+          <text class="curve-axis-label" x="80"  y="340" text-anchor="middle">M1</text>
+          <text class="curve-axis-label" x="148" y="340" text-anchor="middle">M2</text>
+          <text class="curve-axis-label" x="216" y="340" text-anchor="middle">M3</text>
+          <text class="curve-axis-label" x="284" y="340" text-anchor="middle">M4</text>
+          <text class="curve-axis-label" x="352" y="340" text-anchor="middle">M5</text>
+          <text class="curve-axis-label" x="420" y="340" text-anchor="middle">M6</text>
+          <text class="curve-axis-label" x="488" y="340" text-anchor="middle">M7</text>
+          <text class="curve-axis-label" x="556" y="340" text-anchor="middle">M8</text>
+          <text class="curve-axis-label" x="624" y="340" text-anchor="middle">M9</text>
+          <text class="curve-axis-label" x="692" y="340" text-anchor="middle">M10</text>
+          <text class="curve-axis-label" x="745" y="340" text-anchor="middle">M11</text>
+
+          <!-- Area fill under curve (smooth exponential growth) -->
+          <path class="curve-area" d="
+            M80,318
+            C120,316 148,313 216,308
+            C260,304 300,296 352,282
+            C400,266 440,246 488,222
+            C520,200 556,168 624,128
+            C660,108 692,96 745,82
+            L745,320 L80,320 Z"/>
+
+          <!-- The growth curve itself -->
+          <path class="curve-path" d="
+            M80,318
+            C120,316 148,313 216,308
+            C260,304 300,296 352,282
+            C400,266 440,246 488,222
+            C520,200 556,168 624,128
+            C660,108 692,96 745,82"/>
+
+          <!-- Data points: M1, M6, M11 (matches prompt) -->
+          <circle class="curve-dot" cx="80"  cy="318" r="5"/>
+          <circle class="curve-dot" cx="420" cy="266" r="5"/>
+          <circle class="curve-dot" cx="745" cy="82"  r="5"/>
+
+          <!-- Pulse on M11 -->
+          <circle class="curve-dot-pulse" cx="745" cy="82" r="6"/>
+
+          <!-- Milestone labels -->
+          <text class="curve-milestone-label" x="80"  y="306" text-anchor="middle">2K</text>
+          <text class="curve-milestone-label" x="420" y="254" text-anchor="middle">~30K</text>
+          <text class="curve-milestone-label" x="745" y="68"  text-anchor="middle">200K</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- THE LOOP -->
+    <section class="section reveal">
+      <span class="section-label">The Loop</span>
+      <h2>How the consumer app fed the advertiser side</h2>
+      <p class="section-desc">
+        The consumer app wasn't valuable on its own - it was valuable because of what it fed. Every signup, browse, and purchase became signal. That signal became audiences. Those audiences drove ROAS. ROAS drove more advertiser spend. And advertiser spend reinvested back into the consumer app.
+      </p>
+
+      <div class="loop-flow">
+        <div class="loop-step">
+          <div class="loop-step-num">1</div>
+          <div class="loop-step-text"><strong>User signs up</strong> on the consumer app - ordering behavior captured from first session.</div>
+        </div>
+        <div class="loop-step">
+          <div class="loop-step-num">2</div>
+          <div class="loop-step-text"><strong>Pixel tracks browsing intent</strong> - product views, dwell time, add-to-cart, abandonment, search queries. Every event timestamped and attributed.</div>
+        </div>
+        <div class="loop-step">
+          <div class="loop-step-num">3</div>
+          <div class="loop-step-text"><strong>Behavioral and conversion events close the loop</strong> - on-platform purchases tie back to the online journey. ROAS becomes verifiable, not modeled.</div>
+        </div>
+        <div class="loop-step">
+          <div class="loop-step-num">4</div>
+          <div class="loop-step-text"><strong>Behavioral data enriches the CDP</strong> - identity stitched across devices and events, 21M+ profiles, 1B+ data points.</div>
+        </div>
+        <div class="loop-step">
+          <div class="loop-step-num">5</div>
+          <div class="loop-step-text"><strong>CDP powers DSP audience activation</strong> - first-party segments and lookalikes exported to 6 DSP partners.</div>
+        </div>
+        <div class="loop-step">
+          <div class="loop-step-num">6</div>
+          <div class="loop-step-text"><strong>Advertisers get higher ROAS</strong> - real purchase-intent audiences beat third-party data by orders of magnitude.</div>
+        </div>
+        <div class="loop-step">
+          <div class="loop-step-num">7</div>
+          <div class="loop-step-text"><strong>Higher ROAS &rarr; more advertiser spend &rarr; more platform revenue &rarr; reinvestment in the consumer app.</strong></div>
+        </div>
+
+        <div class="loop-arrow-final">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6"/><path d="M2.5 22v-6h6"/><path d="M22 11.5A10 10 0 0 0 3.2 7.2"/><path d="M2 12.5a10 10 0 0 0 18.8 4.3"/></svg>
+          Compounding flywheel: more users &rarr; richer data &rarr; better targeting &rarr; more spend &rarr; more users
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IT GENERATED -->
+    <section class="section reveal">
+      <span class="section-label">What It Generated</span>
+      <h2>The data outputs</h2>
+      <p class="section-desc">
+        The consumer app's job was to produce signal. Here's what it actually produced.
+      </p>
+
+      <div class="output-grid">
+        <div class="output-card">
+          <div class="output-value">21M+</div>
+          <div class="output-label">Unique Consumer Profiles</div>
+          <div class="output-desc">First-party identities stitched across devices, sessions, and channels. Feeds the CDP.</div>
+        </div>
+        <div class="output-card">
+          <div class="output-value">1B+</div>
+          <div class="output-label">Behavioral Data Points</div>
+          <div class="output-desc">Pixel-fired events: views, clicks, dwell, add-to-cart, checkout, repeat purchase. The full funnel, joinable by user.</div>
+        </div>
+        <div class="output-card">
+          <div class="output-value">200K</div>
+          <div class="output-label">First-Party Purchase Intent Signal</div>
+          <div class="output-desc">Monthly active users producing real-time intent - infinitely more valuable than third-party cookies.</div>
+        </div>
+        <div class="output-card">
+          <div class="output-value">200+</div>
+          <div class="output-label">Advertiser Accounts Activated</div>
+          <div class="output-desc">First-party behavioral segments and lookalike audiences fed into 200+ live campaigns across 6 DSP partners.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE STACK -->
+    <section class="section reveal">
+      <span class="section-label">The Stack</span>
+      <h2>What it was built with</h2>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-label">Frontend</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Vercel</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Backend</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">Celery</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Data</div>
+          <div class="tech-tags">
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Redis</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Infrastructure</div>
+          <div class="tech-tags">
+            <span class="tech-tag">AWS EC2</span>
+            <span class="tech-tag">AWS S3</span>
+            <span class="tech-tag">AWS RDS</span>
+            <span class="tech-tag">CloudFront</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Instrumentation</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Custom Pixel SDK</span>
+            <span class="tech-tag">Event Stream</span>
+            <span class="tech-tag">Identity Stitching</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Integrations</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Stripe</span>
+            <span class="tech-tag">SendGrid</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUB-NAV -->
+    <nav class="subnav reveal" aria-label="Related pages">
+      <a href="../../" class="subnav-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Homepage
+      </a>
+      <a href="../platform/" class="subnav-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        Confidential AdTech Startup Platform
+      </a>
+      <a href="../cdp/" class="subnav-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+        Customer Data Platform
+      </a>
+      <a href="../../#projects" class="subnav-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        All Projects
+      </a>
+    </nav>
+
+  </div>
+
+  <!-- CTA -->
+  <section style="max-width:900px;margin:0 auto;padding:60px 28px 40px;text-align:center">
+    <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:12px;color:var(--text)">Let's talk about what I can do for you.</h2>
+    <p style="font-size:15px;color:var(--text-muted);margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6">I'm exploring leadership roles where building the technology and running the business aren't treated as separate jobs.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="mailto:scumunna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:#dc2626;padding:12px 24px;border-radius:8px;text-decoration:none;transition:background .2s,transform .2s" onmouseover="this.style.background='#b91c1c';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#dc2626';this.style.transform='none'">Start a Conversation &rarr;</a>
+      <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text);background:var(--surface);border:1px solid var(--border);padding:12px 24px;border-radius:8px;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">View on LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top:1px solid var(--border);padding:32px 24px;margin-top:64px">
+    <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text-faint)">
+      <div>Stephen Umunna &middot; Los Angeles, CA</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <a href="mailto:scumunna@gmail.com" style="color:var(--text-muted);transition:color .2s">scumunna@gmail.com</a>
+        <a href="tel:+13239171875" style="color:var(--text-muted);transition:color .2s">(323) 917-1875</a>
+        <a href="https://github.com/scumunna" target="_blank" rel="noopener" style="color:var(--text-muted);transition:color .2s">GitHub</a>
+        <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="color:var(--text-muted);transition:color .2s">LinkedIn</a>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+  (function() {
+    'use strict';
+
+    /* THEME TOGGLE */
+    var ThemeManager = {
+      init: function() {
+        var saved = localStorage.getItem('portfolio-theme') || 'light';
+        this.set(saved);
+        var self = this;
+        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            self.set(btn.getAttribute('data-theme-btn'));
+          });
+        });
+      },
+      set: function(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('portfolio-theme', theme);
+        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-theme-btn') === theme);
+        });
+      }
+    };
+    ThemeManager.init();
+
+    /* COUNTER ANIMATIONS */
+    function animateCounters() {
+      var counters = document.querySelectorAll('.counter-value[data-target]');
+      counters.forEach(function(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        var decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+        var duration = 1600;
+        var start = performance.now();
+        function step(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = target * eased;
+          if (decimals > 0) {
+            el.textContent = prefix + current.toFixed(decimals) + suffix;
+          } else {
+            el.textContent = prefix + Math.round(current) + suffix;
+          }
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = prefix + (decimals > 0 ? target.toFixed(decimals) : target) + suffix;
+        }
+        requestAnimationFrame(step);
+      });
+    }
+    animateCounters();
+
+    /* SCROLL REVEAL */
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+
+    /* GROWTH CURVE ANIMATION */
+    var growthSection = document.getElementById('growthCurve');
+    if (growthSection) {
+      var growthObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            growthSection.querySelectorAll('.curve-path').forEach(function(p) { p.classList.add('animated'); });
+            growthSection.querySelectorAll('.curve-area').forEach(function(a) { a.classList.add('animated'); });
+            growthSection.querySelectorAll('.curve-milestone-label').forEach(function(l) { l.classList.add('animated'); });
+            setTimeout(function() {
+              growthSection.querySelectorAll('.curve-dot').forEach(function(d) { d.classList.add('animated'); });
+              growthSection.querySelectorAll('.curve-dot-pulse').forEach(function(p) { p.classList.add('animated'); });
+            }, 1400);
+            growthObserver.unobserve(growthSection);
+          }
+        });
+      }, { threshold: 0.2 });
+      growthObserver.observe(growthSection);
+    }
+  })();
+  </script>
+
+</body>
+</html>

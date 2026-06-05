@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CP6VN2C604"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CP6VN2C604');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Shoppable Ad Engine - Stephen Umunna</title>
+  <meta name="description" content="How Stephen Umunna built an ad format that turns every display impression into a mini storefront. Adopted by 50+ retail clients, 3x industry CTR.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23f59e0b'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+  <style>
+    /* ========================================
+       CSS VARIABLES - LIGHT / DARK / SYSTEM
+    ======================================== */
+    :root {
+      --bg: #fafafa;
+      --bg2: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --accent-soft: #fffbeb;
+      --accent-border: #fde68a;
+      --accent-text: #92400e;
+      --green: #22c55e;
+      --green-soft: #ecfdf5;
+      --green-border: #a7f3d0;
+      --blue: #2563eb;
+      --blue-soft: #eff6ff;
+      --blue-border: #bfdbfe;
+      --purple: #7c3aed;
+      --purple-soft: #f5f3ff;
+      --purple-border: #ddd6fe;
+      --red: #ef4444;
+      --red-soft: #fef2f2;
+      --red-border: #fecaca;
+      --nav-bg: rgba(255,255,255,.92);
+      --shadow: rgba(15,23,42,0.06);
+      --shadow-lg: rgba(15,23,42,0.1);
+      --counter-color: #d97706;
+      --mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0a0f;
+      --bg2: #0f0f17;
+      --surface: #13131a;
+      --text: #e2e2e8;
+      --text-muted: #9898a8;
+      --text-faint: #5a5a6e;
+      --border: #1e1e2e;
+      --accent: #fbbf24;
+      --accent-hover: #f59e0b;
+      --accent-soft: rgba(245,158,11,0.1);
+      --accent-border: #78350f;
+      --accent-text: #fde68a;
+      --green: #4ade80;
+      --green-soft: rgba(34,197,94,0.1);
+      --green-border: #14532d;
+      --blue: #60a5fa;
+      --blue-soft: rgba(37,99,235,0.12);
+      --blue-border: #1e3a5f;
+      --purple: #a78bfa;
+      --purple-soft: rgba(124,58,237,0.1);
+      --purple-border: #3b1f6e;
+      --red: #f87171;
+      --red-soft: rgba(239,68,68,0.1);
+      --red-border: #7f1d1d;
+      --nav-bg: rgba(10,10,15,.85);
+      --shadow: rgba(0,0,0,0.3);
+      --shadow-lg: rgba(0,0,0,0.5);
+      --counter-color: #fbbf24;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        --bg: #0a0a0f;
+        --bg2: #0f0f17;
+        --surface: #13131a;
+        --text: #e2e2e8;
+        --text-muted: #9898a8;
+        --text-faint: #5a5a6e;
+        --border: #1e1e2e;
+        --accent: #fbbf24;
+        --accent-hover: #f59e0b;
+        --accent-soft: rgba(245,158,11,0.1);
+        --accent-border: #78350f;
+        --accent-text: #fde68a;
+        --green: #4ade80;
+        --green-soft: rgba(34,197,94,0.1);
+        --green-border: #14532d;
+        --blue: #60a5fa;
+        --blue-soft: rgba(37,99,235,0.12);
+        --blue-border: #1e3a5f;
+        --purple: #a78bfa;
+        --purple-soft: rgba(124,58,237,0.1);
+        --purple-border: #3b1f6e;
+        --red: #f87171;
+        --red-soft: rgba(239,68,68,0.1);
+        --red-border: #7f1d1d;
+        --nav-bg: rgba(10,10,15,.85);
+        --shadow: rgba(0,0,0,0.3);
+        --shadow-lg: rgba(0,0,0,0.5);
+        --counter-color: #fbbf24;
+      }
+    }
+
+    /* ========================================
+       RESET
+    ======================================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      transition: background .3s, color .3s;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ========================================
+       NAV
+    ======================================== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s, border-color .3s;
+    }
+
+    .nav-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 32px;
+      height: 56px; display: flex; align-items: center;
+    }
+
+    .nav-back {
+      font-size: 14px; font-weight: 500; color: var(--text-muted);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color .2s, transform .2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back:hover svg { transform: translateX(-2px); }
+    .nav-back svg { transition: transform .2s; flex-shrink: 0; }
+
+    .theme-toggle {
+      display: flex; align-items: center; margin-left: auto;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 100px; padding: 2px; gap: 0;
+      transition: background .3s, border-color .3s;
+    }
+    .theme-btn {
+      padding: 5px 11px; font-size: 12px; font-weight: 500;
+      color: var(--text-faint); background: transparent;
+      border: none; border-radius: 100px; cursor: pointer;
+      transition: color .2s, background .2s; font-family: inherit;
+      white-space: nowrap; line-height: 1;
+    }
+    .theme-btn:hover { color: var(--text-muted); }
+    .theme-btn.active {
+      color: var(--text); background: var(--surface);
+      box-shadow: 0 1px 3px var(--shadow);
+    }
+
+    /* ========================================
+       CONTENT WRAPPER
+    ======================================== */
+    .content { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+    /* ========================================
+       SCROLL REVEAL
+    ======================================== */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ========================================
+       HERO
+    ======================================== */
+    .hero { padding: 100px 0 48px; text-align: left; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--accent-text);
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px); font-weight: 800;
+      line-height: 1.08; letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px; color: var(--text-muted); line-height: 1.7;
+      max-width: 720px;
+    }
+
+    /* ========================================
+       COUNTERS
+    ======================================== */
+    .counters {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; margin-top: 40px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .counter-cell {
+      background: var(--surface); padding: 28px 16px; text-align: center;
+      transition: background .3s;
+    }
+
+    .counter-value {
+      font-family: var(--mono); font-size: 32px; font-weight: 700;
+      color: var(--counter-color); letter-spacing: -0.02em;
+      line-height: 1.1; margin-bottom: 6px;
+    }
+
+    .counter-label {
+      font-size: 13px; font-weight: 600; color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .counter-detail {
+      font-size: 11px; color: var(--text-faint); font-weight: 500;
+    }
+
+    /* ========================================
+       SECTION HEADERS
+    ======================================== */
+    .section { padding: 80px 0 0; }
+
+    .section-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: clamp(26px, 4vw, 36px); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 16px; color: var(--text-muted);
+      line-height: 1.75; max-width: 680px;
+    }
+
+    /* ========================================
+       STORY CARD (The Problem)
+    ======================================== */
+    .story-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 40px; margin-top: 32px;
+      position: relative; overflow: hidden;
+      transition: background .3s, border-color .3s;
+    }
+    .story-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%; background: var(--red); border-radius: 0 2px 2px 0;
+    }
+    .story-card p {
+      font-size: 16px; color: var(--text-muted); line-height: 1.85;
+    }
+    .story-card p + p { margin-top: 16px; }
+    .story-card strong { color: var(--text); font-weight: 600; }
+
+    /* ========================================
+       LIVE DEMO SECTION
+    ======================================== */
+    .demo-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-top: 32px;
+    }
+
+    .demo-embed-wrap {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .demo-embed-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .demo-embed-wrap .product-frame {
+      border: none;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    .demo-fallback-img {
+      display: none;
+    }
+
+    .demo-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .demo-detail-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .demo-detail-icon {
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      transition: background .3s, border-color .3s;
+    }
+
+    .demo-detail-text h4 {
+      font-size: 15px; font-weight: 700; margin-bottom: 3px;
+      color: var(--text);
+    }
+
+    .demo-detail-text p {
+      font-size: 14px; color: var(--text-muted); line-height: 1.65;
+    }
+
+    @media (max-width: 768px) {
+      .demo-layout {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+      .demo-embed-wrap {
+        width: 100%;
+        max-width: 340px;
+      }
+    }
+
+    /* ========================================
+       STEP FLOW (How It Works)
+    ======================================== */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s, border-color .3s, box-shadow .3s, transform .2s;
+    }
+
+    .step-card:hover {
+      box-shadow: 0 8px 32px var(--shadow);
+      transform: translateY(-2px);
+    }
+
+    .step-card.expanded {
+      border-color: var(--accent);
+      box-shadow: 0 8px 32px var(--shadow-lg);
+    }
+
+    .step-header {
+      display: flex; align-items: center; gap: 14px;
+    }
+
+    .step-number {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 16px; font-weight: 800;
+      color: var(--accent);
+      transition: background .3s, color .3s, border-color .3s;
+    }
+
+    .step-card.expanded .step-number {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .step-title {
+      font-size: 16px; font-weight: 700; color: var(--text);
+      flex: 1;
+    }
+
+    .step-chevron {
+      flex-shrink: 0; color: var(--text-faint);
+      transition: transform .3s, color .3s;
+    }
+    .step-card.expanded .step-chevron {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+
+    .step-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s cubic-bezier(.22,1,.36,1), padding .3s;
+    }
+
+    .step-card.expanded .step-body {
+      max-height: 300px;
+      padding-top: 20px;
+    }
+
+    .step-body p {
+      font-size: 14px; color: var(--text-muted); line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .step-header {
+        min-height: 48px;
+        padding: 14px 16px;
+      }
+    }
+
+    /* ========================================
+       FLYER GALLERY
+    ======================================== */
+    .flyer-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .flyer-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color .3s, box-shadow .3s, transform .3s;
+    }
+
+    .flyer-card:hover {
+      border-color: var(--accent-border);
+      box-shadow: 0 12px 40px var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .flyer-img-wrap {
+      overflow: hidden;
+      cursor: zoom-in;
+      position: relative;
+    }
+
+    .flyer-img-wrap img {
+      width: 100%;
+      transition: transform .4s cubic-bezier(.22,1,.36,1);
+    }
+
+    .flyer-card:hover .flyer-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .flyer-caption {
+      padding: 16px 20px;
+      font-size: 13px; font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      .flyer-gallery { grid-template-columns: 1fr; }
+    }
+
+    /* ========================================
+       RESULTS SECTION
+    ======================================== */
+    .results-screenshot {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 32px;
+      transition: border-color .3s;
+    }
+
+    .results-screenshot img {
+      width: 100%;
+    }
+
+    .results-screenshot-caption {
+      padding: 16px 24px;
+      font-size: 13px; color: var(--text-faint);
+      font-weight: 500; text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    .results-counters {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; margin-top: 24px;
+      transition: background .3s, border-color .3s;
+    }
+
+    @media (max-width: 640px) {
+      .counters,
+      .results-counters {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ========================================
+       FEATURE CARDS
+    ======================================== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: background .3s, border-color .3s, box-shadow .3s, transform .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 8px 32px var(--shadow);
+      transform: translateY(-3px);
+      border-color: var(--accent-border);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      margin-bottom: 16px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .feature-card h3 {
+      font-size: 15px; font-weight: 700; margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .feature-card p {
+      font-size: 13px; color: var(--text-muted); line-height: 1.65;
+    }
+
+    @media (max-width: 768px) {
+      .features-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========================================
+       CTA SECTION
+    ======================================== */
+    .cta-section {
+      padding: 80px 0;
+    }
+
+    .cta-card {
+      background: var(--surface);
+      border: 2px solid var(--accent-border);
+      border-radius: 20px;
+      padding: 56px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s, border-color .3s;
+    }
+
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: -60%; left: -20%; right: -20%;
+      height: 200px;
+      background: radial-gradient(ellipse, var(--accent-soft) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-card h2 {
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .cta-card .cta-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto 32px;
+      position: relative;
+    }
+
+    .cta-button {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 16px; font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(245,158,11,0.25);
+    }
+
+    .cta-button:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245,158,11,0.35);
+    }
+
+    .cta-button:active {
+      transform: translateY(0);
+    }
+
+    .cta-button svg {
+      transition: transform .2s;
+    }
+
+    .cta-button:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ========================================
+       TECH STACK
+    ======================================== */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .tech-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .tech-item-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 6px;
+    }
+
+    .tech-item-value {
+      font-size: 14px; font-weight: 600; color: var(--text);
+      line-height: 1.4;
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      margin-top: 0;
+      text-align: center;
+      transition: border-color .3s;
+    }
+
+    .footer p {
+      font-size: 13px; color: var(--text-faint);
+    }
+
+    .footer a {
+      color: var(--accent);
+      font-weight: 600;
+      transition: color .2s;
+    }
+
+    .footer a:hover {
+      color: var(--accent-hover);
+    }
+
+    /* ========================================
+       LIGHTBOX
+    ======================================== */
+    .lightbox-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center;
+      cursor: zoom-out;
+    }
+    .lightbox-overlay.active {
+      display: flex;
+    }
+    .lightbox-overlay img {
+      max-width: 90vw; max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+      animation: lightbox-in .25s ease;
+    }
+    @keyframes lightbox-in {
+      from { opacity: 0; transform: scale(.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* ========================================
+       WHERE THESE ADS RUN - Programmatic Flow
+    ======================================== */
+    .delivery-flow-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      margin-top: 32px;
+      overflow: hidden;
+      transition: background .3s, border-color .3s;
+    }
+
+    .delivery-flow-svg {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .delivery-flow-svg text {
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .flow-node {
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .flow-node.flow-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .flow-arrow-path {
+      stroke-dasharray: 60;
+      stroke-dashoffset: 60;
+      transition: stroke-dashoffset .6s ease;
+    }
+    .flow-arrow-path.flow-visible {
+      stroke-dashoffset: 0;
+    }
+
+    .consumer-journey {
+      display: flex;
+      gap: 0;
+      margin-top: 32px;
+      position: relative;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .journey-step {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .4s ease, transform .4s ease;
+    }
+    .journey-step.flow-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .journey-pill {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      transition: background .3s, border-color .3s, color .3s;
+    }
+    .journey-step.journey-active .journey-pill {
+      background: var(--accent-soft);
+      border-color: var(--accent-border);
+      color: var(--accent-text);
+    }
+
+    .journey-arrow {
+      color: var(--text-faint);
+      flex-shrink: 0;
+      margin: 0 6px;
+    }
+
+    @media (max-width: 768px) {
+      .delivery-flow-container { padding: 28px 20px; }
+      .consumer-journey { gap: 4px; }
+      .journey-pill { font-size: 11px; padding: 6px 10px; }
+      .journey-arrow { margin: 0 2px; }
+    }
+    @media (max-width: 480px) {
+      .consumer-journey { flex-direction: column; align-items: center; gap: 0; }
+      .journey-arrow { transform: rotate(90deg); margin: 4px 0; }
+      .delivery-flow-svg {
+        min-height: 160px;
+      }
+      .delivery-flow-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    /* ========================================
+       AD SIZE SHOWCASE - TABBED LIVE IFRAMES
+    ======================================== */
+    .size-tabs {
+      display: flex;
+      gap: 8px;
+      margin-top: 32px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .size-tab {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background .2s, border-color .2s, color .2s, box-shadow .2s;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: .01em;
+    }
+
+    .size-tab:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .size-tab.size-tab-active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .size-panel {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .size-panel.size-panel-active {
+      display: flex;
+    }
+
+    .size-iframe-wrap {
+      overflow: hidden;
+      border-radius: 8px;
+      background: #000;
+      box-shadow: 0 8px 32px var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+
+    .size-iframe-wrap--tall {
+      max-height: 600px;
+      overflow: hidden;
+    }
+
+    .size-panel-label {
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .size-panel-label .size-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .size-panel-label .size-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .size-tabs { justify-content: center; }
+      .size-panel { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+      .size-iframe-wrap { margin: 0 auto; }
+    }
+
+    /* ========================================
+       STEP CARD AUTO-PLAY INDICATOR
+    ======================================== */
+    .step-card .step-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 0 2px 0 0;
+      width: 0;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .step-card.expanded .step-progress {
+      opacity: 1;
+    }
+    .step-card.auto-playing .step-progress {
+      animation: step-fill 3s linear forwards;
+    }
+    @keyframes step-fill {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 480px) {
+      .content { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .hero { padding: 80px 0 32px; }
+      .section { padding: 56px 0 0; }
+      .story-card { padding: 28px; }
+      .step-card { padding: 20px; }
+      .cta-card { padding: 40px 24px; }
+      .cta-button {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================
+       NAV
+  ================================================ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-back" href="../../">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        Stephen Umunna &middot; Portfolio
+      </a>
+      <div class="theme-toggle">
+        <button class="theme-btn" data-theme="light" aria-label="Light theme">Light</button>
+        <button class="theme-btn" data-theme="dark" aria-label="Dark theme">Dark</button>
+        <button class="theme-btn" data-theme="system" aria-label="System theme">System</button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="interactive-banner" style="position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(37,99,235,0.08);border-bottom:1px solid rgba(37,99,235,0.15);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:Inter,-apple-system,sans-serif;font-size:12px;color:var(--accent,var(--ac,#2563eb));animation:bannerSlide .4s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+    <span style="font-size:14px">&#9996;</span>
+    <span>This page is fully interactive - try the live ad demos, click the steps, explore every section</span>
+    <button onclick="this.parentElement.style.display='none';sessionStorage.setItem('banner-dismissed','1')" style="background:none;border:none;color:var(--accent,var(--ac,#2563eb));cursor:pointer;font-size:16px;padding:0 4px;margin-left:8px;opacity:0.6" aria-label="Dismiss">&times;</button>
+  </div>
+  <script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('interactive-banner').style.display='none';</script>
+  <style>@keyframes bannerSlide{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}</style>
+  <div id="banner-spacer" style="height:36px"></div>
+  <script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('banner-spacer').style.display='none';</script>
+
+
+  <div class="content">
+
+    <!-- ================================================
+         HERO
+    ================================================ -->
+    <section class="hero">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Confidential AdTech Startup &middot; I Built This
+      </div>
+      <h1>The Shoppable Ad&nbsp;Engine</h1>
+      <p class="hero-subtitle">I created an ad format that turns every display impression into a mini storefront. No 3-day creative cycle. No design team. Product feed in, interactive ad out, in under 2&nbsp;hours.</p>
+
+      <div class="counters reveal">
+        <div class="counter-cell">
+          <div class="counter-value" data-target="3" data-suffix="x">0x</div>
+          <div class="counter-label">CTR vs Standard</div>
+          <div class="counter-detail">1.6% avg vs 0.5% industry</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="50" data-suffix="+">0</div>
+          <div class="counter-label">Retail Clients</div>
+          <div class="counter-detail">Adopted the format</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="200" data-suffix="+">0</div>
+          <div class="counter-label">Simultaneous Accounts</div>
+          <div class="counter-detail">Running at any given time</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="4">0</div>
+          <div class="counter-label">IAB Ad Sizes</div>
+          <div class="counter-detail">From a single product feed</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================
+         THE PROBLEM
+    ================================================ -->
+    <section class="section reveal">
+      <span class="section-label">The Problem</span>
+      <h2>The Creative Wall</h2>
+      <div class="story-card">
+        <p>Retail brands wanted to run programmatic campaigns featuring specific products on premium publisher sites - ESPN, Yahoo, major news outlets. The problem: getting interactive ad creative produced took <strong>3 days minimum.</strong> Brief the design team, mock up 4 ad sizes, get client approval, revise, re-approve, traffic to the DSP.</p>
+        <p>When you're managing <strong>200+ simultaneous accounts</strong> running cobrand deals, 3 days per campaign is a bottleneck that kills momentum. I needed a way to go from product feed to live interactive ads on premium sites in hours, not&nbsp;days.</p>
+      </div>
+    </section>
+
+
+    <!-- ================================================
+         THE SOLUTION - LIVE DEMO
+    ================================================ -->
+    <section class="section reveal">
+      <span class="section-label">The Solution</span>
+      <h2>Feed in. Ad out. Under 2 hours.</h2>
+
+      <div class="demo-layout">
+        <div class="demo-embed-wrap">
+          <div class="demo-embed-label">LIVE DEMO · LUXE STYLE 300x250</div>
+          <div class="embed-detect" style="position:relative;width:300px;height:250px">
+            <iframe src="product-story-medium.html" style="width:300px;height:250px;border:none;border-radius:8px;background:#000;position:relative;z-index:1" loading="eager" title="Live Product Story Demo - LUXE Style" class="product-frame"></iframe>
+            <div class="blocked-notice" style="display:none;position:absolute;inset:0;background:var(--bg2);border:1px dashed var(--border);border-radius:8px;z-index:2;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;gap:8px">
+              <span style="font-size:32px">😊</span>
+              <span style="font-size:13px;font-weight:600;color:var(--text)">Content blocked</span>
+              <span style="font-size:12px;color:var(--text-muted);line-height:1.5">This is a portfolio demo, not a real ad.<br>Please disable your content blocker to see it in action.</span>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--text-faint);margin-top:8px;text-align:center">Swipe through products. Every click goes to a real retailer page.</div>
+        </div>
+
+        <div class="demo-details">
+          <div class="demo-detail-item">
+            <div class="demo-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="demo-detail-text">
+              <h4>It's alive</h4>
+              <p>This is a real, working shoppable ad. Swipe through the products. Every element is interactive.</p>
+            </div>
+          </div>
+
+          <div class="demo-detail-item">
+            <div class="demo-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="demo-detail-text">
+              <h4>Adaptive DCO</h4>
+              <p>The engine tracks which products you dwell on and re-sorts them on the next impression. The ad literally learns your preferences.</p>
+            </div>
+          </div>
+
+          <div class="demo-detail-item">
+            <div class="demo-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </div>
+            <div class="demo-detail-text">
+              <h4>Zero-Friction Deep-Links</h4>
+              <p>Every product links directly to the retailer's SKU page. No homepage. No search. One tap, you're on the product.</p>
+            </div>
+          </div>
+
+          <div class="demo-detail-item">
+            <div class="demo-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="demo-detail-text">
+              <h4>4 IAB Sizes</h4>
+              <p>300x250, 336x280, 320x320, and 300x600 - all generated from a single product feed upload.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================
+         WHERE THESE ADS RUN
+    ================================================ -->
+    <section class="section reveal">
+      <span class="section-label">Where These Ads Run</span>
+      <h2>Your products. On ESPN. Right&nbsp;now.</h2>
+      <p class="section-desc">These aren't banner ads buried on low-quality sites. They're interactive storefronts served through programmatic DSPs onto premium publisher inventory - ESPN, Yahoo, major news outlets, lifestyle sites. A consumer reading a sports article sees your ad, swipes through your products, checks the price, and taps "Buy Now" to land directly on the product page. The path from discovery to purchase happens without ever leaving the content.</p>
+
+      <div class="delivery-flow-container">
+        <svg class="delivery-flow-svg" viewBox="0 0 780 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Programmatic ad delivery flow: Publisher sites deliver ads through DSPs as interactive shoppable storefronts">
+
+          <!-- Publisher Box -->
+          <g class="flow-node" data-flow-index="0">
+            <rect x="10" y="30" width="200" height="140" rx="12" fill="var(--bg2)" stroke="var(--border)" stroke-width="1.5"/>
+            <text x="110" y="58" text-anchor="middle" font-size="11" font-weight="700" letter-spacing=".06em" fill="var(--text-faint)" text-transform="uppercase">PUBLISHERS</text>
+            <text x="110" y="85" text-anchor="middle" font-size="15" font-weight="700" fill="var(--text)">ESPN</text>
+            <text x="110" y="107" text-anchor="middle" font-size="15" font-weight="700" fill="var(--text)">Yahoo</text>
+            <text x="110" y="129" text-anchor="middle" font-size="14" font-weight="600" fill="var(--text-muted)">News Sites</text>
+            <text x="110" y="151" text-anchor="middle" font-size="14" font-weight="600" fill="var(--text-muted)">Lifestyle</text>
+          </g>
+
+          <!-- Arrow 1 -->
+          <g class="flow-node" data-flow-index="1">
+            <line class="flow-arrow-path" x1="220" y1="100" x2="295" y2="100" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+            <polygon points="295,93 310,100 295,107" fill="var(--accent)"/>
+          </g>
+
+          <!-- DSP Box -->
+          <g class="flow-node" data-flow-index="2">
+            <rect x="315" y="60" width="150" height="80" rx="12" fill="var(--accent-soft)" stroke="var(--accent-border)" stroke-width="1.5"/>
+            <text x="390" y="92" text-anchor="middle" font-size="11" font-weight="700" letter-spacing=".06em" fill="var(--accent-text)">PROGRAMMATIC DSP</text>
+            <text x="390" y="115" text-anchor="middle" font-size="13" font-weight="600" fill="var(--text-muted)">Multiple Platforms</text>
+          </g>
+
+          <!-- Arrow 2 -->
+          <g class="flow-node" data-flow-index="3">
+            <line class="flow-arrow-path" x1="475" y1="100" x2="545" y2="100" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+            <polygon points="545,93 560,100 545,107" fill="var(--accent)"/>
+          </g>
+
+          <!-- Shoppable Ad Card -->
+          <g class="flow-node" data-flow-index="4">
+            <rect x="565" y="25" width="200" height="150" rx="12" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+            <text x="665" y="52" text-anchor="middle" font-size="11" font-weight="700" letter-spacing=".06em" fill="var(--accent)">SHOPPABLE AD</text>
+            <!-- Mini product card -->
+            <rect x="590" y="64" width="150" height="48" rx="6" fill="var(--bg2)" stroke="var(--border)" stroke-width="1"/>
+            <rect x="598" y="72" width="32" height="32" rx="4" fill="var(--accent-soft)" stroke="var(--accent-border)" stroke-width=".5"/>
+            <text x="642" y="86" font-size="12" font-weight="700" fill="var(--text)">Product Name</text>
+            <text x="642" y="100" font-size="11" font-weight="600" fill="var(--accent)">$29.99</text>
+            <!-- Buy Now button -->
+            <rect x="608" y="124" width="114" height="34" rx="8" fill="var(--accent)"/>
+            <text x="665" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">BUY NOW</text>
+          </g>
+        </svg>
+
+        <!-- Consumer Journey -->
+        <div class="consumer-journey">
+          <div class="journey-step" data-journey="0">
+            <span class="journey-pill">Reading Article</span>
+          </div>
+          <svg class="journey-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <div class="journey-step" data-journey="1">
+            <span class="journey-pill">Sees Ad</span>
+          </div>
+          <svg class="journey-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <div class="journey-step" data-journey="2">
+            <span class="journey-pill">Swipes Products</span>
+          </div>
+          <svg class="journey-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <div class="journey-step" data-journey="3">
+            <span class="journey-pill">Taps Buy</span>
+          </div>
+          <svg class="journey-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <div class="journey-step" data-journey="4">
+            <span class="journey-pill">Lands on Product Page</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================
+         AD SIZE SHOWCASE
+    ================================================ -->
+    <section class="section reveal">
+      <span class="section-label">Try all 4 sizes</span>
+      <h2>Same product feed. Four IAB-standard ad units.</h2>
+      <p class="section-desc" style="margin-bottom:0">Each one is live - swipe through the products.</p>
+
+      <div class="size-tabs">
+        <button class="size-tab size-tab-active" data-tab="300x250">300x250</button>
+        <button class="size-tab" data-tab="336x280">336x280</button>
+        <button class="size-tab" data-tab="320x320">320x320</button>
+        <button class="size-tab" data-tab="300x600">300x600</button>
+      </div>
+
+      <div class="size-panel size-panel-active" data-panel="300x250">
+        <div class="size-iframe-wrap embed-detect" style="position:relative">
+          <iframe src="product-story-medium.html" style="width:300px;height:250px;border:none;border-radius:8px;background:#000;position:relative;z-index:1" loading="eager" title="Live Product Story Demo - Medium Rectangle" class="product-frame"></iframe>
+          <div class="blocked-notice" style="display:none;position:absolute;inset:0;background:var(--bg2);border:1px dashed var(--border);border-radius:8px;z-index:2;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;gap:8px"><span style="font-size:32px">😊</span><span style="font-size:13px;font-weight:600;color:var(--text)">Content blocked</span><span style="font-size:12px;color:var(--text-muted);line-height:1.5">This is a portfolio demo, not a real ad.<br>Please disable your content blocker to see it.</span></div>
+        </div>
+        <div class="size-panel-label">
+          <div class="size-name">Medium Rectangle - 300x250</div>
+          <div class="size-desc">The most common display ad on the web</div>
+        </div>
+      </div>
+
+      <div class="size-panel" data-panel="336x280">
+        <div class="size-iframe-wrap embed-detect" style="position:relative">
+          <iframe src="product-story-large.html" style="width:336px;height:280px;border:none;border-radius:8px;background:#000;position:relative;z-index:1" loading="lazy" title="Live Product Story Demo - Large Rectangle" class="product-frame"></iframe>
+          <div class="blocked-notice" style="display:none;position:absolute;inset:0;background:var(--bg2);border:1px dashed var(--border);border-radius:8px;z-index:2;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;gap:8px"><span style="font-size:32px">😊</span><span style="font-size:13px;font-weight:600;color:var(--text)">Content blocked</span><span style="font-size:12px;color:var(--text-muted);line-height:1.5">This is a portfolio demo, not a real ad.<br>Please disable your content blocker to see it.</span></div>
+        </div>
+        <div class="size-panel-label">
+          <div class="size-name">Large Rectangle - 336x280</div>
+          <div class="size-desc">Higher viewability, more real estate</div>
+        </div>
+      </div>
+
+      <div class="size-panel" data-panel="320x320">
+        <div class="size-iframe-wrap embed-detect" style="position:relative">
+          <iframe src="product-story-square.html" style="width:320px;height:320px;border:none;border-radius:8px;background:#000;position:relative;z-index:1" loading="lazy" title="Live Product Story Demo - Mobile Square" class="product-frame"></iframe>
+          <div class="blocked-notice" style="display:none;position:absolute;inset:0;background:var(--bg2);border:1px dashed var(--border);border-radius:8px;z-index:2;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;gap:8px"><span style="font-size:32px">😊</span><span style="font-size:13px;font-weight:600;color:var(--text)">Content blocked</span><span style="font-size:12px;color:var(--text-muted);line-height:1.5">This is a portfolio demo, not a real ad.<br>Please disable your content blocker to see it.</span></div>
+        </div>
+        <div class="size-panel-label">
+          <div class="size-name">Mobile Square - 320x320</div>
+          <div class="size-desc">Designed for mobile feeds</div>
+        </div>
+      </div>
+
+      <div class="size-panel" data-panel="300x600">
+        <div class="size-iframe-wrap size-iframe-wrap--tall embed-detect" style="position:relative">
+          <iframe src="product-story-half.html" style="width:300px;height:600px;border:none;border-radius:8px;background:#000;position:relative;z-index:1" loading="lazy" title="Live Product Story Demo - Half Page" class="product-frame"></iframe>
+          <div class="blocked-notice" style="display:none;position:absolute;inset:0;background:var(--bg2);border:1px dashed var(--border);border-radius:8px;z-index:2;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;gap:8px"><span style="font-size:32px">😊</span><span style="font-size:13px;font-weight:600;color:var(--text)">Content blocked</span><span style="font-size:12px;color:var(--text-muted);line-height:1.5">This is a portfolio demo, not a real ad.<br>Please disable your content blocker to see it.</span></div>
+        </div>
+        <div class="size-panel-label">
+          <div class="size-name">Half Page - 300x600</div>
+          <div class="size-desc">Premium placement, full product showcase</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================================================
+         HOW IT WORKS - Interactive Steps
+    ================================================ -->
+    <section class="section reveal">
+      <span class="section-label">How It Works</span>
+      <h2>From product feed to live ad in 4&nbsp;steps</h2>
+
+      <div class="steps-grid">
+        <div class="step-card" data-step="1">
+          <div class="step-progress"></div>
+          <div class="step-header">
+            <div class="step-number">1</div>
+            <div class="step-title">Data Ingestion</div>
+            <svg class="step-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="step-body">
+            <p>Client provides a product feed - Shopify export, CSV, or XML. The Python/Pandas backend normalizes it into a standard JSON schema, verifying image resolution, price formatting, and product metadata. Bad data gets flagged before it ever touches a&nbsp;template.</p>
+          </div>
+        </div>
+
+        <div class="step-card" data-step="2">
+          <div class="step-progress"></div>
+          <div class="step-header">
+            <div class="step-number">2</div>
+            <div class="step-title">Template Engine</div>
+            <svg class="step-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="step-body">
+            <p>The ad builder offers 9 industry presets and 7 animation templates. The operator selects a template, customizes brand colors, CTA text, and layout. The engine renders a live preview in real-time - what you see is what the DSP&nbsp;gets.</p>
+          </div>
+        </div>
+
+        <div class="step-card" data-step="3">
+          <div class="step-progress"></div>
+          <div class="step-header">
+            <div class="step-number">3</div>
+            <div class="step-title">Adaptive DCO</div>
+            <svg class="step-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="step-body">
+            <p>This is the intelligence layer. An IntersectionObserver with a 0.6 threshold detects when a user dwells on a product for more than 0.5 seconds. That data is persisted in localStorage. On the next impression, the ad re-sorts to show the user's preferred products first. The ad literally&nbsp;learns.</p>
+          </div>
+        </div>
+
+        <div class="step-card" data-step="4">
+          <div class="step-progress"></div>
+          <div class="step-header">
+            <div class="step-number">4</div>
+            <div class="step-title">DSP Deployment</div>
+            <svg class="step-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="step-body">
+            <p>The engine exports DSP-ready HTML5 ad tags in all 4 IAB sizes. Each tag includes zero-friction deep-linking (detects mobile vs desktop, links directly to SKU pages), a custom pixel for conversion tracking, and regulated-industry compliance if&nbsp;needed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ================================================
+         THE RESULTS
+    ================================================ -->
+    <section class="section reveal">
+      <span class="section-label">The Results</span>
+      <h2>What happened when we shipped it</h2>
+
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;max-width:700px;margin-bottom:32px">The engine eliminated the creative bottleneck for cobrand deals. A retail client wanted to promote products in a partner store on premium publisher sites - we had their interactive ads running across multiple DSPs the same day. Not 3 days later. The same&nbsp;day.</p>
+
+      <div class="results-counters">
+        <div class="counter-cell">
+          <div class="counter-value" data-target="50" data-suffix="+">0</div>
+          <div class="counter-label">Retail Clients Adopted</div>
+          <div class="counter-detail">The format became standard</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="3" data-suffix="x">0</div>
+          <div class="counter-label">CTR vs Standard Display</div>
+          <div class="counter-detail">Interactive beats static every time</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="2" data-prefix="<" data-suffix=" hrs">0</div>
+          <div class="counter-label">Feed to Live Ad</div>
+          <div class="counter-detail">Was 3 days</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="200" data-suffix="+">0</div>
+          <div class="counter-label">Simultaneous Accounts</div>
+          <div class="counter-detail">All using the engine monthly</div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:24px;border-left:4px solid var(--accent)">
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin:0">The engine didn't just save time - it changed how clients thought about advertising. When you can go from "I want to promote these 6 products" to "here's your interactive ad running across multiple DSPs" in the same meeting, the conversation shifts from "can we do this?" to "what else can we run?"</p>
+      </div>
+    </section>
+
+
+    <!-- ================================================
+         FEATURE BREAKDOWN
+    ================================================ -->
+    <section class="section reveal">
+      <span class="section-label">Feature Breakdown</span>
+      <h2>What the engine does</h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <h3>Adaptive DCO</h3>
+          <p>Tracks user dwell time via IntersectionObserver. Re-sorts products by interest on the next impression. The ad gets smarter every time it's&nbsp;seen.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+          <h3>Zero-Friction Deep-Linking</h3>
+          <p>Detects mobile vs desktop. Bypasses the homepage entirely. Sends the user directly to the SKU page - one tap from ad to&nbsp;cart.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h3>9 Industry Presets</h3>
+          <p>Retail, fashion, auto, food, electronics, luxury, wellness, regulated industries, and general. Each with its own color scheme, typography, and layout&nbsp;logic.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>7 Animation Templates</h3>
+          <p>Story, carousel, grid, hero, minimal, retro, and neon. Distinct transition effects and timing curves tuned for engagement.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <h3>A/B Testing</h3>
+          <p>Split test templates, CTAs, and product ordering within a single campaign. Data feeds back into the DCO layer to auto-optimize&nbsp;winners.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Regulated-Industry Compliance</h3>
+          <p>Built-in disclaimers, license numbers, and legal text for regulated verticals. Toggled on per-client, rendered directly into the ad&nbsp;tag.</p>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- ================================================
+         TECH STACK
+    ================================================ -->
+    <section class="section reveal" style="padding-bottom:48px;">
+      <span class="section-label">Tech Stack</span>
+      <h2>What powers it</h2>
+
+      <div class="tech-grid">
+        <div class="tech-item">
+          <div class="tech-item-label">Frontend</div>
+          <div class="tech-item-value">HTML5, CSS3, JavaScript ES6+</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">DCO Logic</div>
+          <div class="tech-item-value">IntersectionObserver, localStorage, DOM re-sorting</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">Backend</div>
+          <div class="tech-item-value">Python, Pandas</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">Ad Serving</div>
+          <div class="tech-item-value">Custom pixel, DSP HTML5 tags</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-label">Compliance</div>
+          <div class="tech-item-value">Regulated-industry disclaimers</div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /.content -->
+
+<!-- CTA -->
+<section style="max-width:900px;margin:0 auto;padding:60px 28px 40px;text-align:center">
+  <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:12px;color:var(--text, var(--tx, #0f172a))">Let's talk about what I can do for you.</h2>
+  <p style="font-size:15px;color:var(--text-muted, var(--tx2, #475569));margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6">I'm exploring leadership roles where building the technology and running the business aren't treated as separate jobs.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="mailto:scumunna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:#dc2626;padding:12px 24px;border-radius:8px;text-decoration:none;transition:background .2s,transform .2s" onmouseover="this.style.background='#b91c1c';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#dc2626';this.style.transform='none'">Start a Conversation &rarr;</a>
+    <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text, var(--tx, #0f172a));background:var(--surface, var(--sf, #fff));border:1px solid var(--border, var(--bd, #e2e8f0));padding:12px 24px;border-radius:8px;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='var(--accent, var(--ac, #2563eb))';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border, var(--bd, #e2e8f0))';this.style.transform='none'">View on LinkedIn</a>
+  </div>
+</section>
+
+  <!-- ================================================
+       FOOTER
+  ================================================ -->
+  <footer style="border-top:1px solid var(--border, var(--bd, #e2e8f0));padding:32px 24px;margin-top:64px">
+    <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text-faint, var(--tx3, #94a3b8))">
+      <div>Stephen Umunna &middot; Los Angeles, CA</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <a href="mailto:scumunna@gmail.com" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">scumunna@gmail.com</a>
+        <a href="tel:+13239171875" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">(323) 917-1875</a>
+        <a href="https://github.com/scumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">GitHub</a>
+        <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">LinkedIn</a>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--text-muted, var(--tx3, #94a3b8));margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+  </footer>
+
+
+  <!-- ================================================
+       LIGHTBOX
+  ================================================ -->
+  <div class="lightbox-overlay" id="lightbox" role="dialog" aria-label="Image preview">
+    <img src="" alt="" id="lightbox-img">
+  </div>
+
+
+  <!-- ================================================
+       JAVASCRIPT
+  ================================================ -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* ── FOUC Prevention: mark theme toggle active state ── */
+      var currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      var btns = document.querySelectorAll('.theme-btn');
+      btns.forEach(function(btn) {
+        if (btn.dataset.theme === currentTheme) btn.classList.add('active');
+      });
+
+      /* ── Theme Toggle ── */
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var t = this.dataset.theme;
+          document.documentElement.setAttribute('data-theme', t);
+          localStorage.setItem('portfolio-theme', t);
+          btns.forEach(function(b) { b.classList.remove('active'); });
+          this.classList.add('active');
+        });
+      });
+
+      /* ── Scroll Reveal ── */
+      var reveals = document.querySelectorAll('.reveal');
+      var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(function(el) { revealObserver.observe(el); });
+
+      /* ── Animated Counters (supports data-prefix) ── */
+      var counters = document.querySelectorAll('.counter-value[data-target]');
+      var counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      counters.forEach(function(el) { counterObserver.observe(el); });
+
+      function animateCounter(el) {
+        var target = parseFloat(el.dataset.target);
+        var suffix = el.dataset.suffix || '';
+        var prefix = el.dataset.prefix || '';
+        var decimals = parseInt(el.dataset.decimals) || 0;
+        var duration = 1800;
+        var start = performance.now();
+
+        function easeOutQuart(x) {
+          return 1 - Math.pow(1 - x, 4);
+        }
+
+        function update(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = easeOutQuart(progress);
+          var current = eased * target;
+
+          if (decimals > 0) {
+            el.textContent = prefix + current.toFixed(decimals) + suffix;
+          } else {
+            el.textContent = prefix + Math.round(current) + suffix;
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          }
+        }
+
+        requestAnimationFrame(update);
+      }
+
+      /* ── Step Card Expand/Collapse with Auto-Play ── */
+      var stepCards = document.querySelectorAll('.step-card');
+      var autoPlayTimer = null;
+      var autoPlayActive = false;
+      var userClicked = false;
+
+      function expandStep(index) {
+        stepCards.forEach(function(c) {
+          c.classList.remove('expanded');
+          c.classList.remove('auto-playing');
+        });
+        if (index < stepCards.length) {
+          stepCards[index].classList.add('expanded');
+          stepCards[index].classList.add('auto-playing');
+        }
+      }
+
+      function startAutoPlay() {
+        if (userClicked) return;
+        autoPlayActive = true;
+        var currentStep = 0;
+        expandStep(currentStep);
+
+        autoPlayTimer = setInterval(function() {
+          if (userClicked) {
+            clearInterval(autoPlayTimer);
+            autoPlayActive = false;
+            stepCards.forEach(function(c) { c.classList.remove('auto-playing'); });
+            return;
+          }
+          currentStep++;
+          if (currentStep >= stepCards.length) {
+            currentStep = 0;
+          }
+          expandStep(currentStep);
+        }, 3000);
+      }
+
+      function stopAutoPlay() {
+        userClicked = true;
+        autoPlayActive = false;
+        if (autoPlayTimer) {
+          clearInterval(autoPlayTimer);
+          autoPlayTimer = null;
+        }
+        stepCards.forEach(function(c) { c.classList.remove('auto-playing'); });
+      }
+
+      stepCards.forEach(function(card) {
+        card.addEventListener('click', function() {
+          stopAutoPlay();
+          var wasExpanded = this.classList.contains('expanded');
+          stepCards.forEach(function(c) { c.classList.remove('expanded'); });
+          if (!wasExpanded) {
+            this.classList.add('expanded');
+          }
+        });
+      });
+
+      /* Start auto-play when How It Works section scrolls into view */
+      var stepsGrid = document.querySelector('.steps-grid');
+      if (stepsGrid) {
+        var stepsObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting && !userClicked && !autoPlayActive) {
+              startAutoPlay();
+              stepsObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+        stepsObserver.observe(stepsGrid);
+      }
+
+      /* ── Ad Flow Animation (Where These Ads Run) ── */
+      var flowContainer = document.querySelector('.delivery-flow-container');
+      if (flowContainer) {
+        var flowNodes = flowContainer.querySelectorAll('.flow-node');
+        var journeySteps = flowContainer.querySelectorAll('.journey-step');
+        var flowAnimated = false;
+
+        var flowObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting && !flowAnimated) {
+              flowAnimated = true;
+              /* Animate SVG nodes left to right */
+              flowNodes.forEach(function(node, i) {
+                setTimeout(function() {
+                  node.classList.add('flow-visible');
+                  /* Also animate arrow paths within this node */
+                  var paths = node.querySelectorAll('.flow-arrow-path');
+                  paths.forEach(function(p) { p.classList.add('flow-visible'); });
+                }, i * 300);
+              });
+
+              /* Animate consumer journey steps */
+              journeySteps.forEach(function(step, i) {
+                setTimeout(function() {
+                  step.classList.add('flow-visible');
+                }, 1500 + (i * 250));
+              });
+
+              /* Sequentially highlight journey steps */
+              var journeyHighlightIndex = 0;
+              function highlightNextJourney() {
+                journeySteps.forEach(function(s) { s.classList.remove('journey-active'); });
+                if (journeyHighlightIndex < journeySteps.length) {
+                  journeySteps[journeyHighlightIndex].classList.add('journey-active');
+                  journeyHighlightIndex++;
+                  setTimeout(highlightNextJourney, 600);
+                }
+              }
+              setTimeout(highlightNextJourney, 2800);
+
+              flowObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.25 });
+        flowObserver.observe(flowContainer);
+      }
+
+      /* ── Ad Size Tabs ── */
+      var sizeTabs = document.querySelectorAll('.size-tab');
+      var sizePanels = document.querySelectorAll('.size-panel');
+      sizeTabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          var target = this.getAttribute('data-tab');
+          sizeTabs.forEach(function(t) { t.classList.remove('size-tab-active'); });
+          sizePanels.forEach(function(p) { p.classList.remove('size-panel-active'); });
+          this.classList.add('size-tab-active');
+          var panel = document.querySelector('.size-panel[data-panel="' + target + '"]');
+          if (panel) panel.classList.add('size-panel-active');
+        });
+      });
+
+      /* ── Lightbox ── */
+      var lightbox = document.getElementById('lightbox');
+      var lightboxImg = document.getElementById('lightbox-img');
+      var lightboxTriggers = document.querySelectorAll('[data-lightbox]');
+
+      lightboxTriggers.forEach(function(trigger) {
+        trigger.addEventListener('click', function() {
+          var img = this.querySelector('img');
+          if (img) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+
+      lightbox.addEventListener('click', function() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+
+    })();
+  </script>
+
+  <script>
+    // Embed visibility detection - only triggers if a content blocker hid the iframe
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.querySelectorAll('.embed-detect').forEach(function(wrap) {
+          var iframe = wrap.querySelector('iframe');
+          var msg = wrap.querySelector('.blocked-notice');
+          if (!iframe || !msg) return;
+          // Only detect if a blocker explicitly hid the element via CSS
+          var style = window.getComputedStyle(iframe);
+          if (style.display === 'none' || style.visibility === 'hidden') {
+            msg.style.display = 'flex';
+            iframe.style.display = 'none';
+          }
+        });
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>

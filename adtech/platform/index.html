@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CP6VN2C604"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CP6VN2C604');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confidential AdTech Startup Platform - Stephen Umunna</title>
+  <meta name="description" content="How Stephen Umunna hired a 15-person team and built a 950K-line two-sided AdTech platform at Confidential AdTech Startup: consumer ordering app (2K to 200K MAU) + advertiser activation with a CDP as connective tissue. 85% gross margins, 200+ accounts.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+  </script>
+  <style>
+    /* ========================================
+       CSS VARIABLES - LIGHT / DARK / SYSTEM
+    ======================================== */
+    :root {
+      --bg: #fafafa;
+      --bg2: #f1f5f9;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-soft: #eff6ff;
+      --accent-border: #bfdbfe;
+      --green: #22c55e;
+      --green-soft: #ecfdf5;
+      --green-border: #a7f3d0;
+      --purple: #7c3aed;
+      --purple-soft: #f5f3ff;
+      --purple-border: #ddd6fe;
+      --nav-bg: rgba(255,255,255,.92);
+      --shadow: rgba(15,23,42,0.06);
+      --shadow-lg: rgba(15,23,42,0.1);
+      --counter-color: #059669;
+      --mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0a0f;
+      --bg2: #0f0f17;
+      --surface: #13131a;
+      --text: #e2e2e8;
+      --text-muted: #9898a8;
+      --text-faint: #5a5a6e;
+      --border: #1e1e2e;
+      --accent: #60a5fa;
+      --accent-soft: rgba(37,99,235,0.12);
+      --accent-border: #1e3a5f;
+      --green: #4ade80;
+      --green-soft: rgba(34,197,94,0.1);
+      --green-border: #14532d;
+      --purple: #a78bfa;
+      --purple-soft: rgba(124,58,237,0.1);
+      --purple-border: #3b1f6e;
+      --nav-bg: rgba(10,10,15,.85);
+      --shadow: rgba(0,0,0,0.3);
+      --shadow-lg: rgba(0,0,0,0.5);
+      --counter-color: #4ade80;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      [data-theme="system"] {
+        --bg: #0a0a0f;
+        --bg2: #0f0f17;
+        --surface: #13131a;
+        --text: #e2e2e8;
+        --text-muted: #9898a8;
+        --text-faint: #5a5a6e;
+        --border: #1e1e2e;
+        --accent: #60a5fa;
+        --accent-soft: rgba(37,99,235,0.12);
+        --accent-border: #1e3a5f;
+        --green: #4ade80;
+        --green-soft: rgba(34,197,94,0.1);
+        --green-border: #14532d;
+        --purple: #a78bfa;
+        --purple-soft: rgba(124,58,237,0.1);
+        --purple-border: #3b1f6e;
+        --nav-bg: rgba(10,10,15,.85);
+        --shadow: rgba(0,0,0,0.3);
+        --shadow-lg: rgba(0,0,0,0.5);
+        --counter-color: #4ade80;
+      }
+    }
+
+    /* ========================================
+       RESET
+    ======================================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      transition: background .3s, color .3s;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ========================================
+       NAV
+    ======================================== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s, border-color .3s;
+    }
+
+    .nav-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 32px;
+      height: 56px; display: flex; align-items: center;
+    }
+
+    .nav-back {
+      font-size: 14px; font-weight: 500; color: var(--text-muted);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color .2s, transform .2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+    .nav-back:hover svg { transform: translateX(-2px); }
+    .nav-back svg { transition: transform .2s; flex-shrink: 0; }
+
+    .theme-toggle {
+      display: flex; align-items: center; margin-left: auto;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 100px; padding: 2px; gap: 0;
+      transition: background .3s, border-color .3s;
+    }
+    .theme-btn {
+      padding: 5px 11px; font-size: 12px; font-weight: 500;
+      color: var(--text-faint); background: transparent;
+      border: none; border-radius: 100px; cursor: pointer;
+      transition: color .2s, background .2s; font-family: inherit;
+      white-space: nowrap; line-height: 1;
+    }
+    .theme-btn:hover { color: var(--text-muted); }
+    .theme-btn.active {
+      color: var(--text); background: var(--surface);
+      box-shadow: 0 1px 3px var(--shadow);
+    }
+
+    /* ========================================
+       CONTENT WRAPPER
+    ======================================== */
+    .content { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+    /* ========================================
+       SCROLL REVEAL
+    ======================================== */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ========================================
+       HERO
+    ======================================== */
+    .hero {
+      padding: 100px 0 48px; text-align: left;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--accent);
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px); font-weight: 800;
+      line-height: 1.08; letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px; color: var(--text-muted); line-height: 1.7;
+      max-width: 720px;
+    }
+
+    /* ========================================
+       COUNTERS
+    ======================================== */
+    .counters {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; margin-top: 40px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .counter-cell {
+      background: var(--surface); padding: 28px 16px; text-align: center;
+      transition: background .3s;
+    }
+
+    .counter-value {
+      font-family: var(--mono); font-size: 32px; font-weight: 700;
+      color: var(--counter-color); letter-spacing: -0.02em;
+      line-height: 1.1; margin-bottom: 6px;
+    }
+
+    .counter-label {
+      font-size: 13px; font-weight: 600; color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .counter-detail {
+      font-size: 11px; color: var(--text-faint); font-weight: 500;
+    }
+
+    /* ========================================
+       SECTION HEADERS
+    ======================================== */
+    .section { padding: 80px 0 0; }
+
+    .section-label {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: clamp(26px, 4vw, 36px); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 16px; color: var(--text-muted);
+      line-height: 1.75; max-width: 680px;
+    }
+
+    /* ========================================
+       STORY CARD
+    ======================================== */
+    .story-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 40px; margin-top: 32px;
+      position: relative; overflow: hidden;
+      transition: background .3s, border-color .3s;
+    }
+    .story-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%; background: var(--accent); border-radius: 0 2px 2px 0;
+    }
+    .story-card p {
+      font-size: 16px; color: var(--text-muted); line-height: 1.85;
+    }
+    .story-card strong { color: var(--text); font-weight: 600; }
+
+    /* ========================================
+       FLYWHEEL - INTERACTIVE SHOWPIECE
+    ======================================== */
+    .flywheel-wrap {
+      margin-top: 40px; position: relative;
+    }
+
+    .flywheel-visual {
+      display: flex; justify-content: center; align-items: center;
+      margin-bottom: 48px; padding: 20px 0;
+    }
+
+    .flywheel-ring {
+      position: relative; width: 400px; height: 400px;
+      filter: drop-shadow(0 0 30px rgba(37,99,235,0.08));
+      transition: filter .3s;
+    }
+
+    .flywheel-svg {
+      width: 100%; height: 100%;
+      overflow: visible;
+    }
+
+    /* Arc segments */
+    .fw-arc {
+      cursor: pointer;
+      transition: transform .3s cubic-bezier(.22,1,.36,1), filter .3s, opacity .3s;
+      transform-origin: 200px 200px;
+    }
+    .fw-arc:hover { filter: brightness(1.2); }
+    .fw-arc.active {
+      transform: scale(1.04);
+      filter: brightness(1.15) drop-shadow(0 0 18px var(--fw-glow));
+    }
+    .fw-arc.dimmed { opacity: .3; }
+
+    .fw-arc-path {
+      transition: opacity .3s, stroke-width .3s;
+    }
+    .fw-arc.active .fw-arc-path {
+      stroke-width: 3;
+      opacity: 1;
+    }
+
+    .fw-label {
+      font-size: 13px; font-weight: 800; letter-spacing: .1em;
+      text-anchor: middle; pointer-events: none;
+      transition: fill .3s;
+    }
+
+    /* Center circle */
+    .fw-center-bg {
+      fill: var(--surface);
+      stroke: var(--border);
+      stroke-width: 2;
+      transition: fill .3s, stroke .3s;
+    }
+    .fw-center-metric {
+      font-family: var(--mono);
+      font-size: 26px; font-weight: 800;
+      fill: var(--counter-color);
+      text-anchor: middle;
+      pointer-events: none;
+      transition: fill .3s;
+    }
+    .fw-center-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      fill: var(--text-faint);
+      text-anchor: middle;
+      pointer-events: none;
+      transition: fill .3s;
+    }
+
+    /* Rotating arrows between segments */
+    .fw-flow-arrow {
+      fill: none;
+      stroke: var(--text-faint);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-dasharray: 6 4;
+      opacity: .6;
+      transition: stroke .3s;
+    }
+    @keyframes fwDash {
+      to { stroke-dashoffset: -40; }
+    }
+    .flywheel-wrap.in-view .fw-flow-arrow {
+      animation: fwDash 2s linear infinite;
+    }
+
+    .fw-arrow-head {
+      fill: var(--text-faint);
+      transition: fill .3s;
+    }
+
+    /* Pulse ring on active arc */
+    @keyframes fwPulse {
+      0%   { opacity: .5; r: 60; }
+      100% { opacity: 0;  r: 90; }
+    }
+    .fw-pulse {
+      fill: none; stroke-width: 2; opacity: 0;
+      pointer-events: none;
+    }
+    .fw-pulse.active {
+      animation: fwPulse 1.8s ease-out infinite;
+    }
+
+    /* ── DETAIL PANEL ── */
+    .fw-detail-wrap {
+      position: relative;
+      min-height: 280px;
+    }
+
+    .fw-detail {
+      position: absolute; top: 0; left: 0; right: 0;
+      opacity: 0; transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity .3s cubic-bezier(.22,1,.36,1),
+                  transform .3s cubic-bezier(.22,1,.36,1);
+    }
+    .fw-detail.active {
+      opacity: 1; transform: translateY(0);
+      pointer-events: auto;
+      position: relative;
+    }
+
+    .fw-detail-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: background .3s, border-color .3s, box-shadow .3s;
+    }
+    .fw-detail-card:hover {
+      box-shadow: 0 8px 32px var(--shadow);
+    }
+
+    .fw-detail-title {
+      font-size: 20px; font-weight: 800; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+      letter-spacing: -0.01em;
+    }
+    .fw-detail-dot {
+      width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    /* Stat cards row */
+    .fw-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-bottom: 24px;
+    }
+    .fw-stat {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+      transition: background .3s, border-color .3s, transform .2s;
+    }
+    .fw-stat:hover { transform: translateY(-2px); }
+    .fw-stat-value {
+      font-family: var(--mono);
+      font-size: 22px; font-weight: 700;
+      line-height: 1.2; margin-bottom: 4px;
+    }
+    .fw-stat-label {
+      font-size: 11px; font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .fw-stat[data-color="blue"] .fw-stat-value { color: var(--accent); }
+    .fw-stat[data-color="green"] .fw-stat-value { color: var(--green); }
+    .fw-stat[data-color="purple"] .fw-stat-value { color: var(--purple); }
+
+    /* Bullet list */
+    .fw-bullets {
+      list-style: none;
+    }
+    .fw-bullets li {
+      position: relative; padding-left: 22px; font-size: 15px;
+      color: var(--text-muted); line-height: 1.75; margin-bottom: 8px;
+    }
+    .fw-bullets li::before {
+      content: ''; position: absolute; left: 0; top: 11px;
+      width: 6px; height: 6px; border-radius: 50%;
+    }
+    .fw-bullets li strong { color: var(--text); font-weight: 600; }
+
+    .fw-detail[data-segment="attract"] .fw-detail-dot { color: var(--accent); background: var(--accent); }
+    .fw-detail[data-segment="attract"] li::before { background: var(--accent); }
+    .fw-detail[data-segment="capture"] .fw-detail-dot { color: var(--green); background: var(--green); }
+    .fw-detail[data-segment="capture"] li::before { background: var(--green); }
+    .fw-detail[data-segment="monetize"] .fw-detail-dot { color: var(--purple); background: var(--purple); }
+    .fw-detail[data-segment="monetize"] li::before { background: var(--purple); }
+
+    /* ── COMPOUNDING FLOW ── */
+    .fw-compound-flow {
+      margin-top: 32px; padding: 28px 32px;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+      transition: background .3s, border-color .3s;
+    }
+    .fw-compound-flow-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--text-faint);
+      margin-bottom: 16px;
+    }
+    .fw-compound-steps {
+      display: flex; align-items: center; flex-wrap: wrap;
+      gap: 4px;
+    }
+    .fw-step {
+      font-size: 14px; font-weight: 600; color: var(--text);
+      padding: 6px 14px; border-radius: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      white-space: nowrap;
+      opacity: 0; transform: translateX(-8px);
+      transition: opacity .4s ease, transform .4s ease, background .3s, border-color .3s;
+    }
+    .fw-step.visible {
+      opacity: 1; transform: translateX(0);
+    }
+    .fw-step-arrow {
+      font-size: 16px; color: var(--text-faint); font-weight: 400;
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+    .fw-step-arrow.visible { opacity: 1; }
+    .fw-step-loop {
+      font-size: 20px; color: var(--accent); font-weight: 700;
+      opacity: 0;
+      transition: opacity .6s ease;
+    }
+    .fw-step-loop.visible { opacity: 1; }
+
+    /* ── RESULT METRICS ROW ── */
+    .fw-results {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+    .fw-result {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px 16px; text-align: center;
+      transition: background .3s, border-color .3s, transform .25s, box-shadow .25s;
+    }
+    .fw-result:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+    .fw-result-value {
+      font-family: var(--mono); font-size: 30px; font-weight: 800;
+      color: var(--counter-color); line-height: 1.1; margin-bottom: 6px;
+    }
+    .fw-result-label {
+      font-size: 12px; color: var(--text-faint); font-weight: 600;
+    }
+
+    /* ========================================
+       PLATFORM METRICS (animated bars)
+    ======================================== */
+    .platform-metrics {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+
+    .platform-metric {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px; text-align: center;
+      transition: background .3s, border-color .3s, transform .2s;
+    }
+    .platform-metric:hover { transform: translateY(-2px); }
+
+    .platform-metric-value {
+      font-family: var(--mono); font-size: 28px; font-weight: 700;
+      color: var(--accent); line-height: 1.2; margin-bottom: 4px;
+    }
+    .platform-metric-label {
+      font-size: 13px; font-weight: 600; color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .platform-metric-bar {
+      height: 4px; background: var(--bg2); border-radius: 2px;
+      margin-top: 12px; overflow: hidden;
+      transition: background .3s;
+    }
+    .platform-metric-fill {
+      height: 100%; border-radius: 2px; width: 0%;
+      transition: width 1.2s cubic-bezier(.22,1,.36,1);
+    }
+
+    /* ========================================
+       ARCHITECTURE DIAGRAM
+    ======================================== */
+    .arch-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+
+    .arch-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px; position: relative;
+      transition: background .3s, border-color .3s, transform .2s, box-shadow .2s;
+    }
+    .arch-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    .arch-box-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px; color: var(--accent);
+      background: var(--accent-soft); border: 1px solid var(--accent-border);
+      transition: background .3s, border-color .3s;
+    }
+
+    .arch-box h3 {
+      font-size: 15px; font-weight: 700; margin-bottom: 6px;
+    }
+    .arch-box p {
+      font-size: 13px; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* ========================================
+       SCREENSHOT TABS
+    ======================================== */
+    .tabs-container { margin-top: 32px; }
+
+    .tabs-nav {
+      display: flex; gap: 0; overflow-x: auto;
+      border-bottom: 2px solid var(--border);
+      -webkit-overflow-scrolling: touch;
+      transition: border-color .3s;
+    }
+    .tabs-nav::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      padding: 12px 20px; font-size: 13px; font-weight: 600;
+      color: var(--text-faint); background: transparent;
+      border: none; border-bottom: 2px solid transparent;
+      margin-bottom: -2px; cursor: pointer; white-space: nowrap;
+      font-family: inherit; transition: color .2s, border-color .2s;
+    }
+    .tab-btn:hover { color: var(--text-muted); }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .tab-panels { position: relative; overflow: hidden; }
+
+    .tab-panel {
+      display: none; animation: tabFadeIn .35s ease;
+    }
+    .tab-panel.active { display: block; }
+
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tab-panel img {
+      width: 100%; border-radius: 0 0 12px 12px;
+      border: 1px solid var(--border); border-top: none;
+      transition: border-color .3s;
+    }
+
+    /* ========================================
+       SHOPPABLE AD
+    ======================================== */
+    .shoppable-wrap {
+      margin-top: 32px;
+      display: flex; gap: 32px; align-items: flex-start;
+    }
+
+    .shoppable-embed {
+      flex-shrink: 0; border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 16px var(--shadow);
+      transition: border-color .3s;
+    }
+
+    .shoppable-embed iframe { display: block; }
+
+    .shoppable-mobile-img {
+      display: none; max-width: 300px;
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border);
+      transition: border-color .3s;
+    }
+    .shoppable-mobile-img img { width: 100%; }
+
+    .shoppable-features { flex: 1; }
+
+    .feature-list {
+      list-style: none; margin-top: 8px;
+    }
+    .feature-list li {
+      position: relative; padding-left: 22px; font-size: 15px;
+      color: var(--text-muted); line-height: 1.75; margin-bottom: 10px;
+    }
+    .feature-list li::before {
+      content: ''; position: absolute; left: 0; top: 11px;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .feature-list li strong { color: var(--text); font-weight: 600; }
+
+    .feature-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 600; color: var(--accent);
+      margin-top: 16px; transition: gap .2s;
+    }
+    .feature-link:hover { gap: 10px; }
+    .feature-link svg { flex-shrink: 0; }
+
+    /* ========================================
+       GROWTH STATS
+    ======================================== */
+    .growth-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 32px;
+    }
+
+    .growth-stat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px; text-align: center;
+      transition: background .3s, border-color .3s;
+    }
+
+    .growth-stat-value {
+      font-family: var(--mono); font-size: 24px; font-weight: 700;
+      color: var(--green); line-height: 1.2; margin-bottom: 4px;
+    }
+    .growth-stat-label {
+      font-size: 13px; font-weight: 600; color: var(--text);
+    }
+
+    /* ========================================
+       TECH STACK
+    ======================================== */
+    .tech-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px; margin-top: 32px;
+    }
+
+    .tech-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px;
+      transition: background .3s, border-color .3s;
+    }
+
+    .tech-card-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--text-faint);
+      margin-bottom: 12px;
+    }
+
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .tech-tag {
+      font-size: 12px; font-weight: 500; color: var(--text-muted);
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: 6px;
+      transition: color .2s, background .2s, border-color .2s;
+    }
+    .tech-tag:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .page-footer {
+      max-width: 900px; margin: 80px auto 0; padding: 32px 32px 48px;
+      text-align: center; border-top: 1px solid var(--border);
+      transition: border-color .3s;
+    }
+    .page-footer p {
+      font-size: 14px; color: var(--text-faint);
+    }
+    .page-footer a {
+      color: var(--accent); transition: opacity .2s;
+    }
+    .page-footer a:hover { opacity: .8; }
+
+    /* ========================================
+       SMOOTH THEME TRANSITIONS
+    ======================================== */
+    .story-card, .fw-detail-card, .fw-compound-flow,
+    .fw-stat, .fw-step, .fw-result,
+    .platform-metric, .arch-box, .tab-btn, .tab-panel img,
+    .shoppable-embed, .shoppable-mobile-img, .growth-stat,
+    .tech-card, .tech-tag, .counters, .counter-cell,
+    .page-footer, .tabs-nav {
+      transition: background .3s, color .3s, border-color .3s, box-shadow .3s;
+    }
+
+    /* ========================================
+       RESPONSIVE - 768px
+    ======================================== */
+    @media (max-width: 768px) {
+      .content { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .hero { padding: 88px 0 32px; }
+      .counters { grid-template-columns: repeat(2, 1fr); }
+      .flywheel-ring { width: 280px; height: 280px; }
+      .fw-stats { grid-template-columns: 1fr; }
+      .fw-results { grid-template-columns: repeat(2, 1fr); }
+      .fw-compound-steps { gap: 2px; }
+      .fw-step { font-size: 12px; padding: 5px 10px; }
+      .fw-center-metric { font-size: 20px; }
+      .platform-metrics { grid-template-columns: repeat(2, 1fr); }
+      .arch-grid { grid-template-columns: 1fr; }
+      .shoppable-wrap { flex-direction: column; align-items: center; }
+      .shoppable-embed { display: none; }
+      .shoppable-mobile-img { display: block; }
+      .growth-grid { grid-template-columns: repeat(2, 1fr); }
+      .tech-grid { grid-template-columns: 1fr 1fr; }
+      .tab-btn { padding: 10px 14px; font-size: 12px; }
+      .theme-btn { min-height: 40px; padding: 6px 10px; font-size: 11px; }
+      .nav-back { padding: 14px 0; min-height: 44px; display: flex; align-items: center; }
+      .tab-btn { min-height: 44px; }
+    }
+
+    /* ========================================
+       RESPONSIVE - 480px
+    ======================================== */
+    @media (max-width: 480px) {
+      .content { padding: 0 16px; }
+      .nav-inner { padding: 0 16px; }
+      .counters { grid-template-columns: repeat(2, 1fr); }
+      .counter-value { font-size: 24px; }
+      .counter-cell { padding: 20px 12px; }
+      .flywheel-ring { width: 240px; height: 240px; }
+      .fw-label { font-size: 10px; }
+      .fw-detail-card { padding: 24px 20px; }
+      .fw-detail-title { font-size: 17px; }
+      .fw-stat-value { font-size: 18px; }
+      .fw-compound-flow { padding: 20px; }
+      .fw-compound-steps { gap: 2px; }
+      .fw-step { font-size: 11px; padding: 4px 8px; }
+      .fw-step-arrow { font-size: 12px; }
+      .fw-results { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .fw-result-value { font-size: 22px; }
+      .fw-result { padding: 18px 12px; }
+      .fw-center-metric { font-size: 18px; }
+      .platform-metrics { grid-template-columns: 1fr 1fr; }
+      .platform-metric-value { font-size: 22px; }
+      .growth-grid { grid-template-columns: 1fr 1fr; }
+      .growth-stat-value { font-size: 20px; }
+      .tech-grid { grid-template-columns: 1fr; }
+      .story-card { padding: 28px 24px; }
+      .tab-btn { padding: 8px 10px; font-size: 11px; }
+      .theme-btn { padding: 4px 7px; font-size: 10px; }
+      .page-footer { padding: 24px 16px 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================
+       NAV
+  ======================================== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../../" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 12L6 8l4-4"/>
+        </svg>
+        Stephen Umunna &middot; Portfolio
+      </a>
+      <div class="theme-toggle" role="radiogroup" aria-label="Theme">
+        <button class="theme-btn active" data-theme-btn="light" aria-label="Light theme">&#9728;&#65039; Light</button>
+        <button class="theme-btn" data-theme-btn="system" aria-label="System theme">&#128421;&#65039; System</button>
+        <button class="theme-btn" data-theme-btn="dark" aria-label="Dark theme">&#127769; Dark</button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="interactive-banner" style="position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(37,99,235,0.08);border-bottom:1px solid rgba(37,99,235,0.15);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:Inter,-apple-system,sans-serif;font-size:12px;color:var(--accent,var(--ac,#2563eb));animation:bannerSlide .4s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+    <span style="font-size:14px">&#9996;</span>
+    <span>This page is fully interactive - click the flywheel, explore the architecture, try everything</span>
+    <button onclick="this.parentElement.style.display='none';sessionStorage.setItem('banner-dismissed','1')" style="background:none;border:none;color:var(--accent,var(--ac,#2563eb));cursor:pointer;font-size:16px;padding:0 4px;margin-left:8px;opacity:0.6" aria-label="Dismiss">&times;</button>
+  </div>
+  <script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('interactive-banner').style.display='none';</script>
+  <style>@keyframes bannerSlide{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}</style>
+  <div id="banner-spacer" style="height:36px"></div>
+  <script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('banner-spacer').style.display='none';</script>
+
+  <div class="content">
+
+    <!-- ========================================
+         HERO
+    ======================================== -->
+    <header class="hero">
+      <div class="hero-badge">CTO / Acting COO &middot; Apr 2025 &ndash; Mar 2026 &middot; 15-person AdTech startup &middot; $3.6M&ndash;$6M ARR</div>
+      <h1>Confidential AdTech Startup</h1>
+      <p class="hero-subtitle">
+        I hired every team member, owned the $300K&ndash;$500K/mo P&amp;L, and built a <strong>two-sided AdTech platform</strong> - a consumer ordering app (<strong>2K to 200K MAU in 11 months</strong>) plus advertiser activation, with a Customer Data Platform (CDP) as the connective tissue. Held 85% gross margins (nearly double the industry average) while my 15-person team managed 200+ active accounts at 85% client retention with zero long-term contracts.
+      </p>
+
+      <div class="counters">
+        <div class="counter-cell">
+          <div class="counter-value" data-target="85" data-suffix="%">0%</div>
+          <div class="counter-label">Gross Margins</div>
+          <div class="counter-detail">Industry avg: 45%</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="200" data-suffix="+" data-prefix="">0</div>
+          <div class="counter-label">Simultaneous Accounts</div>
+          <div class="counter-detail">Active every month</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="100" data-suffix="x">0x</div>
+          <div class="counter-label">Consumer MAU Growth</div>
+          <div class="counter-detail">2K &rarr; 200K in 11 months</div>
+        </div>
+        <div class="counter-cell">
+          <div class="counter-value" data-target="950" data-suffix="K">0K</div>
+          <div class="counter-label">Lines of Code</div>
+          <div class="counter-detail">One engineer</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========================================
+         THE APPROACH
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">The Approach</span>
+      <h2>Do it yourself. Train the team. Then automate it.</h2>
+
+      <div class="story-card">
+        <p>
+          When I joined Confidential AdTech Startup, there was nothing - no platform, no team, no processes. I hired every team member. Built every workflow. Wrote every line of code. I started by doing every operational role myself - running campaigns, entering data, managing accounts, closing deals - so I understood every process from the inside. Then I hired and trained a 15-person team across engineering, ad ops, sales, and data entry. Then I automated the operational workflows with a 950K-line Django platform so the team could focus on strategy and client relationships. The result: a consumer ordering app at <strong>the consumer app</strong> that grew from <strong>2,000 to 200,000 monthly active users in 11 months (100x)</strong>, 200+ simultaneous advertiser accounts, 85% client retention with zero long-term contracts, and 85% gross margins where the industry averages 45%.
+        </p>
+        <p style="margin-top: 16px;">
+          <strong>That's how you get 85% margins with a 15-person team.</strong> You can't automate what you don't understand from the inside - and you can't scale what you haven't built yourself.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================
+         THE FLYWHEEL - INTERACTIVE SHOWPIECE
+    ======================================== -->
+    <section class="section reveal" id="flywheel-section">
+      <span class="section-label">The Flywheel</span>
+      <h2>Two sides. One CDP. One compounding engine.</h2>
+      <p class="section-desc">
+        A <strong>two-sided AdTech platform</strong>: the consumer ordering app (<strong>the consumer app</strong>) on one side, advertiser activation on the other, with a <strong>Customer Data Platform (CDP)</strong> as the connective tissue feeding first-party purchase and behavioral data into programmatic. Click each segment to explore.
+      </p>
+
+      <div class="flywheel-wrap" id="flywheel-wrap">
+        <!-- ── INTERACTIVE SVG DIAGRAM ── -->
+        <div class="flywheel-visual">
+          <div class="flywheel-ring">
+            <svg class="flywheel-svg" viewBox="0 0 400 400" aria-label="Interactive flywheel diagram with three segments: Attract, Capture, Monetize">
+
+              <!-- Consumer side: top-right 120 degrees (330 to 90) -->
+              <g class="fw-arc active" data-segment="attract" style="--fw-glow:rgba(37,99,235,.45)" tabindex="0" role="button" aria-label="Consumer ordering platform">
+                <path class="fw-arc-path"
+                  d="M200 30
+                     A170 170 0 0 1 347.2 285
+                     L200 200 Z"
+                  fill="var(--accent)" fill-opacity=".13"
+                  stroke="var(--accent)" stroke-width="2"/>
+                <text class="fw-label" x="292" y="138" fill="var(--accent)">CONSUMER</text>
+              </g>
+
+              <!-- CDP (connective tissue): bottom 120 degrees (90 to 210) -->
+              <g class="fw-arc" data-segment="capture" style="--fw-glow:rgba(34,197,94,.45)" tabindex="0" role="button" aria-label="Customer Data Platform">
+                <path class="fw-arc-path"
+                  d="M347.2 285
+                     A170 170 0 0 1 52.8 285
+                     L200 200 Z"
+                  fill="var(--green)" fill-opacity=".13"
+                  stroke="var(--green)" stroke-width="2"/>
+                <text class="fw-label" x="200" y="352" fill="var(--green)">CDP</text>
+              </g>
+
+              <!-- Advertiser side: top-left 120 degrees (210 to 330) -->
+              <g class="fw-arc" data-segment="monetize" style="--fw-glow:rgba(124,58,237,.45)" tabindex="0" role="button" aria-label="Advertiser activation">
+                <path class="fw-arc-path"
+                  d="M52.8 285
+                     A170 170 0 0 1 200 30
+                     L200 200 Z"
+                  fill="var(--purple)" fill-opacity=".13"
+                  stroke="var(--purple)" stroke-width="2"/>
+                <text class="fw-label" x="102" y="138" fill="var(--purple)">ADVERTISER</text>
+              </g>
+
+              <!-- Animated dashed flow arrows between segments -->
+              <!-- Attract -> Capture (right side, curving clockwise) -->
+              <path class="fw-flow-arrow" d="M310 160 C340 200, 340 260, 300 310"/>
+              <polygon class="fw-arrow-head" points="296,304 308,312 298,316" />
+              <!-- Capture -> Monetize (bottom, curving clockwise) -->
+              <path class="fw-flow-arrow" d="M160 340 C120 330, 80 300, 70 260"/>
+              <polygon class="fw-arrow-head" points="74,256 66,268 60,254" />
+              <!-- Monetize -> Attract (left side, curving clockwise) -->
+              <path class="fw-flow-arrow" d="M80 120 C90 80, 130 50, 180 40"/>
+              <polygon class="fw-arrow-head" points="176,34 184,46 190,32" />
+
+              <!-- Center circle with metric display -->
+              <circle class="fw-center-bg" cx="200" cy="200" r="58"/>
+              <text class="fw-center-metric" id="fw-center-metric" x="200" y="196">85%</text>
+              <text class="fw-center-label" id="fw-center-label" x="200" y="216">Margins</text>
+
+              <!-- Pulse rings (one per segment, toggled via JS) -->
+              <circle class="fw-pulse" id="fw-pulse-attract" cx="200" cy="200" r="60" stroke="var(--accent)"/>
+              <circle class="fw-pulse" id="fw-pulse-capture" cx="200" cy="200" r="60" stroke="var(--green)"/>
+              <circle class="fw-pulse" id="fw-pulse-monetize" cx="200" cy="200" r="60" stroke="var(--purple)"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- ── DETAIL PANELS (crossfade) ── -->
+        <div class="fw-detail-wrap">
+
+          <!-- CONSUMER ORDERING PLATFORM detail -->
+          <div class="fw-detail active" data-segment="attract">
+            <div class="fw-detail-card">
+              <div class="fw-detail-title">
+                <span class="fw-detail-dot"></span>
+                the consumer app &middot; 2K &rarr; 200K MAU in 11 months
+              </div>
+              <div class="fw-stats">
+                <div class="fw-stat" data-color="blue">
+                  <div class="fw-stat-value" data-fw-count="200" data-fw-suffix="K">0K</div>
+                  <div class="fw-stat-label">Monthly Active Users</div>
+                </div>
+                <div class="fw-stat" data-color="blue">
+                  <div class="fw-stat-value" data-fw-count="100" data-fw-suffix="x">0x</div>
+                  <div class="fw-stat-label">Growth in 11 Months</div>
+                </div>
+                <div class="fw-stat" data-color="blue">
+                  <div class="fw-stat-value" data-fw-count="32.3" data-fw-suffix="M" data-fw-decimals="1">0</div>
+                  <div class="fw-stat-label">Impressions</div>
+                </div>
+              </div>
+              <ul class="fw-bullets">
+                <li><strong>Consumer-facing ordering app</strong> at the consumer app - the source of first-party purchase and behavioral data</li>
+                <li>Grew from <strong>2,000 to 200,000 MAU</strong> in 11 months (100x)</li>
+                <li>Built from scratch on <strong>Next.js, Django, PostgreSQL</strong> with Stripe checkout, multi-location inventory, loyalty programs, and delivery tracking</li>
+                <li><strong>55K SEO articles + 13K directory pages</strong> drove 680% organic traffic growth and fed the top of the funnel</li>
+              </ul>
+              <a href="../consumer-app/" class="feature-link" style="margin-top:16px">
+                Read the deep dive
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- CDP detail -->
+          <div class="fw-detail" data-segment="capture">
+            <div class="fw-detail-card">
+              <div class="fw-detail-title">
+                <span class="fw-detail-dot"></span>
+                Customer Data Platform &middot; 21M+ profiles, 1B+ behavioral signals
+              </div>
+              <div class="fw-stats">
+                <div class="fw-stat" data-color="green">
+                  <div class="fw-stat-value" data-fw-count="21" data-fw-suffix="M+" data-fw-decimals="0">0</div>
+                  <div class="fw-stat-label">Unique Consumer Profiles</div>
+                </div>
+                <div class="fw-stat" data-color="green">
+                  <div class="fw-stat-value" data-fw-count="1" data-fw-suffix="B+" data-fw-decimals="0">0</div>
+                  <div class="fw-stat-label">Behavioral Data Points</div>
+                </div>
+                <div class="fw-stat" data-color="green">
+                  <div class="fw-stat-value" data-fw-count="6" data-fw-suffix="" data-fw-decimals="0">0</div>
+                  <div class="fw-stat-label">DSP Integrations</div>
+                </div>
+              </div>
+              <ul class="fw-bullets">
+                <li><strong>Customer Data Platform (CDP)</strong> - the connective tissue between the consumer app and advertiser activation</li>
+                <li><strong>21M+ unique consumer profiles</strong> and <strong>1B+ behavioral data points</strong> built from first-party app activity</li>
+                <li><strong>Custom JavaScript pixel</strong> on the consumer app captures first-party behavioral signals across the full ad-impression &rarr; product-view &rarr; engagement chain</li>
+                <li><strong>6 DSP integrations</strong> &mdash; including activation by a <strong>major DSP partner for pharmaceutical advertiser campaigns</strong></li>
+              </ul>
+              <a href="../cdp/" class="feature-link" style="margin-top:16px">
+                Read the deep dive
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- ADVERTISER ACTIVATION detail -->
+          <div class="fw-detail" data-segment="monetize">
+            <div class="fw-detail-card">
+              <div class="fw-detail-title">
+                <span class="fw-detail-dot"></span>
+                Advertiser activation &middot; 200+ accounts, $300K&ndash;$500K/mo, 85% margins
+              </div>
+              <div class="fw-stats">
+                <div class="fw-stat" data-color="purple">
+                  <div class="fw-stat-value" data-fw-count="200" data-fw-suffix="+" data-fw-decimals="0">0</div>
+                  <div class="fw-stat-label">Active Accounts</div>
+                </div>
+                <div class="fw-stat" data-color="purple">
+                  <div class="fw-stat-value" style="font-size:inherit">$300&ndash;500K</div>
+                  <div class="fw-stat-label">Monthly P&amp;L</div>
+                </div>
+                <div class="fw-stat" data-color="purple">
+                  <div class="fw-stat-value" data-fw-count="85" data-fw-suffix="%" data-fw-decimals="0">0</div>
+                  <div class="fw-stat-label">Gross Margins</div>
+                </div>
+              </div>
+              <ul class="fw-bullets">
+                <li><strong>200+ active advertiser accounts</strong> driving <strong>$300K&ndash;$500K/mo P&amp;L at 85% gross margins</strong> (industry avg: 45%)</li>
+                <li><strong>Programmatic activation</strong> across 6 DSPs using purchase-intent audiences sourced from the CDP</li>
+                <li><strong>Shoppable ad engine</strong> generates interactive units from product feeds in under 2 hours</li>
+                <li><strong>On-platform display ad network</strong> with CPM billing, geo-targeting, and frequency capping</li>
+                <li>Major DSP partner activated the CDP for <strong>pharmaceutical advertiser campaigns</strong> &mdash; first-party data monetized through media partnerships</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── COMPOUNDING EFFECT FLOW ── -->
+        <div class="fw-compound-flow" id="fw-compound-flow">
+          <div class="fw-compound-flow-label">The Compounding Effect</div>
+          <div class="fw-compound-steps" id="fw-compound-steps">
+            <span class="fw-step">More app users</span>
+            <span class="fw-step-arrow">&rarr;</span>
+            <span class="fw-step">Richer CDP</span>
+            <span class="fw-step-arrow">&rarr;</span>
+            <span class="fw-step">Better targeting</span>
+            <span class="fw-step-arrow">&rarr;</span>
+            <span class="fw-step">Higher ROAS</span>
+            <span class="fw-step-arrow">&rarr;</span>
+            <span class="fw-step">More advertisers</span>
+            <span class="fw-step-arrow">&rarr;</span>
+            <span class="fw-step">More revenue back into app</span>
+            <span class="fw-step-arrow">&rarr;</span>
+            <span class="fw-step-loop">&infin;</span>
+          </div>
+        </div>
+
+        <!-- ── RESULT METRICS ROW ── -->
+        <div class="fw-results" id="fw-results">
+          <div class="fw-result">
+            <div class="fw-result-value" data-fwr-target="85" data-fwr-suffix="%">0%</div>
+            <div class="fw-result-label">Gross Margins</div>
+          </div>
+          <div class="fw-result">
+            <div class="fw-result-value" data-fwr-target="100" data-fwr-suffix="x">0x</div>
+            <div class="fw-result-label">Consumer MAU Growth</div>
+          </div>
+          <div class="fw-result">
+            <div class="fw-result-value" data-fwr-target="85" data-fwr-suffix="%">0%</div>
+            <div class="fw-result-label">MoM Retention</div>
+          </div>
+          <div class="fw-result">
+            <div class="fw-result-value" data-fwr-target="200" data-fwr-suffix="+">0</div>
+            <div class="fw-result-label">Advertiser Accounts</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================
+         THE PLATFORM
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">The Platform</span>
+      <h2>950K lines. One engineer.</h2>
+      <p class="section-desc">
+        Confidential AdTech Startup wasn't one product. It was six interconnected systems that gave a 15-person agency the data infrastructure of a company ten times its size.
+      </p>
+
+      <div class="platform-metrics" id="platform-metrics">
+        <div class="platform-metric">
+          <div class="platform-metric-value" data-count="235">0</div>
+          <div class="platform-metric-label">Models</div>
+          <div class="platform-metric-bar"><div class="platform-metric-fill" style="background:var(--accent)" data-width="78%"></div></div>
+        </div>
+        <div class="platform-metric">
+          <div class="platform-metric-value" data-count="16">0</div>
+          <div class="platform-metric-label">Django Apps</div>
+          <div class="platform-metric-bar"><div class="platform-metric-fill" style="background:var(--green)" data-width="53%"></div></div>
+        </div>
+        <div class="platform-metric">
+          <div class="platform-metric-value" data-count="286">0</div>
+          <div class="platform-metric-label">URL Patterns</div>
+          <div class="platform-metric-bar"><div class="platform-metric-fill" style="background:var(--purple)" data-width="95%"></div></div>
+        </div>
+        <div class="platform-metric">
+          <div class="platform-metric-value" data-count="6">0</div>
+          <div class="platform-metric-label">DSP Integrations</div>
+          <div class="platform-metric-bar"><div class="platform-metric-fill" style="background:var(--accent)" data-width="40%"></div></div>
+        </div>
+        <div class="platform-metric">
+          <div class="platform-metric-value" data-count="155">0</div>
+          <div class="platform-metric-label">E-Commerce Models</div>
+          <div class="platform-metric-bar"><div class="platform-metric-fill" style="background:var(--purple)" data-width="65%"></div></div>
+        </div>
+      </div>
+
+      <div class="arch-grid" style="margin-top: 40px;">
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3>Consumer Ordering App</h3>
+          <p>the consumer app - 2K to 200K MAU in 11 months (100x). 55K articles, 13K directory pages, e-commerce with Stripe, multi-location inventory, loyalty, delivery tracking.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Advertiser Activation</h3>
+          <p>200+ accounts, $300K-$500K/mo P&amp;L at 85% gross margins. Programmatic via 6 DSPs, on-platform display ads with CPM billing, shoppable ad generator, full creative pipeline.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Customer Data Platform (CDP)</h3>
+          <p>21M+ unique consumer profiles, 1B+ behavioral data points, custom pixel on the consumer app, circuit breakers for sync resilience, audience segmentation. Activated by a major DSP partner for pharmaceutical campaigns.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <h3>Operations Layer</h3>
+          <p>Reporting automation (60x faster), campaign management, client portal, 589 templates, and 4 Celery worker queues.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SCREENSHOT GALLERY
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">The Product</span>
+      <h2>What it looked like</h2>
+
+      <div style="background:var(--bg2, var(--bg2));border:1px solid var(--border);border-radius:12px;padding:48px 32px;text-align:center">
+        <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">Platform Screenshots</div>
+        <div style="font-size:13px;color:var(--text-muted);line-height:1.6;max-width:480px;margin:0 auto">The platform included analytics dashboards, client management, sales reporting, customer analytics, and a consumer-facing marketplace. Screenshots available upon request during interviews.</div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         THE SHOPPABLE AD ENGINE
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">The Invention</span>
+      <h2>I created an ad format</h2>
+
+      <div class="shoppable-wrap">
+        <div class="shoppable-embed" id="shoppable-desktop">
+          <div style="width:300px;height:250px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px">
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Live Demo Removed</div>
+              <div style="font-size:12px;color:var(--text-muted);line-height:1.5">The interactive ad unit is available upon request during interviews.</div>
+            </div>
+          </div>
+        </div>
+        <div class="shoppable-mobile-img" id="shoppable-mobile">
+          <img src="../../assets/screenshot-retail-preview.jpg" alt="Shoppable ad preview showing interactive product carousel" loading="lazy">
+        </div>
+        <div class="shoppable-features">
+          <ul class="feature-list">
+            <li><strong>9 industry presets</strong>, 7 templates, A/B testing</li>
+            <li>Generates interactive units from product feeds in <strong>under 2 hours</strong> (was 3-day manual cycle)</li>
+            <li><strong>Adaptive DCO</strong> re-sorts products by user dwell time</li>
+            <li>Deep-linking sends users directly to <strong>product pages</strong></li>
+            <li><strong>3x CTR</strong> vs standard display</li>
+          </ul>
+          <a href="../shoppable-ads/" class="feature-link">
+            View full case study
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         GROWTH ENGINEERING
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">The Growth</span>
+      <h2>20K to 156K monthly clicks</h2>
+
+      <div class="growth-grid">
+        <div class="growth-stat">
+          <div class="growth-stat-value">680%</div>
+          <div class="growth-stat-label">Organic Traffic Growth</div>
+        </div>
+        <div class="growth-stat">
+          <div class="growth-stat-value">32.3M</div>
+          <div class="growth-stat-label">Impressions</div>
+        </div>
+        <div class="growth-stat">
+          <div class="growth-stat-value">55K</div>
+          <div class="growth-stat-label">SEO Articles</div>
+        </div>
+        <div class="growth-stat">
+          <div class="growth-stat-value">13K</div>
+          <div class="growth-stat-label">Directory Pages</div>
+        </div>
+        <div class="growth-stat">
+          <div class="growth-stat-value">90+</div>
+          <div class="growth-stat-label">Lighthouse Scores</div>
+        </div>
+        <div class="growth-stat">
+          <div class="growth-stat-value">156K</div>
+          <div class="growth-stat-label">Monthly Clicks</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 20px; text-align: center;">
+        <a href="../growth-engineering/" class="feature-link" style="justify-content: center;">
+          View growth engineering case study
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================
+         AI ENGINEERING
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">How It Was Built</span>
+      <h2>AI-assisted engineering at production scale</h2>
+      <p class="section-desc">
+        One engineer. 950K lines. The leverage came from pairing deep platform knowledge with AI-assisted development tools - and shipping production code with an AI stack baked in.
+      </p>
+
+      <div class="arch-grid" style="margin-top: 32px;">
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Built With AI Pair Programming</h3>
+          <p>The platform was developed using <strong>Claude Code, Codex, Cursor, and Copilot</strong>. AI-assisted engineering let one operator-builder ship the equivalent of a 5-engineer team's output - on a 15-person company budget.</p>
+        </div>
+        <div class="arch-box reveal">
+          <div class="arch-box-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          </div>
+          <h3>Production AI Stack</h3>
+          <p>AI shipped in the product, not just the dev workflow: <strong>Vercel AI SDK, Anthropic and OpenAI APIs</strong> powering audience clustering, creative generation, campaign Q&amp;A, and operational copilots inside the platform.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         TECH STACK
+    ======================================== -->
+    <section class="section reveal">
+      <span class="section-label">The Stack</span>
+      <h2>What it was built with</h2>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-card-label">Backend</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">Celery (4 queues)</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Frontend</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">TypeScript</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Infrastructure</div>
+          <div class="tech-tags">
+            <span class="tech-tag">AWS S3</span>
+            <span class="tech-tag">Lambda</span>
+            <span class="tech-tag">Heroku</span>
+            <span class="tech-tag">Docker</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">AdTech</div>
+          <div class="tech-tags">
+            <span class="tech-tag">DV360</span>
+            <span class="tech-tag">TTD</span>
+            <span class="tech-tag">Partner DSPs</span>
+            
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Integrations</div>
+          <div class="tech-tags">
+            <span class="tech-tag">6 DSP APIs</span>
+            <span class="tech-tag">Stripe</span>
+            <span class="tech-tag">QuickBooks</span>
+            <span class="tech-tag">SendGrid</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">AI Dev Tools</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Claude Code</span>
+            <span class="tech-tag">Codex</span>
+            <span class="tech-tag">Cursor</span>
+            <span class="tech-tag">Copilot</span>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-card-label">Production AI</div>
+          <div class="tech-tags">
+            <span class="tech-tag">Vercel AI SDK</span>
+            <span class="tech-tag">Anthropic API</span>
+            <span class="tech-tag">OpenAI API</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+<!-- CTA -->
+<section style="max-width:900px;margin:0 auto;padding:60px 28px 40px;text-align:center">
+  <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:12px;color:var(--text, var(--tx, #0f172a))">Let's talk about what I can do for you.</h2>
+  <p style="font-size:15px;color:var(--text-muted, var(--tx2, #475569));margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6">I'm exploring leadership roles where building the technology and running the business aren't treated as separate jobs.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="mailto:scumunna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:#dc2626;padding:12px 24px;border-radius:8px;text-decoration:none;transition:background .2s,transform .2s" onmouseover="this.style.background='#b91c1c';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#dc2626';this.style.transform='none'">Start a Conversation &rarr;</a>
+    <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text, var(--tx, #0f172a));background:var(--surface, var(--sf, #fff));border:1px solid var(--border, var(--bd, #e2e8f0));padding:12px 24px;border-radius:8px;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='var(--accent, var(--ac, #2563eb))';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border, var(--bd, #e2e8f0))';this.style.transform='none'">View on LinkedIn</a>
+  </div>
+</section>
+
+  <!-- ========================================
+       FOOTER
+  ======================================== -->
+  <footer style="border-top:1px solid var(--border, var(--bd, #e2e8f0));padding:32px 24px;margin-top:64px">
+    <div style="max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--text-faint, var(--tx3, #94a3b8))">
+      <div>Stephen Umunna &middot; Los Angeles, CA</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <a href="mailto:scumunna@gmail.com" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">scumunna@gmail.com</a>
+        <a href="tel:+13239171875" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">(323) 917-1875</a>
+        <a href="https://github.com/scumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">GitHub</a>
+        <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">LinkedIn</a>
+      </div>
+    </div>
+    <div style="font-size:11px;color:var(--text-muted, var(--tx3, #94a3b8));margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+  </footer>
+
+  <!-- ========================================
+       JAVASCRIPT
+  ======================================== -->
+  <script>
+  (function() {
+    'use strict';
+
+    /* ── THEME TOGGLE ── */
+    var ThemeManager = {
+      init: function() {
+        var saved = localStorage.getItem('portfolio-theme') || 'light';
+        this.set(saved);
+        var self = this;
+        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            self.set(btn.getAttribute('data-theme-btn'));
+          });
+        });
+      },
+      set: function(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('portfolio-theme', theme);
+        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-theme-btn') === theme);
+        });
+      }
+    };
+    ThemeManager.init();
+
+    /* ── HERO COUNTER ANIMATION ── */
+    function animateCounters() {
+      var counters = document.querySelectorAll('.counter-value[data-target]');
+      counters.forEach(function(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        var decimals = parseInt(el.getAttribute('data-decimals')) || 0;
+        var duration = 1600;
+        var start = performance.now();
+
+        function step(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          // ease out cubic
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = target * eased;
+
+          if (decimals > 0) {
+            el.textContent = prefix + current.toFixed(decimals) + suffix;
+          } else {
+            el.textContent = prefix + Math.round(current) + suffix;
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            if (decimals > 0) {
+              el.textContent = prefix + target.toFixed(decimals) + suffix;
+            } else {
+              el.textContent = prefix + target + suffix;
+            }
+          }
+        }
+        requestAnimationFrame(step);
+      });
+    }
+    // Run counter animation on load
+    animateCounters();
+
+    /* ── SCROLL REVEAL ── */
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+
+    /* ── PLATFORM METRICS ANIMATION ── */
+    var metricsAnimated = false;
+    var metricsObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !metricsAnimated) {
+          metricsAnimated = true;
+          animatePlatformMetrics();
+          metricsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    var metricsSection = document.getElementById('platform-metrics');
+    if (metricsSection) metricsObserver.observe(metricsSection);
+
+    function animatePlatformMetrics() {
+      var metrics = document.querySelectorAll('#platform-metrics .platform-metric-value');
+      metrics.forEach(function(el) {
+        var target = parseInt(el.getAttribute('data-count'));
+        var duration = 1200;
+        var start = performance.now();
+
+        function step(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(target * eased);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(step);
+      });
+
+      // Animate bars
+      var fills = document.querySelectorAll('#platform-metrics .platform-metric-fill');
+      setTimeout(function() {
+        fills.forEach(function(fill) {
+          fill.style.width = fill.getAttribute('data-width');
+        });
+      }, 100);
+    }
+
+    /* ── FLYWHEEL - INTERACTIVE SHOWPIECE ── */
+    (function() {
+      var fwWrap = document.getElementById('flywheel-wrap');
+      if (!fwWrap) return;
+
+      var arcs = fwWrap.querySelectorAll('.fw-arc');
+      var details = fwWrap.querySelectorAll('.fw-detail');
+      var centerMetric = document.getElementById('fw-center-metric');
+      var centerLabel = document.getElementById('fw-center-label');
+      var pulseAttract = document.getElementById('fw-pulse-attract');
+      var pulseCapture = document.getElementById('fw-pulse-capture');
+      var pulseMonetize = document.getElementById('fw-pulse-monetize');
+
+      var segmentNames = ['attract', 'capture', 'monetize'];
+      var currentSegment = 'attract';
+      var autoRotateTimer = null;
+      var userInteracted = false;
+
+      var centerData = {
+        attract: { metric: '100x', label: 'MAU Growth' },
+        capture: { metric: '21M+', label: 'CDP Profiles' },
+        monetize: { metric: '200+', label: 'Advertisers' }
+      };
+
+      var pulseMap = {
+        attract: pulseAttract,
+        capture: pulseCapture,
+        monetize: pulseMonetize
+      };
+
+      function setActiveSegment(name) {
+        currentSegment = name;
+
+        // Update arcs
+        arcs.forEach(function(arc) {
+          var segName = arc.getAttribute('data-segment');
+          arc.classList.toggle('active', segName === name);
+          arc.classList.toggle('dimmed', segName !== name);
+        });
+
+        // Update detail panels with crossfade
+        details.forEach(function(panel) {
+          var isActive = panel.getAttribute('data-segment') === name;
+          if (isActive) {
+            panel.classList.add('active');
+            // Animate stat counters inside this panel
+            animateFwStats(panel);
+          } else {
+            panel.classList.remove('active');
+          }
+        });
+
+        // Update center circle
+        var d = centerData[name];
+        if (centerMetric && centerLabel) {
+          centerMetric.textContent = d.metric;
+          centerLabel.textContent = d.label;
+        }
+
+        // Update pulse rings
+        Object.keys(pulseMap).forEach(function(key) {
+          if (pulseMap[key]) {
+            pulseMap[key].classList.toggle('active', key === name);
+          }
+        });
+      }
+
+      // Animated stat counters for detail panels
+      var animatedPanels = {};
+      function animateFwStats(panel) {
+        var seg = panel.getAttribute('data-segment');
+        if (animatedPanels[seg]) return; // Only animate once per segment
+        animatedPanels[seg] = true;
+
+        var statEls = panel.querySelectorAll('[data-fw-count]');
+        statEls.forEach(function(el) {
+          var target = parseFloat(el.getAttribute('data-fw-count'));
+          var suffix = el.getAttribute('data-fw-suffix') || '';
+          var prefix = el.getAttribute('data-fw-prefix') || '';
+          var decimals = parseInt(el.getAttribute('data-fw-decimals')) || 0;
+          var duration = 1400;
+          var start = performance.now();
+
+          function step(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = target * eased;
+
+            if (decimals > 0) {
+              el.textContent = prefix + current.toFixed(decimals) + suffix;
+            } else if (target >= 1000) {
+              el.textContent = prefix + Math.round(current).toLocaleString() + suffix;
+            } else {
+              el.textContent = prefix + Math.round(current) + suffix;
+            }
+
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              if (decimals > 0) {
+                el.textContent = prefix + target.toFixed(decimals) + suffix;
+              } else if (target >= 1000) {
+                el.textContent = prefix + target.toLocaleString() + suffix;
+              } else {
+                el.textContent = prefix + target + suffix;
+              }
+            }
+          }
+          requestAnimationFrame(step);
+        });
+      }
+
+      // Click and keyboard handlers
+      arcs.forEach(function(arc) {
+        arc.addEventListener('click', function() {
+          userInteracted = true;
+          clearInterval(autoRotateTimer);
+          setActiveSegment(arc.getAttribute('data-segment'));
+        });
+        arc.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            userInteracted = true;
+            clearInterval(autoRotateTimer);
+            setActiveSegment(arc.getAttribute('data-segment'));
+          }
+        });
+      });
+
+      // Auto-rotate every 4 seconds until user interacts
+      function startAutoRotate() {
+        autoRotateTimer = setInterval(function() {
+          if (userInteracted) { clearInterval(autoRotateTimer); return; }
+          var idx = segmentNames.indexOf(currentSegment);
+          var next = segmentNames[(idx + 1) % segmentNames.length];
+          setActiveSegment(next);
+        }, 4000);
+      }
+
+      // Compounding flow animation
+      function animateCompoundFlow() {
+        var steps = document.querySelectorAll('#fw-compound-steps .fw-step, #fw-compound-steps .fw-step-arrow, #fw-compound-steps .fw-step-loop');
+        steps.forEach(function(step, i) {
+          setTimeout(function() {
+            step.classList.add('visible');
+          }, i * 140);
+        });
+      }
+
+      // Result metrics counters
+      var fwResultsAnimated = false;
+      function animateFwResults() {
+        if (fwResultsAnimated) return;
+        fwResultsAnimated = true;
+
+        var els = document.querySelectorAll('#fw-results [data-fwr-target]');
+        els.forEach(function(el) {
+          var target = parseFloat(el.getAttribute('data-fwr-target'));
+          var suffix = el.getAttribute('data-fwr-suffix') || '';
+          var prefix = el.getAttribute('data-fwr-prefix') || '';
+          var duration = 1600;
+          var start = performance.now();
+
+          function step(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = target * eased;
+            el.textContent = prefix + Math.round(current) + suffix;
+
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              el.textContent = prefix + target + suffix;
+            }
+          }
+          requestAnimationFrame(step);
+        });
+      }
+
+      // IntersectionObserver: trigger animations when visible
+      var fwObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            fwWrap.classList.add('in-view');
+            // Initial animation
+            animateFwStats(document.querySelector('.fw-detail.active'));
+            startAutoRotate();
+            fwObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      fwObserver.observe(fwWrap);
+
+      // Compound flow observer
+      var compoundFlow = document.getElementById('fw-compound-flow');
+      if (compoundFlow) {
+        var cfObserver = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting) {
+            animateCompoundFlow();
+            cfObserver.unobserve(compoundFlow);
+          }
+        }, { threshold: 0.3 });
+        cfObserver.observe(compoundFlow);
+      }
+
+      // Results observer
+      var fwResultsEl = document.getElementById('fw-results');
+      if (fwResultsEl) {
+        var frObserver = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting) {
+            animateFwResults();
+            frObserver.unobserve(fwResultsEl);
+          }
+        }, { threshold: 0.3 });
+        frObserver.observe(fwResultsEl);
+      }
+
+      // Initialize first panel's counters immediately if already visible
+      setActiveSegment('attract');
+    })();
+
+    /* ── TABBED SCREENSHOT VIEWER ── */
+    var tabContainer = document.getElementById('screenshot-tabs');
+    if (tabContainer) {
+      var tabBtns = tabContainer.querySelectorAll('.tab-btn');
+      var tabPanels = tabContainer.querySelectorAll('.tab-panel');
+      var tabNames = [];
+      tabBtns.forEach(function(btn) { tabNames.push(btn.getAttribute('data-tab')); });
+      var currentTabIndex = 0;
+
+      function setActiveTab(name) {
+        tabBtns.forEach(function(btn) {
+          var isActive = btn.getAttribute('data-tab') === name;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+        tabPanels.forEach(function(panel) {
+          panel.classList.toggle('active', panel.getAttribute('data-tab') === name);
+        });
+        currentTabIndex = tabNames.indexOf(name);
+      }
+
+      tabBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          setActiveTab(btn.getAttribute('data-tab'));
+        });
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        // Only handle arrow keys when tab area is roughly in view
+        var rect = tabContainer.getBoundingClientRect();
+        if (rect.top > window.innerHeight || rect.bottom < 0) return;
+
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          currentTabIndex = (currentTabIndex + 1) % tabNames.length;
+          setActiveTab(tabNames[currentTabIndex]);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          currentTabIndex = (currentTabIndex - 1 + tabNames.length) % tabNames.length;
+          setActiveTab(tabNames[currentTabIndex]);
+        }
+      });
+    }
+
+    /* ── SHOW/HIDE SHOPPABLE AD EMBED BASED ON VIEWPORT ── */
+    function checkShoppableViewport() {
+      var desktopEmbed = document.getElementById('shoppable-desktop');
+      var mobileImg = document.getElementById('shoppable-mobile');
+      if (!desktopEmbed || !mobileImg) return;
+      if (window.innerWidth > 800) {
+        desktopEmbed.style.display = 'block';
+        mobileImg.style.display = 'none';
+      } else {
+        desktopEmbed.style.display = 'none';
+        mobileImg.style.display = 'block';
+      }
+    }
+    checkShoppableViewport();
+    window.addEventListener('resize', checkShoppableViewport);
+
+  })();
+  </script>
+
+</body>
+</html>
