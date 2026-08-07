@@ -24,96 +24,46 @@
   <meta name="twitter:title" content="How I Work - Stephen Umunna">
   <meta name="twitter:description" content="The operating system behind how I build, ship, and run businesses.">
   <meta name="twitter:image" content="https://stephenumunna.com/assets/og-share.jpg">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>S</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='16' y='23' text-anchor='middle' fill='%23F5F4F0' font-family='Georgia,serif' font-weight='500' font-size='19'>S</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     (function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
   </script>
   <style>
+    .nav-extra{margin-left:auto}.nav-link{font-size:13px;font-weight:500;color:#5A5A54;text-decoration:none;transition:color .2s}.nav-link:hover{color:#0F0E0C}@media(max-width:600px){.nav-extra{display:none}}
+
     /* ========================================
        CSS VARIABLES - LIGHT / DARK / SYSTEM
     ======================================== */
     :root {
-      --bg: #fafafa;
-      --bg2: #f1f5f9;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --text-faint: #94a3b8;
-      --border: #e2e8f0;
-      --accent: #2563eb;
-      --accent-soft: #eff6ff;
-      --accent-border: #bfdbfe;
-      --green: #22c55e;
-      --green-soft: #ecfdf5;
-      --green-border: #a7f3d0;
-      --purple: #7c3aed;
-      --purple-soft: #f5f3ff;
-      --purple-border: #ddd6fe;
-      --amber: #d97706;
-      --amber-soft: #fffbeb;
-      --amber-border: #fde68a;
-      --nav-bg: rgba(255,255,255,.92);
-      --shadow: rgba(15,23,42,0.06);
-      --shadow-lg: rgba(15,23,42,0.1);
-      --counter-color: #059669;
-      --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
-    }
-
-    [data-theme="dark"] {
-      --bg: #0a0a0f;
-      --bg2: #0f0f17;
-      --surface: #13131a;
-      --text: #e2e2e8;
-      --text-muted: #9898a8;
-      --text-faint: #5a5a6e;
-      --border: #1e1e2e;
-      --accent: #60a5fa;
-      --accent-soft: rgba(37,99,235,0.12);
-      --accent-border: #1e3a5f;
-      --green: #4ade80;
-      --green-soft: rgba(34,197,94,0.1);
-      --green-border: #14532d;
-      --purple: #a78bfa;
-      --purple-soft: rgba(124,58,237,0.1);
-      --purple-border: #3b1f6e;
-      --amber: #fbbf24;
-      --amber-soft: rgba(217,119,6,0.1);
-      --amber-border: #78350f;
-      --nav-bg: rgba(10,10,15,.85);
-      --shadow: rgba(0,0,0,0.3);
-      --shadow-lg: rgba(0,0,0,0.5);
-      --counter-color: #4ade80;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      [data-theme="system"] {
-        --bg: #0a0a0f;
-        --bg2: #0f0f17;
-        --surface: #13131a;
-        --text: #e2e2e8;
-        --text-muted: #9898a8;
-        --text-faint: #5a5a6e;
-        --border: #1e1e2e;
-        --accent: #60a5fa;
-        --accent-soft: rgba(37,99,235,0.12);
-        --accent-border: #1e3a5f;
-        --green: #4ade80;
-        --green-soft: rgba(34,197,94,0.1);
-        --green-border: #14532d;
-        --purple: #a78bfa;
-        --purple-soft: rgba(124,58,237,0.1);
-        --purple-border: #3b1f6e;
-        --amber: #fbbf24;
-        --amber-soft: rgba(217,119,6,0.1);
-        --amber-border: #78350f;
-        --nav-bg: rgba(10,10,15,.85);
-        --shadow: rgba(0,0,0,0.3);
-        --shadow-lg: rgba(0,0,0,0.5);
-        --counter-color: #4ade80;
-      }
+      --bg: #FCFCFA;
+      --bg2: #F4F2EA;
+      --surface: #FFFFFF;
+      --text: #0F0E0C;
+      --text-muted: #5A5A54;
+      --text-faint: #62594A;
+      --border: #E4E0D2;
+      --accent: #0F0E0C;
+      --accent-soft: rgba(15,14,12,.07);
+      --accent-border: rgba(15,14,12,.22);
+      --green: #3F6B4F;
+      --green-soft: rgba(63,107,79,.08);
+      --green-border: rgba(63,107,79,.28);
+      --purple: #5B4B8A;
+      --purple-soft: rgba(91,75,138,.08);
+      --purple-border: rgba(91,75,138,.28);
+      --amber: #8A6D1F;
+      --amber-soft: rgba(138,109,31,.08);
+      --amber-border: rgba(138,109,31,.28);
+      --nav-bg: rgba(252,252,250,.9);
+      --shadow: rgba(0,0,0,.4);
+      --shadow-lg: rgba(0,0,0,.55);
+      --counter-color: #0F0E0C;
+      --mono: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
     }
 
     /* ========================================
@@ -123,7 +73,7 @@
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
@@ -156,25 +106,6 @@
     .nav-back:hover { color: var(--accent); }
     .nav-back:hover svg { transform: translateX(-2px); }
     .nav-back svg { transition: transform .2s; flex-shrink: 0; }
-
-    .theme-toggle {
-      display: flex; align-items: center; margin-left: auto;
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 100px; padding: 2px; gap: 0;
-      transition: background .3s, border-color .3s;
-    }
-    .theme-btn {
-      padding: 5px 11px; font-size: 12px; font-weight: 500;
-      color: var(--text-faint); background: transparent;
-      border: none; border-radius: 100px; cursor: pointer;
-      transition: color .2s, background .2s; font-family: inherit;
-      white-space: nowrap; line-height: 1;
-    }
-    .theme-btn:hover { color: var(--text-muted); }
-    .theme-btn.active {
-      color: var(--text); background: var(--surface);
-      box-shadow: 0 1px 3px var(--shadow);
-    }
 
     /* ========================================
        CONTENT WRAPPER
@@ -210,7 +141,7 @@
       margin-bottom: 20px;
     }
     .hero h1 .grad {
-      background: linear-gradient(135deg, var(--accent), #6d28d9);
+      background: linear-gradient(135deg, var(--accent), #0F0E0C);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -219,7 +150,7 @@
       max-width: 720px;
     }
     .hero-accent-bar {
-      width: 64px; height: 3px; background: linear-gradient(90deg, var(--accent), #6d28d9);
+      width: 64px; height: 3px; background: linear-gradient(90deg, var(--accent), #0F0E0C);
       border-radius: 2px; margin-bottom: 28px;
     }
 
@@ -479,11 +410,6 @@
       border-radius: 16px;
       padding: 36px 36px 32px;
     }
-    [data-theme="dark"] .available-card,
-    [data-theme="system"] .available-card {
-      background: linear-gradient(135deg, var(--accent-soft), var(--purple-soft));
-      border-color: var(--accent-border);
-    }
     .available-list {
       list-style: none; padding: 0; margin: 16px 0 24px;
       display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
@@ -507,12 +433,12 @@
       min-height: 42px;
     }
     .av-btn-primary {
-      background: var(--accent); color: #fff;
+      background: var(--text); color: var(--bg);
     }
     .av-btn-primary:hover {
-      background: color-mix(in srgb, var(--accent) 85%, #000);
+      opacity: .8;
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(37,99,235,.25);
+      box-shadow: none;
     }
     .av-btn-secondary {
       background: var(--surface); color: var(--text);
@@ -562,7 +488,6 @@
       .section { padding: 56px 0 0; }
       .workflow-list { padding-left: 28px; }
       .workflow-dot { left: -28px; }
-      .theme-btn { padding: 5px 9px; font-size: 11px; }
     }
     @media (max-width: 480px) {
       .nav-inner { padding: 0 16px; height: 52px; }
@@ -581,7 +506,7 @@
        PRINT
     ======================================== */
     @media print {
-      .nav, .theme-toggle { display: none !important; }
+      .nav { display: none !important; }
       body { background: #fff !important; color: #000 !important; }
       .hero { padding-top: 40px !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
@@ -594,6 +519,11 @@
       .nav-back a[href]::after, .page-footer-links a[href]::after { content: none; }
       * { transition: none !important; animation: none !important; }
     }
+  </style>
+
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif!important}
+    h1,h2,h3{font-family:'Newsreader',Georgia,serif!important;font-weight:500!important;letter-spacing:-.01em!important}
   </style>
 </head>
 <body>
@@ -609,11 +539,7 @@
         </svg>
         Stephen Umunna &middot; Portfolio
       </a>
-      <div class="theme-toggle" role="radiogroup" aria-label="Theme">
-        <button class="theme-btn active" data-theme-btn="light" aria-label="Light theme">&#9728;&#65039; Light</button>
-        <button class="theme-btn" data-theme-btn="system" aria-label="System theme">&#128421;&#65039; System</button>
-        <button class="theme-btn" data-theme-btn="dark" aria-label="Dark theme">&#127769; Dark</button>
-      </div>
+      <div class="nav-extra"><a href="../assets/Stephen_Umunna_Resume.pdf" download class="nav-link">Resume</a></div>
     </div>
   </nav>
 
@@ -932,7 +858,7 @@
         <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
-    <div class="page-footer-note">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+    <div class="page-footer-note">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed. One employer name is withheld at that company's request.</div>
   </footer>
 
   <!-- ========================================
@@ -941,28 +867,6 @@
   <script>
   (function() {
     'use strict';
-
-    /* THEME TOGGLE */
-    var ThemeManager = {
-      init: function() {
-        var saved = localStorage.getItem('portfolio-theme') || 'light';
-        this.set(saved);
-        var self = this;
-        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
-          btn.addEventListener('click', function() {
-            self.set(btn.getAttribute('data-theme-btn'));
-          });
-        });
-      },
-      set: function(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('portfolio-theme', theme);
-        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
-          btn.classList.toggle('active', btn.getAttribute('data-theme-btn') === theme);
-        });
-      }
-    };
-    ThemeManager.init();
 
     /* SCROLL REVEAL */
     var revealObserver = new IntersectionObserver(function(entries) {

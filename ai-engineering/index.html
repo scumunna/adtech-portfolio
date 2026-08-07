@@ -16,17 +16,19 @@
   <meta name="robots" content="index, follow">
   <meta name="description" content="How Stephen Umunna uses AI as the operating layer: daily coding stack (Claude Code, Codex, Cursor, Copilot), production AI features (Vercel AI SDK, Gemini, Anthropic/OpenAI APIs), and MCP-based agentic workflows. Stanford BIOE 230 in 24 hours, MCP sales prospecting at Confidential AdTech Startup, team-wide AI-assisted engineering standard.">
   <meta property="og:title" content="AI Engineering &middot; Stephen Umunna">
-  <meta property="og:description" content="AI fluency isn't a resume line - it's the operating layer. Three production uses, each producing something concrete.">
+  <meta property="og:description" content="AI runs underneath the daily work: three production uses, each producing something concrete.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://stephenumunna.com/ai-engineering/">
   <meta property="og:image" content="https://stephenumunna.com/assets/og-share.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI Engineering &middot; Stephen Umunna">
-  <meta name="twitter:description" content="AI fluency isn't a resume line - it's the operating layer. Three production uses, each producing something concrete.">
+  <meta name="twitter:description" content="AI runs underneath the daily work: three production uses, each producing something concrete.">
   <meta name="twitter:image" content="https://stephenumunna.com/assets/og-share.jpg">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>S</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='16' y='23' text-anchor='middle' fill='%23F5F4F0' font-family='Georgia,serif' font-weight='500' font-size='19'>S</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     (function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
@@ -36,84 +38,30 @@
        CSS VARIABLES - LIGHT / DARK / SYSTEM
     ======================================== */
     :root {
-      --bg: #fafafa;
-      --bg2: #f1f5f9;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --text-faint: #94a3b8;
-      --border: #e2e8f0;
-      --accent: #2563eb;
-      --accent-soft: #eff6ff;
-      --accent-border: #bfdbfe;
-      --green: #22c55e;
-      --green-soft: #ecfdf5;
-      --green-border: #a7f3d0;
-      --purple: #7c3aed;
-      --purple-soft: #f5f3ff;
-      --purple-border: #ddd6fe;
-      --amber: #d97706;
-      --amber-soft: #fffbeb;
-      --amber-border: #fde68a;
-      --nav-bg: rgba(255,255,255,.92);
-      --shadow: rgba(15,23,42,0.06);
-      --shadow-lg: rgba(15,23,42,0.1);
-      --counter-color: #059669;
-      --mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Roboto Mono', monospace;
-    }
-
-    [data-theme="dark"] {
-      --bg: #0a0a0f;
-      --bg2: #0f0f17;
-      --surface: #13131a;
-      --text: #e2e2e8;
-      --text-muted: #9898a8;
-      --text-faint: #5a5a6e;
-      --border: #1e1e2e;
-      --accent: #60a5fa;
-      --accent-soft: rgba(37,99,235,0.12);
-      --accent-border: #1e3a5f;
-      --green: #4ade80;
-      --green-soft: rgba(34,197,94,0.1);
-      --green-border: #14532d;
-      --purple: #a78bfa;
-      --purple-soft: rgba(124,58,237,0.1);
-      --purple-border: #3b1f6e;
-      --amber: #fbbf24;
-      --amber-soft: rgba(217,119,6,0.12);
-      --amber-border: #78350f;
-      --nav-bg: rgba(10,10,15,.85);
-      --shadow: rgba(0,0,0,0.3);
-      --shadow-lg: rgba(0,0,0,0.5);
-      --counter-color: #4ade80;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      [data-theme="system"] {
-        --bg: #0a0a0f;
-        --bg2: #0f0f17;
-        --surface: #13131a;
-        --text: #e2e2e8;
-        --text-muted: #9898a8;
-        --text-faint: #5a5a6e;
-        --border: #1e1e2e;
-        --accent: #60a5fa;
-        --accent-soft: rgba(37,99,235,0.12);
-        --accent-border: #1e3a5f;
-        --green: #4ade80;
-        --green-soft: rgba(34,197,94,0.1);
-        --green-border: #14532d;
-        --purple: #a78bfa;
-        --purple-soft: rgba(124,58,237,0.1);
-        --purple-border: #3b1f6e;
-        --amber: #fbbf24;
-        --amber-soft: rgba(217,119,6,0.12);
-        --amber-border: #78350f;
-        --nav-bg: rgba(10,10,15,.85);
-        --shadow: rgba(0,0,0,0.3);
-        --shadow-lg: rgba(0,0,0,0.5);
-        --counter-color: #4ade80;
-      }
+      --bg: #FCFCFA;
+      --bg2: #F4F2EA;
+      --surface: #FFFFFF;
+      --text: #0F0E0C;
+      --text-muted: #5A5A54;
+      --text-faint: #62594A;
+      --border: #E4E0D2;
+      --accent: #0F0E0C;
+      --accent-soft: rgba(15,14,12,.07);
+      --accent-border: rgba(15,14,12,.22);
+      --green: #3F6B4F;
+      --green-soft: rgba(63,107,79,.08);
+      --green-border: rgba(63,107,79,.28);
+      --purple: #5B4B8A;
+      --purple-soft: rgba(91,75,138,.08);
+      --purple-border: rgba(91,75,138,.28);
+      --amber: #8A6D1F;
+      --amber-soft: rgba(138,109,31,.08);
+      --amber-border: rgba(138,109,31,.28);
+      --nav-bg: rgba(252,252,250,.9);
+      --shadow: rgba(0,0,0,.4);
+      --shadow-lg: rgba(0,0,0,.55);
+      --counter-color: #0F0E0C;
+      --mono: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
     }
 
     /* ========================================
@@ -123,7 +71,7 @@
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
@@ -169,25 +117,6 @@
     }
     .nav-link:hover { color: var(--accent); }
 
-    .theme-toggle {
-      display: flex; align-items: center;
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 100px; padding: 2px; gap: 0;
-      transition: background .3s, border-color .3s;
-    }
-    .theme-btn {
-      padding: 5px 11px; font-size: 12px; font-weight: 500;
-      color: var(--text-faint); background: transparent;
-      border: none; border-radius: 100px; cursor: pointer;
-      transition: color .2s, background .2s; font-family: inherit;
-      white-space: nowrap; line-height: 1;
-    }
-    .theme-btn:hover { color: var(--text-muted); }
-    .theme-btn.active {
-      color: var(--text); background: var(--surface);
-      box-shadow: 0 1px 3px var(--shadow);
-    }
-
     @media (max-width: 600px) {
       .nav-link { display: none; }
     }
@@ -227,7 +156,7 @@
       margin-bottom: 20px;
     }
     .hero h1 .grad {
-      background: linear-gradient(135deg, var(--accent), #6d28d9);
+      background: linear-gradient(135deg, var(--accent), #0F0E0C);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -428,7 +357,7 @@
       content: ''; position: absolute; top: 0; left: 0;
       width: 4px; height: 100%; border-radius: 0 2px 2px 0;
     }
-    .story-card[data-tone="stanford"]::before { background: #8C1515; }
+    .story-card[data-tone="stanford"]::before { background: #0F0E0C; }
     .story-card[data-tone="mcp"]::before { background: var(--purple); }
     .story-card[data-tone="team"]::before { background: var(--green); }
 
@@ -447,10 +376,7 @@
       padding: 3px 9px; border-radius: 4px;
     }
     .story-card[data-tone="stanford"] .story-card-tag {
-      color: #8C1515; background: rgba(140,21,21,.08); border: 1px solid rgba(140,21,21,.18);
-    }
-    [data-theme="dark"] .story-card[data-tone="stanford"] .story-card-tag {
-      color: #ef9b9b; background: rgba(140,21,21,.2); border-color: rgba(239,155,155,.25);
+      color: #0F0E0C; background: rgba(15,14,12,.08); border: 1px solid rgba(15,14,12,.18);
     }
     .story-card[data-tone="mcp"] .story-card-tag {
       color: var(--purple); background: var(--purple-soft); border: 1px solid var(--purple-border);
@@ -481,7 +407,7 @@
       content: ''; position: absolute; left: 0; top: 10px;
       width: 6px; height: 6px; border-radius: 50%;
     }
-    .story-card[data-tone="stanford"] .story-card-detail li::before { background: #8C1515; }
+    .story-card[data-tone="stanford"] .story-card-detail li::before { background: #0F0E0C; }
     .story-card[data-tone="mcp"] .story-card-detail li::before { background: var(--purple); }
     .story-card[data-tone="team"] .story-card-detail li::before { background: var(--green); }
     .story-card-detail li strong { color: var(--text); font-weight: 600; }
@@ -506,9 +432,8 @@
       margin-top: 4px; transition: gap .2s;
     }
     .story-card-link:hover { gap: 10px; }
-    .story-card[data-tone="stanford"] .story-card-link { color: #8C1515; }
-    [data-theme="dark"] .story-card[data-tone="stanford"] .story-card-link { color: #ef9b9b; }
-
+    .story-card[data-tone="stanford"] .story-card-link { color: #0F0E0C; }
+    
     /* ========================================
        DIFFERENTIATOR SECTION
     ======================================== */
@@ -610,12 +535,12 @@
       transition: background .2s, transform .2s, border-color .2s, box-shadow .2s;
     }
     .cta-btn-primary {
-      background: var(--accent); color: #fff;
+      background: var(--text); color: var(--bg);
     }
     .cta-btn-primary:hover {
-      background: color-mix(in srgb, var(--accent) 85%, #000);
+      opacity: .8;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37,99,235,.25);
+      box-shadow: none;
     }
     .cta-btn-secondary {
       background: var(--surface); color: var(--text);
@@ -665,7 +590,6 @@
       .honest-grid { grid-template-columns: 1fr; }
       .story-card { padding: 26px 22px; }
       .nav-back { padding: 14px 0; min-height: 44px; display: flex; align-items: center; }
-      .theme-btn { min-height: 40px; padding: 6px 10px; font-size: 11px; }
       .pull-quote { padding: 26px 24px; }
     }
 
@@ -679,7 +603,6 @@
       .counter-value { font-size: 24px; }
       .counter-cell { padding: 22px 12px; }
       .story-card h3 { font-size: 19px; }
-      .theme-btn { padding: 4px 7px; font-size: 10px; }
       .page-footer { padding: 24px 16px 36px; }
       .cta-section { padding: 56px 20px 24px; }
     }
@@ -691,6 +614,11 @@
       .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
       * { transition: none !important; animation: none !important; }
     }
+  </style>
+
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif!important}
+    h1,h2,h3{font-family:'Newsreader',Georgia,serif!important;font-weight:500!important;letter-spacing:-.01em!important}
   </style>
 </head>
 <body>
@@ -709,12 +637,8 @@
       <div class="nav-extra">
         <a href="../projects/stanford-bioe230/" class="nav-link">Stanford BIOE 230</a>
         <a href="../#projects" class="nav-link">All Projects</a>
-        <div class="theme-toggle" role="radiogroup" aria-label="Theme">
-          <button class="theme-btn active" data-theme-btn="light" aria-label="Light theme">&#9728;&#65039; Light</button>
-          <button class="theme-btn" data-theme-btn="system" aria-label="System theme">&#128421;&#65039; System</button>
-          <button class="theme-btn" data-theme-btn="dark" aria-label="Dark theme">&#127769; Dark</button>
+        <a href="../assets/Stephen_Umunna_Resume.pdf" download class="nav-link">Resume</a>
         </div>
-      </div>
     </div>
   </nav>
 
@@ -727,7 +651,7 @@
       <div class="hero-badge">AI Engineering &middot; Daily Practice &middot; Production Output</div>
       <h1>AI Engineering</h1>
       <p class="hero-subtitle">
-        AI fluency isn&apos;t a resume line &mdash; it&apos;s the <span class="grad" style="background:linear-gradient(135deg,var(--accent),#6d28d9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700">operating layer</span>. Three production uses, each producing something concrete: a 100K-line Stanford platform built in 24 hours, MCP-based sales prospecting at Confidential AdTech Startup, and an AI-assisted engineering standard for a 15-person team.
+        AI runs underneath the daily work here. Three production uses, each producing something concrete: a 100K-line Stanford platform built in 24 hours, MCP-based sales prospecting at Confidential AdTech Startup, and an AI-assisted engineering standard for a 15-person team.
       </p>
 
       <div class="counters">
@@ -773,7 +697,7 @@
           </div>
           <span class="tool-card-tag" data-role="primary">Primary Engineering Driver</span>
           <ul>
-            <li>Used to build the <strong>Stanford BIOE 230 platform &mdash; 100K lines in 24 hours</strong></li>
+            <li>Used to build the <strong>Stanford BIOE 230 platform, 100K lines in 24 hours</strong></li>
             <li>Daily Confidential AdTech Startup engineering and Causal IQ Python automation work</li>
             <li><strong>MCP integration</strong> for sales prospecting workflows</li>
           </ul>
@@ -799,7 +723,7 @@
           </div>
           <span class="tool-card-tag" data-role="ide">IDE-Integrated Pair Programming</span>
           <ul>
-            <li><strong>IDE-native AI pair programming</strong> &mdash; in-context across the file you&apos;re editing</li>
+            <li><strong>IDE-native AI pair programming</strong>, in-context across the file you&apos;re editing</li>
             <li>Multi-file refactoring with project-aware context</li>
             <li>Tab-completion and inline suggestions while writing code</li>
           </ul>
@@ -814,7 +738,7 @@
           <ul>
             <li><strong>Inline suggestions</strong> at commit-by-commit cadence</li>
             <li>Repository-aware context across pull requests and branches</li>
-            <li>Used alongside Cursor for redundancy &mdash; two heads on each line</li>
+            <li>Used alongside Cursor for redundancy, two heads on each line</li>
           </ul>
         </div>
 
@@ -828,7 +752,7 @@
       <span class="section-label">Section 2 &middot; Production AI Stack</span>
       <h2>What ships in the product, not just the dev workflow.</h2>
       <p class="section-desc">
-        AI in the dev loop is table stakes. AI in the user&apos;s hands &mdash; with streaming responses, structured outputs, and cost-aware model routing &mdash; is what makes the work production-grade.
+        AI in the dev loop is table stakes. AI in the user&apos;s hands, with streaming responses, structured outputs, and cost-aware model routing, is what makes the work production-grade.
       </p>
 
       <div class="prod-grid">
@@ -848,7 +772,7 @@
         <div class="prod-card" data-tone="green">
           <div class="prod-card-label">Model Orchestration</div>
           <h3>Anthropic + OpenAI APIs</h3>
-          <p>Production model orchestration at Confidential AdTech Startup. Multi-model strategy for <strong>cost/quality tradeoffs</strong> &mdash; Claude where reasoning matters, GPT where it fits, fallback paths when either is degraded. Prompt engineering at scale.</p>
+          <p>Production model orchestration at Confidential AdTech Startup. Multi-model strategy for <strong>cost/quality tradeoffs</strong>, Claude where reasoning matters, GPT where it fits, fallback paths when either is degraded. Prompt engineering at scale.</p>
           <div class="prod-card-tags">
             <span class="prod-card-tag">Anthropic API</span>
             <span class="prod-card-tag">OpenAI API</span>
@@ -879,7 +803,7 @@
       <span class="section-label">Section 3 &middot; Three Production Stories</span>
       <h2>Shipped artifacts, not slide decks.</h2>
       <p class="section-desc">
-        The same AI stack, applied three different ways. Each one produced something concrete &mdash; a live platform a Stanford department adopted, an automated sales workflow inside a 15-person agency, and a team-wide engineering standard.
+        The same AI stack, applied three different ways. Each one produced something concrete, a live platform a Stanford department adopted, an automated sales workflow inside a 15-person agency, and a team-wide engineering standard.
       </p>
 
       <div class="story-stack">
@@ -892,12 +816,12 @@
           </div>
           <h3>Stanford BIOE 230 in 24 hours</h3>
           <p class="story-card-lede">
-            Professor Coleman needed an interactive learning platform for his Spring 2026 course. I scoped, built, and shipped it in <strong>24 hours</strong> &mdash; 100K lines covering 180 D3.js visualizations, a contextual AI tutor, 960 practice problems, and a PWA install path.
+            Professor Coleman needed an interactive learning platform for his Spring 2026 course. I scoped, built, and shipped it in <strong>24 hours</strong>, 100K lines covering 180 D3.js visualizations, a contextual AI tutor, 960 practice problems, and a PWA install path.
           </p>
           <ul class="story-card-detail">
             <li><strong>Stack:</strong> Claude Code for engineering, Next.js 16, D3.js, Vercel AI SDK with Gemini for the tutor, TypeScript, Tailwind, shadcn/ui</li>
-            <li><strong>Outcome:</strong> Adopted by Stanford Bioengineering for Spring 2026; department-wide rollout in progress with other professors picking it up</li>
-            <li><strong>Why it matters:</strong> Real users (graduate students), real evaluation, real institutional buy-in &mdash; not a demo</li>
+            <li><strong>Outcome:</strong> Built for Stanford's BIOE 230 and used by the course in Spring 2026</li>
+            <li><strong>Why it matters:</strong> Real users (graduate students), real evaluation, real institutional buy-in, not a demo</li>
           </ul>
           <div class="story-card-meta">
             <span><strong>100K+</strong> lines shipped</span>
@@ -916,12 +840,12 @@
           </div>
           <h3>MCP sales prospecting at Confidential AdTech Startup</h3>
           <p class="story-card-lede">
-            The sales team needed faster ICP-matched lead generation. I built an MCP-based agentic workflow where LLM agents pull prospect data, match it against ICP targeting parameters, score the fit, and surface the highest-confidence accounts for outbound &mdash; daily, automatically.
+            The sales team needed faster ICP-matched lead generation. I built an MCP-based agentic workflow where LLM agents pull prospect data, match it against ICP targeting parameters, score the fit, and surface the highest-confidence accounts for outbound, daily, automatically.
           </p>
           <ul class="story-card-detail">
             <li><strong>The loop:</strong> Discover prospects &rarr; score against ICP parameters &rarr; surface high-fit accounts &rarr; route to outbound</li>
             <li><strong>Outcome:</strong> Reduced manual list-building time and tightened the account focus for outbound reps</li>
-            <li><strong>Why it matters:</strong> Production agentic work inside a 15-person company &mdash; not a hackathon project</li>
+            <li><strong>Why it matters:</strong> Production agentic work inside a 15-person company, not a hackathon project</li>
           </ul>
           <div class="story-card-meta">
             <span><strong>Daily</strong> ICP-matched lead surfacing</span>
@@ -938,11 +862,11 @@
           </div>
           <h3>Daily AI-assisted engineering as a team standard</h3>
           <p class="story-card-lede">
-            At Confidential AdTech Startup, AI-assisted development became the team-wide operating standard &mdash; not an experiment. Engineering and ops teams used <strong>Claude Code, Codex, Cursor, and Copilot</strong> daily, with shared workflow templates and a prompt library that anyone could pull from.
+            At Confidential AdTech Startup, AI-assisted development became the team-wide operating standard, not an experiment. Engineering and ops teams used <strong>Claude Code, Codex, Cursor, and Copilot</strong> daily, with shared workflow templates and a prompt library that anyone could pull from.
           </p>
           <ul class="story-card-detail">
             <li><strong>What changed:</strong> Workflow templates and prompt libraries shared across the team so the leverage compounded</li>
-            <li><strong>Outcome:</strong> Productivity multiplier on a 15-person team without proportional headcount growth &mdash; how a small team managed 200+ accounts at 85% margins</li>
+            <li><strong>Outcome:</strong> Productivity multiplier on a 15-person team without proportional headcount growth, how a small team managed 200+ accounts at 85% margins</li>
             <li><strong>Why it matters:</strong> Tool adoption is the easy part. Workflow integration across a multi-discipline team is the hard part</li>
           </ul>
           <div class="story-card-meta">
@@ -977,7 +901,7 @@
         </div>
         <div class="point-card">
           <div class="point-num">03</div>
-          <p>MCP and agentic workflows are early &mdash; but production-ready when scoped well.</p>
+          <p>MCP and agentic workflows are early, but production-ready when scoped well.</p>
         </div>
       </div>
     </section>
@@ -989,7 +913,7 @@
       <span class="section-label">Section 5 &middot; The Honest Take</span>
       <h2>What AI does well, and what it doesn&apos;t replace.</h2>
       <p class="section-desc">
-        AI is a force multiplier, not a replacement for engineering judgment. The candid version &mdash; because the gap between &quot;uses AI&quot; and &quot;ships with AI&quot; only narrows when you&apos;re honest about both sides.
+        AI is a force multiplier, not a replacement for engineering judgment. The candid version, because the gap between &quot;uses AI&quot; and &quot;ships with AI&quot; only narrows when you&apos;re honest about both sides.
       </p>
 
       <div class="honest-grid">
@@ -1032,7 +956,7 @@
     <div class="cta-btns">
       <a href="mailto:scumunna@gmail.com" class="cta-btn cta-btn-primary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        Start a Conversation &rarr;
+        Let&apos;s talk &rarr;
       </a>
       <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" class="cta-btn cta-btn-secondary">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
@@ -1054,7 +978,7 @@
         <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
-    <div class="footer-fineprint">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+    <div class="footer-fineprint">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed. One employer name is withheld at that company's request.</div>
   </footer>
 
   <!-- ========================================
@@ -1063,28 +987,6 @@
   <script>
   (function() {
     'use strict';
-
-    /* THEME TOGGLE */
-    var ThemeManager = {
-      init: function() {
-        var saved = localStorage.getItem('portfolio-theme') || 'light';
-        this.set(saved);
-        var self = this;
-        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
-          btn.addEventListener('click', function() {
-            self.set(btn.getAttribute('data-theme-btn'));
-          });
-        });
-      },
-      set: function(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('portfolio-theme', theme);
-        document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
-          btn.classList.toggle('active', btn.getAttribute('data-theme-btn') === theme);
-        });
-      }
-    };
-    ThemeManager.init();
 
     /* SCROLL REVEAL */
     var revealObserver = new IntersectionObserver(function(entries) {

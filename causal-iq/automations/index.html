@@ -14,88 +14,44 @@
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Causal IQ Automation Suite - Stephen Umunna</title>
-  <meta name="description" content="Python automation suite plus a CTV measurement framework I built at Causal IQ - now the company-wide standard. Managed up to $900K/mo across 8-10 DSPs for CDC, Hertz, Grammarly, Orangetheory, Thomas J. Henry, and more.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232563eb'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>S</text></svg>">
+  <meta name="description" content="Python automation suite plus a CTV measurement framework I built at Causal IQ - now the company-wide standard. Managed up to $1.2M/mo across 6 DSPs for CDC, Hertz, Grammarly, Orangetheory, Thomas J. Henry, and more.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='16' y='23' text-anchor='middle' fill='%23F5F4F0' font-family='Georgia,serif' font-weight='500' font-size='19'>S</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     (function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
   </script>
   <style>
+    .nav-extra{margin-left:auto}.nav-link{font-size:13px;font-weight:500;color:#5A5A54;text-decoration:none;transition:color .2s}.nav-link:hover{color:#0F0E0C}@media(max-width:600px){.nav-extra{display:none}}
+
     /* ========================================
        CSS VARIABLES - LIGHT / DARK / SYSTEM
     ======================================== */
     :root {
-      --bg: #fafafa;
-      --bg2: #f1f5f9;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --text-faint: #94a3b8;
-      --border: #e2e8f0;
-      --accent: #2563eb;
-      --accent-soft: #eff6ff;
-      --accent-border: #bfdbfe;
-      --green: #22c55e;
-      --green-soft: #ecfdf5;
-      --green-border: #a7f3d0;
-      --red: #ef4444;
-      --red-soft: #fef2f2;
-      --red-border: #fecaca;
-      --nav-bg: rgba(255,255,255,.92);
-      --shadow: rgba(15,23,42,0.06);
-      --shadow-lg: rgba(15,23,42,0.1);
-      --counter-color: #059669;
-      --mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-    }
-
-    [data-theme="dark"] {
-      --bg: #0a0a0f;
-      --bg2: #0f0f17;
-      --surface: #13131a;
-      --text: #e2e2e8;
-      --text-muted: #9898a8;
-      --text-faint: #5a5a6e;
-      --border: #1e1e2e;
-      --accent: #60a5fa;
-      --accent-soft: rgba(37,99,235,0.12);
-      --accent-border: #1e3a5f;
-      --green: #4ade80;
-      --green-soft: rgba(34,197,94,0.1);
-      --green-border: #14532d;
-      --red: #f87171;
-      --red-soft: rgba(239,68,68,0.1);
-      --red-border: #7f1d1d;
-      --nav-bg: rgba(10,10,15,.85);
-      --shadow: rgba(0,0,0,0.3);
-      --shadow-lg: rgba(0,0,0,0.5);
-      --counter-color: #4ade80;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      [data-theme="system"] {
-        --bg: #0a0a0f;
-        --bg2: #0f0f17;
-        --surface: #13131a;
-        --text: #e2e2e8;
-        --text-muted: #9898a8;
-        --text-faint: #5a5a6e;
-        --border: #1e1e2e;
-        --accent: #60a5fa;
-        --accent-soft: rgba(37,99,235,0.12);
-        --accent-border: #1e3a5f;
-        --green: #4ade80;
-        --green-soft: rgba(34,197,94,0.1);
-        --green-border: #14532d;
-        --red: #f87171;
-        --red-soft: rgba(239,68,68,0.1);
-        --red-border: #7f1d1d;
-        --nav-bg: rgba(10,10,15,.85);
-        --shadow: rgba(0,0,0,0.3);
-        --shadow-lg: rgba(0,0,0,0.5);
-        --counter-color: #4ade80;
-      }
+      --bg: #FCFCFA;
+      --bg2: #F4F2EA;
+      --surface: #FFFFFF;
+      --text: #0F0E0C;
+      --text-muted: #5A5A54;
+      --text-faint: #62594A;
+      --border: #E4E0D2;
+      --accent: #0F0E0C;
+      --accent-soft: rgba(15,14,12,.07);
+      --accent-border: rgba(15,14,12,.22);
+      --green: #3F6B4F;
+      --green-soft: rgba(63,107,79,.08);
+      --green-border: rgba(63,107,79,.28);
+      --red: #A13D3D;
+      --red-soft: rgba(161,61,61,.08);
+      --red-border: rgba(161,61,61,.28);
+      --nav-bg: rgba(252,252,250,.9);
+      --shadow: rgba(0,0,0,.4);
+      --shadow-lg: rgba(0,0,0,.55);
+      --counter-color: #0F0E0C;
+      --mono: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
     }
 
     /* ========================================
@@ -105,7 +61,7 @@
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
@@ -140,25 +96,6 @@
     .nav-back:hover { color: var(--accent); }
     .nav-back:hover svg { transform: translateX(-2px); }
     .nav-back svg { transition: transform .2s; flex-shrink: 0; }
-
-    .theme-toggle {
-      display: flex; align-items: center; margin-left: auto;
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 100px; padding: 2px; gap: 0;
-      transition: background .3s, border-color .3s;
-    }
-    .theme-btn {
-      padding: 5px 11px; font-size: 12px; font-weight: 500;
-      color: var(--text-faint); background: transparent;
-      border: none; border-radius: 100px; cursor: pointer;
-      transition: color .2s, background .2s; font-family: inherit;
-      white-space: nowrap; line-height: 1; min-height: 28px;
-    }
-    .theme-btn:hover { color: var(--text-muted); }
-    .theme-btn.active {
-      color: var(--text); background: var(--surface);
-      box-shadow: 0 1px 3px var(--shadow);
-    }
 
     /* ========================================
        CONTENT
@@ -707,8 +644,6 @@
       .time-saved { padding: 24px 20px; }
       .time-saved-number { font-size: 36px; }
 
-      .theme-btn { padding: 4px 8px; font-size: 11px; }
-
       .pipeline-step { gap: 14px; }
     }
 
@@ -1157,6 +1092,11 @@
       .tabs-nav.is-five { grid-template-columns: 1fr; }
     }
   </style>
+
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif!important}
+    h1,h2,h3{font-family:'Newsreader',Georgia,serif!important;font-weight:500!important;letter-spacing:-.01em!important}
+  </style>
 </head>
 <body>
 
@@ -1169,18 +1109,14 @@
         </svg>
         <span>Stephen Umunna &middot; Portfolio</span>
       </a>
-      <div class="theme-toggle" role="radiogroup" aria-label="Color theme">
-        <button class="theme-btn active" data-theme-btn="light" aria-label="Light theme">Light</button>
-        <button class="theme-btn" data-theme-btn="system" aria-label="System theme">System</button>
-        <button class="theme-btn" data-theme-btn="dark" aria-label="Dark theme">Dark</button>
-      </div>
+      <div class="nav-extra"><a href="../../assets/Stephen_Umunna_Resume.pdf" download class="nav-link">Resume</a></div>
     </div>
   </nav>
 
-  <div id="interactive-banner" style="position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(37,99,235,0.08);border-bottom:1px solid rgba(37,99,235,0.15);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:Inter,-apple-system,sans-serif;font-size:12px;color:var(--accent,var(--ac,#2563eb));animation:bannerSlide .4s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+  <div id="interactive-banner" style="position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(15,14,12,0.06);border-bottom:1px solid rgba(15,14,12,0.14);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:#0F0E0C;animation:bannerSlide .4s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
     <span style="font-size:14px">&#9996;</span>
     <span>This page is fully interactive - watch the videos, flip the KPI cards, explore every section</span>
-    <button onclick="this.parentElement.style.display='none';sessionStorage.setItem('banner-dismissed','1')" style="background:none;border:none;color:var(--accent,var(--ac,#2563eb));cursor:pointer;font-size:16px;padding:0 4px;margin-left:8px;opacity:0.6" aria-label="Dismiss">&times;</button>
+    <button onclick="this.parentElement.style.display='none';sessionStorage.setItem('banner-dismissed','1')" style="background:none;border:none;color:#0F0E0C;cursor:pointer;font-size:16px;padding:0 4px;margin-left:8px;opacity:0.6" aria-label="Dismiss">&times;</button>
   </div>
   <script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('interactive-banner').style.display='none';</script>
   <style>@keyframes bannerSlide{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}</style>
@@ -1212,9 +1148,9 @@
           <div class="counter-detail">Out of 22 managers</div>
         </div>
         <div class="counter-cell">
-          <div class="counter-value" data-static="$900K" style="font-size:28px">$900K</div>
+          <div class="counter-value" data-static="$1.2M" style="font-size:28px">$1.2M</div>
           <div class="counter-label">Monthly Ad Spend</div>
-          <div class="counter-detail">Up to $900K/mo &middot; 10+ DSPs</div>
+          <div class="counter-detail">Up to $1.2M/mo &middot; 6 DSPs</div>
         </div>
       </div>
     </header>
@@ -1225,7 +1161,7 @@
       <h2>The only operator writing code</h2>
 
       <div class="story-card">
-        <p>At Causal IQ, a programmatic advertising platform with <span class="highlight">~125 employees</span>, I was the only operator writing code to solve workflow bottlenecks. Account Managers spent hours each day on manual tasks: pulling reports, adjusting bids, building insight decks, and managing site lists across <span class="highlight">8-10 DSPs</span> (DV360, The Trade Desk, Xandr, Yahoo, Zeta, Basis, Quantcast, YouTube/TrueView, and more).</p>
+        <p>At Causal IQ, a programmatic advertising platform with <span class="highlight">~125 employees</span>, I was the only operator writing code to solve workflow bottlenecks. Account Managers spent hours each day on manual tasks: pulling reports, adjusting bids, building insight decks, and managing site lists across <span class="highlight">6 DSPs</span> (DV360, The Trade Desk, Xandr, Yahoo, YouTube/TrueView, and Viant).</p>
         <p>I built four Python/Pandas tools plus a custom CTV measurement framework to automate that work. <span class="highlight">Leadership adopted them as the company-wide standard</span>. They are the reason I ranked top 2 in profitability out of 22 managers. I managed higher volumes of spend with zero errors because the tools did the repetitive work for me. The book of business included <span class="highlight">CDC, Hertz, Grammarly, Orangetheory, Thomas J. Henry, Primo Water, AAA Auto, PMI Colombia, Floor &amp; Decor, Party City</span>, and national political campaign teams.</p>
         <p><span class="highlight">Built with AI-assisted engineering</span> - Claude Code, Codex, Cursor, and Copilot are daily-driver tools in my workflow. The CTV codebase was handed off to Causal IQ at my departure for continued use across the broader client book.</p>
       </div>
@@ -1301,11 +1237,11 @@
     <!-- ============ DSP COVERAGE VISUALIZATION ============ -->
     <section class="section reveal" id="scale">
       <div class="section-label">The Scale</div>
-      <h2>Ten DSPs. One automation suite.</h2>
-      <p class="section-desc">The tools automated workflows across <strong style="color:var(--text)">8-10 DSPs</strong> where <strong style="color:var(--text)">up to $900K/month in spend was managed</strong> during high-volume periods. DV360, The Trade Desk, Xandr, Yahoo, Zeta, Basis, Quantcast, YouTube/TrueView, and others.</p>
+      <h2>Five DSPs. One automation suite.</h2>
+      <p class="section-desc">The tools automated workflows across <strong style="color:var(--text)">6 DSPs</strong> where <strong style="color:var(--text)">up to $1.2M/month in spend was managed</strong> during high-volume periods. DV360, The Trade Desk, Xandr, Yahoo, and YouTube/TrueView.</p>
 
       <div class="dsp-viz-wrap">
-        <svg viewBox="0 0 600 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DSP automation visualization showing DV360, The Trade Desk, Xandr, Yahoo, Zeta, Basis, Quantcast, and YouTube connected to Stephen's automation suite" width="600" height="460">
+        <svg viewBox="0 0 600 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DSP automation visualization showing DV360, The Trade Desk, Xandr, Yahoo, and YouTube connected to Stephen's automation suite" width="600" height="460">
           <defs>
             <filter id="glow">
               <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
@@ -1316,102 +1252,67 @@
           <!-- Center node -->
           <circle cx="300" cy="230" r="64" fill="var(--accent)" opacity="0.12" stroke="var(--accent)" stroke-width="2"/>
           <circle cx="300" cy="230" r="48" fill="var(--accent)" opacity="0.18"/>
-          <text x="300" y="222" text-anchor="middle" fill="var(--accent)" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing=".04em">AUTOMATION</text>
-          <text x="300" y="238" text-anchor="middle" fill="var(--accent)" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing=".04em">SUITE</text>
-          <text x="300" y="256" text-anchor="middle" fill="var(--text-muted)" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500">up to $900K/mo</text>
+          <text x="300" y="222" text-anchor="middle" fill="var(--accent)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing=".04em">AUTOMATION</text>
+          <text x="300" y="238" text-anchor="middle" fill="var(--accent)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing=".04em">SUITE</text>
+          <text x="300" y="256" text-anchor="middle" fill="var(--text-muted)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" font-weight="500">up to $1.2M/mo</text>
 
-          <!-- 9 DSP Nodes arranged in a circle around the hub. Radius 170. Center (300,230). -->
-          <!-- Angles (deg, 0 = top, clockwise): 0, 40, 80, 120, 160, 200, 240, 280, 320 -->
+          <!-- 5 DSP Nodes arranged in a circle around the hub. Radius 170. Center (300,230). -->
+          <!-- Angles (deg, 0 = top, clockwise): 0, 72, 144, 216, 288 -->
 
           <!-- 1. DV360 (top, angle 0) -->
           <g class="dsp-node" tabindex="0" aria-label="DV360" role="button">
             <line class="dsp-flow-line dsp-connector" x1="300" y1="166" x2="300" y2="92" stroke="var(--border)" stroke-width="2"/>
             <circle class="dsp-node-circle" cx="300" cy="60" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
-            <text x="300" y="64" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">DV360</text>
+            <text x="300" y="64" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11" font-weight="700">DV360</text>
             <g class="dsp-tooltip">
               <rect x="222" y="14" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
-              <text x="300" y="29" text-anchor="middle" fill="var(--bg)" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="500">Site lists, pacing, reporting</text>
+              <text x="300" y="29" text-anchor="middle" fill="var(--bg)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" font-weight="500">Site lists, pacing, reporting</text>
             </g>
           </g>
 
-          <!-- 2. The Trade Desk (angle 40, upper right) -->
+          <!-- 2. The Trade Desk (angle 72, upper right) -->
           <g class="dsp-node" tabindex="0" aria-label="The Trade Desk" role="button">
-            <line class="dsp-flow-line dsp-connector" x1="341" y1="181" x2="409" y2="121" stroke="var(--border)" stroke-width="2"/>
-            <circle class="dsp-node-circle" cx="430" cy="101" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
-            <text x="430" y="97" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700">Trade</text>
-            <text x="430" y="109" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700">Desk</text>
+            <line class="dsp-flow-line dsp-connector" x1="361" y1="210" x2="433" y2="187" stroke="var(--border)" stroke-width="2"/>
+            <circle class="dsp-node-circle" cx="462" cy="178" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+            <text x="462" y="174" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" font-weight="700">Trade</text>
+            <text x="462" y="186" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" font-weight="700">Desk</text>
             <g class="dsp-tooltip">
-              <rect x="352" y="55" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
-              <text x="430" y="70" text-anchor="middle" fill="var(--bg)" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="500">Bid optimization, bulk CSV upload</text>
+              <rect x="384" y="132" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
+              <text x="462" y="147" text-anchor="middle" fill="var(--bg)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" font-weight="500">Bid optimization, bulk CSV upload</text>
             </g>
           </g>
 
-          <!-- 3. Xandr (angle 80, right-upper) -->
+          <!-- 3. Xandr (angle 144, lower right) -->
           <g class="dsp-node" tabindex="0" aria-label="Xandr" role="button">
-            <line class="dsp-flow-line dsp-connector" x1="362" y1="208" x2="475" y2="171" stroke="var(--border)" stroke-width="2"/>
-            <circle class="dsp-node-circle" cx="503" cy="160" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
-            <text x="503" y="164" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">Xandr</text>
+            <line class="dsp-flow-line dsp-connector" x1="338" y1="282" x2="382" y2="343" stroke="var(--border)" stroke-width="2"/>
+            <circle class="dsp-node-circle" cx="400" cy="368" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+            <text x="400" y="372" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11" font-weight="700">Xandr</text>
             <g class="dsp-tooltip">
-              <rect x="425" y="118" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
-              <text x="503" y="133" text-anchor="middle" fill="var(--bg)" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="500">Curated marketplace deals</text>
+              <rect x="322" y="401" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
+              <text x="400" y="416" text-anchor="middle" fill="var(--bg)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" font-weight="500">Curated marketplace deals</text>
             </g>
           </g>
 
-          <!-- 4. Yahoo (angle 120, right-lower) -->
+          <!-- 4. Yahoo (angle 216, lower left) -->
           <g class="dsp-node" tabindex="0" aria-label="Yahoo DSP" role="button">
-            <line class="dsp-flow-line dsp-connector" x1="362" y1="252" x2="475" y2="289" stroke="var(--border)" stroke-width="2"/>
-            <circle class="dsp-node-circle" cx="503" cy="300" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
-            <text x="503" y="304" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">Yahoo</text>
+            <line class="dsp-flow-line dsp-connector" x1="262" y1="282" x2="218" y2="343" stroke="var(--border)" stroke-width="2"/>
+            <circle class="dsp-node-circle" cx="200" cy="368" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+            <text x="200" y="372" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11" font-weight="700">Yahoo</text>
             <g class="dsp-tooltip">
-              <rect x="425" y="333" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
-              <text x="503" y="348" text-anchor="middle" fill="var(--bg)" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="500">Video, native, display</text>
+              <rect x="122" y="401" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
+              <text x="200" y="416" text-anchor="middle" fill="var(--bg)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" font-weight="500">Video, native, display</text>
             </g>
           </g>
 
-          <!-- 5. Zeta (angle 160, lower right) -->
-          <g class="dsp-node" tabindex="0" aria-label="Zeta DSP" role="button">
-            <line class="dsp-flow-line dsp-connector" x1="341" y1="279" x2="409" y2="339" stroke="var(--border)" stroke-width="2"/>
-            <circle class="dsp-node-circle" cx="430" cy="359" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
-            <text x="430" y="363" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">Zeta</text>
-            <g class="dsp-tooltip">
-              <rect x="352" y="392" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
-              <text x="430" y="407" text-anchor="middle" fill="var(--bg)" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="500">Audience targeting, data activation</text>
-            </g>
-          </g>
-
-          <!-- 6. Basis (angle 200, lower left) -->
-          <g class="dsp-node" tabindex="0" aria-label="Basis DSP" role="button">
-            <line class="dsp-flow-line dsp-connector" x1="259" y1="279" x2="191" y2="339" stroke="var(--border)" stroke-width="2"/>
-            <circle class="dsp-node-circle" cx="170" cy="359" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
-            <text x="170" y="363" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700">Basis</text>
-            <g class="dsp-tooltip">
-              <rect x="92" y="392" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
-              <text x="170" y="407" text-anchor="middle" fill="var(--bg)" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="500">Omni-channel activation</text>
-            </g>
-          </g>
-
-          <!-- 7. Quantcast (angle 240, left-lower) -->
-          <g class="dsp-node" tabindex="0" aria-label="Quantcast DSP" role="button">
-            <line class="dsp-flow-line dsp-connector" x1="238" y1="252" x2="125" y2="289" stroke="var(--border)" stroke-width="2"/>
-            <circle class="dsp-node-circle" cx="97" cy="300" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
-            <text x="97" y="296" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700">Quant-</text>
-            <text x="97" y="308" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700">cast</text>
-            <g class="dsp-tooltip">
-              <rect x="19" y="333" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
-              <text x="97" y="348" text-anchor="middle" fill="var(--bg)" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="500">Audience prospecting</text>
-            </g>
-          </g>
-
-
-          <!-- 9. YouTube/TrueView (angle 320, upper left) -->
+          <!-- 5. YouTube/TrueView (angle 288, upper left) -->
           <g class="dsp-node" tabindex="0" aria-label="YouTube TrueView via DV360" role="button">
-            <line class="dsp-flow-line dsp-connector" x1="259" y1="181" x2="191" y2="121" stroke="var(--border)" stroke-width="2"/>
-            <circle class="dsp-node-circle" cx="170" cy="101" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
-            <text x="170" y="97" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700">YouTube</text>
-            <text x="170" y="109" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="700">TrueView</text>
+            <line class="dsp-flow-line dsp-connector" x1="239" y1="210" x2="167" y2="187" stroke="var(--border)" stroke-width="2"/>
+            <circle class="dsp-node-circle" cx="138" cy="178" r="30" fill="var(--surface)" stroke="var(--border)" stroke-width="2"/>
+            <text x="138" y="174" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" font-weight="700">YouTube</text>
+            <text x="138" y="186" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" font-weight="700">TrueView</text>
             <g class="dsp-tooltip">
-              <rect x="92" y="55" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
-              <text x="170" y="70" text-anchor="middle" fill="var(--bg)" font-family="Inter, system-ui, sans-serif" font-size="9" font-weight="500">Video reach via DV360</text>
+              <rect x="60" y="132" width="156" height="22" rx="4" fill="var(--text)" opacity="0.9"/>
+              <text x="138" y="147" text-anchor="middle" fill="var(--bg)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" font-weight="500">Video reach via DV360</text>
             </g>
           </g>
         </svg>
@@ -1537,7 +1438,7 @@
           <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-btn-2" data-tab="2">
             <span class="tab-btn-number">03</span>
             <span class="tab-btn-name">Site List Management</span>
-            <span class="tab-btn-hint">8-10 DSPs · Brand safety verification</span>
+            <span class="tab-btn-hint">6 DSPs · Brand safety verification</span>
           </button>
           <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-btn-3" data-tab="3">
             <span class="tab-btn-number">04</span>
@@ -1854,7 +1755,7 @@
                 <div class="tool-segment is-problem">
                   <div class="tool-segment-label problem">Problem</div>
                   <div class="tool-segment-content">
-                    <p>Managing blocklists and allowlists across 10 different DSPs was inconsistent and error-prone. Each platform had its own format requirements. Without verification, client spend could end up on fraudulent or non-brand-safe domains.</p>
+                    <p>Managing blocklists and allowlists across 5 different DSPs was inconsistent and error-prone. Each platform had its own format requirements. Without verification, client spend could end up on fraudulent or non-brand-safe domains.</p>
                   </div>
                 </div>
                 <div class="tool-segment is-solution">
@@ -1867,7 +1768,7 @@
                   <div class="tool-segment-label impact">Impact</div>
                   <div class="tool-segment-content">
                     <div class="impact-badges">
-                      <span class="badge">8-10 DSPs, one source of truth</span>
+                      <span class="badge">6 DSPs, one source of truth</span>
                       <span class="badge">IAB ads.txt verified</span>
                       <span class="badge">Zero brand safety incidents</span>
                     </div>
@@ -1994,8 +1895,8 @@
           <!-- Box 1: Campaign Data (input, gray) -->
           <g class="pipe-box" style="transition-delay: 0s">
             <rect x="60" y="10" width="320" height="72" rx="12" fill="var(--bg2)" stroke="var(--text-faint)" stroke-width="1.5"/>
-            <text x="220" y="38" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700">Campaign Data</text>
-            <text x="220" y="58" text-anchor="middle" fill="var(--text-faint)" font-family="Inter, system-ui, sans-serif" font-size="11">Raw data from 8-10 DSP APIs</text>
+            <text x="220" y="38" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="700">Campaign Data</text>
+            <text x="220" y="58" text-anchor="middle" fill="var(--text-faint)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11">Raw data from 5 DSP APIs</text>
           </g>
 
           <!-- Arrow 1 -->
@@ -2006,8 +1907,8 @@
           <!-- Box 2: Optimization Engine -->
           <g class="pipe-box" style="transition-delay: .3s">
             <rect x="60" y="118" width="320" height="72" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
-            <text x="220" y="146" text-anchor="middle" fill="var(--accent)" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700">Optimization Engine</text>
-            <text x="220" y="166" text-anchor="middle" fill="var(--text-muted)" font-family="Inter, system-ui, sans-serif" font-size="11">Compare against 15+ KPIs, generate bulk CSVs</text>
+            <text x="220" y="146" text-anchor="middle" fill="var(--accent)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="700">Optimization Engine</text>
+            <text x="220" y="166" text-anchor="middle" fill="var(--text-muted)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11">Compare against 15+ KPIs, generate bulk CSVs</text>
           </g>
 
           <!-- Arrow 2 -->
@@ -2018,8 +1919,8 @@
           <!-- Box 3: Audience Insights -->
           <g class="pipe-box" style="transition-delay: .6s">
             <rect x="60" y="226" width="320" height="72" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
-            <text x="220" y="254" text-anchor="middle" fill="var(--accent)" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700">Audience Insights</text>
-            <text x="220" y="274" text-anchor="middle" fill="var(--text-muted)" font-family="Inter, system-ui, sans-serif" font-size="11">Temporal, contextual, demographic analysis</text>
+            <text x="220" y="254" text-anchor="middle" fill="var(--accent)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="700">Audience Insights</text>
+            <text x="220" y="274" text-anchor="middle" fill="var(--text-muted)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11">Temporal, contextual, demographic analysis</text>
           </g>
 
           <!-- Arrow 3 -->
@@ -2030,8 +1931,8 @@
           <!-- Box 4: Brand Safety -->
           <g class="pipe-box" style="transition-delay: .9s">
             <rect x="60" y="334" width="320" height="72" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
-            <text x="220" y="362" text-anchor="middle" fill="var(--accent)" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700">Brand Safety</text>
-            <text x="220" y="382" text-anchor="middle" fill="var(--text-muted)" font-family="Inter, system-ui, sans-serif" font-size="11">IAB ads.txt verification across all platforms</text>
+            <text x="220" y="362" text-anchor="middle" fill="var(--accent)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="700">Brand Safety</text>
+            <text x="220" y="382" text-anchor="middle" fill="var(--text-muted)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11">IAB ads.txt verification across all platforms</text>
           </g>
 
           <!-- Arrow 4 -->
@@ -2042,8 +1943,8 @@
           <!-- Box 5: Performance Reports -->
           <g class="pipe-box" style="transition-delay: 1.2s">
             <rect x="60" y="442" width="320" height="72" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
-            <text x="220" y="470" text-anchor="middle" fill="var(--accent)" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700">Performance Reports</text>
-            <text x="220" y="490" text-anchor="middle" fill="var(--text-muted)" font-family="Inter, system-ui, sans-serif" font-size="11">Interactive dashboards</text>
+            <text x="220" y="470" text-anchor="middle" fill="var(--accent)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="700">Performance Reports</text>
+            <text x="220" y="490" text-anchor="middle" fill="var(--text-muted)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11">Interactive dashboards</text>
           </g>
 
           <!-- Arrow 5 -->
@@ -2054,9 +1955,9 @@
           <!-- Box 6: CTV Measurement Framework -->
           <g class="pipe-box" style="transition-delay: 1.5s">
             <rect x="60" y="550" width="320" height="86" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
-            <text x="220" y="578" text-anchor="middle" fill="var(--accent)" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700">CTV Measurement Framework</text>
-            <text x="220" y="598" text-anchor="middle" fill="var(--text-muted)" font-family="Inter, system-ui, sans-serif" font-size="11">Time-to-signup across Display, CTV, CTV+Display</text>
-            <text x="220" y="616" text-anchor="middle" fill="var(--text-muted)" font-family="Inter, system-ui, sans-serif" font-size="11">Built for Thomas J. Henry, handed off to Causal IQ</text>
+            <text x="220" y="578" text-anchor="middle" fill="var(--accent)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="700">CTV Measurement Framework</text>
+            <text x="220" y="598" text-anchor="middle" fill="var(--text-muted)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11">Time-to-signup across Display, CTV, CTV+Display</text>
+            <text x="220" y="616" text-anchor="middle" fill="var(--text-muted)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11">Built for Thomas J. Henry, handed off to Causal IQ</text>
           </g>
 
           <!-- Arrow 6 -->
@@ -2067,9 +1968,9 @@
           <!-- Box 7: Result (green) -->
           <g class="pipe-box" style="transition-delay: 1.8s">
             <rect x="60" y="672" width="320" height="92" rx="12" fill="var(--green-soft)" stroke="var(--green)" stroke-width="2"/>
-            <text x="220" y="704" text-anchor="middle" fill="var(--green)" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="800">Company-wide adoption, 60x efficiency</text>
-            <text x="220" y="724" text-anchor="middle" fill="var(--text-muted)" font-family="Inter, system-ui, sans-serif" font-size="11">Adopted as the company-wide standard.</text>
-            <text x="220" y="742" text-anchor="middle" fill="var(--text-muted)" font-family="Inter, system-ui, sans-serif" font-size="11">Up to $900K/mo managed.</text>
+            <text x="220" y="704" text-anchor="middle" fill="var(--green)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="15" font-weight="800">Company-wide adoption, 60x efficiency</text>
+            <text x="220" y="724" text-anchor="middle" fill="var(--text-muted)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11">Adopted as the company-wide standard.</text>
+            <text x="220" y="742" text-anchor="middle" fill="var(--text-muted)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="11">Up to $1.2M/mo managed.</text>
           </g>
 
           <!-- Arrowhead markers -->
@@ -2099,9 +2000,9 @@
           <!-- Stage 1: Me (1 dot) -->
           <g>
             <circle class="adoption-dot" data-delay="0" cx="90" cy="80" r="8" fill="var(--accent)"/>
-            <text class="adoption-stage-label" data-delay="0" x="90" y="120" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700">Me</text>
-            <text class="adoption-stage-label" data-delay="0" x="90" y="138" text-anchor="middle" fill="var(--text-faint)" font-family="Inter, system-ui, sans-serif" font-size="10">I built the tools</text>
-            <text class="adoption-stage-label" data-delay="0" x="90" y="150" text-anchor="middle" fill="var(--text-faint)" font-family="Inter, system-ui, sans-serif" font-size="10">for myself</text>
+            <text class="adoption-stage-label" data-delay="0" x="90" y="120" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="700">Me</text>
+            <text class="adoption-stage-label" data-delay="0" x="90" y="138" text-anchor="middle" fill="var(--text-faint)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10">I built the tools</text>
+            <text class="adoption-stage-label" data-delay="0" x="90" y="150" text-anchor="middle" fill="var(--text-faint)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10">for myself</text>
           </g>
 
           <!-- Stage 2: My team (5 dots) -->
@@ -2111,9 +2012,9 @@
             <circle class="adoption-dot" data-delay="700" cx="260" cy="86" r="7" fill="var(--accent)"/>
             <circle class="adoption-dot" data-delay="800" cx="242" cy="74" r="7" fill="var(--accent)"/>
             <circle class="adoption-dot" data-delay="900" cx="260" cy="74" r="7" fill="var(--accent)"/>
-            <text class="adoption-stage-label" data-delay="500" x="260" y="120" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700">My team</text>
-            <text class="adoption-stage-label" data-delay="500" x="260" y="138" text-anchor="middle" fill="var(--text-faint)" font-family="Inter, system-ui, sans-serif" font-size="10">Direct team started</text>
-            <text class="adoption-stage-label" data-delay="500" x="260" y="150" text-anchor="middle" fill="var(--text-faint)" font-family="Inter, system-ui, sans-serif" font-size="10">using them</text>
+            <text class="adoption-stage-label" data-delay="500" x="260" y="120" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="700">My team</text>
+            <text class="adoption-stage-label" data-delay="500" x="260" y="138" text-anchor="middle" fill="var(--text-faint)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10">Direct team started</text>
+            <text class="adoption-stage-label" data-delay="500" x="260" y="150" text-anchor="middle" fill="var(--text-faint)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10">using them</text>
           </g>
 
           <!-- Stage 3: Account managers (12 dots) -->
@@ -2130,9 +2031,9 @@
             <circle class="adoption-dot" data-delay="2220" cx="462" cy="84" r="6" fill="var(--accent)"/>
             <circle class="adoption-dot" data-delay="2300" cx="438" cy="100" r="6" fill="var(--accent)"/>
             <circle class="adoption-dot" data-delay="2380" cx="454" cy="96" r="6" fill="var(--accent)"/>
-            <text class="adoption-stage-label" data-delay="1500" x="445" y="130" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700">Account Managers</text>
-            <text class="adoption-stage-label" data-delay="1500" x="445" y="148" text-anchor="middle" fill="var(--text-faint)" font-family="Inter, system-ui, sans-serif" font-size="10">AMs adopted</text>
-            <text class="adoption-stage-label" data-delay="1500" x="445" y="160" text-anchor="middle" fill="var(--text-faint)" font-family="Inter, system-ui, sans-serif" font-size="10">the tools</text>
+            <text class="adoption-stage-label" data-delay="1500" x="445" y="130" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="700">Account Managers</text>
+            <text class="adoption-stage-label" data-delay="1500" x="445" y="148" text-anchor="middle" fill="var(--text-faint)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10">AMs adopted</text>
+            <text class="adoption-stage-label" data-delay="1500" x="445" y="160" text-anchor="middle" fill="var(--text-faint)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10">the tools</text>
           </g>
 
           <!-- Stage 4: Organization (24 dots) -->
@@ -2161,9 +2062,9 @@
             <circle class="adoption-dot" data-delay="3760" cx="608" cy="104" r="5.5" fill="var(--accent)" opacity="0.7"/>
             <circle class="adoption-dot" data-delay="3820" cx="624" cy="106" r="5.5" fill="var(--accent)" opacity="0.7"/>
             <circle class="adoption-dot" data-delay="3880" cx="640" cy="104" r="5.5" fill="var(--accent)" opacity="0.7"/>
-            <text class="adoption-stage-label" data-delay="2500" x="626" y="132" text-anchor="middle" fill="var(--text)" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700">Organization</text>
-            <text class="adoption-stage-label" data-delay="2500" x="626" y="150" text-anchor="middle" fill="var(--text-faint)" font-family="Inter, system-ui, sans-serif" font-size="10">Leadership made them</text>
-            <text class="adoption-stage-label" data-delay="2500" x="626" y="162" text-anchor="middle" fill="var(--text-faint)" font-family="Inter, system-ui, sans-serif" font-size="10">the standard</text>
+            <text class="adoption-stage-label" data-delay="2500" x="626" y="132" text-anchor="middle" fill="var(--text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" font-weight="700">Organization</text>
+            <text class="adoption-stage-label" data-delay="2500" x="626" y="150" text-anchor="middle" fill="var(--text-faint)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10">Leadership made them</text>
+            <text class="adoption-stage-label" data-delay="2500" x="626" y="162" text-anchor="middle" fill="var(--text-faint)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10">the standard</text>
           </g>
         </svg>
       </div>
@@ -2193,14 +2094,14 @@
           <div class="number-detail">Out of 22 managers</div>
         </div>
         <div class="number-cell">
-          <div class="number-value" style="font-size:22px">$900K/mo</div>
+          <div class="number-value" style="font-size:22px">$1.2M/mo</div>
           <div class="number-label">Ad Spend Managed</div>
-          <div class="number-detail">Up to $900K/mo &middot; 10+ DSPs</div>
+          <div class="number-detail">Up to $1.2M/mo &middot; 6 DSPs</div>
         </div>
         <div class="number-cell">
-          <div class="number-value">8-10</div>
+          <div class="number-value">5</div>
           <div class="number-label">DSPs Simultaneously</div>
-          <div class="number-detail">DV360, TTD, Xandr, Yahoo, Zeta, Basis, Quantcast...</div>
+          <div class="number-detail">DV360, TTD, Xandr, Yahoo, YouTube/TrueView</div>
         </div>
         <div class="number-cell">
           <div class="number-value">5-7 days</div>
@@ -2231,9 +2132,6 @@
             <span class="stack-tag">The Trade Desk</span>
             <span class="stack-tag">Xandr</span>
             <span class="stack-tag">Yahoo</span>
-            <span class="stack-tag">Zeta</span>
-            <span class="stack-tag">Basis</span>
-            <span class="stack-tag">Quantcast</span>
             <span class="stack-tag">YouTube / TrueView</span>
           </div>
         </div>
@@ -2269,8 +2167,8 @@
   <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:12px;color:var(--text, var(--tx, #0f172a))">Let's talk about what I can do for you.</h2>
   <p style="font-size:15px;color:var(--text-muted, var(--tx2, #475569));margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6">I'm exploring leadership roles where building the technology and running the business aren't treated as separate jobs.</p>
   <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-    <a href="mailto:scumunna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:#dc2626;padding:12px 24px;border-radius:8px;text-decoration:none;transition:background .2s,transform .2s" onmouseover="this.style.background='#b91c1c';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#dc2626';this.style.transform='none'">Start a Conversation &rarr;</a>
-    <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text, var(--tx, #0f172a));background:var(--surface, var(--sf, #fff));border:1px solid var(--border, var(--bd, #e2e8f0));padding:12px 24px;border-radius:8px;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='var(--accent, var(--ac, #2563eb))';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border, var(--bd, #e2e8f0))';this.style.transform='none'">View on LinkedIn</a>
+    <a href="mailto:scumunna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--bg);background:var(--text);padding:12px 24px;text-decoration:none;transition:opacity .2s,transform .2s" onmouseover="this.style.opacity='.8';this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='1';this.style.transform='none'">Let's talk &rarr;</a>
+    <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text, var(--tx, #0f172a));background:var(--surface, var(--sf, #fff));border:1px solid var(--border, var(--bd, #e2e8f0));padding:12px 24px;border-radius:8px;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='var(--accent, var(--ac, #0F0E0C))';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border, var(--bd, #e2e8f0))';this.style.transform='none'">View on LinkedIn</a>
   </div>
 </section>
 
@@ -2285,35 +2183,12 @@
           <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">LinkedIn</a>
         </div>
       </div>
-      <div style="font-size:11px;color:var(--text-muted, var(--tx3, #94a3b8));margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+      <div style="font-size:11px;color:var(--text-muted, var(--tx3, #94a3b8));margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed. One employer name is withheld at that company's request.</div>
     </footer>
 
   </main>
 
   <script>
-    /* ========================================
-       THEME TOGGLE
-    ======================================== */
-    (function() {
-      var saved = localStorage.getItem('portfolio-theme') || 'light';
-      var ThemeToggle = {
-        set: function(theme) {
-          localStorage.setItem('portfolio-theme', theme);
-          document.documentElement.setAttribute('data-theme', theme);
-          document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
-            btn.classList.toggle('active', btn.getAttribute('data-theme-btn') === theme);
-            btn.setAttribute('aria-selected', btn.getAttribute('data-theme-btn') === theme);
-          });
-        }
-      };
-      ThemeToggle.set(saved);
-      document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          ThemeToggle.set(btn.getAttribute('data-theme-btn'));
-        });
-      });
-    })();
-
     /* ========================================
        SCROLL REVEAL (IntersectionObserver)
     ======================================== */

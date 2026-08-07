@@ -31,7 +31,7 @@ Programmatic advertising platform (~125 employees). #1 performer out of 22. up t
 
 ## Side Projects
 
-- **[Stanford BIOE 230 Interactive](https://stephenumunna.com/projects/stanford-bioe230/)**: Learning platform adopted by Stanford Bioengineering. 180 interactive visualizations, contextual tutor, 960 practice problems. 3 playable demos on the portfolio page.
+- **[Stanford BIOE 230 Interactive](https://stephenumunna.com/projects/stanford-bioe230/)**: Learning platform built for Stanford's BIOE 230 course. 180 interactive visualizations, contextual tutor, 960 practice problems. 3 playable demos on the portfolio page.
 - **[CartoChrome Health Score](https://stephenumunna.com/projects/cartochrome/)**: Rates every US ZIP code 0-100 for healthcare access. Interactive ZIP lookup with animated gauge. [cartochrome.com](https://www.cartochrome.com)
 - **[Nuvestan](https://stephenumunna.com/projects/nuvestan/)**: Personal finance for first-generation wealth builders. Interactive opportunity cost calculator, 2021 to 2026 rebuild toggle. 226 tests.
 - **[CourtVision](https://stephenumunna.com/projects/courtvision/)**: Full-stack NBA analytics. 441+ pages, 90+ components, 6 data sources.
