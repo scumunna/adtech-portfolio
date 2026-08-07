@@ -1,6 +1,6 @@
 # Stephen Umunna
 
-> AdTech operations and engineering executive. Builder-operator hybrid: CTO/Acting COO at Confidential AdTech Startup (built two-sided AdTech platform with 21M-profile CDP and 100x consumer growth). Senior Account Operations Manager at Causal IQ (managed $900K+/month across 10+ DSPs for major brand clients including CDC, Hertz, Grammarly, Orangetheory). Stanford-adopted educational platform built in 24 hours with Claude Code + Vercel AI SDK + Gemini.
+> AdTech operations and engineering executive. Builder-operator hybrid: CTO/Acting COO at Confidential AdTech Startup (built two-sided AdTech platform with 21M-profile CDP and 100x consumer growth). Senior Account Operations Manager at Causal IQ (managed up to $1.2M/month across 6 DSPs for major brand clients including CDC, Hertz, Grammarly, Orangetheory). Educational platform built for Stanford's BIOE 230 course in 24 hours with Claude Code + Vercel AI SDK + Gemini.
 
 ## Roles
 - Chief Technology Officer / Acting Chief Operating Officer at Confidential AdTech Startup (Apr 2025 - Mar 2026)
@@ -16,15 +16,15 @@
 - MCP-based sales prospecting workflows using LLM agents
 
 ## What I did at Causal IQ
-- Managed $900K+/month across 10+ DSPs for 200+ advertiser accounts
+- Managed up to $1.2M/month in programmatic spend across the client book
 - Notable clients: CDC, Hertz, Grammarly, Orangetheory, Primo Water, AAA Auto, PMI Colombia, Thomas J. Henry, Party City, Floor & Decor, national political campaign teams
-- Built custom CTV measurement framework — found CTV+Display reduced time-to-signup by 5-7 days vs. Display-only for Thomas J. Henry; codebase handed off to Causal IQ at departure
+- Built custom CTV measurement framework — found CTV+Display reduced time-to-signup by 5-7 days vs. Display-only for Thomas J. Henry; framework handed off to Causal IQ at departure
 - Grew Floor & Decor from $10K to $250K/month (25x) through pitched media recommendations
 - Grew Thomas J. Henry from $700K to $1.2M/month
 - Ranked #1 or #2 across 22-person account operations team
 
 ## Side projects
-- Stanford BIOE 230 Interactive Platform (bioe230-interactive.vercel.app) — 100K-line educational platform built in 24 hours with Claude Code + Vercel AI SDK + Gemini; adopted by Stanford Bioengineering Professor Todd P. Coleman
+- Stanford BIOE 230 Interactive Platform (bioe230-interactive.vercel.app) — 100K-line educational platform built in 24 hours with Claude Code + Vercel AI SDK + Gemini; built for Stanford's BIOE 230 course
 - CartoChrome (cartochrome.com) — Healthcare access score for every US ZIP code (5.1M pages, 4M+ providers)
 - CourtVision (courtvision.app) — NBA analytics platform built in 3 days
 - Stomach-Brain Coupling Explorer — Stanford research visualization tool

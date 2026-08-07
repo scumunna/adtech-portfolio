@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CP6VN2C604"></script>
@@ -15,143 +15,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CourtVision - NBA Analytics Platform - Stephen Umunna</title>
   <meta name="description" content="Full-stack NBA analytics with live scores, 78 years of history, and $0/month infrastructure. 441+ pages, 90+ components, 6 data sources. Built in 3 days.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23f97316'/><text x='16' y='23' text-anchor='middle' fill='white' font-family='system-ui' font-weight='700' font-size='20'>C</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='16' y='23' text-anchor='middle' fill='%23F5F4F0' font-family='Georgia,serif' font-weight='500' font-size='19'>S</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (function(){var t=localStorage.getItem('portfolio-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+  </script>
   <style>
+    .nav-extra{margin-left:auto}.nav-link{font-size:13px;font-weight:500;color:#5A5A54;text-decoration:none;transition:color .2s}.nav-link:hover{color:#0F0E0C}@media(max-width:600px){.nav-extra{display:none}}
+
     /* --- Theme Variables --- */
     :root {
-      --bg: #fafafa;
-      --bg2: #f1f5f9;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --text-faint: #94a3b8;
-      --border: #e2e8f0;
-      --shadow: rgba(15, 23, 42, 0.06);
-      --shadow-lg: rgba(15, 23, 42, 0.12);
-      --nav-bg: rgba(255, 255, 255, 0.92);
-      --accent: #f97316;
-      --accent2: #4f8cff;
-      --hero-counter-bg: rgba(241, 245, 249, 0.8);
-      --hero-counter-border: rgba(15, 23, 42, 0.04);
-      --card-border: rgba(15, 23, 42, 0.08);
-      --story-card-bg: rgba(241, 245, 249, 0.6);
-      --tag-bg: rgba(15, 23, 42, 0.04);
-      --tag-border: rgba(15, 23, 42, 0.08);
-      --footer-bg: #f1f5f9;
-      --arch-blue-text: #2563eb;
-      --arch-blue-bg: rgba(37, 99, 235, 0.06);
-      --arch-blue-border: rgba(37, 99, 235, 0.15);
-      --arch-blue-fill: rgba(37, 99, 235, 0.15);
-      --arch-blue-stroke: rgba(37, 99, 235, 0.4);
-      --arch-blue-fill2: rgba(37, 99, 235, 0.08);
-      --arch-blue-stroke2: rgba(37, 99, 235, 0.25);
-      --arch-line-stroke: rgba(37, 99, 235, 0.35);
-      --arch-line-right-stroke: rgba(249, 115, 22, 0.35);
-      --timeline-bar-bg: rgba(15, 23, 42, 0.06);
-      --nav-border: rgba(249, 115, 22, 0.12);
-      --white-heading: #0f172a;
+      --bg: #FCFCFA;
+      --bg2: #F4F2EA;
+      --surface: #FFFFFF;
+      --text: #0F0E0C;
+      --text-muted: #5A5A54;
+      --text-faint: #62594A;
+      --border: #E4E0D2;
+      --shadow: rgba(0,0,0,.4);
+      --shadow-lg: rgba(0,0,0,.55);
+      --nav-bg: rgba(252,252,250,.9);
+      --accent: #0F0E0C;
+      --accent2: #0F0E0C;
+      --hero-counter-bg: rgba(255,255,255,0.8);
+      --hero-counter-border: rgba(15,14,12,0.04);
+      --card-border: rgba(15,14,12,0.08);
+      --story-card-bg: rgba(255,255,255,0.6);
+      --tag-bg: rgba(15,14,12,0.04);
+      --tag-border: rgba(15,14,12,0.08);
+      --footer-bg: rgba(15,14,12,.07);
+      --arch-blue-text: #0F0E0C;
+      --arch-blue-bg: rgba(15,14,12,0.06);
+      --arch-blue-border: rgba(15,14,12,0.15);
+      --arch-blue-fill: rgba(15,14,12,0.15);
+      --arch-blue-stroke: rgba(255,255,255,0.4);
+      --arch-blue-fill2: rgba(15,14,12,0.08);
+      --arch-blue-stroke2: rgba(255,255,255,0.25);
+      --arch-line-stroke: rgba(255,255,255,0.35);
+      --arch-line-right-stroke: rgba(255,255,255,0.35);
+      --timeline-bar-bg: rgba(15,14,12,0.06);
+      --nav-border: rgba(15,14,12,0.12);
+      --white-heading: #0F0E0C;
     }
 
-    [data-theme="dark"] {
-      --bg: #0c0c12;
-      --bg2: #101018;
-      --surface: #16161f;
-      --text: #e8e8f0;
-      --text-muted: #9898a8;
-      --text-faint: #5a5a6e;
-      --border: #22222e;
-      --shadow: rgba(0, 0, 0, 0.3);
-      --shadow-lg: rgba(0, 0, 0, 0.5);
-      --nav-bg: rgba(12, 12, 18, 0.85);
-      --hero-counter-bg: rgba(22, 22, 31, 0.8);
-      --hero-counter-border: rgba(255, 255, 255, 0.04);
-      --card-border: rgba(255, 255, 255, 0.06);
-      --story-card-bg: rgba(22, 22, 31, 0.6);
-      --tag-bg: rgba(255, 255, 255, 0.04);
-      --tag-border: rgba(255, 255, 255, 0.08);
-      --footer-bg: #0a0a10;
-      --arch-blue-text: #93b8ff;
-      --arch-blue-bg: rgba(79, 140, 255, 0.06);
-      --arch-blue-border: rgba(79, 140, 255, 0.15);
-      --arch-blue-fill: rgba(79, 140, 255, 0.15);
-      --arch-blue-stroke: rgba(79, 140, 255, 0.4);
-      --arch-blue-fill2: rgba(79, 140, 255, 0.08);
-      --arch-blue-stroke2: rgba(79, 140, 255, 0.25);
-      --arch-line-stroke: rgba(79, 140, 255, 0.35);
-      --arch-line-right-stroke: rgba(249, 115, 22, 0.35);
-      --timeline-bar-bg: rgba(255, 255, 255, 0.04);
-      --nav-border: rgba(249, 115, 22, 0.12);
-      --white-heading: #ffffff;
-    }
+    
 
-    [data-theme="system"] {
-      --bg: #fafafa;
-      --bg2: #f1f5f9;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --text-muted: #475569;
-      --text-faint: #94a3b8;
-      --border: #e2e8f0;
-      --shadow: rgba(15, 23, 42, 0.06);
-      --shadow-lg: rgba(15, 23, 42, 0.12);
-      --nav-bg: rgba(255, 255, 255, 0.92);
-      --hero-counter-bg: rgba(241, 245, 249, 0.8);
-      --hero-counter-border: rgba(15, 23, 42, 0.04);
-      --card-border: rgba(15, 23, 42, 0.08);
-      --story-card-bg: rgba(241, 245, 249, 0.6);
-      --tag-bg: rgba(15, 23, 42, 0.04);
-      --tag-border: rgba(15, 23, 42, 0.08);
-      --footer-bg: #f1f5f9;
-      --arch-blue-text: #2563eb;
-      --arch-blue-bg: rgba(37, 99, 235, 0.06);
-      --arch-blue-border: rgba(37, 99, 235, 0.15);
-      --arch-blue-fill: rgba(37, 99, 235, 0.15);
-      --arch-blue-stroke: rgba(37, 99, 235, 0.4);
-      --arch-blue-fill2: rgba(37, 99, 235, 0.08);
-      --arch-blue-stroke2: rgba(37, 99, 235, 0.25);
-      --arch-line-stroke: rgba(37, 99, 235, 0.35);
-      --arch-line-right-stroke: rgba(249, 115, 22, 0.35);
-      --timeline-bar-bg: rgba(15, 23, 42, 0.06);
-      --nav-border: rgba(249, 115, 22, 0.12);
-      --white-heading: #0f172a;
-    }
+    
 
-    @media (prefers-color-scheme: dark) {
-      [data-theme="system"] {
-        --bg: #0c0c12;
-        --bg2: #101018;
-        --surface: #16161f;
-        --text: #e8e8f0;
-        --text-muted: #9898a8;
-        --text-faint: #5a5a6e;
-        --border: #22222e;
-        --shadow: rgba(0, 0, 0, 0.3);
-        --shadow-lg: rgba(0, 0, 0, 0.5);
-        --nav-bg: rgba(12, 12, 18, 0.85);
-        --hero-counter-bg: rgba(22, 22, 31, 0.8);
-        --hero-counter-border: rgba(255, 255, 255, 0.04);
-        --card-border: rgba(255, 255, 255, 0.06);
-        --story-card-bg: rgba(22, 22, 31, 0.6);
-        --tag-bg: rgba(255, 255, 255, 0.04);
-        --tag-border: rgba(255, 255, 255, 0.08);
-        --footer-bg: #0a0a10;
-        --arch-blue-text: #93b8ff;
-        --arch-blue-bg: rgba(79, 140, 255, 0.06);
-        --arch-blue-border: rgba(79, 140, 255, 0.15);
-        --arch-blue-fill: rgba(79, 140, 255, 0.15);
-        --arch-blue-stroke: rgba(79, 140, 255, 0.4);
-        --arch-blue-fill2: rgba(79, 140, 255, 0.08);
-        --arch-blue-stroke2: rgba(79, 140, 255, 0.25);
-        --arch-line-stroke: rgba(79, 140, 255, 0.35);
-        --arch-line-right-stroke: rgba(249, 115, 22, 0.35);
-        --timeline-bar-bg: rgba(255, 255, 255, 0.04);
-        --nav-border: rgba(249, 115, 22, 0.12);
-        --white-heading: #ffffff;
-      }
-    }
+    
 
     *, *::before, *::after {
       margin: 0;
@@ -166,7 +81,7 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
@@ -215,49 +130,6 @@
     .nav-back svg { flex-shrink: 0; }
     .nav-back-label { color: var(--text); font-weight: 600; }
 
-    /* --- Theme Toggle --- */
-    .theme-toggle {
-      display: flex;
-      align-items: center;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 3px;
-      gap: 2px;
-      transition: background 0.3s, border-color 0.3s;
-    }
-
-    .theme-toggle-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 28px;
-      border: none;
-      border-radius: 6px;
-      background: transparent;
-      color: var(--text-faint);
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      padding: 0;
-    }
-
-    .theme-toggle-btn:hover {
-      color: var(--text-muted);
-      background: var(--tag-bg);
-    }
-
-    .theme-toggle-btn.active {
-      background: var(--accent);
-      color: #ffffff;
-      box-shadow: 0 1px 3px rgba(249, 115, 22, 0.3);
-    }
-
-    .theme-toggle-btn svg {
-      width: 16px;
-      height: 16px;
-    }
-
     /* --- Sections --- */
     .section {
       max-width: 900px;
@@ -267,7 +139,7 @@
 
     .section-label {
       display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.12em;
@@ -305,18 +177,18 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--accent);
-      background: rgba(249, 115, 22, 0.08);
-      border: 1px solid rgba(249, 115, 22, 0.25);
+      background: rgba(15,14,12,0.08);
+      border: 1px solid rgba(255,255,255,0.25);
       padding: 6px 16px;
       border-radius: 100px;
       margin-bottom: 28px;
-      box-shadow: 0 0 20px rgba(249, 115, 22, 0.1);
+      box-shadow: none;
     }
 
     .hero-badge-dot {
@@ -328,8 +200,8 @@
     }
 
     @keyframes pulse-dot {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.6); }
-      50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(249, 115, 22, 0); }
+      0%, 100% { opacity: 1; box-shadow: none; }
+      50% { opacity: 0.7; box-shadow: none; }
     }
 
     .hero h1 {
@@ -367,13 +239,13 @@
       border-radius: 10px;
       margin-bottom: 40px;
       transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 12px rgba(249, 115, 22, 0.3);
+      box-shadow: none;
     }
 
     .hero-cta:hover {
-      background: #ea6c0a;
+      background: #0F0E0C;
       transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+      box-shadow: none;
     }
 
     .hero-cta svg {
@@ -410,7 +282,7 @@
     }
 
     .hero-counter-value {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       font-size: 40px;
       font-weight: 700;
       color: var(--white-heading);
@@ -486,7 +358,7 @@
     }
 
     .screenshot-card:hover {
-      box-shadow: 0 8px 40px rgba(249, 115, 22, 0.12), 0 0 0 1px rgba(249, 115, 22, 0.15);
+      box-shadow: none;
     }
 
     .screenshot-card img {
@@ -539,8 +411,8 @@
 
     .feature-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(249, 115, 22, 0.4);
-      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.08);
+      border-color: rgba(255,255,255,0.4);
+      box-shadow: none;
     }
 
     .feature-icon {
@@ -644,11 +516,11 @@
     .timeline-day-card:nth-child(3) { transition-delay: 1.9s; }
 
     .timeline-day-card:nth-child(1) { border-top: 2px solid var(--accent2); }
-    .timeline-day-card:nth-child(2) { border-top: 2px solid #a070e0; }
+    .timeline-day-card:nth-child(2) { border-top: 2px solid #0F0E0C; }
     .timeline-day-card:nth-child(3) { border-top: 2px solid var(--accent); }
 
     .timeline-day-label {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -657,7 +529,7 @@
     }
 
     .timeline-day-card:nth-child(1) .timeline-day-label { color: var(--accent2); }
-    .timeline-day-card:nth-child(2) .timeline-day-label { color: #a070e0; }
+    .timeline-day-card:nth-child(2) .timeline-day-label { color: #0F0E0C; }
     .timeline-day-card:nth-child(3) .timeline-day-label { color: var(--accent); }
 
     .timeline-day-title {
@@ -692,7 +564,7 @@
     }
 
     .timeline-day-card:nth-child(1) .timeline-day-list li::before { background: var(--accent2); }
-    .timeline-day-card:nth-child(2) .timeline-day-list li::before { background: #a070e0; }
+    .timeline-day-card:nth-child(2) .timeline-day-list li::before { background: #0F0E0C; }
     .timeline-day-card:nth-child(3) .timeline-day-list li::before { background: var(--accent); }
 
     /* --- Architecture Section --- */
@@ -725,7 +597,7 @@
     }
 
     .arch-col-left-label {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.1em;
@@ -748,7 +620,7 @@
 
     .arch-source-box:hover {
       border-color: var(--arch-blue-stroke);
-      background: rgba(79, 140, 255, 0.12);
+      background: rgba(15,14,12,0.12);
     }
 
     .arch-col-center {
@@ -778,7 +650,7 @@
     }
 
     .arch-col-right-label {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       font-size: 10px;
       font-weight: 600;
       letter-spacing: 0.1em;
@@ -788,8 +660,8 @@
     }
 
     .arch-process-box {
-      background: rgba(249, 115, 22, 0.08);
-      border: 1px solid rgba(249, 115, 22, 0.2);
+      background: rgba(15,14,12,0.08);
+      border: 1px solid rgba(15,14,12,0.2);
       border-radius: 8px;
       padding: 14px 18px;
       width: 100%;
@@ -798,8 +670,8 @@
     }
 
     .arch-process-box:hover {
-      border-color: rgba(249, 115, 22, 0.4);
-      background: rgba(249, 115, 22, 0.14);
+      border-color: rgba(255,255,255,0.4);
+      background: rgba(15,14,12,0.14);
     }
 
     .arch-process-title {
@@ -863,8 +735,8 @@
     }
 
     .arch-mobile-box {
-      background: rgba(249, 115, 22, 0.08);
-      border: 1px solid rgba(249, 115, 22, 0.2);
+      background: rgba(15,14,12,0.08);
+      border: 1px solid rgba(15,14,12,0.2);
       border-radius: 8px;
       padding: 14px 18px;
       text-align: center;
@@ -911,7 +783,7 @@
     }
 
     .numbers-value {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       font-size: 36px;
       font-weight: 700;
       color: var(--white-heading);
@@ -950,7 +822,7 @@
     }
 
     .stack-title {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.1em;
@@ -977,9 +849,9 @@
     }
 
     .stack-tag:hover {
-      border-color: rgba(249, 115, 22, 0.5);
+      border-color: rgba(255,255,255,0.5);
       color: var(--accent);
-      background: rgba(249, 115, 22, 0.08);
+      background: rgba(15,14,12,0.08);
     }
 
     /* --- Footer --- */
@@ -1102,7 +974,6 @@
       .nav-back span:not(.nav-back-label) { display: none; }
       .nav-back .nav-back-label { display: inline; }
       /* Mobile touch targets */
-      .theme-toggle-btn{width:36px;height:36px}
       .nav-back{padding:14px 0;min-height:44px;display:flex;align-items:center}
       .stack-tag{padding:8px 14px;min-height:36px;display:inline-flex;align-items:center}
     }
@@ -1134,6 +1005,11 @@
       .story-card { padding: 24px 20px 24px 20px; }
     }
   </style>
+
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif!important}
+    h1,h2,h3{font-family:'Newsreader',Georgia,serif!important;font-weight:500!important;letter-spacing:-.01em!important}
+  </style>
 </head>
 <body>
 
@@ -1145,34 +1021,14 @@
       Stephen Umunna &middot; Portfolio
     </a>
 
-    <div class="theme-toggle" role="radiogroup" aria-label="Theme">
-      <button class="theme-toggle-btn" data-theme-btn="light" aria-label="Light theme" title="Light">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="5"/>
-          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-        </svg>
-      </button>
-      <button class="theme-toggle-btn" data-theme-btn="system" aria-label="System theme" title="System">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-        </svg>
-      </button>
-      <button class="theme-toggle-btn" data-theme-btn="dark" aria-label="Dark theme" title="Dark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
-      </button>
+    <div class="nav-extra"><a href="../../assets/Stephen_Umunna_Resume.pdf" download class="nav-link">Resume</a></div>
     </div>
-  </div>
 </nav>
 
-<div id="interactive-banner" style="position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(37,99,235,0.08);border-bottom:1px solid rgba(37,99,235,0.15);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:Inter,-apple-system,sans-serif;font-size:12px;color:var(--accent,var(--ac,#2563eb));animation:bannerSlide .4s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+<div id="interactive-banner" style="position:fixed;top:56px;left:0;right:0;z-index:99;background:rgba(15,14,12,0.06);border-bottom:1px solid rgba(15,14,12,0.14);padding:8px 16px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:#0F0E0C;animation:bannerSlide .4s ease;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
   <span style="font-size:14px">&#9996;</span>
   <span>This page is fully interactive - explore the timeline, architecture, and every section</span>
-  <button onclick="this.parentElement.style.display='none';sessionStorage.setItem('banner-dismissed','1')" style="background:none;border:none;color:var(--accent,var(--ac,#2563eb));cursor:pointer;font-size:16px;padding:0 4px;margin-left:8px;opacity:0.6" aria-label="Dismiss">&times;</button>
+  <button onclick="this.parentElement.style.display='none';sessionStorage.setItem('banner-dismissed','1')" style="background:none;border:none;color:#0F0E0C;cursor:pointer;font-size:16px;padding:0 4px;margin-left:8px;opacity:0.6" aria-label="Dismiss">&times;</button>
 </div>
 <script>if(sessionStorage.getItem('banner-dismissed')==='1')document.getElementById('interactive-banner').style.display='none';</script>
 <style>@keyframes bannerSlide{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}</style>
@@ -1414,14 +1270,14 @@
 
             <!-- Django box -->
             <rect x="68" y="122" width="66" height="34" rx="6" style="fill:var(--arch-blue-fill);stroke:var(--arch-blue-stroke);stroke-width:1"/>
-            <text x="101" y="143" text-anchor="middle" style="fill:var(--arch-blue-text)" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600">Django</text>
+            <text x="101" y="143" text-anchor="middle" style="fill:var(--arch-blue-text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" font-weight="600">Django</text>
 
             <!-- Arrow from Django to REST API -->
             <line class="arch-line" x1="101" y1="156" x2="101" y2="184"/>
 
             <!-- REST API box -->
             <rect x="68" y="184" width="66" height="34" rx="6" style="fill:var(--arch-blue-fill2);stroke:var(--arch-blue-stroke2);stroke-width:1"/>
-            <text x="101" y="205" text-anchor="middle" style="fill:var(--arch-blue-text)" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600">REST API</text>
+            <text x="101" y="205" text-anchor="middle" style="fill:var(--arch-blue-text)" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" font-weight="600">REST API</text>
 
             <!-- Arrow from REST API to Next.js -->
             <line class="arch-line-right" x1="134" y1="200" x2="200" y2="120"/>
@@ -1560,8 +1416,8 @@
   <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:12px;color:var(--text, var(--tx, #0f172a))">Let's talk about what I can do for you.</h2>
   <p style="font-size:15px;color:var(--text-muted, var(--tx2, #475569));margin-bottom:24px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6">I'm exploring leadership roles where building the technology and running the business aren't treated as separate jobs.</p>
   <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-    <a href="mailto:scumunna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:#dc2626;padding:12px 24px;border-radius:8px;text-decoration:none;transition:background .2s,transform .2s" onmouseover="this.style.background='#b91c1c';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#dc2626';this.style.transform='none'">Start a Conversation &rarr;</a>
-    <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text, var(--tx, #0f172a));background:var(--surface, var(--sf, #fff));border:1px solid var(--border, var(--bd, #e2e8f0));padding:12px 24px;border-radius:8px;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='var(--accent, var(--ac, #2563eb))';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border, var(--bd, #e2e8f0))';this.style.transform='none'">View on LinkedIn</a>
+    <a href="mailto:scumunna@gmail.com" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--bg);background:var(--text);padding:12px 24px;text-decoration:none;transition:opacity .2s,transform .2s" onmouseover="this.style.opacity='.8';this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='1';this.style.transform='none'">Let's talk &rarr;</a>
+    <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text, var(--tx, #0f172a));background:var(--surface, var(--sf, #fff));border:1px solid var(--border, var(--bd, #e2e8f0));padding:12px 24px;border-radius:8px;text-decoration:none;transition:border-color .2s,transform .2s" onmouseover="this.style.borderColor='var(--accent, var(--ac, #0F0E0C))';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border, var(--bd, #e2e8f0))';this.style.transform='none'">View on LinkedIn</a>
   </div>
 </section>
 
@@ -1576,35 +1432,12 @@
       <a href="https://linkedin.com/in/stephenumunna" target="_blank" rel="noopener" style="color:var(--text-muted, var(--tx2, #475569));transition:color .2s">LinkedIn</a>
     </div>
   </div>
-  <div style="font-size:11px;color:var(--text-muted, var(--tx3, #94a3b8));margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed.</div>
+  <div style="font-size:11px;color:var(--text-muted, var(--tx3, #94a3b8));margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;line-height:1.5">All metrics reflect my individual contributions during my tenure. No proprietary code, client data, or trade secrets are disclosed. One employer name is withheld at that company's request.</div>
 </footer>
 
 <script>
 (function() {
   'use strict';
-
-  // --- Theme Toggle ---
-  var themeToggle = {
-    init: function() {
-      var saved = localStorage.getItem('portfolio-theme') || 'light';
-      this.set(saved);
-      var self = this;
-      document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          self.set(btn.getAttribute('data-theme-btn'));
-        });
-      });
-    },
-    set: function(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('portfolio-theme', theme);
-      document.querySelectorAll('[data-theme-btn]').forEach(function(btn) {
-        var isActive = btn.getAttribute('data-theme-btn') === theme;
-        btn.classList.toggle('active', isActive);
-      });
-    }
-  };
-  themeToggle.init();
 
   // --- Hero counter animation (runs on page load, no observer) ---
   function animateHeroCounters() {
